@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Resilience - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Principles</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Context Resilience</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Context Resilience</h1>
+        
+        <p>Context resilience is the foundation of Trinity Framework 2.0 Core. It enables agent systems to maintain operational continuity across context resets, ensuring consistent performance despite the inherent limitations of large language models.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: Context resilience is the first and most fundamental principle of the Trinity Framework. All other principles and components support this core capability.</p>
+        </div>
+
+        <h2>Understanding Context Limitations</h2>
+        
+        <p>Large language models like Claude have finite context windows that limit how much information they can process at once. When these limits are reached, a context reset occurs, causing:</p>
+        
+        <ul>
+            <li>Loss of conversation history</li>
+            <li>Forgetting of operational state</li>
+            <li>Disruption of ongoing tasks</li>
+            <li>Reduced productivity due to recovery time</li>
+        </ul>
+        
+        <p>Context resilience addresses these challenges through standardized structures, procedures, and tools that minimize the impact of context resets.</p>
+
+        <h2>The Three Pillars of Context Resilience</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sitemap"></i> Structured Workspaces</h3>
+                <p>Standardized file structure and protocol files that maintain identity and state across resets.</p>
+                <ul>
+                    <li>Protocol files (AGENT.md, STATUS.md, AUTO-COMPACT.md)</li>
+                    <li>Consistent directory structure</li>
+                    <li>Clear separation of concerns</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sync-alt"></i> Recovery Procedures</h3>
+                <p>Explicit, standardized steps for recovering operational capability after context resets.</p>
+                <ul>
+                    <li>Auto-compact recovery protocol</li>
+                    <li>Checkpoint creation and restoration</li>
+                    <li>Progressive recovery process</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-book"></i> Knowledge Preservation</h3>
+                <p>Systematic documentation and knowledge management to capture critical information.</p>
+                <ul>
+                    <li>AAR (After Action Review) system</li>
+                    <li>Session documentation</li>
+                    <li>Status tracking and updates</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Implementation in Protocol Files</h2>
+        
+        <p>Context resilience is implemented through the three core protocol files:</p>
+        
+        <table>
+            <tr>
+                <th>Protocol File</th>
+                <th>Context Resilience Role</th>
+                <th>Key Components</th>
+            </tr>
+            <tr>
+                <td><strong>AGENT.md</strong></td>
+                <td>Identity preservation and recovery procedures</td>
+                <td>Auto-compact recovery protocol, mission statement, operational directives</td>
+            </tr>
+            <tr>
+                <td><strong>STATUS.md</strong></td>
+                <td>State tracking and operational awareness</td>
+                <td>Project status, recent accomplishments, context health metrics</td>
+            </tr>
+            <tr>
+                <td><strong>AUTO-COMPACT.md</strong></td>
+                <td>Context management and checkpoint system</td>
+                <td>Context metrics, checkpoint data, restoration instructions</td>
+            </tr>
+        </table>
+        
+        <h3>Example Auto-Compact Recovery Protocol</h3>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">## 🚨 AUTO-COMPACT RECOVERY PROTOCOL</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">### Immediate Recovery Steps</span><br>
+                <span style="color: var(--text-medium);">1. **Recognize the situation** - You'll have no memory of previous conversation</span><br>
+                <span style="color: var(--text-medium);">2. **Read this file immediately** - It's your primary recovery document</span><br>
+                <span style="color: var(--text-medium);">3. **Check status** - Read STATUS.md for current priorities</span><br>
+                <span style="color: var(--text-medium);">4. **Identify yourself** - Ensure your identity is clear in responses</span><br>
+                <span style="color: var(--text-medium);">5. **Resume work** - Based on priorities in STATUS.md</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">### Recovery Performance Target</span><br>
+                <span style="color: var(--text-medium);">- **Expected Recovery Time**: 3-4 exchanges to full operational awareness</span><br>
+                <span style="color: var(--text-medium);">- **Success Criteria**: Complete context restoration without human intervention</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <h2>Context Management System</h2>
+        
+        <p>The Trinity Framework's optional context management system enhances context resilience through:</p>
+        
+        <ul>
+            <li><strong>Token Tracking</strong>: Monitoring context utilization in real-time</li>
+            <li><strong>Thresholds</strong>: Defining NOTICE (65%), WARNING (75%), and ALERT (85%) levels</li>
+            <li><strong>Checkpointing</strong>: Creating serialized state at key thresholds</li>
+            <li><strong>Visualization</strong>: Providing clear visual representation of context status</li>
+            <li><strong>Recovery</strong>: Automating restoration after context resets</li>
+        </ul>
+        
+        <p>For more information, see the <a href="../guides/context-management.html">Context Management Guide</a>.</p>
+
+        <h2>AAR System for Knowledge Continuity</h2>
+        
+        <p>The After Action Review (AAR) system is a critical component of context resilience, providing:</p>
+        
+        <ul>
+            <li><strong>Session Documentation</strong>: Recording key information and decisions</li>
+            <li><strong>Knowledge Transfer</strong>: Preserving insights across context boundaries</li>
+            <li><strong>Continuous Improvement</strong>: Learning from past experiences</li>
+            <li><strong>Recovery Support</strong>: Providing context for rapid restoration</li>
+        </ul>
+        
+        <p>For more information, see the <a href="../guides/aar-system.html">AAR System Guide</a>.</p>
+
+        <h2>Measuring Context Resilience</h2>
+        
+        <p>Context resilience can be measured through several key metrics:</p>
+        
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Target</th>
+                <th>Measurement Method</th>
+            </tr>
+            <tr>
+                <td>Recovery Time</td>
+                <td>3-4 exchanges</td>
+                <td>Number of exchanges to resume productive work after reset</td>
+            </tr>
+            <tr>
+                <td>Information Preservation</td>
+                <td>95%+</td>
+                <td>Percentage of critical information preserved across resets</td>
+            </tr>
+            <tr>
+                <td>Autonomy Level</td>
+                <td>High</td>
+                <td>Degree of human intervention required during recovery</td>
+            </tr>
+            <tr>
+                <td>Context Utilization</td>
+                <td>Optimal</td>
+                <td>Efficient use of available context without premature resets</td>
+            </tr>
+        </table>
+
+        <h2>Best Practices</h2>
+        
+        <ul>
+            <li><strong>Protocol File Maintenance</strong>: Keep protocol files updated with current information</li>
+            <li><strong>Regular Checkpoints</strong>: Create checkpoints at meaningful progress points</li>
+            <li><strong>AAR Creation</strong>: Document key information after significant work sessions</li>
+            <li><strong>Context Monitoring</strong>: Track context utilization and respond to threshold alerts</li>
+            <li><strong>Recovery Testing</strong>: Periodically practice recovery procedures</li>
+        </ul>
+        
+        <div class="warning">
+            <p><strong>Important</strong>: Context resilience requires discipline and consistency. Follow the framework's protocols and procedures even when they seem unnecessary, as they become critical during unexpected context resets.</p>
+        </div>
+
+        <h2>Real-World Application</h2>
+        
+        <p>The Trinity Framework's context resilience capabilities have been demonstrated in real-world scenarios:</p>
+        
+        <ul>
+            <li><strong>Multi-Day Projects</strong>: Maintaining continuity across days of development</li>
+            <li><strong>Complex Deployments</strong>: Managing infrastructure setup despite context limitations</li>
+            <li><strong>Team Collaboration</strong>: Enabling multiple agents to coordinate effectively</li>
+            <li><strong>Documentation Projects</strong>: Preserving comprehensive knowledge across resets</li>
+        </ul>
+        
+        <p>For a detailed example, see the <a href="../beta-2-deployment.html">Beta 2 Deployment case study</a>.</p>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for terminal text
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-content br');
+            
+            // Hide all lines initially except the first one
+            for (let i = 0; i < terminalLines.length; i++) {
+                const nextSibling = terminalLines[i].nextSibling;
+                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                    nextSibling.style.display = 'none';
+                }
+            }
+            
+            // Show lines one by one
+            let currentLine = 0;
+            function showNextLine() {
+                if (currentLine < terminalLines.length) {
+                    const nextSibling = terminalLines[currentLine].nextSibling;
+                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                        nextSibling.style.display = 'inline';
+                    }
+                    currentLine++;
+                    setTimeout(showNextLine, 500);
+                }
+            }
+            
+            setTimeout(showNextLine, 1000);
+        });
+    </script>
+</body>
+</html>
