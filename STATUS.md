@@ -176,6 +176,8 @@ None currently identified
 - ✅ Fixed broken references to beta-2-deployment.html
 - ✅ Updated breadcrumb navigation for consistency across all pages
 - ✅ Corrected "Back to Documentation Home" links across documentation
+- ✅ Fixed CSS path in field-reports/beta-2-deployment.html for proper styling
+- ✅ Created redirect from duplicate beta-2-deployment.html to field-reports version
 
 ## Next Priorities
 
