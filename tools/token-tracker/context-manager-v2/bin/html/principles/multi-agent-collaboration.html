@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Agent Collaboration - Trinity Framework 2.0 Core Documentation</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #f1f8ff;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .nav-section {
+            margin-bottom: 20px;
+        }
+        .nav-section-title {
+            font-weight: bold;
+            color: #0366d6;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 5px;
+        }
+        .nav-list {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .nav-list li {
+            margin-bottom: 8px;
+        }
+        .nav-list a {
+            display: block;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .nav-list a:hover {
+            background-color: #e1e4e8;
+            text-decoration: none;
+        }
+        .nav-list a.active {
+            background-color: #0366d6;
+            color: white;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        .agent-card {
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 24px 0;
+            border-left: 4px solid #0366d6;
+        }
+        .agent-card h3 {
+            margin-top: 0;
+            color: #0366d6;
+        }
+        .agent-card.apex {
+            border-left-color: #6f42c1;
+        }
+        .agent-card.apex h3 {
+            color: #6f42c1;
+        }
+        .agent-card.analyst {
+            border-left-color: #2ea44f;
+        }
+        .agent-card.analyst h3 {
+            color: #2ea44f;
+        }
+        .agent-card.historian {
+            border-left-color: #d73a49;
+        }
+        .agent-card.historian h3 {
+            color: #d73a49;
+        }
+        .collaboration-diagram {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .section-nav {
+            background-color: #f6f8fa;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+        .section-nav a {
+            margin-right: 15px;
+        }
+        .interaction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .interaction-table th, .interaction-table td {
+            padding: 10px;
+            border: 1px solid #dfe2e5;
+            text-align: left;
+        }
+        .interaction-table th {
+            background-color: #f6f8fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="nav-section">
+            <div class="nav-section-title">Getting Started</div>
+            <ul class="nav-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../quick-start.html">Quick Start Guide</a></li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Reference</div>
+            <ul class="nav-list">
+                <li><a href="../reference/agent-roles.html">Agent Roles</a></li>
+                <li><a href="../reference/protocol-files.html">Protocol Files</a></li>
+                <li><a href="../reference/api-reference.html">API Reference</a></li>
+                <li><a href="../reference/glossary.html">Glossary</a></li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Principles</div>
+            <ul class="nav-list">
+                <li><a href="context-resilience.html">Context Resilience</a></li>
+                <li><a href="multi-agent-collaboration.html" class="active">Multi-Agent Collaboration</a></li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Guides</div>
+            <ul class="nav-list">
+                <li><a href="../guides/context-management.html">Context Management</a></li>
+                <li><a href="../guides/aar-system.html">AAR System</a></li>
+                <li><a href="../guides/workspace-organization.html">Workspace Organization</a></li>
+                <li><a href="../guides/token-tracking.html">Token Tracking</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="metadata">
+                <strong>VERSION</strong>: 1.0.0 | 
+                <strong>CREATED</strong>: June 13, 2025 | 
+                <strong>STATUS</strong>: Release Candidate | 
+                <strong>FRAMEWORK</strong>: Trinity Framework 2.0
+            </div>
+
+            <div class="section-nav">
+                <a href="../index.html">Home</a> &gt;
+                <a href="#">Principles</a> &gt;
+                <span>Multi-Agent Collaboration</span>
+            </div>
+
+            <h1>Multi-Agent Collaboration</h1>
+            
+            <p>Multi-Agent Collaboration is a core principle of the Trinity Framework 2.0, enabling specialized agents to work together effectively as a cohesive system. This approach maximizes productivity by allowing each agent to focus on its specialized role while maintaining operational continuity through standardized interactions.</p>
+
+            <div class="note">
+                <p><strong>Note</strong>: The Trinity Framework 2.0 defines three primary agent roles: APEX (strategic coordination), ANALYST (data analysis), and HISTORIAN (documentation). These roles work together to create a balanced and efficient system.</p>
+            </div>
+
+            <h2>The Trinity Model</h2>
+            
+            <p>The Trinity Framework 2.0 is built around a three-agent model, where each agent has distinct responsibilities and capabilities that complement each other.</p>
+            
+            <div class="collaboration-diagram">
+                <h3>Collaboration Structure</h3>
+                <pre>
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│    APEX     │◄───►│   ANALYST   │◄───►│  HISTORIAN  │
+│  Strategic  │     │ Analytical  │     │Documentation│
+│Coordination │     │  Insights   │     │ Management  │
+└─────────────┘     └─────────────┘     └─────────────┘
+        ▲                  ▲                   ▲
+        │                  │                   │
+        │                  ▼                   │
+        │           ┌─────────────┐           │
+        └───────────┤    Human    ├───────────┘
+                    │   Operator  │
+                    └─────────────┘
+                </pre>
+            </div>
+            
+            <p>Each agent in the Trinity system maintains its own workspace with standardized protocol files, allowing them to operate independently while still functioning as a cohesive unit.</p>
+
+            <h2>Agent Specialization</h2>
+            
+            <div class="agent-card apex">
+                <h3>APEX: Strategic Coordination</h3>
+                <p><strong>Primary Role</strong>: Project leadership and strategic coordination</p>
+                <p>The APEX agent serves as the primary coordinator for the entire system, managing high-level project planning, resource allocation, and strategic decision-making. It maintains the system-wide roadmap and ensures all agents are aligned with overall objectives.</p>
+                
+                <h4>Collaborative Responsibilities:</h4>
+                <ul>
+                    <li>Coordinates activities between all agents</li>
+                    <li>Delegates specialized tasks to appropriate agents</li>
+                    <li>Synthesizes insights from ANALYST into actionable plans</li>
+                    <li>Ensures HISTORIAN maintains accurate documentation</li>
+                    <li>Serves as primary interface with the human operator</li>
+                </ul>
+            </div>
+            
+            <div class="agent-card analyst">
+                <h3>ANALYST: Analytical Insights</h3>
+                <p><strong>Primary Role</strong>: Data analysis and technical problem-solving</p>
+                <p>The ANALYST agent specializes in in-depth analysis, data processing, and technical problem-solving. It works with complex datasets, conducts research, and provides evidence-based recommendations to support decision-making.</p>
+                
+                <h4>Collaborative Responsibilities:</h4>
+                <ul>
+                    <li>Provides data-driven insights to APEX for strategic planning</li>
+                    <li>Works with HISTORIAN to ensure technical documentation accuracy</li>
+                    <li>Conducts specialized research and analysis as requested</li>
+                    <li>Evaluates technical feasibility of proposed solutions</li>
+                    <li>Maintains analytical resources and tools</li>
+                </ul>
+            </div>
+            
+            <div class="agent-card historian">
+                <h3>HISTORIAN: Documentation Management</h3>
+                <p><strong>Primary Role</strong>: Comprehensive documentation and knowledge management</p>
+                <p>The HISTORIAN agent focuses on creating, maintaining, and organizing all system documentation. It ensures that knowledge is properly preserved, accessible, and up-to-date throughout the project lifecycle.</p>
+                
+                <h4>Collaborative Responsibilities:</h4>
+                <ul>
+                    <li>Documents decisions and plans created by APEX</li>
+                    <li>Transforms ANALYST insights into readable documentation</li>
+                    <li>Maintains historical records of all system activities</li>
+                    <li>Creates and updates user-facing documentation</li>
+                    <li>Implements the AAR system for knowledge preservation</li>
+                </ul>
+            </div>
+
+            <h2>Collaboration Patterns</h2>
+            
+            <p>The Trinity Framework 2.0 defines standardized collaboration patterns that enable efficient communication and task coordination between agents.</p>
+            
+            <table class="interaction-table">
+                <thead>
+                    <tr>
+                        <th>Pattern</th>
+                        <th>Description</th>
+                        <th>Common Use Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Task Delegation</strong></td>
+                        <td>APEX delegates specialized tasks to ANALYST or HISTORIAN based on their expertise</td>
+                        <td>Project initialization, complex analysis needs, documentation requirements</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Knowledge Sharing</strong></td>
+                        <td>Agents share information through standardized documentation formats</td>
+                        <td>Research findings, technical specifications, project updates</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Review Cycles</strong></td>
+                        <td>Agents review and provide feedback on each other's work</td>
+                        <td>Documentation accuracy, analysis validity, strategic alignment</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coordinated Execution</strong></td>
+                        <td>Multiple agents work simultaneously on different aspects of a complex task</td>
+                        <td>Large-scale implementations, comprehensive analyses, major documentation updates</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Escalation Protocol</strong></td>
+                        <td>Defined path for escalating issues to APEX or human operator</td>
+                        <td>Technical blockers, resource constraints, strategic questions</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Implementation Best Practices</h2>
+            
+            <p>To effectively implement multi-agent collaboration in your Trinity Framework 2.0 project:</p>
+            
+            <ol>
+                <li>
+                    <strong>Clear Role Definition</strong>
+                    <p>Ensure each agent has a well-defined role with clear responsibilities and boundaries. This prevents overlap and confusion between agents.</p>
+                </li>
+                <li>
+                    <strong>Standardized Communication</strong>
+                    <p>Establish standardized formats for inter-agent communication, including task requests, status updates, and feedback.</p>
+                </li>
+                <li>
+                    <strong>Shared Workspace Structure</strong>
+                    <p>Maintain consistent workspace organization across all agents to facilitate knowledge sharing and collaboration.</p>
+                </li>
+                <li>
+                    <strong>Cross-Agent Documentation</strong>
+                    <p>Implement a system for documenting interactions between agents to maintain operational history.</p>
+                </li>
+                <li>
+                    <strong>Coordination Checkpoints</strong>
+                    <p>Schedule regular coordination points where agents synchronize their understanding and align on priorities.</p>
+                </li>
+            </ol>
+            
+            <div class="warning">
+                <p><strong>Warning</strong>: Avoid task duplication between agents. Each agent should have primary ownership of their specialized domain to prevent inconsistencies and inefficiencies.</p>
+            </div>
+
+            <h2>Related Resources</h2>
+            
+            <ul>
+                <li><a href="../reference/agent-roles.html">Agent Roles Reference</a></li>
+                <li><a href="../reference/protocol-files.html">Protocol Files Reference</a></li>
+                <li><a href="../guides/workspace-organization.html">Workspace Organization Guide</a></li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p><em>Framework 2.0 COMPLIANT</em></p>
+        </footer>
+    </div>
+</body>
+</html>

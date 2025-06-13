@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace Organization - Trinity Framework 2.0 Core Documentation</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #f1f8ff;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .nav-section {
+            margin-bottom: 20px;
+        }
+        .nav-section-title {
+            font-weight: bold;
+            color: #0366d6;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 5px;
+        }
+        .nav-list {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .nav-list li {
+            margin-bottom: 8px;
+        }
+        .nav-list a {
+            display: block;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .nav-list a:hover {
+            background-color: #e1e4e8;
+            text-decoration: none;
+        }
+        .nav-list a.active {
+            background-color: #0366d6;
+            color: white;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        .directory-tree {
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            margin: 20px 0;
+            white-space: pre;
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+        .section-nav {
+            background-color: #f6f8fa;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+        .section-nav a {
+            margin-right: 15px;
+        }
+        .folder-card {
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 24px 0;
+            border-left: 4px solid #0366d6;
+        }
+        .folder-card h3 {
+            margin-top: 0;
+            color: #0366d6;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="nav-section">
+            <div class="nav-section-title">Getting Started</div>
+            <ul class="nav-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../quick-start.html">Quick Start Guide</a></li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Reference</div>
+            <ul class="nav-list">
+                <li><a href="../reference/agent-roles.html">Agent Roles</a></li>
+                <li><a href="../reference/protocol-files.html">Protocol Files</a></li>
+                <li><a href="../reference/api-reference.html">API Reference</a></li>
+                <li><a href="../reference/glossary.html">Glossary</a></li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Principles</div>
+            <ul class="nav-list">
+                <li><a href="../principles/context-resilience.html">Context Resilience</a></li>
+                <li><a href="../principles/multi-agent-collaboration.html">Multi-Agent Collaboration</a></li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Guides</div>
+            <ul class="nav-list">
+                <li><a href="context-management.html">Context Management</a></li>
+                <li><a href="aar-system.html">AAR System</a></li>
+                <li><a href="workspace-organization.html" class="active">Workspace Organization</a></li>
+                <li><a href="token-tracking.html">Token Tracking</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="metadata">
+                <strong>VERSION</strong>: 1.0.0 | 
+                <strong>CREATED</strong>: June 13, 2025 | 
+                <strong>STATUS</strong>: Release Candidate | 
+                <strong>FRAMEWORK</strong>: Trinity Framework 2.0
+            </div>
+
+            <div class="section-nav">
+                <a href="../index.html">Home</a> &gt;
+                <a href="#">Guides</a> &gt;
+                <span>Workspace Organization</span>
+            </div>
+
+            <h1>Workspace Organization Guide</h1>
+            
+            <p>Proper workspace organization is a fundamental aspect of the Trinity Framework 2.0, enabling consistent file structure, efficient collaboration, and reliable context recovery. This guide provides detailed instructions for setting up and maintaining a standardized Trinity workspace.</p>
+
+            <div class="note">
+                <p><strong>Note</strong>: Consistent workspace organization is essential for context resilience. All Framework 2.0 compliant agents must follow these organizational patterns.</p>
+            </div>
+
+            <h2>Workspace Structure</h2>
+            
+            <p>The Trinity Framework 2.0 defines a standardized workspace structure with specific directories and files. This consistent organization ensures that agents can easily locate resources and recover from context resets.</p>
+            
+            <div class="directory-tree">
+/home/user/agent-workspace/  # Root workspace directory
+├── AGENT.md                 # Agent identity and recovery protocol
+├── STATUS.md                # Current status and priorities
+├── AUTO-COMPACT.md          # Context management protocol
+├── AAR/                     # After Action Review system
+│   ├── sessions/            # Daily session documentation
+│   │   └── YYYY-MM-DD-description.md
+│   └── incidents/           # Major incident analysis
+│       └── DESCRIPTIVE-NAME-RCA.md
+├── tools/                   # Utilities and scripts
+│   ├── token-tracker/       # Context tracking tools
+│   ├── api-client/          # API interaction tools
+│   └── generators/          # Content generation tools
+├── documentation/           # Internal documentation
+│   ├── architecture/        # System architecture docs
+│   ├── processes/           # Process documentation
+│   └── technical/           # Technical specifications
+├── projects/                # Project-specific files
+│   ├── project-name/        # Individual project folder
+│   │   ├── docs/            # Project documentation
+│   │   ├── code/            # Project code
+│   │   └── assets/          # Project assets
+│   └── templates/           # Project templates
+├── analysis/                # Analytical outputs
+│   ├── reports/             # Analysis reports
+│   ├── data/                # Processed data
+│   └── visualizations/      # Data visualizations
+├── backups/                 # System backups
+│   └── checkpoints/         # Context checkpoints
+└── tmp/                     # Temporary files
+    └── working/             # Temporary work area
+</div>
+
+            <h2>Key Directory Purposes</h2>
+            
+            <div class="folder-card">
+                <h3>Protocol Files (Root Directory)</h3>
+                <p>The three core protocol files must be placed in the workspace root directory for immediate accessibility during recovery.</p>
+                <ul>
+                    <li><strong>AGENT.md</strong>: Defines agent identity, role, and recovery procedures</li>
+                    <li><strong>STATUS.md</strong>: Tracks current operational status and priorities</li>
+                    <li><strong>AUTO-COMPACT.md</strong>: Manages context utilization and recovery</li>
+                </ul>
+            </div>
+            
+            <div class="folder-card">
+                <h3>AAR/ (After Action Review)</h3>
+                <p>The AAR directory contains structured documentation of operational knowledge and lessons learned.</p>
+                <ul>
+                    <li><strong>sessions/</strong>: Daily session documentation in YYYY-MM-DD-description.md format</li>
+                    <li><strong>incidents/</strong>: Detailed analysis of major incidents or challenges</li>
+                </ul>
+                <p>This two-tier structure balances quick session documentation with in-depth incident analysis.</p>
+            </div>
+            
+            <div class="folder-card">
+                <h3>tools/</h3>
+                <p>The tools directory contains scripts, utilities, and automation to support agent operations.</p>
+                <ul>
+                    <li><strong>token-tracker/</strong>: Context window tracking and management tools</li>
+                    <li><strong>api-client/</strong>: API interaction utilities</li>
+                    <li><strong>generators/</strong>: Content generation scripts</li>
+                </ul>
+                <p>Each tool should include appropriate documentation and usage examples.</p>
+            </div>
+            
+            <div class="folder-card">
+                <h3>projects/</h3>
+                <p>The projects directory contains all project-specific files, organized by project name.</p>
+                <ul>
+                    <li><strong>project-name/</strong>: Individual project folders</li>
+                    <li><strong>templates/</strong>: Reusable project templates and boilerplate</li>
+                </ul>
+                <p>Each project folder should maintain a consistent internal structure with docs/, code/, and assets/ subdirectories.</p>
+            </div>
+            
+            <div class="folder-card">
+                <h3>analysis/</h3>
+                <p>The analysis directory stores analytical outputs, including reports, processed data, and visualizations.</p>
+                <ul>
+                    <li><strong>reports/</strong>: Formal analysis reports and findings</li>
+                    <li><strong>data/</strong>: Processed and transformed data</li>
+                    <li><strong>visualizations/</strong>: Charts, graphs, and visual representations</li>
+                </ul>
+                <p>This directory is particularly important for the ANALYST agent role.</p>
+            </div>
+
+            <h2>File Naming Conventions</h2>
+            
+            <p>Consistent file naming is essential for quick navigation and automated processing.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>File Type</th>
+                        <th>Naming Convention</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Protocol Files</td>
+                        <td>ALL-CAPS.md</td>
+                        <td>AGENT.md, STATUS.md</td>
+                    </tr>
+                    <tr>
+                        <td>Session AARs</td>
+                        <td>YYYY-MM-DD-description.md</td>
+                        <td>2025-06-13-workspace-reorganization.md</td>
+                    </tr>
+                    <tr>
+                        <td>Incident AARs</td>
+                        <td>DESCRIPTIVE-NAME-RCA.md</td>
+                        <td>CONTEXT-RESET-FAILURE-RCA.md</td>
+                    </tr>
+                    <tr>
+                        <td>Project Documentation</td>
+                        <td>kebab-case.md</td>
+                        <td>system-architecture.md</td>
+                    </tr>
+                    <tr>
+                        <td>Tools and Scripts</td>
+                        <td>kebab-case.sh or kebab-case.js</td>
+                        <td>generate-report.sh</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Implementation Steps</h2>
+            
+            <p>To set up a Trinity Framework 2.0 compliant workspace:</p>
+            
+            <ol>
+                <li>
+                    <strong>Create Base Directory Structure</strong>
+                    <pre><code>mkdir -p ~/agent-workspace/{AAR/{sessions,incidents},tools,documentation/{architecture,processes,technical},projects/templates,analysis/{reports,data,visualizations},backups/checkpoints,tmp/working}</code></pre>
+                </li>
+                <li>
+                    <strong>Initialize Protocol Files</strong>
+                    <p>Create the three core protocol files in the workspace root, using the templates from the Framework 2.0 documentation.</p>
+                </li>
+                <li>
+                    <strong>Set Up Tools</strong>
+                    <p>Install or copy the required tools for context tracking, API interaction, and other utilities.</p>
+                </li>
+                <li>
+                    <strong>Configure Agent-Specific Elements</strong>
+                    <p>Customize the workspace based on the specific agent role (APEX, ANALYST, or HISTORIAN).</p>
+                </li>
+                <li>
+                    <strong>Verify Framework Compliance</strong>
+                    <p>Use the verification checklist to ensure the workspace meets all Framework 2.0 requirements.</p>
+                </li>
+            </ol>
+            
+            <div class="warning">
+                <p><strong>Warning</strong>: Deviating from the standardized workspace structure may compromise context resilience and recovery capabilities. Always maintain the core structure while customizing only as needed for specific agent roles.</p>
+            </div>
+
+            <h2>Role-Specific Considerations</h2>
+            
+            <h3>APEX Agent Workspace</h3>
+            <p>The APEX agent's workspace should emphasize strategic planning and coordination:</p>
+            <ul>
+                <li>Expanded projects/ directory with roadmap documentation</li>
+                <li>Enhanced tools/ directory with coordination utilities</li>
+                <li>Additional strategic/ directory for high-level planning</li>
+            </ul>
+            
+            <h3>ANALYST Agent Workspace</h3>
+            <p>The ANALYST agent's workspace should focus on data analysis capabilities:</p>
+            <ul>
+                <li>Expanded analysis/ directory with specialized subdirectories</li>
+                <li>Additional data/ directory for input datasets</li>
+                <li>Enhanced tools/ directory with analysis utilities</li>
+            </ul>
+            
+            <h3>HISTORIAN Agent Workspace</h3>
+            <p>The HISTORIAN agent's workspace should prioritize documentation management:</p>
+            <ul>
+                <li>Expanded documentation/ directory with additional categories</li>
+                <li>Enhanced AAR/ system with more detailed categorization</li>
+                <li>Additional templates/ directory for documentation standards</li>
+            </ul>
+
+            <h2>Related Resources</h2>
+            
+            <ul>
+                <li><a href="../principles/context-resilience.html">Context Resilience Principle</a></li>
+                <li><a href="../reference/protocol-files.html">Protocol Files Reference</a></li>
+                <li><a href="aar-system.html">AAR System Guide</a></li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p><em>Framework 2.0 COMPLIANT</em></p>
+        </footer>
+    </div>
+</body>
+</html>
