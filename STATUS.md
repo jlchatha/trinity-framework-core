@@ -190,6 +190,14 @@ None currently identified
 
 ## Recent Accomplishments
 
+### Trinity Framework 2.0 Core HTML Documentation Fixes (June 13, 2025)
+- ✅ Fixed 404 errors by adding missing HTML pages
+- ✅ Added comprehensive principles documentation pages
+- ✅ Added detailed getting-started guide pages
+- ✅ Added reference and guides documentation
+- ✅ Added advanced documentation for context management and agent collaboration
+- ✅ Added interactive token tracking documentation with visualizations
+
 ### Trinity Framework 2.0 Core GitHub Pages Deployment (June 13, 2025)
 - ✅ Deployed HTML documentation to GitHub Pages
 - ✅ Verified all pages render correctly with 200 status
