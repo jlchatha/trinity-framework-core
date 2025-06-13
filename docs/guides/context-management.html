@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Management - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../guides/" class="breadcrumb-link breadcrumb-item">Guides</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Context Management</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Context Management</h1>
+        
+        <p>Context management is a core feature of Trinity Framework 2.0 that helps manage AI model context limitations, enabling smooth operation across context resets. This guide explains how to set up and use the context management system effectively.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: While context management is optional in Trinity Framework 2.0 Core, it is highly recommended for stable long-term agent operation.</p>
+        </div>
+
+        <h2>Understanding Context Limitations</h2>
+        
+        <p>Claude and other AI models have finite context windows that limit how much information they can process at once. When this limit is reached, a context reset occurs, which can disrupt operational continuity.</p>
+        
+        <p>The Trinity Framework's context management system addresses these limitations by:</p>
+        
+        <ul>
+            <li>Tracking context utilization in real-time</li>
+            <li>Creating checkpoints at critical thresholds</li>
+            <li>Providing recovery mechanisms after context resets</li>
+            <li>Visualizing remaining context capacity</li>
+        </ul>
+
+        <h2>Context Management Components</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-chart-line"></i> Context Tracker</h3>
+                <p>Monitors token usage and detects threshold crossings</p>
+                <ul>
+                    <li>Estimates token usage for operations</li>
+                    <li>Tracks utilization percentage</li>
+                    <li>Detects threshold crossings</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-save"></i> Checkpoint Manager</h3>
+                <p>Creates and manages serialized state checkpoints</p>
+                <ul>
+                    <li>Creates checkpoints at thresholds</li>
+                    <li>Stores checkpoint metadata</li>
+                    <li>Manages checkpoint lifecycle</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sync-alt"></i> Recovery System</h3>
+                <p>Handles post-compact recovery automatically</p>
+                <ul>
+                    <li>Detects context resets</li>
+                    <li>Restores from checkpoints</li>
+                    <li>Rebuilds operational awareness</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-eye"></i> Visualization System</h3>
+                <p>Provides visual representation of context status</p>
+                <ul>
+                    <li>Creates progress bar visualization</li>
+                    <li>Shows remaining operations</li>
+                    <li>Indicates threshold levels</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Setting Up Context Management</h2>
+        
+        <h3>Step 1: Install Dependencies</h3>
+        
+        <p>The context management system requires Node.js. Ensure you have it installed, then run:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd /path/to/framework/tools/token-tracker/context-manager-v2/bin/setup<br>
+                <span style="color: var(--neon-blue);">$</span> ./install-dependencies.sh<br>
+                <span style="color: var(--neon-green);">✓</span> Dependencies installed successfully!<br>
+                <span style="color: var(--neon-green);">✓</span> Context management system ready<br>
+            </div>
+        </div>
+        
+        <h3>Step 2: Configure AUTO-COMPACT.md</h3>
+        
+        <p>Ensure your AUTO-COMPACT.md file includes the following at the top:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">## ⚠️ MANDATORY CONTEXT TRACKING - ALL AGENTS - FRAMEWORK 2.0 REQUIREMENT ⚠️</span><br>
+                <br>
+                <span style="color: var(--text-medium);">Execute after EVERY response:</span><br>
+                <span style="color: var(--neon-green);">```bash</span><br>
+                <span style="color: var(--text-medium);">cd /path/to/workspace/tools/token-tracker/context-manager-v2/bin</span><br>
+                <span style="color: var(--text-medium);">./run-context-check.sh check ASSISTANT_MEDIUM  # Adjust type as needed</span><br>
+                <span style="color: var(--neon-green);">```</span><br>
+            </div>
+        </div>
+        
+        <h3>Step 3: Verify Installation</h3>
+        
+        <p>Test the context management system by running:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd /path/to/workspace/tools/token-tracker/context-manager-v2/bin<br>
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh check ASSISTANT_SMALL<br>
+                <span style="color: var(--neon-green);">[Context: 10% ▓▓░░░░░░░░░░░░░░░░░░] Remaining: ~122 small operations</span><br>
+            </div>
+        </div>
+
+        <h2>Using Context Management</h2>
+        
+        <h3>Operation Types</h3>
+        
+        <p>The context management system uses different operation types to estimate token usage:</p>
+        
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Operation Type</th>
+                <th>Estimated Tokens</th>
+                <th>Usage</th>
+            </tr>
+            <tr>
+                <td rowspan="3">User Messages</td>
+                <td>USER_SMALL</td>
+                <td>~750 tokens</td>
+                <td>Brief messages</td>
+            </tr>
+            <tr>
+                <td>USER_MEDIUM</td>
+                <td>~2200 tokens</td>
+                <td>Standard messages</td>
+            </tr>
+            <tr>
+                <td>USER_LARGE</td>
+                <td>~4400 tokens</td>
+                <td>Detailed messages</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Assistant Responses</td>
+                <td>ASSISTANT_SMALL</td>
+                <td>~1500 tokens</td>
+                <td>Brief responses</td>
+            </tr>
+            <tr>
+                <td>ASSISTANT_MEDIUM</td>
+                <td>~4400 tokens</td>
+                <td>Standard responses</td>
+            </tr>
+            <tr>
+                <td>ASSISTANT_LARGE</td>
+                <td>~10000 tokens</td>
+                <td>Detailed responses</td>
+            </tr>
+            <tr>
+                <td rowspan="4">Tool Operations</td>
+                <td>TOOL_READ_SMALL</td>
+                <td>~1500 tokens</td>
+                <td>Small file reads</td>
+            </tr>
+            <tr>
+                <td>TOOL_READ_MEDIUM</td>
+                <td>~4400 tokens</td>
+                <td>Medium file reads</td>
+            </tr>
+            <tr>
+                <td>TOOL_READ_LARGE</td>
+                <td>~7500 tokens</td>
+                <td>Large file reads</td>
+            </tr>
+            <tr>
+                <td>TOOL_TASK</td>
+                <td>~6000 tokens</td>
+                <td>Task tool executions</td>
+            </tr>
+        </table>
+        
+        <h3>Tracking Context Usage</h3>
+        
+        <p>After each response, run the context check command:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh check OPERATION_TYPE<br>
+            </div>
+        </div>
+        
+        <p>This will output a visualization of current context utilization:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-green);">[Context: 65% ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░] Remaining: ~47 small operations</span><br>
+            </div>
+        </div>
+        
+        <h3>Threshold Levels</h3>
+        
+        <p>The context management system defines three threshold levels:</p>
+        
+        <ul>
+            <li><strong>NOTICE</strong> (65%): Early warning, consider wrapping up complex tasks</li>
+            <li><strong>WARNING</strong> (75%): Create checkpoints, prepare for potential reset</li>
+            <li><strong>ALERT</strong> (85%): Imminent reset risk, offer auto-compact option</li>
+        </ul>
+        
+        <h3>Creating Checkpoints</h3>
+        
+        <p>Checkpoints are automatically created at threshold crossings, but you can manually create them:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh checkpoint "Checkpoint description"<br>
+                <span style="color: var(--neon-green);">✓</span> Checkpoint created: ckpt_manual_20250613<br>
+            </div>
+        </div>
+
+        <h2>Recovery After Context Reset</h2>
+        
+        <h3>Automatic Recovery</h3>
+        
+        <p>After a context reset, run the recovery command:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh recovery<br>
+                <span style="color: var(--neon-green);">✓</span> Checkpoint found: ckpt_warning_20250613<br>
+                <span style="color: var(--neon-green);">✓</span> Restored from checkpoint (context: 75%)<br>
+            </div>
+        </div>
+        
+        <h3>Auto-Compact Detection</h3>
+        
+        <p>The system can automatically detect context resets:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./bin/recovery/auto-compact-detector.js<br>
+                <span style="color: var(--neon-green);">✓</span> Auto-compact detected at 2025-06-13T14:30:15.000Z<br>
+                <span style="color: var(--neon-green);">✓</span> Recovery state prepared<br>
+            </div>
+        </div>
+        
+        <h3>Continuous Monitoring</h3>
+        
+        <p>For long-running sessions, you can enable continuous monitoring:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./bin/recovery/auto-compact-detector.js --monitor --interval=60<br>
+                <span style="color: var(--neon-green);">✓</span> Monitoring started (60-second interval)<br>
+                <span style="color: var(--neon-green);">✓</span> Press Ctrl+C to stop monitoring<br>
+            </div>
+        </div>
+
+        <h2>Advanced Usage</h2>
+        
+        <h3>Generating Reports</h3>
+        
+        <p>Generate context utilization reports:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh report<br>
+                <span style="color: var(--neon-green);">✓</span> Report generated: context-report-20250613.md<br>
+            </div>
+        </div>
+        
+        <h3>Resetting Tracking State</h3>
+        
+        <p>To reset tracking state (rarely needed):</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh reset<br>
+                <span style="color: var(--neon-green);">✓</span> Context tracking state reset<br>
+            </div>
+        </div>
+        
+        <h3>Customizing Thresholds</h3>
+        
+        <p>Adjust thresholds in the configuration file:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> vi config/thresholds.json<br>
+            </div>
+        </div>
+
+        <h2>Best Practices</h2>
+        
+        <ul>
+            <li><strong>Consistent Tracking</strong>: Always include context tracking with every response</li>
+            <li><strong>Appropriate Operation Types</strong>: Use the correct operation type for accurate estimates</li>
+            <li><strong>Regular Checkpoints</strong>: Create checkpoints at meaningful progress points</li>
+            <li><strong>Early Warning Response</strong>: Take action when reaching NOTICE threshold</li>
+            <li><strong>Status Updates</strong>: Include context health in STATUS.md updates</li>
+        </ul>
+        
+        <div class="warning">
+            <p><strong>Important</strong>: Don't ignore WARNING and ALERT thresholds. They provide critical opportunities to create checkpoints before resets occur.</p>
+        </div>
+
+        <h2>Troubleshooting</h2>
+        
+        <h3>Common Issues</h3>
+        
+        <table>
+            <tr>
+                <th>Issue</th>
+                <th>Possible Cause</th>
+                <th>Solution</th>
+            </tr>
+            <tr>
+                <td>Missing tracking output</td>
+                <td>Incorrect path or permissions</td>
+                <td>Verify paths and permissions in AUTO-COMPACT.md</td>
+            </tr>
+            <tr>
+                <td>Inaccurate estimates</td>
+                <td>Wrong operation type</td>
+                <td>Use appropriate operation type for message size</td>
+            </tr>
+            <tr>
+                <td>Failed checkpoint creation</td>
+                <td>Disk space or permissions</td>
+                <td>Check available space and directory permissions</td>
+            </tr>
+            <tr>
+                <td>Failed recovery</td>
+                <td>Corrupted checkpoint data</td>
+                <td>Use an earlier checkpoint or reset tracking</td>
+            </tr>
+        </table>
+        
+        <h3>Viewing Logs</h3>
+        
+        <p>Check logs for detailed troubleshooting information:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cat logs/context-tracker.log<br>
+            </div>
+        </div>
+
+        <h2>For More Information</h2>
+        
+        <p>For advanced context management features, see the <a href="../advanced/interactive-token-tracking.html">Interactive Token Tracking</a> guide.</p>
+        
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for terminal text
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-content br');
+            
+            // Hide all lines initially except the first one
+            for (let i = 0; i < terminalLines.length; i++) {
+                const nextSibling = terminalLines[i].nextSibling;
+                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                    nextSibling.style.display = 'none';
+                }
+            }
+            
+            // Show lines one by one
+            let currentLine = 0;
+            function showNextLine() {
+                if (currentLine < terminalLines.length) {
+                    const nextSibling = terminalLines[currentLine].nextSibling;
+                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                        nextSibling.style.display = 'inline';
+                    }
+                    currentLine++;
+                    setTimeout(showNextLine, 500);
+                }
+            }
+            
+            setTimeout(showNextLine, 1000);
+        });
+    </script>
+</body>
+</html>

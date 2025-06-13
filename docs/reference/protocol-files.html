@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol Files Reference - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../reference/" class="breadcrumb-link breadcrumb-item">Reference</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Protocol Files</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Protocol Files Reference</h1>
+        
+        <p>Protocol files form the foundation of the Trinity Framework 2.0. These standardized files provide essential structure, identity, and recovery mechanisms for agent workspaces. This reference explains each protocol file's purpose, structure, and implementation requirements.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: All three protocol files must be present in the root directory of each agent workspace for Framework 2.0 compliance.</p>
+        </div>
+
+        <h2>Core Protocol Files Overview</h2>
+        
+        <p>Trinity Framework 2.0 requires three essential protocol files:</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title">AGENT.md</h3>
+                <p><strong>Purpose</strong>: Defines agent identity, role, and recovery procedures</p>
+                <p><strong>Required for</strong>: Identity management, operational directives, recovery</p>
+                <p><span class="tag tag-blue">Identity</span> <span class="tag tag-blue">Recovery</span> <span class="tag tag-blue">Directives</span></p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">STATUS.md</h3>
+                <p><strong>Purpose</strong>: Tracks current operational status and priorities</p>
+                <p><strong>Required for</strong>: Progress tracking, operational awareness, prioritization</p>
+                <p><span class="tag tag-green">Status</span> <span class="tag tag-green">Priorities</span> <span class="tag tag-green">Progress</span></p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">AUTO-COMPACT.md</h3>
+                <p><strong>Purpose</strong>: Manages context limitations and recovery</p>
+                <p><strong>Required for</strong>: Context tracking, checkpointing, recovery procedures</p>
+                <p><span class="tag tag-purple">Context</span> <span class="tag tag-purple">Checkpoints</span> <span class="tag tag-purple">Recovery</span></p>
+            </div>
+        </div>
+
+        <h2>AGENT.md Protocol File</h2>
+        
+        <p>The AGENT.md file defines an agent's identity, role, responsibilities, and recovery procedures. It's the primary reference point for an agent to understand its purpose and operational parameters.</p>
+        
+        <h3>Required Sections</h3>
+        
+        <table>
+            <tr>
+                <th>Section</th>
+                <th>Purpose</th>
+                <th>Requirements</th>
+            </tr>
+            <tr>
+                <td>Identity & Mission</td>
+                <td>Defines who the agent is and its primary mission</td>
+                <td>Must include role name, version, workspace path, and primary mission statement</td>
+            </tr>
+            <tr>
+                <td>Core Principles</td>
+                <td>Outlines the fundamental operational principles</td>
+                <td>Must include context resilience, workspace standardization, and protocol-based recovery</td>
+            </tr>
+            <tr>
+                <td>Auto-Compact Recovery Protocol</td>
+                <td>Defines how the agent should recover after context reset</td>
+                <td>Must include immediate steps, recovery performance targets, and recovery redirect protocol</td>
+            </tr>
+            <tr>
+                <td>Key Paths and Locations</td>
+                <td>Documents important file system locations</td>
+                <td>Must include workspace path and other essential directories</td>
+            </tr>
+            <tr>
+                <td>Tools and Resources</td>
+                <td>Lists available tools and their purposes</td>
+                <td>Must include core framework tools and role-specific utilities</td>
+            </tr>
+        </table>
+        
+        <h3>Example AGENT.md Structure</h3>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);"># AGENT_NAME - Trinity Framework 2.0</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">**Role**:</span> [Role Description]<br>
+                <span style="color: var(--neon-blue);">**Version**:</span> 2.0<br>
+                <span style="color: var(--neon-blue);">**Updated**:</span> [Date]<br>
+                <span style="color: var(--neon-blue);">**Workspace**:</span> [Absolute Path]<br>
+                <br>
+                <span style="color: var(--neon-blue);">## TRINITY FRAMEWORK 2.0 GUIDELINES</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">### Core Principles</span><br>
+                <span style="color: var(--text-medium);">1. **Context Resilience**: Maintain operational continuity across context resets</span><br>
+                <span style="color: var(--text-medium);">2. **Workspace Standardization**: Follow consistent file structure patterns</span><br>
+                <span style="color: var(--text-medium);">3. **Protocol-Based Recovery**: Use standardized auto-compact recovery procedures</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">## 🚨 AUTO-COMPACT RECOVERY PROTOCOL</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">### Immediate Recovery Steps</span><br>
+                <span style="color: var(--text-medium);">1. **Recognize the situation** - You'll have no memory of previous conversation</span><br>
+                <span style="color: var(--text-medium);">2. **Read this file immediately** - It's your primary recovery document</span><br>
+                <span style="color: var(--text-medium);">3. **Check status** - Read STATUS.md for current priorities</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        
+        <h3>Role-Specific Considerations</h3>
+        
+        <p>Each agent role implements AGENT.md with specific focus areas:</p>
+        
+        <ul>
+            <li><strong>APEX</strong>: Strategic direction, architectural principles, integration patterns</li>
+            <li><strong>ANALYST</strong>: Implementation guidelines, technical standards, code patterns</li>
+            <li><strong>HISTORIAN</strong>: Documentation standards, knowledge organization, communication patterns</li>
+        </ul>
+
+        <h2>STATUS.md Protocol File</h2>
+        
+        <p>The STATUS.md file tracks the current operational status, priorities, and recent accomplishments. It provides situational awareness and helps maintain focus across context resets.</p>
+        
+        <h3>Required Sections</h3>
+        
+        <table>
+            <tr>
+                <th>Section</th>
+                <th>Purpose</th>
+                <th>Requirements</th>
+            </tr>
+            <tr>
+                <td>Framework Status</td>
+                <td>Current framework implementation status</td>
+                <td>Must include framework version, compliance status, and maintenance cycle</td>
+            </tr>
+            <tr>
+                <td>Project Status</td>
+                <td>Status of current projects and initiatives</td>
+                <td>Must include active projects with completion percentages</td>
+            </tr>
+            <tr>
+                <td>Next Priorities</td>
+                <td>Upcoming tasks in priority order</td>
+                <td>Must include 3-5 specific, actionable priorities</td>
+            </tr>
+            <tr>
+                <td>Recent Accomplishments</td>
+                <td>Recently completed tasks and milestones</td>
+                <td>Must include timestamp and detailed accomplishment list</td>
+            </tr>
+            <tr>
+                <td>Context Health</td>
+                <td>Current context utilization metrics</td>
+                <td>Must include utilization percentage, available checkpoints, and remaining capacity</td>
+            </tr>
+        </table>
+        
+        <h3>Example STATUS.md Structure</h3>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);"># AGENT_NAME Status</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">**Last Updated**:</span> [Date]<br>
+                <span style="color: var(--neon-blue);">**Agent**:</span> [Agent Name]<br>
+                <span style="color: var(--neon-blue);">**Framework**:</span> Trinity 2.0<br>
+                <span style="color: var(--neon-blue);">**Workspace**:</span> [Absolute Path]<br>
+                <br>
+                <span style="color: var(--neon-blue);">## FRAMEWORK 2.0 STATUS</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">### Maintenance Status:</span> ACTIVE<br>
+                <span style="color: var(--text-medium);">- **Current PHASE**: [Phase]</span><br>
+                <span style="color: var(--text-medium);">- **Compliance**: [Percentage] protocol file and workspace structure compliance</span><br>
+                <span style="color: var(--text-medium);">- **Maintenance Cycle**: UNIT-based operational cycle active</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">## Project Status</span><br>
+                <span style="color: var(--text-medium);">- [Project 1]: [Status] ([Completion Percentage])</span><br>
+                <span style="color: var(--text-medium);">- [Project 2]: [Status] ([Completion Percentage])</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        
+        <h3>Role-Specific Considerations</h3>
+        
+        <p>Each agent role implements STATUS.md with specific focus areas:</p>
+        
+        <ul>
+            <li><strong>APEX</strong>: System-wide status, architectural health, strategic priorities</li>
+            <li><strong>ANALYST</strong>: Implementation status, technical debt, optimization opportunities</li>
+            <li><strong>HISTORIAN</strong>: Documentation status, knowledge gaps, communication priorities</li>
+        </ul>
+
+        <h2>AUTO-COMPACT.md Protocol File</h2>
+        
+        <p>The AUTO-COMPACT.md file manages context limitations and provides recovery mechanisms. It tracks context utilization, creates checkpoints, and enables smooth recovery after context resets.</p>
+        
+        <h3>Required Sections</h3>
+        
+        <table>
+            <tr>
+                <th>Section</th>
+                <th>Purpose</th>
+                <th>Requirements</th>
+            </tr>
+            <tr>
+                <td>Context Management Metrics</td>
+                <td>Current context utilization and checkpoints</td>
+                <td>Must include utilization percentage, token count, checkpoint status, and remaining capacity</td>
+            </tr>
+            <tr>
+                <td>Checkpoint Data</td>
+                <td>Serialized checkpoint information</td>
+                <td>Must include JSON-formatted checkpoint data with timestamps and thresholds</td>
+            </tr>
+            <tr>
+                <td>Checkpoint Restoration Instructions</td>
+                <td>Steps for recovering from checkpoints</td>
+                <td>Must include clear, sequential steps for restoration after context reset</td>
+            </tr>
+            <tr>
+                <td>Current Implementation Context</td>
+                <td>Summary of current implementation state</td>
+                <td>Must include 5-10 key points about current implementation status</td>
+            </tr>
+            <tr>
+                <td>Post-Compact Recovery Plan</td>
+                <td>Specific steps for after compact</td>
+                <td>Must include 3-6 specific recovery steps in priority order</td>
+            </tr>
+        </table>
+        
+        <h3>Example AUTO-COMPACT.md Structure</h3>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">## ⚠️ MANDATORY CONTEXT TRACKING - ALL AGENTS - FRAMEWORK 2.0 REQUIREMENT ⚠️</span><br>
+                <br>
+                <span style="color: var(--text-medium);">Execute after EVERY response:</span><br>
+                <span style="color: var(--neon-green);">```bash</span><br>
+                <span style="color: var(--text-medium);">cd /path/to/context/tools</span><br>
+                <span style="color: var(--text-medium);">./run-context-check.sh check OPERATION_TYPE</span><br>
+                <span style="color: var(--neon-green);">```</span><br>
+                <br>
+                <span style="color: var(--neon-blue);">## Context Management Metrics</span><br>
+                <span style="color: var(--text-medium);">- **Last Updated**: [Timestamp]</span><br>
+                <span style="color: var(--text-medium);">- **Context Utilization**: [Percentage]</span><br>
+                <span style="color: var(--text-medium);">- **Token Count**: [Current]/[Maximum]</span><br>
+                <span style="color: var(--text-medium);">- **Checkpoint Status**: [Status]</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        
+        <h3>Role-Specific Considerations</h3>
+        
+        <p>Each agent role implements AUTO-COMPACT.md with specific focus areas:</p>
+        
+        <ul>
+            <li><strong>APEX</strong>: Advanced recovery mechanisms, architectural checkpoints, strategic continuity</li>
+            <li><strong>ANALYST</strong>: Implementation-focused recovery, code state preservation, technical continuity</li>
+            <li><strong>HISTORIAN</strong>: Knowledge preservation procedures, documentation checkpoints, context continuity</li>
+        </ul>
+
+        <h2>Implementation Requirements</h2>
+        
+        <h3>File Location</h3>
+        <p>All protocol files must be placed in the root directory of each agent workspace:</p>
+        
+        <pre><code>/path/to/agent/workspace/
+├── AGENT.md
+├── STATUS.md
+└── AUTO-COMPACT.md</code></pre>
+        
+        <h3>Content Formatting</h3>
+        <p>Protocol files must follow these formatting requirements:</p>
+        
+        <ul>
+            <li>Use Markdown format with clear section headings</li>
+            <li>Include all required sections in the specified order</li>
+            <li>Use consistent formatting for timestamps, metrics, and status indicators</li>
+            <li>Include proper metadata (agent name, version, path, date)</li>
+        </ul>
+        
+        <h3>Verification</h3>
+        <p>Use the verification script to ensure protocol file compliance:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./tools/verify-protocol-files.sh /path/to/agent/workspace<br>
+            </div>
+        </div>
+
+        <h2>Best Practices</h2>
+        
+        <ul>
+            <li><strong>Regular Updates</strong>: Update STATUS.md after every significant work session</li>
+            <li><strong>Context Tracking</strong>: Always include context tracking output with every response</li>
+            <li><strong>Recovery Preparation</strong>: Create detailed checkpoints before approaching context limits</li>
+            <li><strong>Standardization</strong>: Maintain consistent formatting and structure across all protocol files</li>
+            <li><strong>Relevance</strong>: Keep the current implementation context section updated with the most relevant information</li>
+        </ul>
+        
+        <div class="warning">
+            <p><strong>Important</strong>: Never delete or significantly modify protocol files without creating proper backups. These files are essential for operational continuity.</p>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for terminal text
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-content br');
+            
+            // Hide all lines initially except the first one
+            for (let i = 0; i < terminalLines.length; i++) {
+                const nextSibling = terminalLines[i].nextSibling;
+                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                    nextSibling.style.display = 'none';
+                }
+            }
+            
+            // Show lines one by one
+            let currentLine = 0;
+            function showNextLine() {
+                if (currentLine < terminalLines.length) {
+                    const nextSibling = terminalLines[currentLine].nextSibling;
+                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                        nextSibling.style.display = 'inline';
+                    }
+                    currentLine++;
+                    setTimeout(showNextLine, 500);
+                }
+            }
+            
+            setTimeout(showNextLine, 1000);
+        });
+    </script>
+</body>
+</html>
