@@ -168,6 +168,15 @@ Universal Protocol received and implemented
 
 None currently identified
 
+## Recent Fixes
+
+### HTML Documentation Issues Fixed (June 13, 2025)
+- ✅ Fixed Home links in navigation to point to /trinity-framework-core instead of /
+- ✅ Created missing systematic-documentation.html file in principles directory
+- ✅ Fixed broken references to beta-2-deployment.html
+- ✅ Updated breadcrumb navigation for consistency across all pages
+- ✅ Corrected "Back to Documentation Home" links across documentation
+
 ## Next Priorities
 
 1. **Documentation Search Implementation**
