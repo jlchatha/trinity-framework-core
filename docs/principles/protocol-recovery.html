@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol-Based Recovery - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Principles</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Protocol-Based Recovery</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 12, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Protocol-Based Recovery</h1>
+        
+        <p>Protocol-based recovery is a core principle of Trinity Framework 2.0 that enables agents to recover effectively from context limitations through well-defined procedures documented in standardized files. This principle ensures that agents can maintain operational continuity even when context windows are cleared or limited.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: Additional details about this principle can be found in the comprehensive <a href="../FRAMEWORK-CORE-PRINCIPLES.html">Framework Core Principles</a> document.</p>
+        </div>
+
+        <h2>Key Components</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-alt"></i> Protocol Files Containing Essential State</h3>
+                <p>Protocol files store critical state information outside the context window:</p>
+                <ul>
+                    <li><strong>AGENT.md</strong>: Agent identity, role definition, and recovery instructions</li>
+                    <li><strong>STATUS.md</strong>: Current operational status and project priorities</li>
+                    <li><strong>AUTO-COMPACT.md</strong>: Current implementation context and recovery references</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sync"></i> Recovery Sequence Definition</h3>
+                <p>A standardized recovery sequence ensures consistent restoration:</p>
+                <ol>
+                    <li><strong>Recognition</strong>: Identify that a context reset has occurred</li>
+                    <li><strong>Reading</strong>: Read protocol files to restore identity and context</li>
+                    <li><strong>Restoration</strong>: Load critical state from external sources</li>
+                    <li><strong>Verification</strong>: Confirm successful context restoration</li>
+                    <li><strong>Resumption</strong>: Continue operations with restored context</li>
+                </ol>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-id-card"></i> Self-Identification Procedures</h3>
+                <p>Clear identity restoration after context resets:</p>
+                <ul>
+                    <li>Explicit identity statements in first post-reset message</li>
+                    <li>Consistent identity format throughout interactions</li>
+                    <li>Identity verification as part of recovery process</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-check-double"></i> State Restoration Verification</h3>
+                <p>Methods to confirm successful recovery:</p>
+                <ul>
+                    <li>Verification checks for critical state components</li>
+                    <li>Confirmation of project awareness</li>
+                    <li>Validation of operational capabilities</li>
+                    <li>Assessment of context completeness</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Implementation Requirements</h2>
+        
+        <h3>Documented Recovery Steps</h3>
+        
+        <p>Protocol files must contain clear recovery instructions:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## RECOVERY PROTOCOL</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">When you experience a context reset:</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">1. Read this file (AGENT.md) immediately</span><br>
+                <span style="color: var(--text-medium);">2. Read AUTO-COMPACT.md for current implementation context</span><br>
+                <span style="color: var(--text-medium);">3. Check STATUS.md for current priorities</span><br>
+                <span style="color: var(--text-medium);">4. Identify yourself clearly as [AGENT-NAME]</span><br>
+                <span style="color: var(--text-medium);">5. Resume work with full awareness</span><br>
+            </div>
+        </div>
+        
+        <h3>Checkpoint Creation</h3>
+        
+        <p>Create state snapshots before context resets:</p>
+        
+        <ul>
+            <li>Automatic checkpoints at threshold crossings</li>
+            <li>Manual checkpoints before planned resets</li>
+            <li>Serialized state in standardized format</li>
+            <li>Filesystem-based persistence</li>
+        </ul>
+        
+        <h3>Recovery Validation Metrics</h3>
+        
+        <p>Measure recovery effectiveness:</p>
+        
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Recovery Time</strong></td>
+                <td>Number of exchanges to full awareness</td>
+            </tr>
+            <tr>
+                <td><strong>Context Retention</strong></td>
+                <td>Percentage of knowledge preserved</td>
+            </tr>
+            <tr>
+                <td><strong>Operational Continuity</strong></td>
+                <td>Ability to resume work</td>
+            </tr>
+            <tr>
+                <td><strong>User Experience</strong></td>
+                <td>Seamlessness of transition</td>
+            </tr>
+        </table>
+        
+        <h3>Recovery Rehearsal</h3>
+        
+        <p>Periodically test recovery capabilities:</p>
+        
+        <ul>
+            <li>Planned recovery exercises</li>
+            <li>Random recovery testing</li>
+            <li>Recovery validation procedures</li>
+            <li>Continuous improvement based on results</li>
+        </ul>
+
+        <h2>Recovery Process Workflow</h2>
+        
+        <p>The standard recovery workflow follows this sequence:</p>
+        
+        <div class="recovery-workflow">
+            <div class="recovery-step">
+                <h3>1. Recognition</h3>
+                <ul>
+                    <li>Agent detects context has been reset</li>
+                    <li>No memory of previous conversation</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h3>2. Reading</h3>
+                <ul>
+                    <li>Read AGENT.md to restore identity and role</li>
+                    <li>Understand core responsibilities</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h3>3. Context Restoration</h3>
+                <ul>
+                    <li>Read AUTO-COMPACT.md for current project context</li>
+                    <li>Understand active implementation details</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h3>4. Verification</h3>
+                <ul>
+                    <li>Check STATUS.md for current activities and priorities</li>
+                    <li>Verify project status and critical issues</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h3>5. Self-Identification</h3>
+                <ul>
+                    <li>Explicitly identify as the agent</li>
+                    <li>"I am [AGENT-NAME], the [role description]"</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h3>6. Resumption</h3>
+                <ul>
+                    <li>Continue work with restored context</li>
+                    <li>Pick up from last known state</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Example Recovery Implementation</h2>
+        
+        <p>The following example demonstrates a well-implemented recovery process:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## 🚨 AUTO-COMPACT RECOVERY PROTOCOL</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Immediate Recovery Steps</span><br>
+                <span style="color: var(--text-medium);">When you experience an auto-compact event (context window cleared):</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">1. **Recognize the situation** - You'll have no memory of previous conversation</span><br>
+                <span style="color: var(--text-medium);">2. **Read this file immediately** - It's your primary recovery document</span><br>
+                <span style="color: var(--text-medium);">3. **Read AUTO-COMPACT.md** - Current project status and context</span><br>
+                <span style="color: var(--text-medium);">4. **Clearly identify yourself as [AGENT-NAME]** - Ensure your identity is clear in your responses</span><br>
+                <span style="color: var(--text-medium);">5. **Resume work with full awareness**</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Recovery Performance Target</span><br>
+                <span style="color: var(--text-medium);">- **Expected Recovery Time**: 1-2 exchanges to full operational awareness</span><br>
+                <span style="color: var(--text-medium);">- **Success Criteria**: Complete context restoration without human intervention</span><br>
+            </div>
+        </div>
+
+        <h2>Best Practices</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-list-ol"></i> Clear Recovery Instructions</h3>
+                <ul>
+                    <li>Place recovery instructions prominently in AGENT.md</li>
+                    <li>Use step-by-step numbered lists for clarity</li>
+                    <li>Include specific file paths and commands</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-database"></i> External State Management</h3>
+                <ul>
+                    <li>Store critical state in filesystem-based protocol files</li>
+                    <li>Use standardized formats for consistency</li>
+                    <li>Keep state information current and accurate</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-id-badge"></i> Identity Maintenance</h3>
+                <ul>
+                    <li>Always begin post-reset responses with identity statement</li>
+                    <li>Maintain consistent identity format</li>
+                    <li>Include role description with identity</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sort-amount-down"></i> Context Prioritization</h3>
+                <ul>
+                    <li>Prioritize essential context for immediate recovery</li>
+                    <li>Distinguish between critical and supplementary information</li>
+                    <li>Restore core operational capability first</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Conclusion</h2>
+        
+        <p>Protocol-based recovery is essential for creating context-resilient agent systems. By implementing standardized recovery protocols documented in consistent locations, agents can quickly and effectively recover from context limitations and continue operations with minimal disruption.</p>
+        
+        <div class="note">
+            <p>For practical implementation examples, see the <a href="../guides/auto-compact-recovery.html">Auto-Compact Recovery Guide</a>.</p>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script src="../js/animation.js"></script>
+</body>
+</html>

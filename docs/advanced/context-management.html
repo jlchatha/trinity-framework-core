@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Context Management - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Advanced</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Context Management</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Advanced Context Management</h1>
+        
+        <p>This advanced guide explores sophisticated techniques for managing context in large language model applications within the Trinity Framework. While the <a href="../guides/token-tracking.html">Token Tracking</a> guide covers the basics, this document delves into advanced strategies, optimizations, and custom implementations for enterprise-grade context management.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: This guide assumes familiarity with the basic context management concepts and implementation covered in the <a href="../guides/token-tracking.html">Token Tracking</a> and <a href="../guides/auto-compact-recovery.html">Auto-Compact Recovery</a> guides.</p>
+        </div>
+
+        <h2>Context Management Architecture</h2>
+        
+        <p>The Trinity Framework's context management system follows a modular architecture with these key components:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-calculator"></i> ContextTracker</h3>
+                <p>Core module responsible for token counting, threshold detection, and utilization tracking:</p>
+                <ul>
+                    <li>Estimates tokens for different operation types</li>
+                    <li>Tracks running context utilization</li>
+                    <li>Monitors threshold crossings</li>
+                    <li>Provides real-time utilization metrics</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-save"></i> CheckpointManager</h3>
+                <p>Handles creation, storage, and restoration of context checkpoints:</p>
+                <ul>
+                    <li>Creates serialized state snapshots</li>
+                    <li>Stores checkpoints with metadata</li>
+                    <li>Manages checkpoint naming and organization</li>
+                    <li>Provides restoration capabilities</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-code"></i> ProtocolUpdater</h3>
+                <p>Updates protocol files with context information and checkpoints:</p>
+                <ul>
+                    <li>Maintains AUTO-COMPACT.md with current context</li>
+                    <li>Updates checkpoint data in protocol files</li>
+                    <li>Ensures consistency across protocol files</li>
+                    <li>Maintains implementation context information</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sync"></i> RecoverySystem</h3>
+                <p>Manages auto-compact detection and context restoration:</p>
+                <ul>
+                    <li>Detects auto-compact events</li>
+                    <li>Loads appropriate checkpoints</li>
+                    <li>Restores implementation context</li>
+                    <li>Verifies successful recovery</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p>The architecture follows a modular design pattern, allowing components to be extended or replaced as needed.</p>
+
+        <h2>Advanced Token Estimation</h2>
+        
+        <p>Accurate token estimation is critical for effective context management. The Trinity Framework provides several advanced techniques:</p>
+        
+        <h3>Dynamic Operation Types</h3>
+        
+        <p>While the basic system provides predefined operation types (e.g., USER_MEDIUM, ASSISTANT_LARGE), advanced implementations can define custom operation types tailored to specific workflows:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In token-counter.js</span><br>
+                <span style="color: var(--text-medium);">const CUSTOM_OPERATION_TYPES = {</span><br>
+                <span style="color: var(--text-medium);">  CODE_REVIEW_SMALL: 3000,      // Code review with minor changes</span><br>
+                <span style="color: var(--text-medium);">  CODE_REVIEW_MEDIUM: 6000,     // Moderate code review with multiple files</span><br>
+                <span style="color: var(--text-medium);">  CODE_REVIEW_LARGE: 12000,     // Comprehensive codebase review</span><br>
+                <span style="color: var(--text-medium);">  ARCHITECTURE_DISCUSSION: 8000, // Architecture planning and discussion</span><br>
+                <span style="color: var(--text-medium);">  DEBUGGING_SESSION: 7500,      // Interactive debugging with code inspection</span><br>
+                <span style="color: var(--text-medium);">  REQUIREMENTS_ANALYSIS: 5000,  // Analysis of project requirements</span><br>
+                <span style="color: var(--text-medium);">};</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">// Merge with standard operation types</span><br>
+                <span style="color: var(--text-medium);">const OPERATION_TYPES = { ...STANDARD_OPERATION_TYPES, ...CUSTOM_OPERATION_TYPES };</span><br>
+            </div>
+        </div>
+        
+        <h3>Machine Learning-Based Estimation</h3>
+        
+        <p>For even greater accuracy, implement machine learning-based token estimation that adapts to your specific usage patterns:</p>
+        
+        <ol>
+            <li>Collect historical data on actual token usage for different operations</li>
+            <li>Train a simple regression model on operation characteristics (length, complexity, etc.)</li>
+            <li>Use the model to predict token usage for new operations</li>
+            <li>Continuously update the model with new data</li>
+        </ol>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In ml-token-estimator.js</span><br>
+                <span style="color: var(--text-medium);">class MLTokenEstimator {</span><br>
+                <span style="color: var(--text-medium);">  constructor(modelPath) {</span><br>
+                <span style="color: var(--text-medium);">    this.model = loadModel(modelPath);</span><br>
+                <span style="color: var(--text-medium);">    this.historyData = [];</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  estimateTokens(operationType, content) {</span><br>
+                <span style="color: var(--text-medium);">    const features = extractFeatures(operationType, content);</span><br>
+                <span style="color: var(--text-medium);">    return this.model.predict(features);</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  recordActualUsage(operationType, content, actualTokens) {</span><br>
+                <span style="color: var(--text-medium);">    this.historyData.push({ operationType, content, actualTokens });</span><br>
+                <span style="color: var(--text-medium);">    if (this.historyData.length >= 100) {</span><br>
+                <span style="color: var(--text-medium);">      this.updateModel();</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  updateModel() {</span><br>
+                <span style="color: var(--text-medium);">    this.model = trainModel(this.historyData);</span><br>
+                <span style="color: var(--text-medium);">    saveModel(this.model, modelPath);</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+
+        <h2>Advanced Checkpoint Management</h2>
+        
+        <h3>Hierarchical Checkpointing</h3>
+        
+        <p>Implement a hierarchical checkpoint system with different checkpoint types for various recovery scenarios:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-layer-group"></i> Checkpoint Hierarchy</h3>
+                <ul>
+                    <li><strong>Micro-Checkpoints</strong>: Frequent, lightweight checkpoints</li>
+                    <li><strong>Standard Checkpoints</strong>: Created at thresholds</li>
+                    <li><strong>Major Checkpoints</strong>: Created at significant milestones</li>
+                    <li><strong>Project Checkpoints</strong>: Comprehensive project state</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-medical"></i> Checkpoint Content</h3>
+                <ul>
+                    <li><strong>State Data</strong>: Current context utilization</li>
+                    <li><strong>Implementation Context</strong>: Current work details</li>
+                    <li><strong>References</strong>: Links to relevant files and AARs</li>
+                    <li><strong>Recovery Steps</strong>: Custom recovery procedures</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Differential Checkpointing</h3>
+        
+        <p>Optimize checkpoint storage by implementing differential checkpointing that only stores changes since the last checkpoint:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In differential-checkpoint.js</span><br>
+                <span style="color: var(--text-medium);">class DifferentialCheckpoint {</span><br>
+                <span style="color: var(--text-medium);">  constructor(baseCheckpoint) {</span><br>
+                <span style="color: var(--text-medium);">    this.baseCheckpoint = baseCheckpoint;</span><br>
+                <span style="color: var(--text-medium);">    this.changes = {};</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  recordChange(key, value) {</span><br>
+                <span style="color: var(--text-medium);">    this.changes[key] = value;</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  applyChanges() {</span><br>
+                <span style="color: var(--text-medium);">    const fullCheckpoint = JSON.parse(JSON.stringify(this.baseCheckpoint));</span><br>
+                <span style="color: var(--text-medium);">    Object.keys(this.changes).forEach(key => {</span><br>
+                <span style="color: var(--text-medium);">      fullCheckpoint[key] = this.changes[key];</span><br>
+                <span style="color: var(--text-medium);">    });</span><br>
+                <span style="color: var(--text-medium);">    return fullCheckpoint;</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+
+        <h2>Advanced Recovery Techniques</h2>
+        
+        <h3>Contextual Recovery</h3>
+        
+        <p>Implement context-aware recovery that adapts based on the nature of the work and recovery scenario:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In contextual-recovery.js</span><br>
+                <span style="color: var(--text-medium);">class ContextualRecovery {</span><br>
+                <span style="color: var(--text-medium);">  determineRecoveryStrategy(workType, contextUtilization, availableCheckpoints) {</span><br>
+                <span style="color: var(--text-medium);">    switch(workType) {</span><br>
+                <span style="color: var(--text-medium);">      case 'ARCHITECTURE':</span><br>
+                <span style="color: var(--text-medium);">        return this.architectureRecovery(contextUtilization, availableCheckpoints);</span><br>
+                <span style="color: var(--text-medium);">      case 'IMPLEMENTATION':</span><br>
+                <span style="color: var(--text-medium);">        return this.implementationRecovery(contextUtilization, availableCheckpoints);</span><br>
+                <span style="color: var(--text-medium);">      case 'DOCUMENTATION':</span><br>
+                <span style="color: var(--text-medium);">        return this.documentationRecovery(contextUtilization, availableCheckpoints);</span><br>
+                <span style="color: var(--text-medium);">      case 'DEBUGGING':</span><br>
+                <span style="color: var(--text-medium);">        return this.debuggingRecovery(contextUtilization, availableCheckpoints);</span><br>
+                <span style="color: var(--text-medium);">      default:</span><br>
+                <span style="color: var(--text-medium);">        return this.standardRecovery(contextUtilization, availableCheckpoints);</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">  </span><br>
+                <span style="color: var(--text-medium);">  // Specialized recovery implementations for each work type</span><br>
+                <span style="color: var(--text-medium);">  architectureRecovery(contextUtilization, availableCheckpoints) { ... }</span><br>
+                <span style="color: var(--text-medium);">  implementationRecovery(contextUtilization, availableCheckpoints) { ... }</span><br>
+                <span style="color: var(--text-medium);">  documentationRecovery(contextUtilization, availableCheckpoints) { ... }</span><br>
+                <span style="color: var(--text-medium);">  debuggingRecovery(contextUtilization, availableCheckpoints) { ... }</span><br>
+                <span style="color: var(--text-medium);">  standardRecovery(contextUtilization, availableCheckpoints) { ... }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+        
+        <h3>Incremental Recovery</h3>
+        
+        <p>Implement incremental recovery that restores context in stages, starting with the most critical information:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-layer-group"></i> Recovery Stages</h3>
+                <ol>
+                    <li><strong>Stage 1</strong>: Identity and core responsibilities</li>
+                    <li><strong>Stage 2</strong>: Current task and immediate context</li>
+                    <li><strong>Stage 3</strong>: Project-specific information</li>
+                    <li><strong>Stage 4</strong>: Supplementary context as needed</li>
+                </ol>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-balance-scale"></i> Recovery Prioritization</h3>
+                <ul>
+                    <li><strong>Critical Information</strong>: Always restored first</li>
+                    <li><strong>Task-Specific Context</strong>: Based on current work</li>
+                    <li><strong>Historical Context</strong>: Added as needed</li>
+                    <li><strong>References</strong>: Provided for self-service</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Context Optimization Strategies</h2>
+        
+        <h3>Context Pruning</h3>
+        
+        <p>Implement intelligent context pruning to remove less relevant information when approaching context limits:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In context-pruner.js</span><br>
+                <span style="color: var(--text-medium);">class ContextPruner {</span><br>
+                <span style="color: var(--text-medium);">  pruneContext(currentContext, utilization, threshold) {</span><br>
+                <span style="color: var(--text-medium);">    if (utilization < threshold) return currentContext;</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    // Identify low-relevance sections</span><br>
+                <span style="color: var(--text-medium);">    const relevanceScores = this.calculateRelevance(currentContext);</span><br>
+                <span style="color: var(--text-medium);">    </span><br>
+                <span style="color: var(--text-medium);">    // Prune least relevant sections first</span><br>
+                <span style="color: var(--text-medium);">    const sortedSections = Object.keys(relevanceScores).sort((a, b) => {</span><br>
+                <span style="color: var(--text-medium);">      return relevanceScores[a] - relevanceScores[b];</span><br>
+                <span style="color: var(--text-medium);">    });</span><br>
+                <span style="color: var(--text-medium);">    </span><br>
+                <span style="color: var(--text-medium);">    // Remove sections until utilization is below threshold</span><br>
+                <span style="color: var(--text-medium);">    let prunedContext = {...currentContext};</span><br>
+                <span style="color: var(--text-medium);">    let currentUtilization = utilization;</span><br>
+                <span style="color: var(--text-medium);">    </span><br>
+                <span style="color: var(--text-medium);">    for (const section of sortedSections) {</span><br>
+                <span style="color: var(--text-medium);">      if (currentUtilization < threshold) break;</span><br>
+                <span style="color: var(--text-medium);">      </span><br>
+                <span style="color: var(--text-medium);">      // Calculate tokens saved by removing this section</span><br>
+                <span style="color: var(--text-medium);">      const tokensSaved = this.estimateTokens(prunedContext[section]);</span><br>
+                <span style="color: var(--text-medium);">      </span><br>
+                <span style="color: var(--text-medium);">      // Remove section</span><br>
+                <span style="color: var(--text-medium);">      delete prunedContext[section];</span><br>
+                <span style="color: var(--text-medium);">      </span><br>
+                <span style="color: var(--text-medium);">      // Update utilization</span><br>
+                <span style="color: var(--text-medium);">      currentUtilization -= tokensSaved / MAX_TOKENS * 100;</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);">    </span><br>
+                <span style="color: var(--text-medium);">    return prunedContext;</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">  </span><br>
+                <span style="color: var(--text-medium);">  calculateRelevance(context) { ... }</span><br>
+                <span style="color: var(--text-medium);">  estimateTokens(content) { ... }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+        
+        <h3>Context Summarization</h3>
+        
+        <p>Implement automatic summarization to reduce context size while preserving essential information:</p>
+        
+        <ol>
+            <li>Identify sections of context that can be summarized</li>
+            <li>Generate concise summaries of these sections</li>
+            <li>Replace detailed content with summaries when approaching context limits</li>
+            <li>Maintain references to full content for retrieval if needed</li>
+        </ol>
+        
+        <h3>External Context Storage</h3>
+        
+        <p>Implement advanced external context storage strategies:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-database"></i> Context Database</h3>
+                <p>Store context in a structured database with efficient retrieval:</p>
+                <ul>
+                    <li>Indexed by topic, timestamp, and relevance</li>
+                    <li>Supports complex queries and filters</li>
+                    <li>Provides real-time access to relevant context</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-vector-square"></i> Vector Storage</h3>
+                <p>Use vector embeddings for semantic retrieval of context:</p>
+                <ul>
+                    <li>Convert context chunks to vector embeddings</li>
+                    <li>Store in vector database for similarity search</li>
+                    <li>Retrieve most semantically relevant context</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-code"></i> File-Based Index</h3>
+                <p>Optimize filesystem storage with intelligent indexing:</p>
+                <ul>
+                    <li>Hierarchical file organization by topic</li>
+                    <li>Metadata files for efficient searching</li>
+                    <li>Compressed storage for larger contexts</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Multi-Agent Context Management</h2>
+        
+        <h3>Context Sharing Protocol</h3>
+        
+        <p>Implement protocols for sharing context across multiple agents in the Trinity Model:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In context-sharing.js</span><br>
+                <span style="color: var(--text-medium);">class ContextSharingProtocol {</span><br>
+                <span style="color: var(--text-medium);">  constructor(agentRole) {</span><br>
+                <span style="color: var(--text-medium);">    this.agentRole = agentRole;</span><br>
+                <span style="color: var(--text-medium);">    this.sharedContextPath = '/path/to/shared/context';</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  shareContext(contextType, contextData) {</span><br>
+                <span style="color: var(--text-medium);">    const sharedContext = {</span><br>
+                <span style="color: var(--text-medium);">      source: this.agentRole,</span><br>
+                <span style="color: var(--text-medium);">      type: contextType,</span><br>
+                <span style="color: var(--text-medium);">      timestamp: new Date().toISOString(),</span><br>
+                <span style="color: var(--text-medium);">      data: contextData</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    const filename = `${this.agentRole}-${contextType}-${Date.now()}.json`;</span><br>
+                <span style="color: var(--text-medium);">    fs.writeFileSync(`${this.sharedContextPath}/${filename}`, JSON.stringify(sharedContext));</span><br>
+                <span style="color: var(--text-medium);">    </span><br>
+                <span style="color: var(--text-medium);">    return filename;</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  receiveContext(sourceAgent, contextType, maxAge = '1d') {</span><br>
+                <span style="color: var(--text-medium);">    const files = fs.readdirSync(this.sharedContextPath);</span><br>
+                <span style="color: var(--text-medium);">    const relevantFiles = files.filter(file => {</span><br>
+                <span style="color: var(--text-medium);">      return file.startsWith(`${sourceAgent}-${contextType}`);</span><br>
+                <span style="color: var(--text-medium);">    });</span><br>
+                <span style="color: var(--text-medium);">    </span><br>
+                <span style="color: var(--text-medium);">    // Sort by timestamp (newest first)</span><br>
+                <span style="color: var(--text-medium);">    relevantFiles.sort((a, b) => {</span><br>
+                <span style="color: var(--text-medium);">      const timestampA = parseInt(a.split('-').pop().split('.')[0]);</span><br>
+                <span style="color: var(--text-medium);">      const timestampB = parseInt(b.split('-').pop().split('.')[0]);</span><br>
+                <span style="color: var(--text-medium);">      return timestampB - timestampA;</span><br>
+                <span style="color: var(--text-medium);">    });</span><br>
+                <span style="color: var(--text-medium);">    </span><br>
+                <span style="color: var(--text-medium);">    if (relevantFiles.length === 0) return null;</span><br>
+                <span style="color: var(--text-medium);">    </span><br>
+                <span style="color: var(--text-medium);">    const latestFile = relevantFiles[0];</span><br>
+                <span style="color: var(--text-medium);">    return JSON.parse(fs.readFileSync(`${this.sharedContextPath}/${latestFile}`));</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+        
+        <h3>Coordinated Recovery</h3>
+        
+        <p>Implement coordinated recovery procedures for multi-agent systems:</p>
+        
+        <ol>
+            <li>Detect auto-compact events across all agents</li>
+            <li>Coordinate recovery sequence based on agent roles</li>
+            <li>Share recovered context between agents</li>
+            <li>Verify system-wide recovery status</li>
+            <li>Resume coordinated operation</li>
+        </ol>
+
+        <h2>Context Analytics and Optimization</h2>
+        
+        <h3>Context Utilization Analysis</h3>
+        
+        <p>Implement advanced analytics to optimize context usage based on historical patterns:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-chart-line"></i> Usage Patterns</h3>
+                <p>Analyze and visualize context usage patterns over time:</p>
+                <ul>
+                    <li>Identify high-consumption operations</li>
+                    <li>Track utilization trends by operation type</li>
+                    <li>Measure recovery performance metrics</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-tachometer-alt"></i> Performance Metrics</h3>
+                <p>Track key performance indicators for context management:</p>
+                <ul>
+                    <li>Average time between auto-compacts</li>
+                    <li>Recovery success rate and time</li>
+                    <li>Context retention percentage</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sliders-h"></i> Threshold Optimization</h3>
+                <p>Dynamically adjust thresholds based on historical data:</p>
+                <ul>
+                    <li>Analyze optimal checkpoint timing</li>
+                    <li>Adjust thresholds for specific workflows</li>
+                    <li>Implement adaptive threshold algorithms</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Automated Context Management Policy</h3>
+        
+        <p>Implement AI-driven context management policies that adapt to usage patterns:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In adaptive-context-manager.js</span><br>
+                <span style="color: var(--text-medium);">class AdaptiveContextManager {</span><br>
+                <span style="color: var(--text-medium);">  constructor(historyData) {</span><br>
+                <span style="color: var(--text-medium);">    this.historyData = historyData;</span><br>
+                <span style="color: var(--text-medium);">    this.policy = this.trainPolicy(historyData);</span><br>
+                <span style="color: var(--text-medium);">    this.currentState = this.getCurrentState();</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  trainPolicy(historyData) {</span><br>
+                <span style="color: var(--text-medium);">    // Train policy model using reinforcement learning</span><br>
+                <span style="color: var(--text-medium);">    // Return trained policy model</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  getCurrentState() {</span><br>
+                <span style="color: var(--text-medium);">    // Get current context state features</span><br>
+                <span style="color: var(--text-medium);">    return {</span><br>
+                <span style="color: var(--text-medium);">      utilization: getCurrentUtilization(),</span><br>
+                <span style="color: var(--text-medium);">      workType: getCurrentWorkType(),</span><br>
+                <span style="color: var(--text-medium);">      availableCheckpoints: getAvailableCheckpoints(),</span><br>
+                <span style="color: var(--text-medium);">      timeInCurrentState: getTimeInCurrentState(),</span><br>
+                <span style="color: var(--text-medium);">      recentOperations: getRecentOperations()</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  getAction() {</span><br>
+                <span style="color: var(--text-medium);">    // Use policy to determine best action</span><br>
+                <span style="color: var(--text-medium);">    const action = this.policy.predict(this.currentState);</span><br>
+                <span style="color: var(--text-medium);">    return action; // e.g., CREATE_CHECKPOINT, PRUNE_CONTEXT, etc.</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  executeAction(action) {</span><br>
+                <span style="color: var(--text-medium);">    // Execute the recommended action</span><br>
+                <span style="color: var(--text-medium);">    switch(action) {</span><br>
+                <span style="color: var(--text-medium);">      case 'CREATE_CHECKPOINT':</span><br>
+                <span style="color: var(--text-medium);">        return createCheckpoint();</span><br>
+                <span style="color: var(--text-medium);">      case 'PRUNE_CONTEXT':</span><br>
+                <span style="color: var(--text-medium);">        return pruneContext();</span><br>
+                <span style="color: var(--text-medium);">      case 'SUMMARIZE_CONTEXT':</span><br>
+                <span style="color: var(--text-medium);">        return summarizeContext();</span><br>
+                <span style="color: var(--text-medium);">      case 'INITIATE_AUTO_COMPACT':</span><br>
+                <span style="color: var(--text-medium);">        return initiateAutoCompact();</span><br>
+                <span style="color: var(--text-medium);">      default:</span><br>
+                <span style="color: var(--text-medium);">        return noAction();</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+
+        <h2>Enterprise-Grade Implementation</h2>
+        
+        <h3>Fault Tolerance</h3>
+        
+        <p>Implement robust fault tolerance mechanisms for enterprise deployments:</p>
+        
+        <ul>
+            <li><strong>Redundant Checkpoint Storage</strong>: Multiple backup locations for checkpoints</li>
+            <li><strong>Automated Backup Procedures</strong>: Regular backups of context management data</li>
+            <li><strong>Error Recovery</strong>: Graceful handling of failures during context operations</li>
+            <li><strong>Fallback Mechanisms</strong>: Alternative recovery paths if primary methods fail</li>
+        </ul>
+        
+        <h3>Compliance and Logging</h3>
+        
+        <p>Implement enterprise compliance features:</p>
+        
+        <ul>
+            <li><strong>Comprehensive Logging</strong>: Detailed logs of all context operations</li>
+            <li><strong>Audit Trails</strong>: Traceable history of context changes and recoveries</li>
+            <li><strong>Compliance Reporting</strong>: Reports on context management metrics for compliance</li>
+            <li><strong>Data Retention Policies</strong>: Configurable retention for context data</li>
+        </ul>
+        
+        <h3>Scalability</h3>
+        
+        <p>Design for scalability in large enterprise deployments:</p>
+        
+        <ul>
+            <li><strong>Distributed Context Storage</strong>: Scalable storage across multiple nodes</li>
+            <li><strong>Load Balancing</strong>: Distribution of context management operations</li>
+            <li><strong>Horizontal Scaling</strong>: Add more context management instances as needed</li>
+            <li><strong>Performance Optimization</strong>: Efficient algorithms for large-scale systems</li>
+        </ul>
+
+        <h2>Next Steps</h2>
+        
+        <p>After implementing advanced context management, consider these next steps:</p>
+        
+        <div class="card-grid">
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-users"></i> Advanced Agent Collaboration</h3>
+                <p>Implement sophisticated multi-agent collaboration patterns</p>
+                <a href="agent-collaboration.html" class="card-link">Read Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-tachometer-alt"></i> Interactive Token Tracking</h3>
+                <p>Implement advanced token tracking visualization</p>
+                <a href="interactive-token-tracking.html" class="card-link">View Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-sitemap"></i> Enterprise Integration</h3>
+                <p>Integrate with enterprise systems and workflows</p>
+                <a href="../guides/enterprise-integration.html" class="card-link">Explore Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-graduation-cap"></i> Advanced Recovery Patterns</h3>
+                <p>Implement sophisticated recovery strategies</p>
+                <a href="../guides/advanced-recovery-patterns.html" class="card-link">Read Guide</a>
+            </div>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script src="../js/animation.js"></script>
+</body>
+</html>

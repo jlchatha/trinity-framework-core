@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Checklist - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Getting Started</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Verification Checklist</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Trinity Framework 2.0 Verification Checklist</h1>
+        
+        <p>This comprehensive checklist helps you verify that your Trinity Framework 2.0 implementation is complete and compliant with framework standards. Use it to validate your installation, workspace structure, agent configuration, and operational readiness.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: The Trinity Framework includes an automated verification script at <code>tools/setup/verify-installation.sh</code> that can perform many of these checks automatically.</p>
+        </div>
+
+        <h2>Core Components Verification</h2>
+        
+        <div class="checklist-section">
+            <h3><i class="fas fa-cubes"></i> Framework Repository</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="repo1">
+                    <label for="repo1">Framework repository cloned from official source</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="repo2">
+                    <label for="repo2">Repository structure intact with all required directories</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="repo3">
+                    <label for="repo3">Setup scripts have executable permissions</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="repo4">
+                    <label for="repo4">Example templates accessible and complete</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="repo5">
+                    <label for="repo5">Context tracking examples available</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-folder-tree"></i> Directory Structure</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="dir1">
+                    <label for="dir1">Base directory contains framework repository and agent workspaces</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="dir2">
+                    <label for="dir2">Agent workspaces at same level as framework repository</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="dir3">
+                    <label for="dir3">Each agent workspace follows standardized structure</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="dir4">
+                    <label for="dir4">Required tools directories present in each workspace</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="dir5">
+                    <label for="dir5">AAR directories present for knowledge preservation</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-file-alt"></i> Protocol Files</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="proto1">
+                    <label for="proto1">AGENT.md present in root of each workspace</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="proto2">
+                    <label for="proto2">STATUS.md present in root of each workspace</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="proto3">
+                    <label for="proto3">AUTO-COMPACT.md present in root of each workspace</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="proto4">
+                    <label for="proto4">Protocol files customized for each agent role</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="proto5">
+                    <label for="proto5">Recovery protocols clearly defined in each AGENT.md</label>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Agent-Specific Verification</h2>
+        
+        <div class="checklist-section">
+            <h3><i class="fas fa-crown"></i> APEX Agent Verification</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="apex1">
+                    <label for="apex1">AGENT.md defines APEX role and responsibilities</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="apex2">
+                    <label for="apex2">Architecture directory structure created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="apex3">
+                    <label for="apex3">Planning directory structure created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="apex4">
+                    <label for="apex4">Integration directory created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="apex5">
+                    <label for="apex5">STATUS.md contains APEX-specific priorities</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-chart-line"></i> ANALYST Agent Verification</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="analyst1">
+                    <label for="analyst1">AGENT.md defines ANALYST role and responsibilities</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="analyst2">
+                    <label for="analyst2">Analysis directory structure created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="analyst3">
+                    <label for="analyst3">Data directory created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="analyst4">
+                    <label for="analyst4">Implementations directory created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="analyst5">
+                    <label for="analyst5">STATUS.md contains ANALYST-specific priorities</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-book"></i> HISTORIAN Agent Verification</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="historian1">
+                    <label for="historian1">AGENT.md defines HISTORIAN role and responsibilities</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="historian2">
+                    <label for="historian2">Documentation directory structure created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="historian3">
+                    <label for="historian3">Templates directory created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="historian4">
+                    <label for="historian4">Archives directory created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="historian5">
+                    <label for="historian5">STATUS.md contains HISTORIAN-specific priorities</label>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Context Management Verification</h2>
+        
+        <div class="checklist-section">
+            <h3><i class="fas fa-memory"></i> Token Tracking Structure</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="token1">
+                    <label for="token1">Token tracking directory structure created in each workspace</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="token2">
+                    <label for="token2">Bin directory contains executable scripts</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="token3">
+                    <label for="token3">State directory exists for storing tracking data</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="token4">
+                    <label for="token4">Checkpoints directory exists for storing context checkpoints</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="token5">
+                    <label for="token5">Scripts have executable permissions</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-cogs"></i> Context Management Configuration</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="context1">
+                    <label for="context1">AUTO-COMPACT.md contains context tracking directive</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="context2">
+                    <label for="context2">Context visualization format defined</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="context3">
+                    <label for="context3">Threshold values configured (NOTICE, WARNING, ALERT)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="context4">
+                    <label for="context4">Operation types correctly defined</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="context5">
+                    <label for="context5">Checkpoint creation and restoration procedures defined</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-sync"></i> Recovery Protocol Verification</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="recovery1">
+                    <label for="recovery1">Recovery steps clearly defined in AGENT.md</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="recovery2">
+                    <label for="recovery2">File paths in recovery instructions match actual workspace structure</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="recovery3">
+                    <label for="recovery3">AUTO-COMPACT.md contains current implementation context</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="recovery4">
+                    <label for="recovery4">STATUS.md contains clear priorities for post-recovery operation</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="recovery5">
+                    <label for="recovery5">Recovery protocol has been tested with simulated auto-compact</label>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Operational Readiness Verification</h2>
+        
+        <div class="checklist-section">
+            <h3><i class="fas fa-tools"></i> Tools and Scripts</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="tools1">
+                    <label for="tools1">All required tools scripts installed in each workspace</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="tools2">
+                    <label for="tools2">Scripts have correct executable permissions</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="tools3">
+                    <label for="tools3">Tool paths in protocol files match actual workspace structure</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="tools4">
+                    <label for="tools4">Role-specific tools directories created</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="tools5">
+                    <label for="tools5">Agent can successfully execute tools from workspace</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-book-open"></i> Documentation Structure</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="docs1">
+                    <label for="docs1">Role-specific README files created in major directories</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="docs2">
+                    <label for="docs2">AAR directory contains sessions subdirectory</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="docs3">
+                    <label for="docs3">AAR directory contains incidents subdirectory</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="docs4">
+                    <label for="docs4">Reports directory exists for storing reports</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="docs5">
+                    <label for="docs5">HISTORIAN workspace has documentation directory structure</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-user-check"></i> Agent Initialization</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="init1">
+                    <label for="init1">Each agent successfully reads and processes AGENT.md</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="init2">
+                    <label for="init2">Each agent correctly identifies its role and mission</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="init3">
+                    <label for="init3">Each agent can read and understand STATUS.md priorities</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="init4">
+                    <label for="init4">Each agent properly implements context tracking</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="init5">
+                    <label for="init5">Each agent successfully recovers from simulated auto-compact</label>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Framework 2.0 Compliance Verification</h2>
+        
+        <div class="checklist-section">
+            <h3><i class="fas fa-check-double"></i> Core Principles Compliance</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="comply1">
+                    <label for="comply1">Context Resilience implemented through protocol files and recovery</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="comply2">
+                    <label for="comply2">Workspace Standardization followed in directory structure</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="comply3">
+                    <label for="comply3">Protocol-Based Recovery implemented in AGENT.md</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="comply4">
+                    <label for="comply4">Systematic Documentation implemented through standardized formats</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="comply5">
+                    <label for="comply5">Operational Autonomy defined through clear role boundaries</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-project-diagram"></i> Multi-Agent Architecture</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="multi1">
+                    <label for="multi1">APEX agent configured as strategic coordinator</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="multi2">
+                    <label for="multi2">ANALYST agent configured for analytical tasks</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="multi3">
+                    <label for="multi3">HISTORIAN agent configured for documentation management</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="multi4">
+                    <label for="multi4">Agent roles clearly separated with defined boundaries</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="multi5">
+                    <label for="multi5">Coordination mechanisms defined in STATUS.md files</label>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-clipboard-check"></i> Final Verification</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="final1">
+                    <label for="final1">Automated verification script ran successfully</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="final2">
+                    <label for="final2">All agents tested for initialization and recovery</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="final3">
+                    <label for="final3">Context tracking tested in all agents</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="final4">
+                    <label for="final4">All file paths and references validated</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="final5">
+                    <label for="final5">Implementation documented in STATUS.md for each agent</label>
+                </div>
+            </div>
+        </div>
+
+        <h2>Automated Verification</h2>
+        
+        <p>The Trinity Framework includes an automated verification script that checks many of the items on this list. Run it with:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-framework-core/tools/setup<br>
+                <span style="color: var(--neon-blue);">$</span> ./verify-installation.sh ~/trinity<br>
+            </div>
+        </div>
+        
+        <p>The script will check the structure, files, and permissions for all agent workspaces and report any issues.</p>
+        
+        <h3>Verification Report</h3>
+        
+        <p>The verification script generates a detailed report. A successful verification should look like this:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## Trinity Framework 2.0 Verification Report</span><br>
+                <span style="color: var(--text-medium);">## Generated: [Current Date and Time]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Framework Repository</span><br>
+                <span style="color: var(--text-medium);">✓ Repository present at /home/user/trinity/trinity-framework-core</span><br>
+                <span style="color: var(--text-medium);">✓ All required directories present</span><br>
+                <span style="color: var(--text-medium);">✓ Setup scripts have executable permissions</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### APEX Agent Workspace</span><br>
+                <span style="color: var(--text-medium);">✓ Workspace present at /home/user/trinity/trinity-apex-workspace</span><br>
+                <span style="color: var(--text-medium);">✓ Protocol files present and valid</span><br>
+                <span style="color: var(--text-medium);">✓ Directory structure compliant</span><br>
+                <span style="color: var(--text-medium);">✓ Context tracking system installed</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### ANALYST Agent Workspace</span><br>
+                <span style="color: var(--text-medium);">✓ Workspace present at /home/user/trinity/trinity-analyst-workspace</span><br>
+                <span style="color: var(--text-medium);">✓ Protocol files present and valid</span><br>
+                <span style="color: var(--text-medium);">✓ Directory structure compliant</span><br>
+                <span style="color: var(--text-medium);">✓ Context tracking system installed</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### HISTORIAN Agent Workspace</span><br>
+                <span style="color: var(--text-medium);">✓ Workspace present at /home/user/trinity/trinity-historian-workspace</span><br>
+                <span style="color: var(--text-medium);">✓ Protocol files present and valid</span><br>
+                <span style="color: var(--text-medium);">✓ Directory structure compliant</span><br>
+                <span style="color: var(--text-medium);">✓ Context tracking system installed</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--neon-green);">✓ VERIFICATION SUCCESSFUL: Trinity Framework 2.0 installation verified</span><br>
+            </div>
+        </div>
+
+        <h2>Next Steps</h2>
+        
+        <p>After completing this verification checklist and confirming compliance, you can:</p>
+        
+        <div class="card-grid">
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-rocket"></i> Begin Operations</h3>
+                <p>Start using your agents for their intended roles</p>
+                <a href="../guides/workspace-organization.html" class="card-link">Read Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-users"></i> Implement Multi-Agent Workflows</h3>
+                <p>Set up collaborative workflows across your agent team</p>
+                <a href="../principles/multi-agent-collaboration.html" class="card-link">View Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-cogs"></i> Configure Advanced Features</h3>
+                <p>Implement advanced context management and tracking</p>
+                <a href="../guides/token-tracking.html" class="card-link">Explore Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-graduation-cap"></i> Learn Framework Principles</h3>
+                <p>Deepen your understanding of core framework principles</p>
+                <a href="../principles/context-resilience.html" class="card-link">Read Principles</a>
+            </div>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script src="../js/animation.js"></script>
+</body>
+</html>

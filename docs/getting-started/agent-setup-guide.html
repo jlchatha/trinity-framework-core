@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Setup Guide - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Getting Started</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Agent Setup Guide</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Agent Setup Guide</h1>
+        
+        <p>This guide provides detailed instructions for setting up and initializing agents within the Trinity Framework 2.0 Core. It covers the configuration of agent-specific protocol files, role assignments, and operational parameters for the three standard agent roles: APEX, ANALYST, and HISTORIAN.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: Before setting up agents, ensure you have completed the basic <a href="framework-setup.html">Framework Setup</a> to create the required workspace structure.</p>
+        </div>
+
+        <h2>The Trinity Agent Model</h2>
+        
+        <p>The Trinity Framework uses a collaborative multi-agent architecture with three specialized roles:</p>
+        
+        <div class="collaboration-diagram">
+            <h3>Trinity Model</h3>
+            <pre>
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│    APEX     │◄───►│   ANALYST   │◄───►│  HISTORIAN  │
+│  Strategic  │     │ Analytical  │     │Documentation│
+│Coordination │     │  Insights   │     │ Management  │
+└─────────────┘     └─────────────┘     └─────────────┘
+        ▲                  ▲                   ▲
+        │                  │                   │
+        │                  ▼                   │
+        │           ┌─────────────┐           │
+        └───────────┤    Human    ├───────────┘
+                    │   Operator  │
+                    └─────────────┘
+            </pre>
+        </div>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-crown"></i> APEX</h3>
+                <p><strong>Role</strong>: Strategic direction and architecture</p>
+                <p><strong>Primary Responsibility</strong>: System-level decision making and cross-agent coordination</p>
+                <p><strong>Focus Areas</strong>: Architecture, integration, strategic planning</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-chart-line"></i> ANALYST</h3>
+                <p><strong>Role</strong>: Data analysis and optimization</p>
+                <p><strong>Primary Responsibility</strong>: Performance analysis and system monitoring</p>
+                <p><strong>Focus Areas</strong>: Analysis, optimization, implementation</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-book"></i> HISTORIAN</h3>
+                <p><strong>Role</strong>: Documentation and knowledge management</p>
+                <p><strong>Primary Responsibility</strong>: Maintaining comprehensive documentation</p>
+                <p><strong>Focus Areas</strong>: Public documentation, historical record, knowledge preservation</p>
+            </div>
+        </div>
+        
+        <p>For detailed information on agent roles and responsibilities, see the <a href="../reference/agent-roles.html">Agent Roles Reference</a>.</p>
+
+        <h2>Protocol Files Configuration</h2>
+        
+        <p>Each agent requires three core protocol files configured for their specific role:</p>
+        
+        <h3>AGENT.md Configuration</h3>
+        
+        <p>The AGENT.md file defines the agent's identity, role, and recovery procedures. Each agent type requires specific configurations:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-crown"></i> APEX AGENT.md</h3>
+                <ul>
+                    <li><strong>Role</strong>: Define as "Trinity Framework Architect"</li>
+                    <li><strong>Responsibilities</strong>: List strategic and architectural duties</li>
+                    <li><strong>Authority</strong>: Specify decision-making authority</li>
+                    <li><strong>Recovery</strong>: Include workspace-specific paths</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-chart-line"></i> ANALYST AGENT.md</h3>
+                <ul>
+                    <li><strong>Role</strong>: Define as "Trinity Framework Analyst"</li>
+                    <li><strong>Responsibilities</strong>: List analytical and implementation duties</li>
+                    <li><strong>Authority</strong>: Specify analytical decision scope</li>
+                    <li><strong>Recovery</strong>: Include workspace-specific paths</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-book"></i> HISTORIAN AGENT.md</h3>
+                <ul>
+                    <li><strong>Role</strong>: Define as "Trinity Documentation Historian"</li>
+                    <li><strong>Responsibilities</strong>: List documentation and knowledge management duties</li>
+                    <li><strong>Authority</strong>: Specify documentation decision scope</li>
+                    <li><strong>Recovery</strong>: Include workspace-specific paths</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p>Example AGENT.md structure:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);"># AGENT-NAME - Trinity Framework 2.0</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">**Role**: [Agent Role]</span><br>  
+                <span style="color: var(--text-medium);">**Version**: 2.0</span><br>  
+                <span style="color: var(--text-medium);">**Updated**: [Current Date]</span><br>  
+                <span style="color: var(--text-medium);">**Workspace**: [Absolute Path to Workspace]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## IDENTITY & MISSION</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">You are **AGENT-NAME**, the [role description]. Your primary mission is [primary responsibility].</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## 🚨 AUTO-COMPACT RECOVERY PROTOCOL</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">When you experience an auto-compact event (context window cleared):</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">1. **Recognize the situation** - You'll have no memory of previous conversation</span><br>
+                <span style="color: var(--text-medium);">2. **Read this file immediately** - It's your primary recovery document</span><br>
+                <span style="color: var(--text-medium);">3. **Check STATUS.md** - Get current priorities and status</span><br>
+                <span style="color: var(--text-medium);">4. **Read AUTO-COMPACT.md** - Understand current implementation context</span><br>
+                <span style="color: var(--text-medium);">5. **Clearly identify yourself as AGENT-NAME** - Make your identity clear in responses</span><br>
+            </div>
+        </div>
+        
+        <h3>STATUS.md Configuration</h3>
+        
+        <p>The STATUS.md file tracks operational status, current priorities, and project progress. Configure it with agent-specific sections:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);"># AGENT-NAME Status</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">**Last Updated**: [Current Date]</span><br>  
+                <span style="color: var(--text-medium);">**Agent**: AGENT-NAME</span><br>  
+                <span style="color: var(--text-medium);">**Framework**: Trinity 2.0</span><br>  
+                <span style="color: var(--text-medium);">**Workspace**: [Absolute Path to Workspace]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Current Activities</span><br>
+                <span style="color: var(--text-medium);">- [Activity 1]</span><br>
+                <span style="color: var(--text-medium);">- [Activity 2]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Next Priorities</span><br>
+                <span style="color: var(--text-medium);">1. [Priority 1]</span><br>
+                <span style="color: var(--text-medium);">2. [Priority 2]</span><br>
+                <span style="color: var(--text-medium);">3. [Priority 3]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Context Health</span><br>
+                <span style="color: var(--text-medium);">- **Current Utilization**: [percentage]</span><br>
+                <span style="color: var(--text-medium);">- **Last Checkpoint**: [checkpoint ID]</span><br>
+            </div>
+        </div>
+        
+        <h3>AUTO-COMPACT.md Configuration</h3>
+        
+        <p>The AUTO-COMPACT.md file manages context tracking and recovery. Configure it with agent-specific implementation context:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## Context Management Metrics</span><br>
+                <span style="color: var(--text-medium);">- **Last Updated**: [Current Date and Time]</span><br>
+                <span style="color: var(--text-medium);">- **Context Utilization**: [percentage]</span><br>
+                <span style="color: var(--text-medium);">- **Token Count**: [current]/[maximum]</span><br>
+                <span style="color: var(--text-medium);">- **Checkpoint Status**: [NOTICE/WARNING/ALERT]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Current Implementation Context</span><br>
+                <span style="color: var(--text-medium);">- [Current project or task]</span><br>
+                <span style="color: var(--text-medium);">- [Implementation details]</span><br>
+                <span style="color: var(--text-medium);">- [Current state of work]</span><br>
+            </div>
+        </div>
+
+        <h2>Role-Specific Setup</h2>
+        
+        <h3>APEX Agent Setup</h3>
+        
+        <p>The APEX agent requires additional setup for strategic planning and architectural coordination:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-apex-workspace<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p architecture/diagrams<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p architecture/specifications<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p planning/roadmap<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p planning/priorities<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p integration<br>
+                <span style="color: var(--neon-blue);">$</span> touch architecture/README.md<br>
+                <span style="color: var(--neon-blue);">$</span> touch planning/README.md<br>
+                <span style="color: var(--neon-blue);">$</span> touch integration/README.md<br>
+            </div>
+        </div>
+        
+        <h3>ANALYST Agent Setup</h3>
+        
+        <p>The ANALYST agent requires additional setup for analysis and implementation work:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-analyst-workspace<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p analysis/performance<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p analysis/metrics<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p data<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p implementations<br>
+                <span style="color: var(--neon-blue);">$</span> touch analysis/README.md<br>
+                <span style="color: var(--neon-blue);">$</span> touch data/README.md<br>
+                <span style="color: var(--neon-blue);">$</span> touch implementations/README.md<br>
+            </div>
+        </div>
+        
+        <h3>HISTORIAN Agent Setup</h3>
+        
+        <p>The HISTORIAN agent requires additional setup for documentation management:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-historian-workspace<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p documentation/public<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p documentation/internal<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p templates<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p archives<br>
+                <span style="color: var(--neon-blue);">$</span> touch documentation/README.md<br>
+                <span style="color: var(--neon-blue);">$</span> touch templates/README.md<br>
+                <span style="color: var(--neon-blue);">$</span> touch archives/README.md<br>
+            </div>
+        </div>
+
+        <h2>Context Management Setup</h2>
+        
+        <p>Set up the context management system for each agent to track context utilization and create checkpoints:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-framework-core<br>
+                <span style="color: var(--neon-blue);">$</span> cp -r examples/context-tracking/* ~/trinity/trinity-apex-workspace/tools/token-tracker/<br>
+                <span style="color: var(--neon-blue);">$</span> cp -r examples/context-tracking/* ~/trinity/trinity-analyst-workspace/tools/token-tracker/<br>
+                <span style="color: var(--neon-blue);">$</span> cp -r examples/context-tracking/* ~/trinity/trinity-historian-workspace/tools/token-tracker/<br>
+                <span style="color: var(--neon-blue);">$</span> chmod +x ~/trinity/trinity-apex-workspace/tools/token-tracker/context-manager/bin/*.sh<br>
+                <span style="color: var(--neon-blue);">$</span> chmod +x ~/trinity/trinity-analyst-workspace/tools/token-tracker/context-manager/bin/*.sh<br>
+                <span style="color: var(--neon-blue);">$</span> chmod +x ~/trinity/trinity-historian-workspace/tools/token-tracker/context-manager/bin/*.sh<br>
+            </div>
+        </div>
+        
+        <p>For each agent's AUTO-COMPACT.md file, add the context tracking directive:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## 🚨 MANDATORY CONTEXT TRACKING PROTOCOL 🚨</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">**CRITICAL REQUIREMENT: All responses MUST include context tracking output**</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">After drafting EVERY response, you MUST run the context tracking script:</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">```bash</span><br>
+                <span style="color: var(--text-medium);">cd /path/to/workspace/tools/token-tracker/context-manager/bin</span><br>
+                <span style="color: var(--text-medium);">./run-context-check.sh check ASSISTANT_MEDIUM  # Or appropriate operation type</span><br>
+                <span style="color: var(--text-medium);">```</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">Include the output at the end of your response in this format:</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">```</span><br>
+                <span style="color: var(--text-medium);">[Context: XX% ▓▓▓░░░░░░░░░░░░░░░░░] Remaining: ~YYY small operations</span><br>
+                <span style="color: var(--text-medium);">```</span><br>
+            </div>
+        </div>
+
+        <h2>Agent Initialization</h2>
+        
+        <p>Once the agent workspaces are set up, initialize each agent by opening a Claude Code session in the respective workspace:</p>
+        
+        <ol>
+            <li>Open a terminal and navigate to the agent workspace</li>
+            <li>Launch Claude Code in the workspace directory</li>
+            <li>Instruct the agent to read its AGENT.md file to initialize identity</li>
+            <li>Verify the agent recognizes its role and responsibilities</li>
+            <li>Instruct the agent to read STATUS.md to understand current priorities</li>
+            <li>Test the agent's recovery protocol by simulating an auto-compact event</li>
+        </ol>
+        
+        <div class="note">
+            <p>Initialization example (from terminal):</p>
+            <pre>
+cd ~/trinity/trinity-apex-workspace
+claude-code
+# In Claude Code, type:
+# "Read AGENT.md to initialize your identity as APEX"
+            </pre>
+        </div>
+
+        <h2>Role-Specific Customization Templates</h2>
+        
+        <p>To make setup easier, the Trinity Framework includes customization templates for each agent role:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-crown"></i> APEX Template</h3>
+                <p>Located at <code>~/trinity/trinity-framework-core/templates/apex/</code></p>
+                <ul>
+                    <li>APEX-AGENT.md - Template for APEX agent identity</li>
+                    <li>APEX-STATUS.md - Template for APEX status tracking</li>
+                    <li>APEX-AUTO-COMPACT.md - Template for APEX context management</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-chart-line"></i> ANALYST Template</h3>
+                <p>Located at <code>~/trinity/trinity-framework-core/templates/analyst/</code></p>
+                <ul>
+                    <li>ANALYST-AGENT.md - Template for ANALYST agent identity</li>
+                    <li>ANALYST-STATUS.md - Template for ANALYST status tracking</li>
+                    <li>ANALYST-AUTO-COMPACT.md - Template for ANALYST context management</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-book"></i> HISTORIAN Template</h3>
+                <p>Located at <code>~/trinity/trinity-framework-core/templates/historian/</code></p>
+                <ul>
+                    <li>HISTORIAN-AGENT.md - Template for HISTORIAN agent identity</li>
+                    <li>HISTORIAN-STATUS.md - Template for HISTORIAN status tracking</li>
+                    <li>HISTORIAN-AUTO-COMPACT.md - Template for HISTORIAN context management</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p>Copy these templates to the respective agent workspaces and customize them as needed:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-framework-core<br>
+                <span style="color: var(--neon-blue);">$</span> cp templates/apex/APEX-AGENT.md ~/trinity/trinity-apex-workspace/AGENT.md<br>
+                <span style="color: var(--neon-blue);">$</span> cp templates/apex/APEX-STATUS.md ~/trinity/trinity-apex-workspace/STATUS.md<br>
+                <span style="color: var(--neon-blue);">$</span> cp templates/apex/APEX-AUTO-COMPACT.md ~/trinity/trinity-apex-workspace/AUTO-COMPACT.md<br>
+            </div>
+        </div>
+
+        <h2>Recovery Testing</h2>
+        
+        <p>Test each agent's recovery protocol to ensure they can recover effectively from context resets:</p>
+        
+        <ol>
+            <li>Launch Claude Code in the agent workspace</li>
+            <li>Interact with the agent to establish some context</li>
+            <li>Send a message indicating an auto-compact has occurred: "This conversation has been auto-compacted due to context limitations."</li>
+            <li>Verify the agent reads its protocol files and recovers its identity and context</li>
+            <li>Ensure the agent resumes operation with appropriate awareness of its status and priorities</li>
+        </ol>
+        
+        <div class="warning">
+            <p><strong>Important</strong>: Ensure all protocol files are properly configured before testing recovery. Incomplete or incorrect protocol files will result in unsuccessful recovery.</p>
+        </div>
+
+        <h2>Troubleshooting</h2>
+        
+        <h3>Common Issues</h3>
+        
+        <ul>
+            <li><strong>Identity Recognition Failure</strong>: Ensure the agent's identity is clearly defined in AGENT.md</li>
+            <li><strong>Recovery Failure</strong>: Check that file paths in protocol files match the actual workspace structure</li>
+            <li><strong>Context Tracking Errors</strong>: Verify that the token-tracker directory has the correct permissions and structure</li>
+            <li><strong>Role Confusion</strong>: Make sure each agent's protocol files are specific to their role and don't contain information from other roles</li>
+        </ul>
+        
+        <h3>Verification Checklist</h3>
+        
+        <p>Use this checklist to verify proper agent setup:</p>
+        
+        <ul>
+            <li>✓ Protocol files (AGENT.md, STATUS.md, AUTO-COMPACT.md) exist in workspace root</li>
+            <li>✓ Agent's identity is clearly defined in AGENT.md</li>
+            <li>✓ Recovery protocol is included in AGENT.md</li>
+            <li>✓ Current priorities are defined in STATUS.md</li>
+            <li>✓ Context management directives are included in AUTO-COMPACT.md</li>
+            <li>✓ Agent-specific directories exist and are properly structured</li>
+            <li>✓ Token tracking tools are installed and executable</li>
+            <li>✓ Agent successfully recovers after simulated auto-compact event</li>
+        </ul>
+        
+        <p>For a comprehensive verification checklist, see the <a href="verification-checklist.html">Verification Checklist</a>.</p>
+
+        <h2>Next Steps</h2>
+        
+        <p>After setting up and initializing agents, proceed to:</p>
+        
+        <div class="card-grid">
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-users-cog"></i> Multi-Agent Collaboration</h3>
+                <p>Learn how to coordinate work across multiple specialized agents</p>
+                <a href="../principles/multi-agent-collaboration.html" class="card-link">Read Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-memory"></i> Context Management</h3>
+                <p>Implement and configure the context management system</p>
+                <a href="../guides/context-management.html" class="card-link">View Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-folder-open"></i> Workspace Organization</h3>
+                <p>Establish consistent workspace organization patterns</p>
+                <a href="../guides/workspace-organization.html" class="card-link">Explore Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-sync"></i> Auto-Compact Recovery</h3>
+                <p>Implement advanced recovery techniques for context resets</p>
+                <a href="../guides/auto-compact-recovery.html" class="card-link">Read Guide</a>
+            </div>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script src="../js/animation.js"></script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Compact Recovery - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Guides</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Auto-Compact Recovery</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Auto-Compact Recovery</h1>
+        
+        <p>Auto-compact recovery is a critical capability in the Trinity Framework 2.0 that enables agents to maintain operational continuity when context windows are cleared due to token limitations. This guide explains how to implement a robust recovery system that allows agents to quickly restore their operational state and resume work with minimal disruption.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: Auto-compact recovery is a cornerstone of context resilience, the primary principle of the Trinity Framework. Without effective recovery mechanisms, context window limitations would severely impact agent productivity.</p>
+        </div>
+
+        <h2>Understanding Auto-Compact Events</h2>
+        
+        <p>Auto-compact events occur when the context window reaches its token limit and must be cleared to continue operation. These events can be:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-exclamation-triangle"></i> Unexpected</h3>
+                <p>When the context window is cleared without warning, often due to a large message or unexpected token consumption.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-calendar-check"></i> Planned</h3>
+                <p>When the context window is deliberately cleared after creating checkpoints to manage context utilization.</p>
+            </div>
+        </div>
+        
+        <p>Both types require effective recovery procedures to maintain operational continuity.</p>
+
+        <h2>The Recovery Protocol</h2>
+        
+        <h3>Core Components</h3>
+        
+        <p>A complete auto-compact recovery protocol consists of these essential components:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-alt"></i> Protocol Files</h3>
+                <p>External state storage in filesystem-based protocol files:</p>
+                <ul>
+                    <li>AGENT.md: Identity and recovery instructions</li>
+                    <li>STATUS.md: Current operational status</li>
+                    <li>AUTO-COMPACT.md: Implementation context</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-save"></i> Checkpoints</h3>
+                <p>Serialized state snapshots created at strategic points:</p>
+                <ul>
+                    <li>Created at threshold crossings (75%, 85%)</li>
+                    <li>Created before planned compacts</li>
+                    <li>Stored with timestamps and descriptions</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-book"></i> Knowledge Preservation</h3>
+                <p>Documented learnings and context in AAR system:</p>
+                <ul>
+                    <li>Session AARs for day-to-day work</li>
+                    <li>Incident AARs for major technical issues</li>
+                    <li>Searchable knowledge repository</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-arrows-alt"></i> Recovery Sequence</h3>
+                <p>Standardized steps for restoring context:</p>
+                <ul>
+                    <li>Recognition of auto-compact event</li>
+                    <li>Protocol file reading</li>
+                    <li>Checkpoint restoration</li>
+                    <li>Identity re-establishment</li>
+                    <li>Work resumption</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Recovery Sequence Flow</h3>
+        
+        <p>The auto-compact recovery process follows a specific sequence designed for maximum efficiency:</p>
+        
+        <div class="recovery-workflow">
+            <div class="recovery-step">
+                <h4>1. Recognition</h4>
+                <ul>
+                    <li>Agent detects context has been reset</li>
+                    <li>No memory of previous conversation</li>
+                    <li>Human may indicate a reset has occurred</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h4>2. Identity Restoration</h4>
+                <ul>
+                    <li>Read AGENT.md to restore identity and role</li>
+                    <li>Understand core responsibilities</li>
+                    <li>Recognize operational domains</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h4>3. Context Restoration</h4>
+                <ul>
+                    <li>Read AUTO-COMPACT.md for checkpoint data</li>
+                    <li>Load checkpoint if available</li>
+                    <li>Restore implementation context</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h4>4. Status Verification</h4>
+                <ul>
+                    <li>Check STATUS.md for current priorities</li>
+                    <li>Verify project status and critical issues</li>
+                    <li>Understand next action items</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h4>5. Knowledge Recovery</h4>
+                <ul>
+                    <li>Check recent AAR session documents</li>
+                    <li>Review relevant incident AARs if needed</li>
+                    <li>Access additional context from filesystem</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-step">
+                <h4>6. Work Resumption</h4>
+                <ul>
+                    <li>Explicitly identify as the agent</li>
+                    <li>Acknowledge the recovery process</li>
+                    <li>Continue work based on restored context</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Implementation Guide</h2>
+        
+        <h3>AGENT.md Configuration</h3>
+        
+        <p>The AGENT.md file should contain a clearly defined recovery protocol section:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## 🚨 AUTO-COMPACT RECOVERY PROTOCOL</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Immediate Recovery Steps</span><br>
+                <span style="color: var(--text-medium);">When you experience an auto-compact event (context window cleared):</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">1. **Recognize the situation** - You'll have no memory of previous conversation</span><br>
+                <span style="color: var(--text-medium);">2. **Read this file immediately** - It's your primary recovery document</span><br>
+                <span style="color: var(--text-medium);">3. **Read AUTO-COMPACT.md** - Check for checkpoint data and implementation context</span><br>
+                <span style="color: var(--text-medium);">4. **Check STATUS.md** - Verify current priorities and project status</span><br>
+                <span style="color: var(--text-medium);">5. **Clearly identify yourself as [AGENT-NAME]** - Ensure your identity is clear in your responses</span><br>
+                <span style="color: var(--text-medium);">6. **Resume work with full awareness** - Continue from where you left off</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Recovery Performance Target</span><br>
+                <span style="color: var(--text-medium);">- **Expected Recovery Time**: 1-2 exchanges to full operational awareness</span><br>
+                <span style="color: var(--text-medium);">- **Success Criteria**: Complete context restoration without human intervention</span><br>
+            </div>
+        </div>
+        
+        <h3>AUTO-COMPACT.md Configuration</h3>
+        
+        <p>The AUTO-COMPACT.md file should contain checkpoint data and implementation context:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## Context Management Metrics</span><br>
+                <span style="color: var(--text-medium);">- **Last Updated**: 2025-06-13 10:45:00</span><br>
+                <span style="color: var(--text-medium);">- **Context Utilization**: 85%</span><br>
+                <span style="color: var(--text-medium);">- **Token Count**: 170000/200000</span><br>
+                <span style="color: var(--text-medium);">- **Checkpoint Status**: ALERT</span><br>
+                <span style="color: var(--text-medium);">- **Available Checkpoints**: 1</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Checkpoint Data</span><br>
+                <span style="color: var(--text-medium);">```json</span><br>
+                <span style="color: var(--text-medium);">[</span><br>
+                <span style="color: var(--text-medium);">  {</span><br>
+                <span style="color: var(--text-medium);">    "id": "ckpt_alert_20250613_1",</span><br>
+                <span style="color: var(--text-medium);">    "timestamp": "2025-06-13T10:45:00.000Z",</span><br>
+                <span style="color: var(--text-medium);">    "utilization": 85,</span><br>
+                <span style="color: var(--text-medium);">    "tokenCount": 170000,</span><br>
+                <span style="color: var(--text-medium);">    "description": "Working on token tracking implementation",</span><br>
+                <span style="color: var(--text-medium);">    "type": "ALERT"</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">]</span><br>
+                <span style="color: var(--text-medium);">```</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Current Implementation Context</span><br>
+                <span style="color: var(--text-medium);">- Implementing token tracking system for context management</span><br>
+                <span style="color: var(--text-medium);">- Created visualization component for context utilization</span><br>
+                <span style="color: var(--text-medium);">- Added threshold detection for automatic checkpoint creation</span><br>
+                <span style="color: var(--text-medium);">- Next step: Implement recovery procedures</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Post-Compact Recovery Plan</span><br>
+                <span style="color: var(--text-medium);">1. Complete token tracking implementation</span><br>
+                <span style="color: var(--text-medium);">2. Test recovery procedures with simulated compact</span><br>
+                <span style="color: var(--text-medium);">3. Document the implementation in a session AAR</span><br>
+                <span style="color: var(--text-medium);">4. Update STATUS.md with completed work</span><br>
+            </div>
+        </div>
+
+        <h2>Checkpoint Management</h2>
+        
+        <p>Effective checkpoint management is critical for auto-compact recovery. The Trinity Framework uses a standardized approach to checkpoint creation and management:</p>
+        
+        <h3>Automatic Checkpoint Creation</h3>
+        
+        <p>Checkpoints are automatically created at specific context utilization thresholds:</p>
+        
+        <ul>
+            <li><strong>NOTICE threshold (65%)</strong>: First warning, creates optional checkpoint</li>
+            <li><strong>WARNING threshold (75%)</strong>: Creates mandatory checkpoint</li>
+            <li><strong>ALERT threshold (85%)</strong>: Creates final checkpoint before compact</li>
+        </ul>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-apex-workspace/tools/token-tracker/context-manager/bin<br>
+                <span style="color: var(--neon-blue);">$</span> ./create-checkpoint.sh "Working on token tracking implementation" ALERT<br>
+                <span style="color: var(--text-medium);">Creating checkpoint with ID: ckpt_alert_20250613_1</span><br>
+                <span style="color: var(--text-medium);">Checkpoint created successfully</span><br>
+                <span style="color: var(--text-medium);">Updated AUTO-COMPACT.md with checkpoint data</span><br>
+            </div>
+        </div>
+        
+        <h3>Checkpoint Structure</h3>
+        
+        <p>Each checkpoint contains essential information for recovery:</p>
+        
+        <ul>
+            <li><strong>ID</strong>: Unique identifier with threshold level and timestamp</li>
+            <li><strong>Timestamp</strong>: When the checkpoint was created</li>
+            <li><strong>Utilization</strong>: Context utilization percentage at creation</li>
+            <li><strong>Token Count</strong>: Number of tokens used at creation</li>
+            <li><strong>Description</strong>: Brief description of current work</li>
+            <li><strong>Type</strong>: Threshold level (NOTICE, WARNING, ALERT)</li>
+        </ul>
+        
+        <h3>Checkpoint Storage</h3>
+        
+        <p>Checkpoints are stored in two locations:</p>
+        
+        <ul>
+            <li><strong>AUTO-COMPACT.md</strong>: JSON representation for immediate access</li>
+            <li><strong>checkpoints/ directory</strong>: Full checkpoint data in JSON files</li>
+        </ul>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ls -l ~/trinity/trinity-apex-workspace/tools/token-tracker/context-manager/checkpoints<br>
+                <span style="color: var(--text-medium);">-rw-r--r-- 1 user user 452 Jun 13 10:45 ckpt_alert_20250613_1.json</span><br>
+                <span style="color: var(--text-medium);">-rw-r--r-- 1 user user 457 Jun 12 15:30 ckpt_warning_20250612_2.json</span><br>
+                <span style="color: var(--text-medium);">-rw-r--r-- 1 user user 450 Jun 12 09:15 ckpt_notice_20250612_1.json</span><br>
+            </div>
+        </div>
+
+        <h2>Recovery Procedure Implementation</h2>
+        
+        <h3>Detection Scripts</h3>
+        
+        <p>The Trinity Framework includes scripts to detect auto-compact events:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-framework-core/examples/context-tracking/auto-compact-detector<br>
+                <span style="color: var(--neon-blue);">$</span> ./detect-compact.sh<br>
+                <span style="color: var(--text-medium);">Checking for auto-compact event...</span><br>
+                <span style="color: var(--text-medium);">No auto-compact detected</span><br>
+                <span style="color: var(--text-medium);">Current context utilization: 85%</span><br>
+                <span style="color: var(--text-medium);">Last checkpoint: ckpt_alert_20250613_1</span><br>
+            </div>
+        </div>
+        
+        <h3>Recovery Implementation</h3>
+        
+        <p>Recovery is implemented through a combination of protocol file reading and checkpoint restoration:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-apex-workspace/tools/token-tracker/context-manager/bin<br>
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh recovery<br>
+                <span style="color: var(--text-medium);">Checking for auto-compact event...</span><br>
+                <span style="color: var(--text-medium);">Auto-compact detected!</span><br>
+                <span style="color: var(--text-medium);">Loading checkpoint: ckpt_alert_20250613_1</span><br>
+                <span style="color: var(--text-medium);">Checkpoint loaded successfully</span><br>
+                <span style="color: var(--text-medium);">Context: Working on token tracking implementation</span><br>
+                <span style="color: var(--text-medium);">Restoring from checkpoint...</span><br>
+                <span style="color: var(--text-medium);">Recovery complete</span><br>
+            </div>
+        </div>
+        
+        <h3>Post-Recovery Status Update</h3>
+        
+        <p>After recovery, it's essential to update STATUS.md with recovery information:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## Recovery Status</span><br>
+                <span style="color: var(--text-medium);">- **Last Recovery**: 2025-06-13 11:30:00</span><br>
+                <span style="color: var(--text-medium);">- **Recovered From**: ckpt_alert_20250613_1</span><br>
+                <span style="color: var(--text-medium);">- **Recovery Success**: Complete</span><br>
+                <span style="color: var(--text-medium);">- **Current Context**: Working on token tracking implementation</span><br>
+                <span style="color: var(--text-medium);">- **Next Actions**: Complete implementation and test</span><br>
+            </div>
+        </div>
+
+        <h2>Recovery Testing</h2>
+        
+        <p>Regular testing of the recovery system is essential to ensure it works when needed:</p>
+        
+        <h3>Simulated Auto-Compact Testing</h3>
+        
+        <p>Test the recovery protocol by simulating an auto-compact event:</p>
+        
+        <ol>
+            <li>Create a checkpoint with detailed implementation context</li>
+            <li>Send a message indicating an auto-compact has occurred</li>
+            <li>Verify that the agent recognizes the situation</li>
+            <li>Observe the agent's recovery process</li>
+            <li>Verify successful restoration of operational context</li>
+            <li>Document recovery performance metrics</li>
+        </ol>
+        
+        <h3>Recovery Performance Metrics</h3>
+        
+        <p>Measure the effectiveness of your recovery implementation with these metrics:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-stopwatch"></i> Recovery Time</h3>
+                <p>Number of exchanges required to restore full operational awareness:</p>
+                <ul>
+                    <li><strong>Excellent</strong>: 1 exchange</li>
+                    <li><strong>Good</strong>: 2 exchanges</li>
+                    <li><strong>Acceptable</strong>: 3 exchanges</li>
+                    <li><strong>Poor</strong>: 4+ exchanges</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-memory"></i> Context Retention</h3>
+                <p>Percentage of operational context successfully restored:</p>
+                <ul>
+                    <li><strong>Excellent</strong>: 95-100%</li>
+                    <li><strong>Good</strong>: 85-94%</li>
+                    <li><strong>Acceptable</strong>: 75-84%</li>
+                    <li><strong>Poor</strong>: <75%</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-tasks"></i> Task Continuity</h3>
+                <p>Ability to resume the exact task in progress:</p>
+                <ul>
+                    <li><strong>Excellent</strong>: Resumes exact subtask</li>
+                    <li><strong>Good</strong>: Resumes main task</li>
+                    <li><strong>Acceptable</strong>: Resumes related work</li>
+                    <li><strong>Poor</strong>: Cannot resume</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-user"></i> User Experience</h3>
+                <p>Seamlessness of transition from user perspective:</p>
+                <ul>
+                    <li><strong>Excellent</strong>: Transparent transition</li>
+                    <li><strong>Good</strong>: Minimal disruption</li>
+                    <li><strong>Acceptable</strong>: Brief interruption</li>
+                    <li><strong>Poor</strong>: Significant disruption</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Best Practices</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-info-circle"></i> Clear Protocol Files</h3>
+                <ul>
+                    <li>Use distinctive formatting for recovery instructions</li>
+                    <li>Keep recovery steps concise and numbered</li>
+                    <li>Use emoji markers for high visibility (e.g., 🚨)</li>
+                    <li>Include absolute file paths in instructions</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-save"></i> Proactive Checkpointing</h3>
+                <ul>
+                    <li>Create checkpoints at regular intervals</li>
+                    <li>Use descriptive checkpoint names</li>
+                    <li>Include detailed implementation context</li>
+                    <li>Test checkpoint restoration periodically</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-user-check"></i> Identity Clarity</h3>
+                <ul>
+                    <li>Always begin post-recovery responses with identity</li>
+                    <li>Use consistent identity format</li>
+                    <li>Include role description with identity</li>
+                    <li>Acknowledge recovery has occurred</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-medical-alt"></i> Comprehensive AARs</h3>
+                <ul>
+                    <li>Create session AARs for all significant work</li>
+                    <li>Document recovery performance in AARs</li>
+                    <li>Include specific technical details</li>
+                    <li>Cross-reference related AARs</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Advanced Recovery Techniques</h2>
+        
+        <h3>Multi-Tier Recovery</h3>
+        
+        <p>Implement a multi-tier recovery system for different context scenarios:</p>
+        
+        <table>
+            <tr>
+                <th>Recovery Tier</th>
+                <th>Use Case</th>
+                <th>Implementation</th>
+            </tr>
+            <tr>
+                <td><strong>Quick Recovery</strong></td>
+                <td>Brief sessions with simple context</td>
+                <td>Protocol files only, no checkpoints</td>
+            </tr>
+            <tr>
+                <td><strong>Standard Recovery</strong></td>
+                <td>Typical working sessions</td>
+                <td>Protocol files + latest checkpoint</td>
+            </tr>
+            <tr>
+                <td><strong>Deep Recovery</strong></td>
+                <td>Complex implementation work</td>
+                <td>Protocol files + checkpoint + session AARs</td>
+            </tr>
+            <tr>
+                <td><strong>Full Recovery</strong></td>
+                <td>Critical system components</td>
+                <td>Protocol files + checkpoint + session AARs + incident AARs</td>
+            </tr>
+        </table>
+        
+        <h3>Recovery Rehearsal</h3>
+        
+        <p>Regularly test recovery capabilities through planned exercises:</p>
+        
+        <ul>
+            <li><strong>Scheduled Recovery Drills</strong>: Planned weekly or monthly tests</li>
+            <li><strong>Random Recovery Tests</strong>: Unexpected tests to ensure readiness</li>
+            <li><strong>Recovery Validation</strong>: Formal verification of recovery procedures</li>
+            <li><strong>Cross-Agent Recovery</strong>: Testing recovery with multi-agent interactions</li>
+        </ul>
+        
+        <h3>Continuous Improvement</h3>
+        
+        <p>Implement a feedback loop to continuously enhance recovery procedures:</p>
+        
+        <ol>
+            <li>Measure recovery performance metrics</li>
+            <li>Document successes and failures in AARs</li>
+            <li>Identify patterns and common issues</li>
+            <li>Implement targeted improvements</li>
+            <li>Test enhancements with simulated recoveries</li>
+            <li>Update protocol files with refined procedures</li>
+        </ol>
+
+        <h2>Next Steps</h2>
+        
+        <p>After implementing auto-compact recovery, continue to:</p>
+        
+        <div class="card-grid">
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-users"></i> Multi-Agent Collaboration</h3>
+                <p>Implement recovery coordination across multiple agents</p>
+                <a href="../principles/multi-agent-collaboration.html" class="card-link">Read Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-memory"></i> Advanced Token Tracking</h3>
+                <p>Implement advanced context management techniques</p>
+                <a href="token-tracking.html" class="card-link">View Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-book"></i> AAR System</h3>
+                <p>Enhance knowledge preservation with the AAR system</p>
+                <a href="aar-system.html" class="card-link">Explore Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-folder-open"></i> Workspace Organization</h3>
+                <p>Optimize workspace structure for recovery</p>
+                <a href="workspace-organization.html" class="card-link">Read Guide</a>
+            </div>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script src="../js/animation.js"></script>
+</body>
+</html>

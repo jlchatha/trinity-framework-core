@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Token Tracking - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Advanced</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Interactive Token Tracking</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Interactive Token Tracking</h1>
+        
+        <p>This advanced guide explores sophisticated techniques for visualizing and interacting with token usage data in the Trinity Framework. While the <a href="../guides/token-tracking.html">Token Tracking</a> guide covers the basics, this document delves into advanced visualization, interactive dashboards, and real-time monitoring of context utilization.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: This guide assumes familiarity with the basic token tracking concepts and implementation covered in the <a href="../guides/token-tracking.html">Token Tracking</a> guide.</p>
+        </div>
+
+        <h2>Advanced Visualization Techniques</h2>
+        
+        <h3>Interactive Progress Bars</h3>
+        
+        <p>Implement interactive progress bars that provide detailed information on hover:</p>
+        
+        <div class="token-visualization">
+            <div class="interactive-progress">
+                <div class="progress-label">Context Utilization: 65% (NOTICE)</div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 65%;" data-threshold="notice"></div>
+                </div>
+                <div class="progress-details">
+                    <span>Used: 130,000 tokens</span>
+                    <span>Remaining: 70,000 tokens</span>
+                </div>
+            </div>
+            
+            <div class="interactive-progress">
+                <div class="progress-label">Context Utilization: 75% (WARNING)</div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 75%;" data-threshold="warning"></div>
+                </div>
+                <div class="progress-details">
+                    <span>Used: 150,000 tokens</span>
+                    <span>Remaining: 50,000 tokens</span>
+                </div>
+            </div>
+            
+            <div class="interactive-progress">
+                <div class="progress-label">Context Utilization: 85% (ALERT)</div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 85%;" data-threshold="alert"></div>
+                </div>
+                <div class="progress-details">
+                    <span>Used: 170,000 tokens</span>
+                    <span>Remaining: 30,000 tokens</span>
+                </div>
+            </div>
+        </div>
+        
+        <p>The progress bars change color based on threshold levels and provide detailed token information when interacted with.</p>
+        
+        <h3>Threshold Visualization</h3>
+        
+        <p>Implement clear visual indicators for threshold crossings:</p>
+        
+        <div class="token-visualization">
+            <div class="threshold-visualization">
+                <div class="threshold-container">
+                    <div class="threshold-bar" style="width: 80%;"></div>
+                    <div class="threshold-marker" style="left: 65%;" data-threshold="notice">
+                        <div class="threshold-label">NOTICE (65%)</div>
+                    </div>
+                    <div class="threshold-marker" style="left: 75%;" data-threshold="warning">
+                        <div class="threshold-label">WARNING (75%)</div>
+                    </div>
+                    <div class="threshold-marker" style="left: 85%;" data-threshold="alert">
+                        <div class="threshold-label">ALERT (85%)</div>
+                    </div>
+                    <div class="current-marker" style="left: 80%;">
+                        <div class="current-label">Current: 80%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p>This visualization shows the current context utilization relative to threshold levels, with clear markers for each threshold.</p>
+        
+        <h3>Token Usage Breakdown</h3>
+        
+        <p>Implement detailed breakdowns of token usage by operation type:</p>
+        
+        <div class="token-visualization">
+            <div class="token-breakdown">
+                <div class="breakdown-header">
+                    <span class="breakdown-title">Token Usage by Operation Type</span>
+                    <span class="breakdown-total">Total: 160,000 tokens (80%)</span>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">User Messages</div>
+                    <div class="breakdown-bar-container">
+                        <div class="breakdown-bar" style="width: 25%;"></div>
+                    </div>
+                    <div class="breakdown-value">40,000 tokens (25%)</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">Assistant Responses</div>
+                    <div class="breakdown-bar-container">
+                        <div class="breakdown-bar" style="width: 40%;"></div>
+                    </div>
+                    <div class="breakdown-value">64,000 tokens (40%)</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">Tool Operations</div>
+                    <div class="breakdown-bar-container">
+                        <div class="breakdown-bar" style="width: 35%;"></div>
+                    </div>
+                    <div class="breakdown-value">56,000 tokens (35%)</div>
+                </div>
+            </div>
+        </div>
+        
+        <p>This visualization breaks down token usage by different operation categories, helping identify where context is being consumed.</p>
+
+        <h2>Interactive Dashboards</h2>
+        
+        <h3>Real-Time Context Dashboard</h3>
+        
+        <p>Implement a comprehensive real-time dashboard for context monitoring:</p>
+        
+        <div class="dashboard-preview">
+            <div class="dashboard-header">
+                <div class="dashboard-title">Context Monitoring Dashboard</div>
+                <div class="dashboard-time">Last Updated: <span class="update-time">June 13, 2025 13:45:00</span></div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-title">Current Utilization</div>
+                    <div class="card-value">80%</div>
+                    <div class="card-status warning">WARNING</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-title">Tokens Used</div>
+                    <div class="card-value">160,000</div>
+                    <div class="card-status">of 200,000</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-title">Estimated Remaining</div>
+                    <div class="card-value">~6 hours</div>
+                    <div class="card-status">at current rate</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-title">Checkpoints</div>
+                    <div class="card-value">2</div>
+                    <div class="card-status">Available</div>
+                </div>
+            </div>
+            <div class="dashboard-section">
+                <div class="section-title">Recent Operations</div>
+                <div class="operations-list">
+                    <div class="operation-item">
+                        <span class="operation-time">13:44:30</span>
+                        <span class="operation-type">ASSISTANT_MEDIUM</span>
+                        <span class="operation-tokens">+4,400 tokens</span>
+                    </div>
+                    <div class="operation-item">
+                        <span class="operation-time">13:42:15</span>
+                        <span class="operation-type">USER_SMALL</span>
+                        <span class="operation-tokens">+750 tokens</span>
+                    </div>
+                    <div class="operation-item">
+                        <span class="operation-time">13:40:00</span>
+                        <span class="operation-type">TOOL_READ_MEDIUM</span>
+                        <span class="operation-tokens">+4,400 tokens</span>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-actions">
+                <button class="dashboard-button">Create Checkpoint</button>
+                <button class="dashboard-button alert">Initiate Auto-Compact</button>
+                <button class="dashboard-button">View Detailed Report</button>
+            </div>
+        </div>
+        
+        <p>This interactive dashboard provides a comprehensive view of context utilization, recent operations, and available actions.</p>
+        
+        <h3>Historical Usage Trends</h3>
+        
+        <p>Implement visualizations for historical token usage patterns:</p>
+        
+        <div class="token-visualization">
+            <div class="trend-visualization">
+                <div class="trend-header">
+                    <span class="trend-title">Context Utilization Over Time</span>
+                    <span class="trend-period">Last 3 Hours</span>
+                </div>
+                <div class="trend-chart">
+                    <div class="chart-axis-y">
+                        <div class="axis-label">100%</div>
+                        <div class="axis-label">75%</div>
+                        <div class="axis-label">50%</div>
+                        <div class="axis-label">25%</div>
+                        <div class="axis-label">0%</div>
+                    </div>
+                    <div class="chart-content">
+                        <div class="threshold-line" style="bottom: 65%;">NOTICE</div>
+                        <div class="threshold-line" style="bottom: 75%;">WARNING</div>
+                        <div class="threshold-line" style="bottom: 85%;">ALERT</div>
+                        <svg class="trend-line" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <polyline points="0,70 10,65 20,50 30,45 40,55 50,60 60,65 70,70 80,80 90,85 100,80" />
+                        </svg>
+                    </div>
+                    <div class="chart-axis-x">
+                        <div class="axis-label">10:45</div>
+                        <div class="axis-label">11:15</div>
+                        <div class="axis-label">11:45</div>
+                        <div class="axis-label">12:15</div>
+                        <div class="axis-label">12:45</div>
+                        <div class="axis-label">13:15</div>
+                        <div class="axis-label">13:45</div>
+                    </div>
+                </div>
+                <div class="trend-events">
+                    <div class="event-marker" style="left: 20%;" title="Checkpoint Created">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <div class="event-marker" style="left: 60%;" title="Checkpoint Created">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <div class="event-marker" style="left: 90%;" title="WARNING Threshold Crossed">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p>This visualization shows how context utilization has changed over time, with markers for important events like checkpoint creation and threshold crossings.</p>
+        
+        <h3>Operation Type Analysis</h3>
+        
+        <p>Implement detailed analysis of token usage by operation type:</p>
+        
+        <div class="token-visualization">
+            <div class="operation-analysis">
+                <div class="analysis-header">
+                    <span class="analysis-title">Token Usage by Operation Type</span>
+                    <span class="analysis-period">Current Session</span>
+                </div>
+                <div class="analysis-chart">
+                    <div class="analysis-bar">
+                        <div class="bar-label">USER_SMALL</div>
+                        <div class="bar-container">
+                            <div class="bar-value" style="width: 15%;">15%</div>
+                        </div>
+                        <div class="bar-count">30,000 tokens</div>
+                    </div>
+                    <div class="analysis-bar">
+                        <div class="bar-label">USER_MEDIUM</div>
+                        <div class="bar-container">
+                            <div class="bar-value" style="width: 5%;">5%</div>
+                        </div>
+                        <div class="bar-count">10,000 tokens</div>
+                    </div>
+                    <div class="analysis-bar">
+                        <div class="bar-label">ASSISTANT_MEDIUM</div>
+                        <div class="bar-container">
+                            <div class="bar-value" style="width: 25%;">25%</div>
+                        </div>
+                        <div class="bar-count">50,000 tokens</div>
+                    </div>
+                    <div class="analysis-bar">
+                        <div class="bar-label">ASSISTANT_LARGE</div>
+                        <div class="bar-container">
+                            <div class="bar-value" style="width: 10%;">10%</div>
+                        </div>
+                        <div class="bar-count">20,000 tokens</div>
+                    </div>
+                    <div class="analysis-bar">
+                        <div class="bar-label">TOOL_READ_MEDIUM</div>
+                        <div class="bar-container">
+                            <div class="bar-value" style="width: 20%;">20%</div>
+                        </div>
+                        <div class="bar-count">40,000 tokens</div>
+                    </div>
+                    <div class="analysis-bar">
+                        <div class="bar-label">TOOL_READ_LARGE</div>
+                        <div class="bar-container">
+                            <div class="bar-value" style="width: 5%;">5%</div>
+                        </div>
+                        <div class="bar-count">10,000 tokens</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p>This visualization provides a detailed breakdown of token usage by specific operation types, helping identify optimization opportunities.</p>
+
+        <h2>Interactive Tools</h2>
+        
+        <h3>Token Calculator</h3>
+        
+        <p>Implement an interactive calculator for estimating token usage of different operations:</p>
+        
+        <div class="token-calculator">
+            <div class="calculator-header">
+                <span class="calculator-title">Token Usage Calculator</span>
+            </div>
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="operation-type">Operation Type:</label>
+                    <select id="operation-type" class="form-control">
+                        <option value="USER_SMALL">USER_SMALL (750 tokens)</option>
+                        <option value="USER_MEDIUM">USER_MEDIUM (2,200 tokens)</option>
+                        <option value="USER_LARGE">USER_LARGE (4,400 tokens)</option>
+                        <option value="ASSISTANT_SMALL">ASSISTANT_SMALL (1,500 tokens)</option>
+                        <option value="ASSISTANT_MEDIUM">ASSISTANT_MEDIUM (4,400 tokens)</option>
+                        <option value="ASSISTANT_LARGE">ASSISTANT_LARGE (10,000 tokens)</option>
+                        <option value="TOOL_READ_SMALL">TOOL_READ_SMALL (1,500 tokens)</option>
+                        <option value="TOOL_READ_MEDIUM">TOOL_READ_MEDIUM (4,400 tokens)</option>
+                        <option value="TOOL_READ_LARGE">TOOL_READ_LARGE (7,500 tokens)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="operation-count">Number of Operations:</label>
+                    <input type="number" id="operation-count" class="form-control" value="1" min="1" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="current-utilization">Current Utilization (%):</label>
+                    <input type="number" id="current-utilization" class="form-control" value="70" min="0" max="100">
+                </div>
+                <div class="form-group">
+                    <button id="calculate-button" class="form-button">Calculate</button>
+                </div>
+            </div>
+            <div class="calculator-results">
+                <div class="result-item">
+                    <span class="result-label">Token Usage:</span>
+                    <span class="result-value">4,400 tokens</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">New Utilization:</span>
+                    <span class="result-value">72.2%</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Threshold Status:</span>
+                    <span class="result-value warning">WARNING APPROACHING</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Recommended Action:</span>
+                    <span class="result-value">Create checkpoint before proceeding</span>
+                </div>
+            </div>
+        </div>
+        
+        <p>This interactive calculator helps predict the impact of planned operations on context utilization.</p>
+        
+        <h3>Checkpoint Manager</h3>
+        
+        <p>Implement an interactive interface for managing checkpoints:</p>
+        
+        <div class="checkpoint-manager">
+            <div class="manager-header">
+                <span class="manager-title">Checkpoint Manager</span>
+                <button class="manager-button">Create New Checkpoint</button>
+            </div>
+            <div class="checkpoint-list">
+                <div class="checkpoint-item active">
+                    <div class="checkpoint-info">
+                        <span class="checkpoint-id">ckpt_warning_20250613_1</span>
+                        <span class="checkpoint-time">13:15:00</span>
+                        <span class="checkpoint-util">75% (WARNING)</span>
+                    </div>
+                    <div class="checkpoint-description">Working on token tracking implementation</div>
+                    <div class="checkpoint-actions">
+                        <button class="checkpoint-button">Restore</button>
+                        <button class="checkpoint-button">View Details</button>
+                        <button class="checkpoint-button">Delete</button>
+                    </div>
+                </div>
+                <div class="checkpoint-item">
+                    <div class="checkpoint-info">
+                        <span class="checkpoint-id">ckpt_notice_20250613_1</span>
+                        <span class="checkpoint-time">11:30:00</span>
+                        <span class="checkpoint-util">65% (NOTICE)</span>
+                    </div>
+                    <div class="checkpoint-description">Initial setup of project structure</div>
+                    <div class="checkpoint-actions">
+                        <button class="checkpoint-button">Restore</button>
+                        <button class="checkpoint-button">View Details</button>
+                        <button class="checkpoint-button">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p>This interface provides a user-friendly way to manage checkpoints, including creation, restoration, and deletion.</p>
+        
+        <h3>Context Optimization Advisor</h3>
+        
+        <p>Implement an intelligent advisor for context optimization:</p>
+        
+        <div class="optimization-advisor">
+            <div class="advisor-header">
+                <span class="advisor-title">Context Optimization Recommendations</span>
+                <span class="advisor-status">Current Utilization: 80% (WARNING)</span>
+            </div>
+            <div class="advisor-recommendations">
+                <div class="recommendation-item">
+                    <div class="recommendation-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Create Checkpoint Immediately</span>
+                    </div>
+                    <div class="recommendation-description">
+                        Context utilization is approaching ALERT threshold. Create a checkpoint now to ensure recovery capability.
+                    </div>
+                    <div class="recommendation-actions">
+                        <button class="recommendation-button primary">Create Checkpoint</button>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <div class="recommendation-title">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Reduce Tool Operation Size</span>
+                    </div>
+                    <div class="recommendation-description">
+                        Tool operations account for 35% of context usage. Consider using smaller read operations with more specific file targeting.
+                    </div>
+                    <div class="recommendation-actions">
+                        <button class="recommendation-button">View Details</button>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <div class="recommendation-title">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                        <span>Plan for Controlled Auto-Compact</span>
+                    </div>
+                    <div class="recommendation-description">
+                        At current usage rate, you will reach ALERT threshold in approximately 2 hours. Consider planning a controlled auto-compact at a convenient stopping point.
+                    </div>
+                    <div class="recommendation-actions">
+                        <button class="recommendation-button">Schedule Auto-Compact</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p>This advisor analyzes context usage patterns and provides actionable recommendations for optimizing context utilization.</p>
+
+        <h2>Real-Time Monitoring</h2>
+        
+        <h3>WebSocket-Based Monitoring</h3>
+        
+        <p>Implement real-time context monitoring using WebSockets:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In websocket-monitor.js</span><br>
+                <span style="color: var(--text-medium);">class ContextMonitor {</span><br>
+                <span style="color: var(--text-medium);">  constructor(url) {</span><br>
+                <span style="color: var(--text-medium);">    this.url = url;</span><br>
+                <span style="color: var(--text-medium);">    this.socket = null;</span><br>
+                <span style="color: var(--text-medium);">    this.listeners = {</span><br>
+                <span style="color: var(--text-medium);">      update: [],</span><br>
+                <span style="color: var(--text-medium);">      threshold: [],</span><br>
+                <span style="color: var(--text-medium);">      checkpoint: [],</span><br>
+                <span style="color: var(--text-medium);">      error: []</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  connect() {</span><br>
+                <span style="color: var(--text-medium);">    this.socket = new WebSocket(this.url);</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    this.socket.onopen = () => {</span><br>
+                <span style="color: var(--text-medium);">      console.log('Connected to context monitoring server');</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    this.socket.onmessage = (event) => {</span><br>
+                <span style="color: var(--text-medium);">      const data = JSON.parse(event.data);</span><br>
+                <span style="color: var(--text-medium);">      </span><br>
+                <span style="color: var(--text-medium);">      switch(data.type) {</span><br>
+                <span style="color: var(--text-medium);">        case 'update':</span><br>
+                <span style="color: var(--text-medium);">          this.notifyListeners('update', data);</span><br>
+                <span style="color: var(--text-medium);">          break;</span><br>
+                <span style="color: var(--text-medium);">        case 'threshold':</span><br>
+                <span style="color: var(--text-medium);">          this.notifyListeners('threshold', data);</span><br>
+                <span style="color: var(--text-medium);">          break;</span><br>
+                <span style="color: var(--text-medium);">        case 'checkpoint':</span><br>
+                <span style="color: var(--text-medium);">          this.notifyListeners('checkpoint', data);</span><br>
+                <span style="color: var(--text-medium);">          break;</span><br>
+                <span style="color: var(--text-medium);">        default:</span><br>
+                <span style="color: var(--text-medium);">          console.warn('Unknown event type:', data.type);</span><br>
+                <span style="color: var(--text-medium);">      }</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    this.socket.onerror = (error) => {</span><br>
+                <span style="color: var(--text-medium);">      this.notifyListeners('error', error);</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    this.socket.onclose = () => {</span><br>
+                <span style="color: var(--text-medium);">      console.log('Disconnected from context monitoring server');</span><br>
+                <span style="color: var(--text-medium);">      // Attempt to reconnect after a delay</span><br>
+                <span style="color: var(--text-medium);">      setTimeout(() => this.connect(), 5000);</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  on(event, callback) {</span><br>
+                <span style="color: var(--text-medium);">    if (this.listeners[event]) {</span><br>
+                <span style="color: var(--text-medium);">      this.listeners[event].push(callback);</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  notifyListeners(event, data) {</span><br>
+                <span style="color: var(--text-medium);">    if (this.listeners[event]) {</span><br>
+                <span style="color: var(--text-medium);">      this.listeners[event].forEach(callback => callback(data));</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  createCheckpoint(description) {</span><br>
+                <span style="color: var(--text-medium);">    if (this.socket && this.socket.readyState === WebSocket.OPEN) {</span><br>
+                <span style="color: var(--text-medium);">      this.socket.send(JSON.stringify({</span><br>
+                <span style="color: var(--text-medium);">        action: 'createCheckpoint',</span><br>
+                <span style="color: var(--text-medium);">        description</span><br>
+                <span style="color: var(--text-medium);">      }));</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  initiateAutoCompact() {</span><br>
+                <span style="color: var(--text-medium);">    if (this.socket && this.socket.readyState === WebSocket.OPEN) {</span><br>
+                <span style="color: var(--text-medium);">      this.socket.send(JSON.stringify({</span><br>
+                <span style="color: var(--text-medium);">        action: 'initiateAutoCompact'</span><br>
+                <span style="color: var(--text-medium);">      }));</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+        
+        <p>This WebSocket-based monitoring system provides real-time updates on context utilization and threshold crossings.</p>
+        
+        <h3>Alert System</h3>
+        
+        <p>Implement a comprehensive alert system for context events:</p>
+        
+        <div class="alert-preview">
+            <div class="alert-item" data-level="notice">
+                <div class="alert-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="alert-content">
+                    <div class="alert-title">NOTICE Threshold Reached (65%)</div>
+                    <div class="alert-message">Context utilization has reached the NOTICE threshold. Consider creating a checkpoint.</div>
+                    <div class="alert-time">13:15:00</div>
+                </div>
+                <div class="alert-actions">
+                    <button class="alert-button">Create Checkpoint</button>
+                    <button class="alert-button">Dismiss</button>
+                </div>
+            </div>
+            
+            <div class="alert-item" data-level="warning">
+                <div class="alert-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="alert-content">
+                    <div class="alert-title">WARNING Threshold Reached (75%)</div>
+                    <div class="alert-message">Context utilization has reached the WARNING threshold. A checkpoint has been automatically created.</div>
+                    <div class="alert-time">13:30:00</div>
+                </div>
+                <div class="alert-actions">
+                    <button class="alert-button">View Checkpoint</button>
+                    <button class="alert-button">Dismiss</button>
+                </div>
+            </div>
+            
+            <div class="alert-item" data-level="alert">
+                <div class="alert-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="alert-content">
+                    <div class="alert-title">ALERT Threshold Reached (85%)</div>
+                    <div class="alert-message">Context utilization has reached the ALERT threshold. Consider initiating auto-compact to prevent unexpected reset.</div>
+                    <div class="alert-time">13:45:00</div>
+                </div>
+                <div class="alert-actions">
+                    <button class="alert-button">Initiate Auto-Compact</button>
+                    <button class="alert-button">Create Checkpoint</button>
+                    <button class="alert-button">Dismiss</button>
+                </div>
+            </div>
+        </div>
+        
+        <p>This alert system provides timely notifications for important context events, with appropriate actions for each alert level.</p>
+        
+        <h3>Desktop Notifications</h3>
+        
+        <p>Implement desktop notifications for critical context events:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In desktop-notifications.js</span><br>
+                <span style="color: var(--text-medium);">class ContextNotifications {</span><br>
+                <span style="color: var(--text-medium);">  constructor() {</span><br>
+                <span style="color: var(--text-medium);">    this.enabled = false;</span><br>
+                <span style="color: var(--text-medium);">    this.checkPermission();</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  checkPermission() {</span><br>
+                <span style="color: var(--text-medium);">    if (!("Notification" in window)) {</span><br>
+                <span style="color: var(--text-medium);">      console.log("This browser does not support desktop notifications");</span><br>
+                <span style="color: var(--text-medium);">      return;</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    if (Notification.permission === "granted") {</span><br>
+                <span style="color: var(--text-medium);">      this.enabled = true;</span><br>
+                <span style="color: var(--text-medium);">    } else if (Notification.permission !== "denied") {</span><br>
+                <span style="color: var(--text-medium);">      Notification.requestPermission().then(permission => {</span><br>
+                <span style="color: var(--text-medium);">        this.enabled = permission === "granted";</span><br>
+                <span style="color: var(--text-medium);">      });</span><br>
+                <span style="color: var(--text-medium);">    }</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  notifyThreshold(level, utilization) {</span><br>
+                <span style="color: var(--text-medium);">    if (!this.enabled) return;</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    const title = `${level} Threshold Reached`;</span><br>
+                <span style="color: var(--text-medium);">    const options = {</span><br>
+                <span style="color: var(--text-medium);">      body: `Context utilization has reached ${utilization}% (${level}).`,</span><br>
+                <span style="color: var(--text-medium);">      icon: `/icons/${level.toLowerCase()}.png`,</span><br>
+                <span style="color: var(--text-medium);">      tag: `threshold-${level}`,</span><br>
+                <span style="color: var(--text-medium);">      requireInteraction: level === 'ALERT'</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    const notification = new Notification(title, options);</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    notification.onclick = () => {</span><br>
+                <span style="color: var(--text-medium);">      window.focus();</span><br>
+                <span style="color: var(--text-medium);">      notification.close();</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  notifyCheckpoint(id, description) {</span><br>
+                <span style="color: var(--text-medium);">    if (!this.enabled) return;</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    const title = `Checkpoint Created`;</span><br>
+                <span style="color: var(--text-medium);">    const options = {</span><br>
+                <span style="color: var(--text-medium);">      body: `Checkpoint ${id} created: ${description}`,</span><br>
+                <span style="color: var(--text-medium);">      icon: '/icons/checkpoint.png',</span><br>
+                <span style="color: var(--text-medium);">      tag: `checkpoint-${id}`</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">    const notification = new Notification(title, options);</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+        
+        <p>This desktop notification system ensures that users are alerted to important context events even when they're not actively looking at the monitoring interface.</p>
+
+        <h2>Advanced Token Management</h2>
+        
+        <h3>Token Budget Planning</h3>
+        
+        <p>Implement advanced token budget planning for complex projects:</p>
+        
+        <div class="token-budget">
+            <div class="budget-header">
+                <span class="budget-title">Token Budget Planner</span>
+                <span class="budget-project">Project: Documentation Update</span>
+            </div>
+            <div class="budget-content">
+                <div class="budget-overview">
+                    <div class="budget-item">
+                        <span class="budget-label">Total Budget:</span>
+                        <span class="budget-value">200,000 tokens</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="budget-label">Allocated:</span>
+                        <span class="budget-value">160,000 tokens (80%)</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="budget-label">Remaining:</span>
+                        <span class="budget-value">40,000 tokens (20%)</span>
+                    </div>
+                </div>
+                <div class="budget-allocation">
+                    <table class="budget-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Allocated</th>
+                                <th>Used</th>
+                                <th>Remaining</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Initial Research</td>
+                                <td>30,000</td>
+                                <td>28,500</td>
+                                <td>1,500</td>
+                                <td><span class="status-complete">Complete</span></td>
+                            </tr>
+                            <tr>
+                                <td>API Documentation</td>
+                                <td>50,000</td>
+                                <td>47,500</td>
+                                <td>2,500</td>
+                                <td><span class="status-complete">Complete</span></td>
+                            </tr>
+                            <tr>
+                                <td>User Guide Updates</td>
+                                <td>40,000</td>
+                                <td>35,000</td>
+                                <td>5,000</td>
+                                <td><span class="status-in-progress">In Progress</span></td>
+                            </tr>
+                            <tr>
+                                <td>Code Examples</td>
+                                <td>30,000</td>
+                                <td>25,000</td>
+                                <td>5,000</td>
+                                <td><span class="status-in-progress">In Progress</span></td>
+                            </tr>
+                            <tr>
+                                <td>Final Review</td>
+                                <td>25,000</td>
+                                <td>0</td>
+                                <td>25,000</td>
+                                <td><span class="status-pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>Contingency</td>
+                                <td>25,000</td>
+                                <td>0</td>
+                                <td>25,000</td>
+                                <td><span class="status-reserved">Reserved</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="budget-actions">
+                <button class="budget-button">Adjust Allocations</button>
+                <button class="budget-button">Add Task</button>
+                <button class="budget-button">View Detailed Report</button>
+            </div>
+        </div>
+        
+        <p>This token budget planner helps allocate token resources across different project tasks and track usage against allocations.</p>
+        
+        <h3>Token Optimization Strategies</h3>
+        
+        <p>Implement advanced token optimization strategies to maximize context efficiency:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-compress"></i> Context Pruning</h3>
+                <p>Automatically remove less relevant information from context:</p>
+                <ul>
+                    <li>Identify low-relevance content</li>
+                    <li>Summarize lengthy sections</li>
+                    <li>Remove redundant information</li>
+                    <li>Preserve essential context only</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-bolt"></i> Operation Optimization</h3>
+                <p>Optimize common operations for token efficiency:</p>
+                <ul>
+                    <li>Use targeted file reads</li>
+                    <li>Implement precise search queries</li>
+                    <li>Batch similar operations</li>
+                    <li>Use efficient response formats</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-exchange-alt"></i> Context Swapping</h3>
+                <p>Swap context in and out as needed:</p>
+                <ul>
+                    <li>Store context in external memory</li>
+                    <li>Load only currently needed context</li>
+                    <li>Implement context pagination</li>
+                    <li>Use reference pointers to external data</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-project-diagram"></i> Workflow Optimization</h3>
+                <p>Design workflows for token efficiency:</p>
+                <ul>
+                    <li>Plan natural break points</li>
+                    <li>Structure tasks for context efficiency</li>
+                    <li>Implement task-specific contexts</li>
+                    <li>Use targeted checkpoints</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p>These advanced optimization strategies help maximize the effective use of context, reducing waste and increasing efficiency.</p>
+
+        <h2>Implementation Guide</h2>
+        
+        <h3>Setting Up the Interactive Dashboard</h3>
+        
+        <p>Follow these steps to implement the interactive token tracking dashboard:</p>
+        
+        <ol>
+            <li><strong>Install Dependencies</strong>: Set up the required libraries for visualization and real-time updates</li>
+            <li><strong>Configure Backend Services</strong>: Set up WebSocket server for real-time monitoring</li>
+            <li><strong>Implement Frontend Components</strong>: Create the visualization components and interactive elements</li>
+            <li><strong>Connect to Token Tracking System</strong>: Integrate with the existing token tracking infrastructure</li>
+            <li><strong>Set Up Alert System</strong>: Configure alerts and notifications</li>
+            <li><strong>Test the Dashboard</strong>: Verify all functionality and real-time updates</li>
+        </ol>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-framework-core/tools/token-tracker<br>
+                <span style="color: var(--neon-blue);">$</span> npm install ws express socket.io chart.js moment<br>
+                <span style="color: var(--neon-blue);">$</span> cp -r ~/trinity/trinity-framework-core/examples/interactive-tracking .<br>
+                <span style="color: var(--neon-blue);">$</span> cd interactive-tracking<br>
+                <span style="color: var(--neon-blue);">$</span> npm install<br>
+                <span style="color: var(--neon-blue);">$</span> npm run build<br>
+                <span style="color: var(--neon-blue);">$</span> npm start<br>
+            </div>
+        </div>
+        
+        <h3>Customizing Visualizations</h3>
+        
+        <p>The visualization components can be customized to match your specific needs:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In config.js</span><br>
+                <span style="color: var(--text-medium);">const CONFIG = {</span><br>
+                <span style="color: var(--text-medium);">  thresholds: {</span><br>
+                <span style="color: var(--text-medium);">    notice: 65,</span><br>
+                <span style="color: var(--text-medium);">    warning: 75,</span><br>
+                <span style="color: var(--text-medium);">    alert: 85</span><br>
+                <span style="color: var(--text-medium);">  },</span><br>
+                <span style="color: var(--text-medium);">  colors: {</span><br>
+                <span style="color: var(--text-medium);">    normal: '#00c8ff',  // Neon blue</span><br>
+                <span style="color: var(--text-medium);">    notice: '#ffcc00',  // Yellow</span><br>
+                <span style="color: var(--text-medium);">    warning: '#ff9900', // Orange</span><br>
+                <span style="color: var(--text-medium);">    alert: '#ff3300'    // Red</span><br>
+                <span style="color: var(--text-medium);">  },</span><br>
+                <span style="color: var(--text-medium);">  maxTokens: 200000,    // Maximum context size</span><br>
+                <span style="color: var(--text-medium);">  refreshInterval: 5000, // Update interval in milliseconds</span><br>
+                <span style="color: var(--text-medium);">  operationTypes: {</span><br>
+                <span style="color: var(--text-medium);">    USER_SMALL: 750,</span><br>
+                <span style="color: var(--text-medium);">    USER_MEDIUM: 2200,</span><br>
+                <span style="color: var(--text-medium);">    USER_LARGE: 4400,</span><br>
+                <span style="color: var(--text-medium);">    ASSISTANT_SMALL: 1500,</span><br>
+                <span style="color: var(--text-medium);">    ASSISTANT_MEDIUM: 4400,</span><br>
+                <span style="color: var(--text-medium);">    ASSISTANT_LARGE: 10000,</span><br>
+                <span style="color: var(--text-medium);">    TOOL_READ_SMALL: 1500,</span><br>
+                <span style="color: var(--text-medium);">    TOOL_READ_MEDIUM: 4400,</span><br>
+                <span style="color: var(--text-medium);">    TOOL_READ_LARGE: 7500,</span><br>
+                <span style="color: var(--text-medium);">    TOOL_WRITE: 750,</span><br>
+                <span style="color: var(--text-medium);">    TOOL_EDIT: 1500</span><br>
+                <span style="color: var(--text-medium);">  },</span><br>
+                <span style="color: var(--text-medium);">  notifications: {</span><br>
+                <span style="color: var(--text-medium);">    enabled: true,</span><br>
+                <span style="color: var(--text-medium);">    thresholds: ['warning', 'alert'],</span><br>
+                <span style="color: var(--text-medium);">    checkpoints: true</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">};</span><br>
+            </div>
+        </div>
+
+        <h2>Next Steps</h2>
+        
+        <p>After implementing interactive token tracking, consider these next steps:</p>
+        
+        <div class="card-grid">
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-memory"></i> Advanced Context Management</h3>
+                <p>Implement sophisticated context management techniques</p>
+                <a href="context-management.html" class="card-link">Read Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-users"></i> Advanced Agent Collaboration</h3>
+                <p>Implement coordinated token management across agents</p>
+                <a href="agent-collaboration.html" class="card-link">View Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-robot"></i> ML-Based Token Estimation</h3>
+                <p>Implement machine learning for token prediction</p>
+                <a href="../guides/ml-token-estimation.html" class="card-link">Explore Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-sitemap"></i> Enterprise Token Management</h3>
+                <p>Scale token tracking for enterprise environments</p>
+                <a href="../guides/enterprise-token-management.html" class="card-link">Read Guide</a>
+            </div>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script src="../js/animation.js"></script>
+    <style>
+        /* Interactive Token Tracking specific styles */
+        .token-visualization {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: var(--bg-accent);
+            border-radius: 5px;
+        }
+        
+        .interactive-progress {
+            margin-bottom: 20px;
+        }
+        
+        .progress-label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .progress-container {
+            height: 25px;
+            background-color: var(--bg-dark);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--neon-blue);
+            transition: width 0.5s ease;
+        }
+        
+        .progress-bar[data-threshold="notice"] {
+            background-color: var(--notice-color);
+        }
+        
+        .progress-bar[data-threshold="warning"] {
+            background-color: var(--warning-color);
+        }
+        
+        .progress-bar[data-threshold="alert"] {
+            background-color: var(--alert-color);
+        }
+        
+        .progress-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: var(--text-medium);
+        }
+        
+        .threshold-visualization {
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .threshold-container {
+            height: 40px;
+            background-color: var(--bg-dark);
+            border-radius: 3px;
+            position: relative;
+        }
+        
+        .threshold-bar {
+            height: 100%;
+            background-color: var(--neon-blue);
+        }
+        
+        .threshold-marker {
+            position: absolute;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: white;
+        }
+        
+        .threshold-marker[data-threshold="notice"] {
+            background-color: var(--notice-color);
+        }
+        
+        .threshold-marker[data-threshold="warning"] {
+            background-color: var(--warning-color);
+        }
+        
+        .threshold-marker[data-threshold="alert"] {
+            background-color: var(--alert-color);
+        }
+        
+        .threshold-label {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.8em;
+        }
+        
+        .current-marker {
+            position: absolute;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: white;
+        }
+        
+        .current-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .token-breakdown {
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .breakdown-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .breakdown-title {
+            font-weight: bold;
+        }
+        
+        .breakdown-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid var(--border-accent);
+        }
+        
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .breakdown-label {
+            width: 150px;
+            font-weight: bold;
+        }
+        
+        .breakdown-bar-container {
+            flex-grow: 1;
+            height: 15px;
+            background-color: var(--bg-dark);
+            border-radius: 3px;
+            margin: 0 15px;
+            overflow: hidden;
+        }
+        
+        .breakdown-bar {
+            height: 100%;
+            background-color: var(--neon-blue);
+        }
+        
+        .breakdown-value {
+            width: 150px;
+            text-align: right;
+        }
+        
+        /* Dashboard styles */
+        .dashboard-preview {
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .dashboard-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        .dashboard-time {
+            color: var(--text-medium);
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 15px;
+        }
+        
+        .dashboard-card {
+            background-color: var(--bg-accent);
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .card-title {
+            color: var(--text-medium);
+            margin-bottom: 10px;
+        }
+        
+        .card-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .card-status {
+            color: var(--text-medium);
+        }
+        
+        .card-status.warning {
+            color: var(--warning-color);
+        }
+        
+        .dashboard-section {
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .operations-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .operation-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+            background-color: var(--bg-accent);
+            border-radius: 3px;
+        }
+        
+        .operation-time {
+            color: var(--text-medium);
+        }
+        
+        .dashboard-actions {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .dashboard-button {
+            padding: 10px 15px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .dashboard-button.alert {
+            background-color: var(--alert-color);
+        }
+        
+        /* Trend visualization */
+        .trend-visualization {
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .trend-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .trend-chart {
+            height: 300px;
+            padding: 20px;
+            display: flex;
+            position: relative;
+        }
+        
+        .chart-axis-y {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 50px;
+            padding-right: 10px;
+            text-align: right;
+        }
+        
+        .chart-content {
+            flex-grow: 1;
+            position: relative;
+            border-left: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .threshold-line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            border-top: 1px dashed var(--text-medium);
+            font-size: 0.8em;
+            padding-left: 5px;
+            color: var(--text-medium);
+        }
+        
+        .trend-line {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: var(--neon-blue);
+            stroke-width: 2;
+        }
+        
+        .chart-axis-x {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+        }
+        
+        .trend-events {
+            position: relative;
+            height: 30px;
+            padding: 0 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .event-marker {
+            position: absolute;
+            top: 5px;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        /* Calculator styles */
+        .token-calculator {
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .calculator-header {
+            padding: 15px;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .calculator-title {
+            font-weight: bold;
+        }
+        
+        .calculator-form {
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .form-control {
+            padding: 8px;
+            background-color: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            color: var(--text-color);
+        }
+        
+        .form-button {
+            padding: 10px 15px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: auto;
+        }
+        
+        .calculator-results {
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-accent);
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .result-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .result-label {
+            font-weight: bold;
+        }
+        
+        .result-value.warning {
+            color: var(--warning-color);
+        }
+        
+        /* Checkpoint manager */
+        .checkpoint-manager {
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .manager-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .manager-title {
+            font-weight: bold;
+        }
+        
+        .manager-button {
+            padding: 8px 12px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .checkpoint-list {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .checkpoint-item {
+            padding: 15px;
+            background-color: var(--bg-accent);
+            border-radius: 5px;
+            border-left: 3px solid var(--neon-blue);
+        }
+        
+        .checkpoint-item.active {
+            border-left-color: var(--success-color);
+        }
+        
+        .checkpoint-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .checkpoint-id {
+            font-family: monospace;
+        }
+        
+        .checkpoint-description {
+            margin-bottom: 10px;
+        }
+        
+        .checkpoint-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .checkpoint-button {
+            padding: 5px 10px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        
+        /* Optimization advisor */
+        .optimization-advisor {
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .advisor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .advisor-title {
+            font-weight: bold;
+        }
+        
+        .advisor-status {
+            color: var(--warning-color);
+        }
+        
+        .advisor-recommendations {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .recommendation-item {
+            padding: 15px;
+            background-color: var(--bg-accent);
+            border-radius: 5px;
+        }
+        
+        .recommendation-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .recommendation-description {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .recommendation-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .recommendation-button {
+            padding: 8px 12px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .recommendation-button.primary {
+            background-color: var(--neon-blue);
+        }
+        
+        /* Alert styles */
+        .alert-preview {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .alert-item {
+            display: flex;
+            padding: 15px;
+            background-color: var(--bg-accent);
+            border-radius: 5px;
+            border-left: 5px solid var(--neon-blue);
+        }
+        
+        .alert-item[data-level="notice"] {
+            border-left-color: var(--notice-color);
+        }
+        
+        .alert-item[data-level="warning"] {
+            border-left-color: var(--warning-color);
+        }
+        
+        .alert-item[data-level="alert"] {
+            border-left-color: var(--alert-color);
+        }
+        
+        .alert-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            font-size: 1.5em;
+        }
+        
+        .alert-item[data-level="notice"] .alert-icon {
+            color: var(--notice-color);
+        }
+        
+        .alert-item[data-level="warning"] .alert-icon {
+            color: var(--warning-color);
+        }
+        
+        .alert-item[data-level="alert"] .alert-icon {
+            color: var(--alert-color);
+        }
+        
+        .alert-content {
+            flex-grow: 1;
+            margin: 0 15px;
+        }
+        
+        .alert-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .alert-message {
+            margin-bottom: 5px;
+        }
+        
+        .alert-time {
+            color: var(--text-medium);
+            font-size: 0.9em;
+        }
+        
+        .alert-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .alert-button {
+            padding: 5px 10px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+        
+        /* Token budget */
+        .token-budget {
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .budget-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .budget-title {
+            font-weight: bold;
+        }
+        
+        .budget-overview {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: var(--bg-accent);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .budget-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .budget-label {
+            color: var(--text-medium);
+            margin-bottom: 5px;
+        }
+        
+        .budget-allocation {
+            padding: 15px;
+        }
+        
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .budget-table th, .budget-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-accent);
+        }
+        
+        .status-complete {
+            color: var(--success-color);
+        }
+        
+        .status-in-progress {
+            color: var(--neon-blue);
+        }
+        
+        .status-pending {
+            color: var(--text-medium);
+        }
+        
+        .status-reserved {
+            color: var(--notice-color);
+        }
+        
+        .budget-actions {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .budget-button {
+            padding: 10px 15px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Agent Collaboration - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Advanced</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Agent Collaboration</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Advanced Agent Collaboration</h1>
+        
+        <p>This advanced guide explores sophisticated techniques for coordinating work across multiple specialized agents in the Trinity Framework. While the <a href="../principles/multi-agent-collaboration.html">Multi-Agent Collaboration</a> guide covers the basics, this document delves into advanced patterns, communication protocols, and enterprise-grade collaboration systems.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: This guide assumes familiarity with the basic agent collaboration concepts covered in the <a href="../principles/multi-agent-collaboration.html">Multi-Agent Collaboration</a> and <a href="../principles/operational-autonomy.html">Operational Autonomy</a> guides.</p>
+        </div>
+
+        <h2>Advanced Trinity Model Architectures</h2>
+        
+        <h3>Standard Trinity Model</h3>
+        
+        <p>The standard Trinity Model consists of three specialized agents with clearly defined roles:</p>
+        
+        <div class="collaboration-diagram">
+            <h3>Standard Trinity Model</h3>
+            <pre>
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│    APEX     │◄───►│   ANALYST   │◄───►│  HISTORIAN  │
+│  Strategic  │     │ Analytical  │     │Documentation│
+│Coordination │     │  Insights   │     │ Management  │
+└─────────────┘     └─────────────┘     └─────────────┘
+        ▲                  ▲                   ▲
+        │                  │                   │
+        │                  ▼                   │
+        │           ┌─────────────┐           │
+        └───────────┤    Human    ├───────────┘
+                    │   Operator  │
+                    └─────────────┘
+            </pre>
+        </div>
+        
+        <h3>Extended Trinity Models</h3>
+        
+        <p>For more complex projects, the Trinity Model can be extended with specialized agents:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sitemap"></i> Hierarchical Trinity Model</h3>
+                <div class="collaboration-diagram">
+                    <pre>
+                    ┌─────────────┐
+                    │   MASTER    │
+                    │    APEX     │
+                    └──────┬──────┘
+                           │
+             ┌─────────────┼─────────────┐
+             │             │             │
+      ┌──────▼──────┐┌─────▼─────┐┌──────▼──────┐
+      │  DOMAIN A   ││  DOMAIN B ││  DOMAIN C   │
+      │    APEX     ││   APEX    ││    APEX     │
+      └──────┬──────┘└─────┬─────┘└──────┬──────┘
+             │             │             │
+    ┌────────┼────────┐    │    ┌────────┼────────┐
+    │        │        │    │    │        │        │
+┌───▼──┐ ┌───▼──┐ ┌───▼──┐ │ ┌───▼──┐ ┌───▼──┐ ┌───▼──┐
+│ANALYST│ │HISTOR│ │ANALYST│ │ │HISTOR│ │ANALYST│ │HISTOR│
+│   A   │ │IAN A │ │   B   │ │ │IAN B │ │   C   │ │IAN C │
+└──────┘ └──────┘ └──────┘ │ └──────┘ └──────┘ └──────┘
+                           │
+                     ┌─────▼─────┐
+                     │  CENTRAL  │
+                     │ HISTORIAN │
+                     └───────────┘
+                    </pre>
+                </div>
+                <p>Hierarchical model for large-scale projects with domain-specific Trinity teams coordinated by a Master APEX agent and supported by a Central HISTORIAN.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-cogs"></i> Specialized Trinity Model</h3>
+                <div class="collaboration-diagram">
+                    <pre>
+                      ┌─────────────┐
+                      │    APEX     │
+                      └──────┬──────┘
+                             │
+               ┌─────────────┼─────────────┐
+               │             │             │
+        ┌──────▼──────┐┌─────▼─────┐┌──────▼──────┐
+        │   ANALYST   ││ HISTORIAN ││  SECURITY   │
+        └──────┬──────┘└─────┬─────┘└──────┬──────┘
+               │             │             │
+      ┌────────┼────────┐    │    ┌────────┼────────┐
+      │        │        │    │    │        │        │
+┌─────▼────┐┌──▼───┐┌───▼───┐   ┌▼───────┐┌───▼────┐┌───▼───┐
+│PERFORMANCE││DATA  ││DOCUMEN││   │TRAINING││COMPLI- ││THREAT │
+│ ANALYST   ││SCIEN-││TATION ││   │HISTOR- ││ANCE    ││ANALYST│
+│           ││TIST  ││SPECIAL││   │IAN     ││OFFICER ││       │
+└───────────┘└──────┘└───────┘   └────────┘└────────┘└───────┘
+                    </pre>
+                </div>
+                <p>Specialized model with additional domain-specific roles like Security Agent, Performance Analyst, and Compliance Officer for projects with specific requirements.</p>
+            </div>
+        </div>
+        
+        <h3>Fractal Trinity Model</h3>
+        
+        <p>For complex enterprise systems, the Fractal Trinity Model implements nested Trinity teams at multiple levels:</p>
+        
+        <ul>
+            <li><strong>Enterprise Level</strong>: Master Trinity team providing strategic direction</li>
+            <li><strong>System Level</strong>: Domain Trinity teams managing specific systems</li>
+            <li><strong>Component Level</strong>: Specialized Trinity teams for individual components</li>
+        </ul>
+        
+        <p>This model follows consistent patterns at each level, with clear communication channels between levels.</p>
+
+        <h2>Advanced Collaboration Protocols</h2>
+        
+        <h3>Structured Communication Protocols</h3>
+        
+        <p>Implement standardized formats for inter-agent communication:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// Standard message format for agent communications</span><br>
+                <span style="color: var(--text-medium);">{</span><br>
+                <span style="color: var(--text-medium);">  "messageType": "REQUEST | RESPONSE | UPDATE | ALERT",</span><br>
+                <span style="color: var(--text-medium);">  "source": "APEX | ANALYST | HISTORIAN",</span><br>
+                <span style="color: var(--text-medium);">  "target": "APEX | ANALYST | HISTORIAN | ALL",</span><br>
+                <span style="color: var(--text-medium);">  "priority": "LOW | MEDIUM | HIGH | CRITICAL",</span><br>
+                <span style="color: var(--text-medium);">  "timestamp": "ISO-8601-TIMESTAMP",</span><br>
+                <span style="color: var(--text-medium);">  "correlationId": "UNIQUE-CORRELATION-ID",</span><br>
+                <span style="color: var(--text-medium);">  "subject": "BRIEF-SUBJECT-LINE",</span><br>
+                <span style="color: var(--text-medium);">  "content": {</span><br>
+                <span style="color: var(--text-medium);">    "body": "MAIN-MESSAGE-CONTENT",</span><br>
+                <span style="color: var(--text-medium);">    "attachments": [</span><br>
+                <span style="color: var(--text-medium);">      {</span><br>
+                <span style="color: var(--text-medium);">        "type": "FILE | CHECKPOINT | REFERENCE",</span><br>
+                <span style="color: var(--text-medium);">        "path": "PATH-TO-ATTACHMENT",</span><br>
+                <span style="color: var(--text-medium);">        "description": "ATTACHMENT-DESCRIPTION"</span><br>
+                <span style="color: var(--text-medium);">      }</span><br>
+                <span style="color: var(--text-medium);">    ]</span><br>
+                <span style="color: var(--text-medium);">  },</span><br>
+                <span style="color: var(--text-medium);">  "metadata": {</span><br>
+                <span style="color: var(--text-medium);">    "project": "PROJECT-IDENTIFIER",</span><br>
+                <span style="color: var(--text-medium);">    "phase": "PHASE-IDENTIFIER",</span><br>
+                <span style="color: var(--text-medium);">    "task": "TASK-IDENTIFIER",</span><br>
+                <span style="color: var(--text-medium);">    "tags": ["TAG1", "TAG2", "TAG3"]</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+        
+        <h3>Task Handoff Protocol</h3>
+        
+        <p>Implement a structured task handoff protocol for transferring work between agents:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-exchange-alt"></i> Handoff Stages</h3>
+                <ol>
+                    <li><strong>Preparation</strong>: Source agent prepares task for handoff</li>
+                    <li><strong>Notification</strong>: Source agent notifies target agent</li>
+                    <li><strong>Acceptance</strong>: Target agent acknowledges and accepts task</li>
+                    <li><strong>Transfer</strong>: Source agent transfers all relevant context</li>
+                    <li><strong>Verification</strong>: Target agent verifies complete understanding</li>
+                    <li><strong>Confirmation</strong>: Source agent confirms successful handoff</li>
+                </ol>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-clipboard-list"></i> Handoff Package</h3>
+                <p>A comprehensive handoff package includes:</p>
+                <ul>
+                    <li><strong>Task Definition</strong>: Clear description and requirements</li>
+                    <li><strong>Context Information</strong>: All relevant background</li>
+                    <li><strong>Current Status</strong>: Progress, issues, and blockers</li>
+                    <li><strong>References</strong>: Links to relevant resources</li>
+                    <li><strong>Dependencies</strong>: Related tasks and dependencies</li>
+                    <li><strong>Acceptance Criteria</strong>: Completion requirements</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Coordination Protocols</h3>
+        
+        <p>Implement advanced coordination protocols for synchronizing work across agents:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sync"></i> Synchronization Points</h3>
+                <p>Regular check-in points for alignment:</p>
+                <ul>
+                    <li><strong>Daily Sync</strong>: Brief status updates</li>
+                    <li><strong>Milestone Sync</strong>: Comprehensive review</li>
+                    <li><strong>Phase Sync</strong>: Strategic alignment</li>
+                    <li><strong>Emergency Sync</strong>: Issue resolution</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-exclamation-triangle"></i> Escalation Protocol</h3>
+                <p>Structured process for resolving issues:</p>
+                <ul>
+                    <li><strong>Issue Identification</strong>: Detect problem</li>
+                    <li><strong>Initial Resolution</strong>: Attempt resolution</li>
+                    <li><strong>Escalation Path</strong>: Escalate if needed</li>
+                    <li><strong>Resolution Tracking</strong>: Monitor progress</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-tasks"></i> Dependency Management</h3>
+                <p>Tracking and managing task dependencies:</p>
+                <ul>
+                    <li><strong>Dependency Mapping</strong>: Identify relationships</li>
+                    <li><strong>Blocker Resolution</strong>: Prioritize blockers</li>
+                    <li><strong>Cross-Agent Dependencies</strong>: Manage tasks</li>
+                    <li><strong>Critical Path Management</strong>: Focus on critical path</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Shared State Management</h2>
+        
+        <h3>Filesystem-Based Shared State</h3>
+        
+        <p>Implement robust shared state management using the filesystem:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ls -la /path/to/shared/state<br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 2 user group 4096 Jun 13 10:00 contexts/</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 2 user group 4096 Jun 13 10:00 coordination/</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 2 user group 4096 Jun 13 10:00 handoffs/</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 2 user group 4096 Jun 13 10:00 metrics/</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 2 user group 4096 Jun 13 10:00 projects/</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 2 user group 4096 Jun 13 10:00 status/</span><br>
+                <span style="color: var(--text-medium);">-rw-r--r-- 1 user group 4096 Jun 13 10:00 shared-config.json</span><br>
+                <span style="color: var(--text-medium);">-rw-r--r-- 1 user group 4096 Jun 13 10:00 shared-index.json</span><br>
+            </div>
+        </div>
+        
+        <p>Each agent reads from and writes to specific parts of the shared state directory structure, following strict protocols for access and updates.</p>
+        
+        <h3>Distributed State Management</h3>
+        
+        <p>For more advanced systems, implement a distributed state management system:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-database"></i> Shared Database</h3>
+                <p>Use a database for structured shared state:</p>
+                <ul>
+                    <li>Schema-based state representation</li>
+                    <li>Transaction support for consistency</li>
+                    <li>Query capabilities for efficient access</li>
+                    <li>Access control for security</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-network-wired"></i> Message Queue</h3>
+                <p>Use a message queue for asynchronous coordination:</p>
+                <ul>
+                    <li>Reliable message delivery</li>
+                    <li>Publish-subscribe patterns</li>
+                    <li>Priority-based processing</li>
+                    <li>Dead letter handling for errors</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-code-branch"></i> Version Control</h3>
+                <p>Use a version control system for shared artifacts:</p>
+                <ul>
+                    <li>History tracking for all changes</li>
+                    <li>Branching for parallel work</li>
+                    <li>Merging for conflict resolution</li>
+                    <li>Pull request workflow for reviews</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Real-Time Coordination</h3>
+        
+        <p>For time-sensitive coordination, implement real-time coordination mechanisms:</p>
+        
+        <ul>
+            <li><strong>Event-Driven Architecture</strong>: Respond to events in real-time</li>
+            <li><strong>WebSockets</strong>: Real-time communication channels</li>
+            <li><strong>Notification System</strong>: Immediate alerts for critical events</li>
+            <li><strong>Status Dashboard</strong>: Real-time visualization of system state</li>
+        </ul>
+
+        <h2>Specialized Collaboration Patterns</h2>
+        
+        <h3>Master-Worker Pattern</h3>
+        
+        <p>Implement a master-worker pattern for task distribution and coordination:</p>
+        
+        <div class="collaboration-diagram">
+            <h3>Master-Worker Pattern</h3>
+            <pre>
+                      ┌─────────────┐
+                      │    APEX     │
+                      │   (Master)  │
+                      └──────┬──────┘
+                             │
+        ┌──────────────┬─────┴────┬───────────────┐
+        │              │          │               │
+┌───────▼────────┐┌────▼─────┐┌───▼───────┐┌──────▼────────┐
+│   ANALYST 1    ││ ANALYST 2 ││ HISTORIAN ││   SPECIALIST  │
+│    (Worker)    ││  (Worker) ││  (Worker) ││    (Worker)   │
+└────────────────┘└───────────┘└───────────┘└───────────────┘
+            </pre>
+        </div>
+        
+        <p>The APEX agent acts as the master, distributing tasks to worker agents based on their specialized capabilities and current workload. The master handles coordination, conflict resolution, and prioritization.</p>
+        
+        <h3>Peer-to-Peer Pattern</h3>
+        
+        <p>Implement a peer-to-peer pattern for collaborative work with equal authority:</p>
+        
+        <div class="collaboration-diagram">
+            <h3>Peer-to-Peer Pattern</h3>
+            <pre>
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│    APEX     │◄───►│   ANALYST   │◄───►│  HISTORIAN  │
+│    (Peer)   │     │    (Peer)   │     │    (Peer)   │
+└──────┬──────┘     └──────┬──────┘     └──────┬──────┘
+       │                   │                   │
+       └───────────┬───────┘                   │
+                   │                           │
+                   └───────────────────────────┘
+            </pre>
+        </div>
+        
+        <p>All agents operate as peers with equal authority in their respective domains. Decisions are made collaboratively through consensus or voting mechanisms. This pattern works well for specialized teams with clear domain boundaries.</p>
+        
+        <h3>Pipeline Pattern</h3>
+        
+        <p>Implement a pipeline pattern for sequential processing of tasks:</p>
+        
+        <div class="collaboration-diagram">
+            <h3>Pipeline Pattern</h3>
+            <pre>
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│    INPUT    │────►│    STAGE 1  │────►│    STAGE 2  │────►│    OUTPUT   │
+│  (Source)   │     │    (APEX)   │     │  (ANALYST)  │     │ (HISTORIAN) │
+└─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+            </pre>
+        </div>
+        
+        <p>Tasks flow through a sequential pipeline with each agent performing specific operations before passing the result to the next stage. This pattern works well for workflows with clear sequential dependencies.</p>
+
+        <h2>Advanced Decision-Making Protocols</h2>
+        
+        <h3>Consensus-Based Decisions</h3>
+        
+        <p>Implement structured consensus protocols for important decisions:</p>
+        
+        <ol>
+            <li><strong>Proposal</strong>: Any agent can propose a decision</li>
+            <li><strong>Discussion</strong>: All agents provide input and analysis</li>
+            <li><strong>Revision</strong>: Proposal is refined based on feedback</li>
+            <li><strong>Voting</strong>: Agents vote on the final proposal</li>
+            <li><strong>Implementation</strong>: Decision is implemented if consensus is reached</li>
+            <li><strong>Documentation</strong>: Decision and rationale are documented</li>
+        </ol>
+        
+        <h3>Domain-Based Authority</h3>
+        
+        <p>Implement clear authority boundaries based on agent domains:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-crown"></i> APEX Authority</h3>
+                <ul>
+                    <li>System architecture decisions</li>
+                    <li>Strategic planning and direction</li>
+                    <li>Resource allocation</li>
+                    <li>Cross-team coordination</li>
+                    <li>Final conflict resolution</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-chart-line"></i> ANALYST Authority</h3>
+                <ul>
+                    <li>Performance optimization</li>
+                    <li>Data analysis methodology</li>
+                    <li>Implementation details</li>
+                    <li>Code quality standards</li>
+                    <li>Technical debt management</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-book"></i> HISTORIAN Authority</h3>
+                <ul>
+                    <li>Documentation standards</li>
+                    <li>Knowledge management</li>
+                    <li>Historical record maintenance</li>
+                    <li>Reference architecture</li>
+                    <li>Compliance documentation</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Escalation Procedures</h3>
+        
+        <p>Implement structured escalation procedures for conflict resolution:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## Escalation Procedure</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Level 1: Direct Resolution</span><br>
+                <span style="color: var(--text-medium);">- Agents involved attempt to resolve directly</span><br>
+                <span style="color: var(--text-medium);">- Maximum time: 1 UNIT</span><br>
+                <span style="color: var(--text-medium);">- If resolved: Document in STATUS.md</span><br>
+                <span style="color: var(--text-medium);">- If unresolved: Escalate to Level 2</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Level 2: APEX Mediation</span><br>
+                <span style="color: var(--text-medium);">- APEX agent reviews and provides mediation</span><br>
+                <span style="color: var(--text-medium);">- Maximum time: 1 UNIT</span><br>
+                <span style="color: var(--text-medium);">- If resolved: Document in STATUS.md</span><br>
+                <span style="color: var(--text-medium);">- If unresolved: Escalate to Level 3</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Level 3: Team Review</span><br>
+                <span style="color: var(--text-medium);">- All Trinity agents review together</span><br>
+                <span style="color: var(--text-medium);">- Maximum time: 2 UNITs</span><br>
+                <span style="color: var(--text-medium);">- If resolved: Document in STATUS.md and AAR</span><br>
+                <span style="color: var(--text-medium);">- If unresolved: Escalate to Level 4</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Level 4: Human Operator</span><br>
+                <span style="color: var(--text-medium);">- Escalate to human operator with options</span><br>
+                <span style="color: var(--text-medium);">- Provide comprehensive context</span><br>
+                <span style="color: var(--text-medium);">- Present decision options with pros/cons</span><br>
+                <span style="color: var(--text-medium);">- Implement human decision</span><br>
+                <span style="color: var(--text-medium);">- Document in STATUS.md and create Incident AAR</span><br>
+            </div>
+        </div>
+
+        <h2>Cross-Domain Knowledge Sharing</h2>
+        
+        <h3>Knowledge Graph</h3>
+        
+        <p>Implement a knowledge graph for structured cross-domain knowledge representation:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// In knowledge-graph.js</span><br>
+                <span style="color: var(--text-medium);">class KnowledgeGraph {</span><br>
+                <span style="color: var(--text-medium);">  constructor() {</span><br>
+                <span style="color: var(--text-medium);">    this.nodes = {};</span><br>
+                <span style="color: var(--text-medium);">    this.edges = [];</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  addNode(id, type, properties) {</span><br>
+                <span style="color: var(--text-medium);">    this.nodes[id] = {</span><br>
+                <span style="color: var(--text-medium);">      id,</span><br>
+                <span style="color: var(--text-medium);">      type,</span><br>
+                <span style="color: var(--text-medium);">      properties,</span><br>
+                <span style="color: var(--text-medium);">      createdAt: new Date().toISOString(),</span><br>
+                <span style="color: var(--text-medium);">      updatedAt: new Date().toISOString()</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  addEdge(sourceId, targetId, relationship, properties = {}) {</span><br>
+                <span style="color: var(--text-medium);">    const edge = {</span><br>
+                <span style="color: var(--text-medium);">      id: `${sourceId}-${relationship}-${targetId}`,</span><br>
+                <span style="color: var(--text-medium);">      sourceId,</span><br>
+                <span style="color: var(--text-medium);">      targetId,</span><br>
+                <span style="color: var(--text-medium);">      relationship,</span><br>
+                <span style="color: var(--text-medium);">      properties,</span><br>
+                <span style="color: var(--text-medium);">      createdAt: new Date().toISOString()</span><br>
+                <span style="color: var(--text-medium);">    };</span><br>
+                <span style="color: var(--text-medium);">    this.edges.push(edge);</span><br>
+                <span style="color: var(--text-medium);">  }</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">  // Query methods</span><br>
+                <span style="color: var(--text-medium);">  getNodeById(id) { ... }</span><br>
+                <span style="color: var(--text-medium);">  getNodesByType(type) { ... }</span><br>
+                <span style="color: var(--text-medium);">  getRelatedNodes(nodeId, relationship) { ... }</span><br>
+                <span style="color: var(--text-medium);">  findPath(sourceId, targetId) { ... }</span><br>
+                <span style="color: var(--text-medium);">  export() { ... }</span><br>
+                <span style="color: var(--text-medium);">  import(data) { ... }</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+        
+        <p>The knowledge graph connects concepts, resources, and artifacts across domains, providing a unified view of system knowledge.</p>
+        
+        <h3>Shared Concept Dictionary</h3>
+        
+        <p>Implement a shared concept dictionary for consistent terminology:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">// shared-concepts.json</span><br>
+                <span style="color: var(--text-medium);">{</span><br>
+                <span style="color: var(--text-medium);">  "concepts": [</span><br>
+                <span style="color: var(--text-medium);">    {</span><br>
+                <span style="color: var(--text-medium);">      "term": "Context Resilience",</span><br>
+                <span style="color: var(--text-medium);">      "definition": "The ability to maintain operational continuity across context resets.",</span><br>
+                <span style="color: var(--text-medium);">      "domain": "Framework",</span><br>
+                <span style="color: var(--text-medium);">      "relatedTerms": ["Auto-Compact Recovery", "Protocol-Based Recovery", "Checkpointing"],</span><br>
+                <span style="color: var(--text-medium);">      "examples": ["Using protocol files to maintain state", "Checkpoint creation before resets"],</span><br>
+                <span style="color: var(--text-medium);">      "primaryOwner": "APEX",</span><br>
+                <span style="color: var(--text-medium);">      "contributors": ["ANALYST", "HISTORIAN"]</span><br>
+                <span style="color: var(--text-medium);">    },</span><br>
+                <span style="color: var(--text-medium);">    // Additional concepts...</span><br>
+                <span style="color: var(--text-medium);">  ]</span><br>
+                <span style="color: var(--text-medium);">}</span><br>
+            </div>
+        </div>
+        
+        <h3>Cross-Domain Documentation</h3>
+        
+        <p>Implement comprehensive cross-domain documentation to facilitate knowledge sharing:</p>
+        
+        <ul>
+            <li><strong>Interface Documentation</strong>: Detailed documentation of all cross-domain interfaces</li>
+            <li><strong>Integration Patterns</strong>: Documented patterns for cross-domain integration</li>
+            <li><strong>Shared Resources</strong>: Documentation of resources shared across domains</li>
+            <li><strong>Cross-References</strong>: Comprehensive cross-references between domain documentation</li>
+        </ul>
+
+        <h2>Agent Synchronization Mechanisms</h2>
+        
+        <h3>Status Synchronization</h3>
+        
+        <p>Implement regular status synchronization to maintain alignment:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## Coordination Status</span><br>
+                <span style="color: var(--text-medium);">**Last Updated**: 2025-06-13 10:45:00</span><br>
+                <span style="color: var(--text-medium);">**Sync Type**: Daily (UNIT Sync)</span><br>
+                <span style="color: var(--text-medium);">**Status**: All agents synchronized</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### APEX Status</span><br>
+                <span style="color: var(--text-medium);">- **Current Focus**: Architecture review for Component X</span><br>
+                <span style="color: var(--text-medium);">- **Blockers**: None</span><br>
+                <span style="color: var(--text-medium);">- **Next Steps**: Design review with ANALYST</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### ANALYST Status</span><br>
+                <span style="color: var(--text-medium);">- **Current Focus**: Performance analysis of Module Y</span><br>
+                <span style="color: var(--text-medium);">- **Blockers**: Waiting for metrics from production</span><br>
+                <span style="color: var(--text-medium);">- **Next Steps**: Optimize critical path functions</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### HISTORIAN Status</span><br>
+                <span style="color: var(--text-medium);">- **Current Focus**: API documentation updates</span><br>
+                <span style="color: var(--text-medium);">- **Blockers**: None</span><br>
+                <span style="color: var(--text-medium);">- **Next Steps**: Update user guides with new features</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Shared Tasks</span><br>
+                <span style="color: var(--text-medium);">1. Component X Review</span><br>
+                <span style="color: var(--text-medium);">   - **Owner**: APEX</span><br>
+                <span style="color: var(--text-medium);">   - **Contributors**: ANALYST, HISTORIAN</span><br>
+                <span style="color: var(--text-medium);">   - **Status**: In progress (70%)</span><br>
+                <span style="color: var(--text-medium);">   - **Due**: 2025-06-14</span><br>
+            </div>
+        </div>
+        
+        <h3>Task Tracking System</h3>
+        
+        <p>Implement a comprehensive task tracking system for coordination:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-tasks"></i> Task Definition</h3>
+                <ul>
+                    <li><strong>ID</strong>: Unique task identifier</li>
+                    <li><strong>Title</strong>: Descriptive task name</li>
+                    <li><strong>Description</strong>: Detailed task description</li>
+                    <li><strong>Owner</strong>: Primary responsible agent</li>
+                    <li><strong>Contributors</strong>: Supporting agents</li>
+                    <li><strong>Status</strong>: Current task status</li>
+                    <li><strong>Priority</strong>: Task importance</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-link"></i> Task Relationships</h3>
+                <ul>
+                    <li><strong>Dependencies</strong>: Tasks this depends on</li>
+                    <li><strong>Blockers</strong>: Tasks blocking progress</li>
+                    <li><strong>Related Tasks</strong>: Connected tasks</li>
+                    <li><strong>Parent Task</strong>: Higher-level task</li>
+                    <li><strong>Subtasks</strong>: Component tasks</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-clipboard-check"></i> Task Lifecycle</h3>
+                <ul>
+                    <li><strong>Created</strong>: Initial task creation</li>
+                    <li><strong>Planned</strong>: Task planning completed</li>
+                    <li><strong>In Progress</strong>: Active work</li>
+                    <li><strong>Review</strong>: Task under review</li>
+                    <li><strong>Completed</strong>: Task finished</li>
+                    <li><strong>Archived</strong>: Task archived</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Resource Coordination</h3>
+        
+        <p>Implement resource coordination to prevent conflicts:</p>
+        
+        <ul>
+            <li><strong>File Locking</strong>: Prevent concurrent edits to shared files</li>
+            <li><strong>Resource Reservation</strong>: Allow agents to reserve resources</li>
+            <li><strong>Conflict Detection</strong>: Detect and resolve resource conflicts</li>
+            <li><strong>Version Control</strong>: Track changes to shared resources</li>
+        </ul>
+
+        <h2>Enterprise Integration</h2>
+        
+        <h3>Integration with Project Management</h3>
+        
+        <p>Integrate agent collaboration with enterprise project management systems:</p>
+        
+        <ul>
+            <li><strong>Jira Integration</strong>: Sync tasks with Jira issues</li>
+            <li><strong>GitHub Integration</strong>: Connect with GitHub issues and PRs</li>
+            <li><strong>Asana Integration</strong>: Link to Asana tasks and projects</li>
+            <li><strong>Custom API Integrations</strong>: Connect with other PM tools</li>
+        </ul>
+        
+        <h3>Monitoring and Alerts</h3>
+        
+        <p>Implement monitoring and alerting for collaboration health:</p>
+        
+        <ul>
+            <li><strong>Collaboration Metrics</strong>: Track collaboration effectiveness</li>
+            <li><strong>Alert System</strong>: Notify on collaboration issues</li>
+            <li><strong>Status Dashboard</strong>: Visual display of collaboration health</li>
+            <li><strong>Performance Indicators</strong>: Track key collaboration KPIs</li>
+        </ul>
+        
+        <h3>Compliance and Auditing</h3>
+        
+        <p>Implement compliance features for enterprise requirements:</p>
+        
+        <ul>
+            <li><strong>Audit Trails</strong>: Track all collaboration activities</li>
+            <li><strong>Compliance Reporting</strong>: Generate compliance reports</li>
+            <li><strong>Security Controls</strong>: Implement access controls</li>
+            <li><strong>Data Retention</strong>: Manage collaboration history</li>
+        </ul>
+
+        <h2>Next Steps</h2>
+        
+        <p>After implementing advanced agent collaboration, consider these next steps:</p>
+        
+        <div class="card-grid">
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-memory"></i> Advanced Context Management</h3>
+                <p>Implement sophisticated context management techniques</p>
+                <a href="context-management.html" class="card-link">Read Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-tachometer-alt"></i> Interactive Token Tracking</h3>
+                <p>Implement advanced token tracking visualization</p>
+                <a href="interactive-token-tracking.html" class="card-link">View Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-sitemap"></i> Enterprise Patterns</h3>
+                <p>Implement enterprise-grade collaboration patterns</p>
+                <a href="../guides/enterprise-patterns.html" class="card-link">Explore Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-graduation-cap"></i> Advanced Trinity Models</h3>
+                <p>Implement complex Trinity Model variations</p>
+                <a href="../guides/advanced-trinity-models.html" class="card-link">Read Guide</a>
+            </div>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script src="../js/animation.js"></script>
+</body>
+</html>

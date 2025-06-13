@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAR System - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Guides</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">AAR System</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>After Action Review (AAR) System</h1>
+        
+        <p>The After Action Review (AAR) system is a structured knowledge preservation mechanism designed to maintain continuity across context resets in the Trinity Framework. This guide explains how to implement and use the AAR system to document experiences, learn from them, and recover information after context window limitations.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: The AAR system is a critical component of context resilience, enabling agents to preserve knowledge across sessions even when context windows are cleared or limited.</p>
+        </div>
+
+        <h2>Overview</h2>
+        
+        <p>The AAR system uses a two-tier approach to knowledge preservation:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-alt"></i> Tier 1: Session AARs</h3>
+                <p>Lightweight session documentation created after each significant work session:</p>
+                <ul>
+                    <li>Format: YYYY-MM-DD-description.md</li>
+                    <li>Location: ./AAR/sessions/</li>
+                    <li>Purpose: Quick context restoration across sessions</li>
+                    <li>Length: 20-50 lines covering key learnings</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-medical-alt"></i> Tier 2: Incident AARs</h3>
+                <p>Comprehensive analysis documents created after major incidents or challenges:</p>
+                <ul>
+                    <li>Format: DESCRIPTIVE-NAME-RCA.md (Root Cause Analysis)</li>
+                    <li>Location: ./AAR/incidents/</li>
+                    <li>Purpose: Deep technical knowledge preservation</li>
+                    <li>Length: 100+ lines with detailed technical documentation</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Directory Structure</h2>
+        
+        <p>The AAR system uses a standardized directory structure in each agent workspace:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">/path/to/agent/workspace/</span><br>
+                <span style="color: var(--text-medium);">└── AAR/                      # After Action Review root directory</span><br>
+                <span style="color: var(--text-medium);">    ├── sessions/             # Daily session learnings</span><br>
+                <span style="color: var(--text-medium);">    │   ├── 2025-06-12-documentation-update.md</span><br>
+                <span style="color: var(--text-medium);">    │   ├── 2025-06-13-token-tracking-implementation.md</span><br>
+                <span style="color: var(--text-medium);">    │   └── ... </span><br>
+                <span style="color: var(--text-medium);">    └── incidents/            # Major incident analysis</span><br>
+                <span style="color: var(--text-medium);">        ├── API-DOCUMENTATION-FAILURE-RCA.md</span><br>
+                <span style="color: var(--text-medium);">        ├── GITHUB-PAGES-SYNC-ISSUE-RCA.md</span><br>
+                <span style="color: var(--text-medium);">        └── ... </span><br>
+            </div>
+        </div>
+
+        <h2>Session AAR Creation</h2>
+        
+        <p>Session AARs should be created after each significant work session, especially before potential context resets.</p>
+        
+        <h3>When to Create Session AARs</h3>
+        
+        <ul>
+            <li>After completing significant tasks</li>
+            <li>At the end of daily work sessions</li>
+            <li>When reaching context utilization thresholds (e.g., 75%+)</li>
+            <li>Before planned context resets</li>
+            <li>After discovering important information or techniques</li>
+        </ul>
+        
+        <h3>Session AAR Format</h3>
+        
+        <p>Follow this standardized format for session AARs:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);"># AAR: [Brief Description of Session]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">**Date**: YYYY-MM-DD</span><br>
+                <span style="color: var(--text-medium);">**Agent**: [AGENT-NAME]</span><br>
+                <span style="color: var(--text-medium);">**Project**: [Project Name]</span><br>
+                <span style="color: var(--text-medium);">**Task**: [Primary Task Description]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Overview</span><br>
+                <span style="color: var(--text-medium);">[1-2 paragraph summary of what was done]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## What Worked Well</span><br>
+                <span style="color: var(--text-medium);">1. [Item 1]</span><br>
+                <span style="color: var(--text-medium);">2. [Item 2]</span><br>
+                <span style="color: var(--text-medium);">3. [Item 3]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## What Didn't Work Well</span><br>
+                <span style="color: var(--text-medium);">1. [Item 1]</span><br>
+                <span style="color: var(--text-medium);">2. [Item 2]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Lessons Learned</span><br>
+                <span style="color: var(--text-medium);">[Key insights and lessons from the session]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Next Time</span><br>
+                <span style="color: var(--text-medium);">[What to do differently or focus on next time]</span><br>
+            </div>
+        </div>
+        
+        <div class="warning">
+            <p><strong>Important</strong>: Keep session AARs concise (20-50 lines) and focused on key learnings. They should be quick to create and easy to review during recovery.</p>
+        </div>
+
+        <h2>Incident AAR Creation</h2>
+        
+        <p>Incident AARs provide comprehensive documentation for major challenges, errors, or significant implementations.</p>
+        
+        <h3>When to Create Incident AARs</h3>
+        
+        <ul>
+            <li>After encountering and resolving significant errors</li>
+            <li>Following major system implementations or changes</li>
+            <li>When discovering complex patterns or solutions worth preserving</li>
+            <li>After challenging debugging sessions</li>
+            <li>When implementing critical framework components</li>
+        </ul>
+        
+        <h3>Incident AAR Format</h3>
+        
+        <p>Follow this standardized format for incident AARs:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);"># RCA: [DESCRIPTIVE-TITLE-OF-INCIDENT]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">**Date**: YYYY-MM-DD</span><br>
+                <span style="color: var(--text-medium);">**Agent**: [AGENT-NAME]</span><br>
+                <span style="color: var(--text-medium);">**Category**: [Technical Area]</span><br>
+                <span style="color: var(--text-medium);">**Severity**: [High/Medium/Low]</span><br>
+                <span style="color: var(--text-medium);">**Resolution Status**: [Resolved/Partially Resolved/Unresolved]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Incident Summary</span><br>
+                <span style="color: var(--text-medium);">[Concise summary of the incident or challenge]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Technical Details</span><br>
+                <span style="color: var(--text-medium);">[Detailed technical description including code, configuration, etc.]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Root Cause Analysis</span><br>
+                <span style="color: var(--text-medium);">[In-depth analysis of what caused the issue]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Resolution Steps</span><br>
+                <span style="color: var(--text-medium);">[Detailed step-by-step resolution process]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Prevention Measures</span><br>
+                <span style="color: var(--text-medium);">[How to prevent similar issues in the future]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Related Resources</span><br>
+                <span style="color: var(--text-medium);">[Links to documentation, code, or other resources]</span><br>
+            </div>
+        </div>
+        
+        <p>Incident AARs should be comprehensive (100+ lines) and include all technical details needed to fully understand and address similar issues in the future.</p>
+
+        <h2>Using AARs for Recovery</h2>
+        
+        <p>The AAR system is designed to aid in rapid recovery after context resets:</p>
+        
+        <h3>Recovery Process Using AARs</h3>
+        
+        <ol>
+            <li>After a context reset, first read protocol files (AGENT.md, STATUS.md, AUTO-COMPACT.md)</li>
+            <li>Check for recent session AARs to understand current work context</li>
+            <li>If working on a known issue, check for relevant incident AARs</li>
+            <li>Use the knowledge preserved in AARs to restore operational awareness</li>
+            <li>Reference specific techniques or solutions documented in AARs</li>
+        </ol>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-historian-workspace<br>
+                <span style="color: var(--neon-blue);">$</span> ls -lt AAR/sessions/ | head -5<br>
+                <span style="color: var(--text-medium);">-rw-r--r-- 1 user user 2540 Jun 13 15:30 2025-06-13-html-documentation-github-pages-deployment.md</span><br>
+                <span style="color: var(--text-medium);">-rw-r--r-- 1 user user 3102 Jun 12 17:45 2025-06-12-html-documentation-structure-implementation.md</span><br>
+                <span style="color: var(--text-medium);">-rw-r--r-- 1 user user 1827 Jun 11 09:20 2025-06-11-token-tracking-implementation.md</span><br>
+                <span style="color: var(--neon-blue);">$</span> cat AAR/sessions/2025-06-13-html-documentation-github-pages-deployment.md<br>
+            </div>
+        </div>
+
+        <h2>AAR Best Practices</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-calendar-alt"></i> Consistent Creation</h3>
+                <ul>
+                    <li>Create session AARs at the end of each significant work session</li>
+                    <li>Don't wait until context is almost full to create AARs</li>
+                    <li>Establish a regular cadence for AAR creation</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-signature"></i> Clear Naming</h3>
+                <ul>
+                    <li>Use descriptive, searchable names for AAR files</li>
+                    <li>Follow strict date format for session AARs</li>
+                    <li>Use ALL-CAPS for incident AAR names for visibility</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-search"></i> Searchable Content</h3>
+                <ul>
+                    <li>Use clear section headings and consistent formatting</li>
+                    <li>Include specific technical terms for searchability</li>
+                    <li>Use code blocks for technical details</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-link"></i> Cross-Referencing</h3>
+                <ul>
+                    <li>Reference related AARs when applicable</li>
+                    <li>Link to external documentation or resources</li>
+                    <li>Maintain consistency across reference formats</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Example Session AAR</h3>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);"># AAR: Token Tracking Implementation</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">**Date**: 2025-06-11</span><br>
+                <span style="color: var(--text-medium);">**Agent**: HISTORIAN</span><br>
+                <span style="color: var(--text-medium);">**Project**: Trinity Framework 2.0 Core</span><br>
+                <span style="color: var(--text-medium);">**Task**: Implement token tracking system</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Overview</span><br>
+                <span style="color: var(--text-medium);">Implemented the token tracking system using the context-manager-v2 module. Set up visualization, tracking, and checkpoint creation functionality. Updated AUTO-COMPACT.md with the tracking directive.</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## What Worked Well</span><br>
+                <span style="color: var(--text-medium);">1. Using the predefined operation types for consistent tracking</span><br>
+                <span style="color: var(--text-medium);">2. The visual progress bar is effective for quick context assessment</span><br>
+                <span style="color: var(--text-medium);">3. Automatic checkpoint creation at thresholds works reliably</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## What Didn't Work Well</span><br>
+                <span style="color: var(--text-medium);">1. Initial path configuration was incorrect, causing execution errors</span><br>
+                <span style="color: var(--text-medium);">2. State persistence requires absolute paths that must be workspace-specific</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Lessons Learned</span><br>
+                <span style="color: var(--text-medium);">Always use absolute paths for token tracking configuration. The token estimates for different operation types are approximate and may need adjustment based on actual usage patterns.</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Next Time</span><br>
+                <span style="color: var(--text-medium);">Create a template for the token tracking directive that can be easily copied into AUTO-COMPACT.md. Consider automating the checkpoint restoration process.</span><br>
+            </div>
+        </div>
+
+        <h3>Example Incident AAR</h3>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);"># RCA: GITHUB-PAGES-DEPLOYMENT-FAILURE</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">**Date**: 2025-06-12</span><br>
+                <span style="color: var(--text-medium);">**Agent**: HISTORIAN</span><br>
+                <span style="color: var(--text-medium);">**Category**: Documentation Deployment</span><br>
+                <span style="color: var(--text-medium);">**Severity**: High</span><br>
+                <span style="color: var(--text-medium);">**Resolution Status**: Resolved</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Incident Summary</span><br>
+                <span style="color: var(--text-medium);">GitHub Pages deployment failed due to incorrect file paths in HTML files, resulting in broken links and missing resources when viewing the deployed site.</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Technical Details</span><br>
+                <span style="color: var(--text-medium);">[Detailed technical information including file paths, HTML code, etc.]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Root Cause Analysis</span><br>
+                <span style="color: var(--text-medium);">[In-depth analysis of what caused the issue]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Resolution Steps</span><br>
+                <span style="color: var(--text-medium);">[Detailed step-by-step resolution process]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Prevention Measures</span><br>
+                <span style="color: var(--text-medium);">[How to prevent similar issues in the future]</span><br>
+            </div>
+        </div>
+
+        <h2>AAR System Implementation</h2>
+        
+        <p>Follow these steps to implement the AAR system in your Trinity Framework workspaces:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-apex-workspace<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p AAR/sessions AAR/incidents<br>
+                <span style="color: var(--neon-blue);">$</span> touch AAR/README.md<br>
+                <span style="color: var(--neon-blue);">$</span> echo "# After Action Review (AAR) System" > AAR/README.md<br>
+                <span style="color: var(--neon-blue);">$</span> echo "- sessions/: Daily session learnings" >> AAR/README.md<br>
+                <span style="color: var(--neon-blue);">$</span> echo "- incidents/: Major incident analysis" >> AAR/README.md<br>
+            </div>
+        </div>
+        
+        <p>Repeat these steps for each agent workspace (ANALYST, HISTORIAN, etc.).</p>
+        
+        <h3>Creating AAR Templates</h3>
+        
+        <p>Create templates for session and incident AARs to ensure consistency:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cd ~/trinity/trinity-framework-core/templates<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p aar<br>
+                <span style="color: var(--neon-blue);">$</span> touch aar/session-aar-template.md<br>
+                <span style="color: var(--neon-blue);">$</span> touch aar/incident-aar-template.md<br>
+                <span style="color: var(--neon-blue);">$</span> nano aar/session-aar-template.md<br>
+                <span style="color: var(--neon-blue);">$</span> nano aar/incident-aar-template.md<br>
+            </div>
+        </div>
+        
+        <p>These templates can then be copied and used when creating new AARs:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cp ~/trinity/trinity-framework-core/templates/aar/session-aar-template.md ~/trinity/trinity-historian-workspace/AAR/sessions/$(date +%Y-%m-%d)-description.md<br>
+                <span style="color: var(--neon-blue);">$</span> nano ~/trinity/trinity-historian-workspace/AAR/sessions/$(date +%Y-%m-%d)-description.md<br>
+            </div>
+        </div>
+
+        <h2>Next Steps</h2>
+        
+        <p>After implementing the AAR system, continue to:</p>
+        
+        <div class="card-grid">
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-sync"></i> Auto-Compact Recovery</h3>
+                <p>Learn how to integrate AARs with auto-compact recovery procedures</p>
+                <a href="auto-compact-recovery.html" class="card-link">Read Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-memory"></i> Token Tracking</h3>
+                <p>Implement token tracking to monitor context utilization</p>
+                <a href="token-tracking.html" class="card-link">View Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-folder-open"></i> Workspace Organization</h3>
+                <p>Learn about standardized workspace organization</p>
+                <a href="workspace-organization.html" class="card-link">Explore Guide</a>
+            </div>
+            
+            <div class="card next-step-card">
+                <h3 class="card-title"><i class="fas fa-users"></i> Multi-Agent Collaboration</h3>
+                <p>Implement effective collaboration across multiple agents</p>
+                <a href="../principles/multi-agent-collaboration.html" class="card-link">Read Guide</a>
+            </div>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script src="../js/animation.js"></script>
+</body>
+</html>

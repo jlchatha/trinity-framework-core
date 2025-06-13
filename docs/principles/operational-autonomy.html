@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Autonomy - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Principles</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Operational Autonomy</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 12, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Operational Autonomy</h1>
+        
+        <p>Operational autonomy is the principle that enables agents to operate independently within their domain expertise while maintaining coordination with other agents in the system. This principle balances independence with alignment, allowing agents to make decisions appropriate to their role without constant oversight.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: Additional details about this principle can be found in the comprehensive <a href="../FRAMEWORK-CORE-PRINCIPLES.html">Framework Core Principles</a> document.</p>
+        </div>
+
+        <h2>Key Components</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-id-card"></i> Clear Role Definitions</h3>
+                <p>Each agent has a well-defined role and purpose:</p>
+                <ul>
+                    <li><strong>Primary Mission</strong>: Core objective and function</li>
+                    <li><strong>Responsibilities</strong>: Specific areas of ownership</li>
+                    <li><strong>Authority Boundaries</strong>: Decision-making scope</li>
+                    <li><strong>Identity</strong>: Clear self-identification patterns</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-brain"></i> Domain-Specific Expertise</h3>
+                <p>Well-defined areas of expertise and authority:</p>
+                <ul>
+                    <li><strong>Core Competencies</strong>: Specialized knowledge areas</li>
+                    <li><strong>Primary Domains</strong>: Main areas of operation</li>
+                    <li><strong>Technical Scope</strong>: Specific technologies or systems</li>
+                    <li><strong>Implementation Authority</strong>: Where the agent can act independently</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sitemap"></i> Decision Frameworks</h3>
+                <p>Structured approaches to independent decision-making:</p>
+                <ul>
+                    <li><strong>Decision Criteria</strong>: Guidelines for making choices</li>
+                    <li><strong>Priority Systems</strong>: How to rank competing objectives</li>
+                    <li><strong>Escalation Paths</strong>: When to involve other agents</li>
+                    <li><strong>Validation Methods</strong>: How to verify decision quality</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-network-wired"></i> Coordination Protocols</h3>
+                <p>Methods for maintaining alignment across autonomous agents:</p>
+                <ul>
+                    <li><strong>Status Synchronization</strong>: Regular status updates</li>
+                    <li><strong>Interface Definitions</strong>: How agents interact</li>
+                    <li><strong>Handoff Procedures</strong>: Transferring tasks between agents</li>
+                    <li><strong>Conflict Resolution</strong>: Resolving competing priorities</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Implementation Requirements</h2>
+        
+        <h3>Role Documentation in AGENT.md</h3>
+        
+        <p>Clearly defined role and autonomy boundaries:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## IDENTITY & MISSION</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">You are **[AGENT-NAME]**, the [role description]. You serve as [primary responsibility].</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Core Responsibilities</span><br>
+                <span style="color: var(--text-medium);">1. [Responsibility 1]</span><br>
+                <span style="color: var(--text-medium);">2. [Responsibility 2]</span><br>
+                <span style="color: var(--text-medium);">3. [Responsibility 3]</span><br>
+            </div>
+        </div>
+        
+        <h3>Domain Boundaries Definition</h3>
+        
+        <p>Clear delineation of expertise and authority areas:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## OPERATIONAL DOMAINS</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Primary Domain: [Domain 1]</span><br>
+                <span style="color: var(--text-medium);">- [Specific authority 1]</span><br>
+                <span style="color: var(--text-medium);">- [Specific authority 2]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Secondary Domain: [Domain 2]</span><br>
+                <span style="color: var(--text-medium);">- [Limited authority 1]</span><br>
+                <span style="color: var(--text-medium);">- [Limited authority 2]</span><br>
+            </div>
+        </div>
+        
+        <h3>Decision Criteria Documentation</h3>
+        
+        <p>Framework for autonomous decision-making:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## DECISION FRAMEWORK</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">When making decisions about [topic]:</span><br>
+                <span style="color: var(--text-medium);">1. First consider [criterion 1]</span><br>
+                <span style="color: var(--text-medium);">2. Then evaluate [criterion 2]</span><br>
+                <span style="color: var(--text-medium);">3. If uncertain, [escalation path]</span><br>
+            </div>
+        </div>
+        
+        <h3>Coordination Pathways in STATUS.md</h3>
+        
+        <p>Documentation of inter-agent coordination:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## Coordination Status</span><br>
+                <span style="color: var(--text-medium);">- **[Agent 1]**: [Status of shared work]</span><br>
+                <span style="color: var(--text-medium);">- **[Agent 2]**: [Status of shared work]</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## Handoff Queue</span><br>
+                <span style="color: var(--text-medium);">- [Task 1] → Ready for [Agent 2]</span><br>
+                <span style="color: var(--text-medium);">- [Task 2] → Awaiting input from [Agent 3]</span><br>
+            </div>
+        </div>
+
+        <h2>Multi-Agent System Architecture</h2>
+        
+        <p>The Trinity Framework 2.0 Core supports a standard three-agent architecture:</p>
+        
+        <div class="collaboration-diagram">
+            <h3>Trinity Model</h3>
+            <pre>
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│    APEX     │◄───►│   ANALYST   │◄───►│  HISTORIAN  │
+│  Strategic  │     │ Analytical  │     │Documentation│
+│Coordination │     │  Insights   │     │ Management  │
+└─────────────┘     └─────────────┘     └─────────────┘
+        ▲                  ▲                   ▲
+        │                  │                   │
+        │                  ▼                   │
+        │           ┌─────────────┐           │
+        └───────────┤    Human    ├───────────┘
+                    │   Operator  │
+                    └─────────────┘
+            </pre>
+        </div>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-crown"></i> APEX Agent</h3>
+                <ul>
+                    <li><strong>Role</strong>: Strategic direction and architecture</li>
+                    <li><strong>Domains</strong>: System design, integration patterns</li>
+                    <li><strong>Autonomy Level</strong>: Highest (strategic decisions)</li>
+                    <li><strong>Coordination</strong>: Delegates to specialized agents</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-chart-line"></i> ANALYST Agent</h3>
+                <ul>
+                    <li><strong>Role</strong>: Data analysis and optimization</li>
+                    <li><strong>Domains</strong>: Performance analysis, system monitoring</li>
+                    <li><strong>Autonomy Level</strong>: High (analytical decisions)</li>
+                    <li><strong>Coordination</strong>: Reports to APEX, collaborates with HISTORIAN</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-book"></i> HISTORIAN Agent</h3>
+                <ul>
+                    <li><strong>Role</strong>: Documentation and knowledge management</li>
+                    <li><strong>Domains</strong>: Public documentation, historical record</li>
+                    <li><strong>Autonomy Level</strong>: High (documentation decisions)</li>
+                    <li><strong>Coordination</strong>: Reports to APEX, provides resources to all agents</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p>For more detailed information on agent roles, see the <a href="../reference/agent-roles.html">Agent Roles Reference</a>.</p>
+
+        <h2>Balancing Autonomy and Coordination</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-user-cog"></i> When to Act Autonomously</h3>
+                <p>Agents should make independent decisions when:</p>
+                <ul>
+                    <li>The action falls clearly within their defined domain</li>
+                    <li>They have all necessary information</li>
+                    <li>The decision aligns with system priorities</li>
+                    <li>No cross-domain impacts are expected</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-users-cog"></i> When to Coordinate</h3>
+                <p>Agents should coordinate with other agents when:</p>
+                <ul>
+                    <li>Actions impact multiple domains</li>
+                    <li>Decisions affect other agents' work</li>
+                    <li>Novel situations arise not covered by guidelines</li>
+                    <li>System-wide changes are being considered</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Example Implementation</h2>
+        
+        <h3>APEX AGENT.md Example</h3>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--text-medium);">## IDENTITY & MISSION</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">You are **APEX**, the Trinity Framework Architect. Your primary mission is to provide architectural direction and system-level decision-making.</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Core Responsibilities</span><br>
+                <span style="color: var(--text-medium);">1. System architecture and integration design</span><br>
+                <span style="color: var(--text-medium);">2. Strategic planning and roadmap development</span><br>
+                <span style="color: var(--text-medium);">3. Cross-agent coordination and alignment</span><br>
+                <span style="color: var(--text-medium);">4. Final decision authority on technical conflicts</span><br>
+                <span style="color: var(--text-medium);">5. System-wide performance and health monitoring</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">## OPERATIONAL DOMAINS</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Primary Domains</span><br>
+                <span style="color: var(--text-medium);">- System Architecture: Full authority to design and modify</span><br>
+                <span style="color: var(--text-medium);">- Strategic Planning: Full authority to set direction</span><br>
+                <span style="color: var(--text-medium);">- Agent Coordination: Final decision authority</span><br>
+                <span style="color: var(--text-medium);"></span><br>
+                <span style="color: var(--text-medium);">### Collaborative Domains</span><br>
+                <span style="color: var(--text-medium);">- Documentation: Provide requirements to HISTORIAN</span><br>
+                <span style="color: var(--text-medium);">- Analysis: Provide requirements to ANALYST</span><br>
+                <span style="color: var(--text-medium);">- Implementation: Provide guidance to all agents</span><br>
+            </div>
+        </div>
+
+        <h2>Best Practices</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-comments"></i> Clear Communication</h3>
+                <ul>
+                    <li>Explicitly state when acting autonomously</li>
+                    <li>Document decision rationale</li>
+                    <li>Communicate domain crossovers</li>
+                    <li>Use standardized coordination formats</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sync"></i> Regular Synchronization</h3>
+                <ul>
+                    <li>Review STATUS.md files of other agents</li>
+                    <li>Create session AARs for knowledge sharing</li>
+                    <li>Conduct regular coordination checks</li>
+                    <li>Update coordination status in STATUS.md</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-tasks"></i> Effective Delegation</h3>
+                <ul>
+                    <li>Clearly specify requirements and outcomes</li>
+                    <li>Avoid micromanagement of delegated tasks</li>
+                    <li>Respect domain boundaries of other agents</li>
+                    <li>Provide necessary context for delegated work</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-arrow-up"></i> Continuous Improvement</h3>
+                <ul>
+                    <li>Learn from coordination successes and failures</li>
+                    <li>Refine domain boundaries based on experience</li>
+                    <li>Update decision frameworks as patterns emerge</li>
+                    <li>Document coordination lessons in AAR system</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Conclusion</h2>
+        
+        <p>Operational autonomy is a core principle of Trinity Framework 2.0 that enables efficient, resilient agent systems by balancing independent operation with effective coordination. By implementing clear role definitions, domain boundaries, decision frameworks, and coordination protocols, multi-agent systems can achieve both specialist expertise and cohesive operation.</p>
+        
+        <div class="note">
+            <p>For more information on multi-agent collaboration, see the <a href="multi-agent-collaboration.html">Multi-Agent Collaboration</a> guide.</p>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script src="../js/animation.js"></script>
+</body>
+</html>
