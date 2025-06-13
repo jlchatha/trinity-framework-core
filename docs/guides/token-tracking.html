@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Tracking Guide - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js/animation.js"></script>
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Guides</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Token Tracking</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Token Tracking Guide</h1>
+        
+        <p>Token tracking is a critical component of the Trinity Framework 2.0, enabling agents to monitor context utilization, create checkpoints, and recover effectively after context resets. This guide explains how to implement and use the token tracking system to maintain operational continuity.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: Effective token tracking is essential for context resilience. It allows agents to anticipate context limitations and prepare for graceful recovery when needed.</p>
+        </div>
+
+        <h2>Understanding Context Management</h2>
+        
+        <p>Context management in the Trinity Framework 2.0 involves tracking token usage, creating checkpoints at specific thresholds, and implementing recovery procedures after context resets. The token tracking system provides these capabilities through a set of specialized tools and protocols.</p>
+        
+        <h3>Key Concepts</h3>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-calculator"></i> Token Counting</h3>
+                <p>Tokens are the basic units of context consumed by language models. The token tracking system estimates token usage for different operations and maintains a running count of context utilization.</p>
+                <p><strong>Implementation</strong>: The <code>token-counter.js</code> module estimates tokens for different operation types and tracks total utilization.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-flag"></i> Thresholds</h3>
+                <p>Thresholds represent specific context utilization levels that trigger different actions, such as notifications, warnings, and checkpoint creation.</p>
+                <p><strong>Standard Thresholds</strong>:</p>
+                <ul>
+                    <li><strong>NOTICE</strong>: 65% - Initial awareness of context growth</li>
+                    <li><strong>WARNING</strong>: 75% - Create checkpoint and prepare for potential compact</li>
+                    <li><strong>ALERT</strong>: 85% - Final checkpoint creation and imminent compact warning</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-save"></i> Checkpoints</h3>
+                <p>Checkpoints are serialized state information that enable recovery after context resets. They capture critical operational state at specific thresholds or on demand.</p>
+                <p><strong>Implementation</strong>: The <code>checkpoint-manager.js</code> module creates, stores, and restores checkpoints.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sync"></i> Recovery</h3>
+                <p>Recovery procedures restore operational awareness after context resets, using checkpoints and protocol files to rebuild the agent's understanding of its current state and priorities.</p>
+                <p><strong>Implementation</strong>: The recovery system automatically detects context resets and initiates recovery protocols.</p>
+            </div>
+        </div>
+
+        <h2>Token Tracking System Architecture</h2>
+        
+        <p>The token tracking system consists of several integrated components:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">token-tracker/</span><br>
+                <span style="color: var(--text-medium);">├── context-manager-v2/</span><br>
+                <span style="color: var(--text-medium);">│   ├── bin/</span><br>
+                <span style="color: var(--text-medium);">│   │   ├── run-context-check.sh         # Main entry point script</span><br>
+                <span style="color: var(--text-medium);">│   │   ├── update-and-display.js        # Updates context state and displays visualization</span><br>
+                <span style="color: var(--text-medium);">│   │   ├── context-visualization.js     # Generates text-based visualizations</span><br>
+                <span style="color: var(--text-medium);">│   │   ├── recovery/</span><br>
+                <span style="color: var(--text-medium);">│   │   │   ├── auto-compact-detector.js # Detects auto-compact events</span><br>
+                <span style="color: var(--text-medium);">│   │   │   └── restore-checkpoint.js    # Restores from checkpoints</span><br>
+                <span style="color: var(--text-medium);">│   │   ├── setup/</span><br>
+                <span style="color: var(--text-medium);">│   │   │   └── install-dependencies.sh  # Sets up token tracking system</span><br>
+                <span style="color: var(--text-medium);">│   │   └── state/</span><br>
+                <span style="color: var(--text-medium);">│   │       ├── current-state.json       # Current context state</span><br>
+                <span style="color: var(--text-medium);">│   │       └── checkpoints/             # Checkpoint storage</span><br>
+                <span style="color: var(--text-medium);">│   └── lib/</span><br>
+                <span style="color: var(--text-medium);">│       ├── token-counter.js             # Token estimation module</span><br>
+                <span style="color: var(--text-medium);">│       └── checkpoint-manager.js        # Checkpoint management module</span><br>
+                <span style="color: var(--text-medium);">└── README.md                            # Documentation</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <h2>Installing the Token Tracking System</h2>
+        
+        <p>To install the token tracking system in your workspace:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> git clone https://github.com/jlchatha/trinity-framework-core.git<br>
+                <span style="color: var(--neon-blue);">$</span> mkdir -p ~/agent-workspace/tools/token-tracker<br>
+                <span style="color: var(--neon-blue);">$</span> cp -r trinity-framework-core/tools/token-tracker/* ~/agent-workspace/tools/token-tracker/<br>
+                <span style="color: var(--neon-blue);">$</span> cd ~/agent-workspace/tools/token-tracker/context-manager-v2/bin<br>
+                <span style="color: var(--neon-blue);">$</span> ./setup/install-dependencies.sh<br>
+                <span style="color: var(--text-medium);">Checking Node.js installation...</span><br>
+                <span style="color: var(--text-medium);">Creating directory structure...</span><br>
+                <span style="color: var(--text-medium);">Installing required packages...</span><br>
+                <span style="color: var(--text-medium);">Setting up state directory...</span><br>
+                <span style="color: var(--neon-green);">✓ Token tracking system installed successfully</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        
+        <p>Verify the installation with a basic context check:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh check ASSISTANT_SMALL<br>
+                <span style="color: var(--text-medium);">[Context: 0% ░░░░░░░░░░░░░░░░░░░░] Remaining: ~133 small operations</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <h2>Operation Types and Token Estimation</h2>
+        
+        <p>The token tracking system uses standardized operation types to estimate token usage:</p>
+        
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Operation Type</th>
+                <th>Estimated Tokens</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td rowspan="3">User Messages</td>
+                <td>USER_SMALL</td>
+                <td>~750</td>
+                <td>Brief user messages or commands</td>
+            </tr>
+            <tr>
+                <td>USER_MEDIUM</td>
+                <td>~2200</td>
+                <td>Standard user messages with moderate detail</td>
+            </tr>
+            <tr>
+                <td>USER_LARGE</td>
+                <td>~4400</td>
+                <td>Detailed user messages or complex instructions</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Assistant Responses</td>
+                <td>ASSISTANT_SMALL</td>
+                <td>~1500</td>
+                <td>Brief responses or simple explanations</td>
+            </tr>
+            <tr>
+                <td>ASSISTANT_MEDIUM</td>
+                <td>~4400</td>
+                <td>Standard responses with moderate detail</td>
+            </tr>
+            <tr>
+                <td>ASSISTANT_LARGE</td>
+                <td>~10000</td>
+                <td>Detailed responses or complex explanations</td>
+            </tr>
+            <tr>
+                <td rowspan="4">Tool Operations</td>
+                <td>TOOL_READ_SMALL</td>
+                <td>~1500</td>
+                <td>Reading small files (< 100 lines)</td>
+            </tr>
+            <tr>
+                <td>TOOL_READ_MEDIUM</td>
+                <td>~4400</td>
+                <td>Reading medium files (100-300 lines)</td>
+            </tr>
+            <tr>
+                <td>TOOL_READ_LARGE</td>
+                <td>~7500</td>
+                <td>Reading large files (> 300 lines)</td>
+            </tr>
+            <tr>
+                <td>TOOL_TASK</td>
+                <td>~6000</td>
+                <td>Executing complex task agent operations</td>
+            </tr>
+        </table>
+        
+        <p>When using the token tracking system, specify the appropriate operation type to ensure accurate context estimation:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh check OPERATION_TYPE<br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <h2>Using the Token Tracking System</h2>
+        
+        <h3>Standard Commands</h3>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title">Check Context Status</h3>
+                <p>Check current context utilization:</p>
+                <div class="terminal">
+                    <div class="terminal-content">
+                        <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh check ASSISTANT_MEDIUM<br>
+                        <span style="color: var(--text-medium);">[Context: 45% ▓▓▓▓▓▓▓▓▓░░░░░░░░░░░] Remaining: ~73 small operations</span><br>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Create Checkpoint</h3>
+                <p>Manually create a checkpoint:</p>
+                <div class="terminal">
+                    <div class="terminal-content">
+                        <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh checkpoint "Implementation milestone reached"<br>
+                        <span style="color: var(--text-medium);">Creating checkpoint at 45% utilization...</span><br>
+                        <span style="color: var(--neon-green);">✓ Checkpoint created: ckpt_manual_20250613_1</span><br>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Generate Report</h3>
+                <p>Generate detailed context report:</p>
+                <div class="terminal">
+                    <div class="terminal-content">
+                        <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh report<br>
+                        <span style="color: var(--text-medium);">Generating context report...</span><br>
+                        <span style="color: var(--text-medium);">Context Report - 2025-06-13 14:30:00</span><br>
+                        <span style="color: var(--text-medium);">- Utilization: 45% (90000/200000 tokens)</span><br>
+                        <span style="color: var(--text-medium);">- Operations: 38 (12 user, 15 assistant, 11 tool)</span><br>
+                        <span style="color: var(--text-medium);">- Checkpoints: 2 (ckpt_notice_20250613_1, ckpt_manual_20250613_1)</span><br>
+                        <span style="color: var(--text-medium);">- Estimated Remaining: ~10 large, ~29 medium, ~73 small operations</span><br>
+                        <span style="color: var(--neon-green);">✓ Report saved to reports/context-report-20250613.md</span><br>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Detect Auto-Compact</h3>
+                <p>Manually check if auto-compact has occurred:</p>
+                <div class="terminal">
+                    <div class="terminal-content">
+                        <span style="color: var(--neon-blue);">$</span> ./recovery/auto-compact-detector.js<br>
+                        <span style="color: var(--text-medium);">Checking for auto-compact events...</span><br>
+                        <span style="color: var(--text-medium);">Last state: 2025-06-13 14:30:00 (45% utilization)</span><br>
+                        <span style="color: var(--text-medium);">Current time: 2025-06-13 14:35:00</span><br>
+                        <span style="color: var(--neon-green);">✓ No auto-compact detected</span><br>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Automatic Threshold Actions</h3>
+        
+        <p>The token tracking system automatically performs specific actions when thresholds are crossed:</p>
+        
+        <table>
+            <tr>
+                <th>Threshold</th>
+                <th>Utilization</th>
+                <th>Automatic Actions</th>
+            </tr>
+            <tr>
+                <td>NOTICE</td>
+                <td>65%</td>
+                <td>
+                    <ul>
+                        <li>Display notice in visualization</li>
+                        <li>Update AUTO-COMPACT.md with current metrics</li>
+                        <li>Create NOTICE checkpoint if enabled</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>WARNING</td>
+                <td>75%</td>
+                <td>
+                    <ul>
+                        <li>Display warning in visualization</li>
+                        <li>Update AUTO-COMPACT.md with current metrics</li>
+                        <li>Create WARNING checkpoint (mandatory)</li>
+                        <li>Update STATUS.md with checkpoint information</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>ALERT</td>
+                <td>85%</td>
+                <td>
+                    <ul>
+                        <li>Display alert in visualization</li>
+                        <li>Update AUTO-COMPACT.md with current metrics</li>
+                        <li>Create ALERT checkpoint (mandatory)</li>
+                        <li>Update STATUS.md with checkpoint information</li>
+                        <li>Suggest auto-compact to human operator</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Implementing Context Tracking in Agent Responses</h2>
+        
+        <p>Framework 2.0 requires agents to include context tracking output with every response. This is implemented by adding a standard block at the end of each response:</p>
+        
+        <div class="card">
+            <h3 class="card-title">Required Context Tracking Implementation</h3>
+            <p>Add the following to AUTO-COMPACT.md:</p>
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">## ⚠️ MANDATORY CONTEXT TRACKING - ALL AGENTS - FRAMEWORK 2.0 REQUIREMENT ⚠️</span><br>
+                    <br>
+                    <span style="color: var(--text-medium);">Execute after EVERY response:</span><br>
+                    <span style="color: var(--neon-green);">```bash</span><br>
+                    <span style="color: var(--text-medium);">cd /path/to/agent/workspace/tools/token-tracker/context-manager-v2/bin</span><br>
+                    <span style="color: var(--text-medium);">./run-context-check.sh check ASSISTANT_MEDIUM  # Adjust type as needed</span><br>
+                    <span style="color: var(--neon-green);">```</span><br>
+                    <br>
+                    <span style="color: var(--text-medium);">This is a CRITICAL FRAMEWORK 2.0 COMPLIANCE REQUIREMENT. All agents must implement context tracking with every response.</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+            
+            <p>After each response, run the context check and include its output:</p>
+            <pre><code>I've completed the implementation of the feature you requested.
+
+[Context: 68% ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░] Remaining: ~43 small operations</code></pre>
+        </div>
+
+        <h2>Recovery After Context Reset</h2>
+        
+        <p>When a context reset occurs, follow these steps to recover:</p>
+        
+        <ol>
+            <li><strong>Check for Checkpoints</strong>: Run <code>./run-context-check.sh recovery</code> to detect available checkpoints</li>
+            <li><strong>Restore from Checkpoint</strong>: If checkpoints are available, they will be automatically restored</li>
+            <li><strong>Read Protocol Files</strong>: Start with AGENT.md to understand identity and recovery procedures</li>
+            <li><strong>Check Status</strong>: Read STATUS.md for current priorities and project status</li>
+            <li><strong>Review Context</strong>: Read AUTO-COMPACT.md for context management metrics and implementation context</li>
+            <li><strong>Resume Operations</strong>: Continue with the highest priority tasks as indicated in STATUS.md</li>
+        </ol>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./run-context-check.sh recovery<br>
+                <span style="color: var(--text-medium);">Checking for available checkpoints...</span><br>
+                <span style="color: var(--text-medium);">Found checkpoint: ckpt_warning_20250613_2 (context: 78%)</span><br>
+                <span style="color: var(--text-medium);">Restoring checkpoint data...</span><br>
+                <span style="color: var(--text-medium);">Updating AUTO-COMPACT.md...</span><br>
+                <span style="color: var(--neon-green);">✓ Checkpoint restored successfully</span><br>
+                <span style="color: var(--text-medium);">Resuming from previous state at 10% utilization</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <h2>Auto-Compact Detection</h2>
+        
+        <p>The token tracking system includes an auto-compact detector that can identify when a context reset has occurred:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./recovery/auto-compact-detector.js --monitor<br>
+                <span style="color: var(--text-medium);">Starting auto-compact monitoring...</span><br>
+                <span style="color: var(--text-medium);">Context state saved at 2025-06-13 14:30:00</span><br>
+                <span style="color: var(--text-medium);">Monitoring for context resets every 60 seconds</span><br>
+                <span style="color: var(--text-medium);">Press Ctrl+C to stop monitoring</span><br>
+                <br>
+                <span style="color: var(--neon-red);">! AUTO-COMPACT DETECTED at 2025-06-13 15:45:00</span><br>
+                <span style="color: var(--text-medium);">Previous utilization: 85% (170000/200000 tokens)</span><br>
+                <span style="color: var(--text-medium);">Current utilization: 5% (10000/200000 tokens)</span><br>
+                <span style="color: var(--text-medium);">Preparing for recovery...</span><br>
+                <span style="color: var(--neon-green);">✓ Recovery state prepared</span><br>
+                <span style="color: var(--text-medium);">Run ./run-context-check.sh recovery to restore from checkpoint</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        
+        <p>The auto-compact detector uses two methods to identify context resets:</p>
+        <ol>
+            <li><strong>Utilization Drop</strong>: Detects sudden drops in context utilization (e.g., from 85% to 5%)</li>
+            <li><strong>Time Heuristics</strong>: Identifies anomalies in response timing patterns</li>
+        </ol>
+
+        <h2>Advanced Context Management</h2>
+        
+        <h3>Custom Operation Types</h3>
+        <p>You can define custom operation types for specific use cases:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cat > tools/token-tracker/context-manager-v2/lib/custom-operations.js << 'EOF'<br>
+                <span style="color: var(--neon-green);">module.exports = {</span><br>
+                <span style="color: var(--text-medium);">  CUSTOM_API_CALL: 2500,</span><br>
+                <span style="color: var(--text-medium);">  CUSTOM_DATA_ANALYSIS: 5500,</span><br>
+                <span style="color: var(--text-medium);">  CUSTOM_SUMMARY: 3000</span><br>
+                <span style="color: var(--neon-green);">};</span><br>
+                <span style="color: var(--neon-green);">EOF</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        
+        <h3>Checkpoint Management</h3>
+        <p>Manage checkpoints with these commands:</p>
+        
+        <ul>
+            <li><strong>List Checkpoints</strong>: <code>./run-context-check.sh list-checkpoints</code></li>
+            <li><strong>Delete Checkpoint</strong>: <code>./run-context-check.sh delete-checkpoint CHECKPOINT_ID</code></li>
+            <li><strong>Export Checkpoint</strong>: <code>./run-context-check.sh export-checkpoint CHECKPOINT_ID OUTPUT_PATH</code></li>
+            <li><strong>Import Checkpoint</strong>: <code>./run-context-check.sh import-checkpoint INPUT_PATH</code></li>
+        </ul>
+        
+        <h3>Configuration Customization</h3>
+        <p>Customize token tracking behavior by editing the configuration file:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cat > tools/token-tracker/context-manager-v2/bin/config.json << 'EOF'<br>
+                <span style="color: var(--neon-green);">{</span><br>
+                <span style="color: var(--text-medium);">  "thresholds": {</span><br>
+                <span style="color: var(--text-medium);">    "notice": 65,</span><br>
+                <span style="color: var(--text-medium);">    "warning": 75,</span><br>
+                <span style="color: var(--text-medium);">    "alert": 85</span><br>
+                <span style="color: var(--text-medium);">  },</span><br>
+                <span style="color: var(--text-medium);">  "autoCheckpoint": {</span><br>
+                <span style="color: var(--text-medium);">    "notice": false,</span><br>
+                <span style="color: var(--text-medium);">    "warning": true,</span><br>
+                <span style="color: var(--text-medium);">    "alert": true</span><br>
+                <span style="color: var(--text-medium);">  },</span><br>
+                <span style="color: var(--text-medium);">  "maxTokens": 200000,</span><br>
+                <span style="color: var(--text-medium);">  "checkpointDir": "./state/checkpoints",</span><br>
+                <span style="color: var(--text-medium);">  "stateFile": "./state/current-state.json",</span><br>
+                <span style="color: var(--text-medium);">  "autoUpdateProtocolFiles": true</span><br>
+                <span style="color: var(--neon-green);">}</span><br>
+                <span style="color: var(--neon-green);">EOF</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <h2>Troubleshooting</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title">Context Tracking Not Working</h3>
+                <p><strong>Symptoms</strong>: run-context-check.sh returns errors or doesn't update visualization</p>
+                <p><strong>Solutions</strong>:</p>
+                <ol>
+                    <li>Verify Node.js installation: <code>node --version</code></li>
+                    <li>Check permissions: <code>chmod +x run-context-check.sh</code></li>
+                    <li>Verify state directory: <code>mkdir -p ./state</code></li>
+                    <li>Reinstall dependencies: <code>./setup/install-dependencies.sh</code></li>
+                </ol>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Inaccurate Token Estimation</h3>
+                <p><strong>Symptoms</strong>: Context utilization seems inconsistent with actual usage</p>
+                <p><strong>Solutions</strong>:</p>
+                <ol>
+                    <li>Use appropriate operation types for different actions</li>
+                    <li>Reset context tracking if significantly off: <code>./run-context-check.sh reset</code></li>
+                    <li>Adjust token estimations in token-counter.js if needed</li>
+                    <li>Monitor and calibrate estimations over time</li>
+                </ol>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Checkpoint Restoration Failures</h3>
+                <p><strong>Symptoms</strong>: Unable to restore from checkpoints after context reset</p>
+                <p><strong>Solutions</strong>:</p>
+                <ol>
+                    <li>Check for available checkpoints: <code>./run-context-check.sh list-checkpoints</code></li>
+                    <li>Verify checkpoint integrity: <code>./run-context-check.sh verify-checkpoint CHECKPOINT_ID</code></li>
+                    <li>Manually update AUTO-COMPACT.md with checkpoint data</li>
+                    <li>Create more frequent checkpoints in future sessions</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2>Best Practices</h2>
+        
+        <ul>
+            <li><strong>Regular Tracking</strong>: Always include context tracking with every response</li>
+            <li><strong>Appropriate Operation Types</strong>: Use the most accurate operation type for each action</li>
+            <li><strong>Proactive Checkpointing</strong>: Create manual checkpoints at key implementation milestones</li>
+            <li><strong>Protocol File Updates</strong>: Keep AUTO-COMPACT.md updated with current context status</li>
+            <li><strong>Status Reporting</strong>: Include context health metrics in STATUS.md updates</li>
+            <li><strong>Threshold Awareness</strong>: Pay attention to threshold warnings and take appropriate action</li>
+            <li><strong>Recovery Preparation</strong>: Always have a recovery plan before approaching high utilization</li>
+        </ul>
+        
+        <div class="warning">
+            <p><strong>Important</strong>: Context tracking is not optional in the Trinity Framework 2.0. It is a mandatory component for all compliant agents and must be implemented according to these guidelines.</p>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

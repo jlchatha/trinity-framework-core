@@ -17,7 +17,7 @@
                 <span class="version-badge">v1.0.0</span>
             </div>
             <nav class="nav">
-                <a href="../" class="nav-link">Home</a>
+                <a href="/" class="nav-link">Home</a>
                 <a href="../" class="nav-link">Documentation</a>
                 <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
             </nav>
@@ -26,9 +26,11 @@
 
     <main>
         <div class="breadcrumbs">
-            <a href="../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <a href="/" class="breadcrumb-link breadcrumb-item">Home</a>
             <span class="breadcrumb-separator">/</span>
-            <a href="../reference/" class="breadcrumb-link breadcrumb-item">Reference</a>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Reference</a>
             <span class="breadcrumb-separator">/</span>
             <span class="breadcrumb-current breadcrumb-item">Protocol Files</span>
         </div>
@@ -362,34 +364,6 @@
         </div>
     </footer>
 
-    <script>
-        // Simple animation for terminal text
-        document.addEventListener('DOMContentLoaded', function() {
-            const terminalLines = document.querySelectorAll('.terminal-content br');
-            
-            // Hide all lines initially except the first one
-            for (let i = 0; i < terminalLines.length; i++) {
-                const nextSibling = terminalLines[i].nextSibling;
-                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                    nextSibling.style.display = 'none';
-                }
-            }
-            
-            // Show lines one by one
-            let currentLine = 0;
-            function showNextLine() {
-                if (currentLine < terminalLines.length) {
-                    const nextSibling = terminalLines[currentLine].nextSibling;
-                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                        nextSibling.style.display = 'inline';
-                    }
-                    currentLine++;
-                    setTimeout(showNextLine, 500);
-                }
-            }
-            
-            setTimeout(showNextLine, 1000);
-        });
-    </script>
+    <script src="../js/animation.js"></script>
 </body>
 </html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace Organization Guide - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js/animation.js"></script>
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Guides</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Workspace Organization</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Workspace Organization Guide</h1>
+        
+        <p>Proper workspace organization is crucial for context resilience and effective agent operations. This guide provides detailed instructions for setting up and maintaining a standardized Trinity Framework 2.0 workspace, ensuring that all agents can operate efficiently and recover quickly from context resets.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: Consistent workspace organization is not just about file management—it's a foundational requirement for context resilience and operational continuity.</p>
+        </div>
+
+        <h2>Workspace Directory Structure</h2>
+        
+        <p>The Trinity Framework 2.0 requires a standardized directory structure for all agent workspaces. This structure ensures consistent organization across agents and facilitates smooth collaboration and context recovery.</p>
+
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">/path/to/agent/workspace/</span><br>
+                <span style="color: var(--text-medium);">├── AGENT.md                    # Agent identity and recovery protocol</span><br>
+                <span style="color: var(--text-medium);">├── STATUS.md                   # Current operational status</span><br>
+                <span style="color: var(--text-medium);">├── AUTO-COMPACT.md             # Context management protocol</span><br>
+                <span style="color: var(--text-medium);">├── tools/                      # Utilities and scripts</span><br>
+                <span style="color: var(--text-medium);">│   ├── setup/                  # Setup and configuration tools</span><br>
+                <span style="color: var(--text-medium);">│   ├── token-tracker/          # Context management tools</span><br>
+                <span style="color: var(--text-medium);">│   └── [role-specific]/        # Role-specific tools</span><br>
+                <span style="color: var(--text-medium);">├── AAR/                        # After Action Review documents</span><br>
+                <span style="color: var(--text-medium);">│   ├── sessions/               # Session-based knowledge preservation</span><br>
+                <span style="color: var(--text-medium);">│   └── incidents/              # Incident analysis and resolution</span><br>
+                <span style="color: var(--text-medium);">├── reports/                    # Analysis and status reports</span><br>
+                <span style="color: var(--text-medium);">├── checkpoints/                # Context checkpoints</span><br>
+                <span style="color: var(--text-medium);">└── [role-specific]/            # Role-specific directories</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <h2>Setting Up a New Workspace</h2>
+        
+        <p>Follow these steps to set up a new Trinity Framework 2.0 workspace:</p>
+        
+        <h3>1. Create Base Directory Structure</h3>
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> mkdir -p /path/to/agent/workspace/{tools/{setup,token-tracker},AAR/{sessions,incidents},reports,checkpoints}<br>
+                <span style="color: var(--neon-blue);">$</span> cd /path/to/agent/workspace<br>
+                <span style="color: var(--neon-blue);">$</span> ls -la<br>
+                <span style="color: var(--text-medium);">total 8</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 6 user user 4096 Jun 13 09:15 .</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 4 user user 4096 Jun 13 09:15 ..</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 3 user user   60 Jun 13 09:15 AAR</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 2 user user   40 Jun 13 09:15 checkpoints</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 2 user user   40 Jun 13 09:15 reports</span><br>
+                <span style="color: var(--text-medium);">drwxr-xr-x 3 user user   60 Jun 13 09:15 tools</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        
+        <h3>2. Create Protocol Files</h3>
+        <p>Create the three required protocol files in the workspace root:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title">AGENT.md</h3>
+                <p>Create this file with agent identity and recovery protocol:</p>
+                <p>Use the template from the Trinity Framework repository:</p>
+                <div class="terminal">
+                    <div class="terminal-content">
+                        <span style="color: var(--neon-blue);">$</span> curl -s https://raw.githubusercontent.com/jlchatha/trinity-framework-core/main/templates/AGENT.md.template > AGENT.md<br>
+                        <span style="color: var(--neon-blue);">$</span> nano AGENT.md  # Edit to customize for your agent<br>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">STATUS.md</h3>
+                <p>Create this file with current operational status:</p>
+                <p>Use the template from the Trinity Framework repository:</p>
+                <div class="terminal">
+                    <div class="terminal-content">
+                        <span style="color: var(--neon-blue);">$</span> curl -s https://raw.githubusercontent.com/jlchatha/trinity-framework-core/main/templates/STATUS.md.template > STATUS.md<br>
+                        <span style="color: var(--neon-blue);">$</span> nano STATUS.md  # Edit to reflect current status<br>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">AUTO-COMPACT.md</h3>
+                <p>Create this file with context management protocol:</p>
+                <p>Use the template from the Trinity Framework repository:</p>
+                <div class="terminal">
+                    <div class="terminal-content">
+                        <span style="color: var(--neon-blue);">$</span> curl -s https://raw.githubusercontent.com/jlchatha/trinity-framework-core/main/templates/AUTO-COMPACT.md.template > AUTO-COMPACT.md<br>
+                        <span style="color: var(--neon-blue);">$</span> nano AUTO-COMPACT.md  # Edit context management settings<br>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>3. Install Context Management Tools</h3>
+        <p>Set up the token tracking and context management system:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> git clone https://github.com/jlchatha/trinity-framework-core.git<br>
+                <span style="color: var(--neon-blue);">$</span> cp -r trinity-framework-core/tools/token-tracker/* tools/token-tracker/<br>
+                <span style="color: var(--neon-blue);">$</span> cd tools/token-tracker/context-manager-v2/bin<br>
+                <span style="color: var(--neon-blue);">$</span> ./setup/install-dependencies.sh<br>
+                <span style="color: var(--text-medium);">Installing dependencies for context management system...</span><br>
+                <span style="color: var(--neon-green);">✓ Context management system installed successfully</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        
+        <h3>4. Create Role-Specific Directories</h3>
+        <p>Based on your agent's role, create the appropriate role-specific directories:</p>
+        
+        <table>
+            <tr>
+                <th>Agent Role</th>
+                <th>Command</th>
+                <th>Directories Created</th>
+            </tr>
+            <tr>
+                <td>APEX</td>
+                <td><code>mkdir -p architecture planning integration</code></td>
+                <td>Strategic planning and architectural documentation</td>
+            </tr>
+            <tr>
+                <td>ANALYST</td>
+                <td><code>mkdir -p analysis data implementations</code></td>
+                <td>Data analysis and implementation work</td>
+            </tr>
+            <tr>
+                <td>HISTORIAN</td>
+                <td><code>mkdir -p documentation templates archives</code></td>
+                <td>Documentation management and knowledge preservation</td>
+            </tr>
+        </table>
+
+        <h2>Workspace Organization by Role</h2>
+        
+        <p>Each agent role requires specific workspace customizations beyond the standard structure:</p>
+        
+        <div class="card apex-card">
+            <div class="role-header">
+                <span class="role-icon">🔷</span>
+                <h3 class="role-name">APEX Workspace</h3>
+            </div>
+            <p>APEX workspaces focus on strategic coordination and system architecture:</p>
+            <ul>
+                <li><strong>architecture/</strong>: System architecture diagrams, patterns, and principles</li>
+                <li><strong>planning/</strong>: Strategic planning documents and roadmaps</li>
+                <li><strong>integration/</strong>: System integration patterns and documentation</li>
+                <li><strong>tools/apex-strategic/</strong>: Strategic analysis and planning tools</li>
+            </ul>
+            <p><strong>Key Files</strong>:</p>
+            <ul>
+                <li><strong>architecture/system-architecture.md</strong>: Master system architecture document</li>
+                <li><strong>planning/project-roadmap.md</strong>: Strategic roadmap with milestones</li>
+                <li><strong>integration/communication-patterns.md</strong>: Inter-component communication patterns</li>
+            </ul>
+        </div>
+        
+        <div class="card analyst-card">
+            <div class="role-header">
+                <span class="role-icon">🔶</span>
+                <h3 class="role-name">ANALYST Workspace</h3>
+            </div>
+            <p>ANALYST workspaces focus on implementation and technical details:</p>
+            <ul>
+                <li><strong>analysis/</strong>: Data analysis results and insights</li>
+                <li><strong>data/</strong>: Data samples, schemas, and models</li>
+                <li><strong>implementations/</strong>: Code implementations and technical solutions</li>
+                <li><strong>tools/code-analysis/</strong>: Code analysis and optimization tools</li>
+            </ul>
+            <p><strong>Key Files</strong>:</p>
+            <ul>
+                <li><strong>analysis/performance-metrics.md</strong>: System performance analysis</li>
+                <li><strong>data/schema-definitions.md</strong>: Data schema definitions</li>
+                <li><strong>implementations/implementation-patterns.md</strong>: Implementation patterns guide</li>
+            </ul>
+        </div>
+        
+        <div class="card historian-card">
+            <div class="role-header">
+                <span class="role-icon">📘</span>
+                <h3 class="role-name">HISTORIAN Workspace</h3>
+            </div>
+            <p>HISTORIAN workspaces focus on documentation and knowledge preservation:</p>
+            <ul>
+                <li><strong>documentation/</strong>: Comprehensive documentation by category</li>
+                <li><strong>templates/</strong>: Documentation templates and standards</li>
+                <li><strong>archives/</strong>: Historical documentation versions</li>
+                <li><strong>tools/doc-sync/</strong>: Documentation synchronization tools</li>
+            </ul>
+            <p><strong>Key Files</strong>:</p>
+            <ul>
+                <li><strong>documentation/user-guides/</strong>: End-user documentation</li>
+                <li><strong>templates/documentation-standards.md</strong>: Documentation style guide</li>
+                <li><strong>archives/changelog/</strong>: Historical changelog entries</li>
+            </ul>
+        </div>
+
+        <h2>Maintaining Workspace Organization</h2>
+        
+        <h3>Regular Maintenance Tasks</h3>
+        <p>To maintain a clean and efficient workspace, perform these tasks regularly:</p>
+        
+        <ul>
+            <li><strong>Daily</strong>: Update STATUS.md with current progress and priorities</li>
+            <li><strong>After Each Session</strong>: Create AAR/sessions/ entry to document session outcomes</li>
+            <li><strong>Before Context Reset</strong>: Create checkpoint with ./tools/token-tracker/context-manager-v2/bin/run-context-check.sh checkpoint</li>
+            <li><strong>Weekly</strong>: Verify workspace structure with ./tools/verify-workspace.sh</li>
+            <li><strong>Monthly</strong>: Clean up unnecessary files and archives</li>
+        </ul>
+        
+        <h3>Workspace Verification</h3>
+        <p>Use the workspace verification tool to ensure your workspace remains compliant:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./tools/verify-workspace.sh<br>
+                <span style="color: var(--text-medium);">Verifying workspace structure...</span><br>
+                <span style="color: var(--text-medium);">✓ Protocol files: 3/3 present</span><br>
+                <span style="color: var(--text-medium);">✓ Directory structure: 5/5 required directories present</span><br>
+                <span style="color: var(--text-medium);">✓ Naming conventions: All files comply with standards</span><br>
+                <span style="color: var(--text-medium);">✓ Protocol file content: All required sections present</span><br>
+                <span style="color: var(--neon-green);">✓ Workspace standardization: COMPLIANT</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <h2>File Naming and Organization Conventions</h2>
+        
+        <p>Consistent file naming and organization is essential for context resilience:</p>
+        
+        <table>
+            <tr>
+                <th>Item Type</th>
+                <th>Naming Convention</th>
+                <th>Examples</th>
+            </tr>
+            <tr>
+                <td>Protocol Files</td>
+                <td>UPPERCASE.md</td>
+                <td>AGENT.md, STATUS.md, AUTO-COMPACT.md</td>
+            </tr>
+            <tr>
+                <td>Directories</td>
+                <td>lowercase-with-hyphens/</td>
+                <td>token-tracker/, system-analysis/</td>
+            </tr>
+            <tr>
+                <td>Tool Scripts</td>
+                <td>verb-noun.extension</td>
+                <td>verify-workspace.sh, update-docs.js</td>
+            </tr>
+            <tr>
+                <td>Session AARs</td>
+                <td>YYYY-MM-DD-description.md</td>
+                <td>2025-06-13-api-documentation.md</td>
+            </tr>
+            <tr>
+                <td>Incident AARs</td>
+                <td>DESCRIPTIVE-NAME-RCA.md</td>
+                <td>API-AUTHENTICATION-FAILURE-RCA.md</td>
+            </tr>
+            <tr>
+                <td>Reports</td>
+                <td>report-type-YYYYMMDD.md</td>
+                <td>status-report-20250613.md</td>
+            </tr>
+            <tr>
+                <td>Checkpoints</td>
+                <td>ckpt_level_YYYYMMDD_n</td>
+                <td>ckpt_warning_20250613_1</td>
+            </tr>
+        </table>
+
+        <h2>Workspace Anti-Patterns</h2>
+        
+        <div class="warning">
+            <p><strong>Important</strong>: Avoid these common workspace organization anti-patterns:</p>
+        </div>
+        
+        <ul>
+            <li><strong>Protocol File Fragmentation</strong>: Splitting protocol files or placing them in subdirectories</li>
+            <li><strong>Inconsistent Naming</strong>: Using different naming conventions across files and directories</li>
+            <li><strong>Tool Proliferation</strong>: Creating too many one-off tools without proper organization</li>
+            <li><strong>AAR Neglect</strong>: Failing to create AAR entries for significant sessions</li>
+            <li><strong>Checkpoint Scarcity</strong>: Not creating checkpoints before approaching context limits</li>
+            <li><strong>Directory Sprawl</strong>: Creating too many top-level directories without clear purpose</li>
+            <li><strong>Role Confusion</strong>: Maintaining directories that belong to another agent's role</li>
+        </ul>
+
+        <h2>Multiple Workspace Management</h2>
+        
+        <p>In scenarios where you manage multiple workspaces for different projects:</p>
+        
+        <ol>
+            <li><strong>Use Absolute Paths</strong>: Always use absolute paths in protocol files and scripts</li>
+            <li><strong>Implement Workspace Switcher</strong>: Create a script to quickly switch between workspaces</li>
+            <li><strong>Maintain Consistency</strong>: Use identical organization patterns across all workspaces</li>
+            <li><strong>Context Isolation</strong>: Clearly separate context tracking between workspaces</li>
+            <li><strong>Cross-References</strong>: Document cross-workspace references in STATUS.md</li>
+        </ol>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> cat > ~/workspace-switcher.sh << 'EOF'<br>
+                <span style="color: var(--neon-green);">#!/bin/bash</span><br>
+                <span style="color: var(--text-medium);">case $1 in</span><br>
+                <span style="color: var(--text-medium);">  apex) cd ~/trinity-apex-workspace ;;</span><br>
+                <span style="color: var(--text-medium);">  analyst) cd ~/trinity-analyst-workspace ;;</span><br>
+                <span style="color: var(--text-medium);">  historian) cd ~/trinity-historian-workspace ;;</span><br>
+                <span style="color: var(--text-medium);">  *) echo "Usage: workspace-switcher.sh {apex|analyst|historian}" ;;</span><br>
+                <span style="color: var(--text-medium);">esac</span><br>
+                <span style="color: var(--neon-green);">EOF</span><br>
+                <span style="color: var(--neon-blue);">$</span> chmod +x ~/workspace-switcher.sh<br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <h2>Best Practices</h2>
+        
+        <ul>
+            <li><strong>Protocol File Primacy</strong>: Always ensure protocol files are up-to-date and complete</li>
+            <li><strong>Single Responsibility</strong>: Each directory should have a clear, single purpose</li>
+            <li><strong>Depth over Breadth</strong>: Prefer deeper directory structures over many top-level directories</li>
+            <li><strong>Regular Verification</strong>: Periodically run workspace verification tools</li>
+            <li><strong>Consistent Navigation</strong>: Use consistent paths when referencing files across the workspace</li>
+            <li><strong>Documentation First</strong>: Document workspace changes before implementing them</li>
+            <li><strong>Role Appropriateness</strong>: Organize directories according to your agent's specific role</li>
+        </ul>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

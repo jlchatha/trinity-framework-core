@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js/animation.js"></script>
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Reference</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">API Reference</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>API Reference</h1>
+        
+        <p>The Trinity Framework 2.0 provides a comprehensive set of APIs for context management, workspace organization, agent collaboration, and more. This reference documentation covers all available APIs, their parameters, return values, and usage examples.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: The Trinity Framework 2.0 APIs are designed to be modular and extensible. You can use them individually or as integrated components of the full framework.</p>
+        </div>
+
+        <h2>Context Management API</h2>
+        
+        <p>The Context Management API provides tools for tracking token usage, creating checkpoints, and managing context limitations.</p>
+        
+        <h3>Token Tracker Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">TokenTracker</h3>
+            <p><strong>Module</strong>: <code>token-tracker/context-manager-v2/lib/token-counter.js</code></p>
+            <p><strong>Purpose</strong>: Tracks token usage and manages context utilization</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>updateTokenCount(operationType)</code></td>
+                    <td><code>operationType</code>: String - Type of operation</td>
+                    <td>Object - Updated context state</td>
+                    <td>Updates token count based on operation type</td>
+                </tr>
+                <tr>
+                    <td><code>getContextUtilization()</code></td>
+                    <td>None</td>
+                    <td>Number - Percentage of context utilized</td>
+                    <td>Returns current context utilization percentage</td>
+                </tr>
+                <tr>
+                    <td><code>getTokenCount()</code></td>
+                    <td>None</td>
+                    <td>Number - Current token count</td>
+                    <td>Returns the current token count</td>
+                </tr>
+                <tr>
+                    <td><code>getMaxTokens()</code></td>
+                    <td>None</td>
+                    <td>Number - Maximum token capacity</td>
+                    <td>Returns the maximum token capacity</td>
+                </tr>
+                <tr>
+                    <td><code>getRemainingOperations()</code></td>
+                    <td>None</td>
+                    <td>Object - Estimated remaining operations</td>
+                    <td>Returns estimated remaining operations of each size</td>
+                </tr>
+                <tr>
+                    <td><code>resetTokenCount()</code></td>
+                    <td>None</td>
+                    <td>Object - Reset context state</td>
+                    <td>Resets token count to initial state</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> TokenTracker = require('./lib/token-counter');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize token tracker</span><br>
+                    <span style="color: var(--neon-blue);">const</span> tracker = new TokenTracker();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Update token count for a user message</span><br>
+                    <span style="color: var(--neon-blue);">const</span> state = tracker.updateTokenCount('USER_MEDIUM');<br>
+                    <span style="color: var(--text-medium);">console.log(`Current utilization: ${tracker.getContextUtilization()}%`);</span><br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Get remaining operations</span><br>
+                    <span style="color: var(--neon-blue);">const</span> remaining = tracker.getRemainingOperations();<br>
+                    <span style="color: var(--text-medium);">console.log(`Remaining small operations: ~${remaining.small}`);</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Checkpoint Manager Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">CheckpointManager</h3>
+            <p><strong>Module</strong>: <code>token-tracker/context-manager-v2/lib/checkpoint-manager.js</code></p>
+            <p><strong>Purpose</strong>: Creates, stores, and restores checkpoints for context recovery</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>createCheckpoint(level, description)</code></td>
+                    <td><code>level</code>: String - Checkpoint level<br><code>description</code>: String - Description</td>
+                    <td>String - Checkpoint ID</td>
+                    <td>Creates a new checkpoint with current state</td>
+                </tr>
+                <tr>
+                    <td><code>restoreCheckpoint(checkpointId)</code></td>
+                    <td><code>checkpointId</code>: String - Checkpoint to restore</td>
+                    <td>Object - Restored state</td>
+                    <td>Restores state from the specified checkpoint</td>
+                </tr>
+                <tr>
+                    <td><code>getCheckpoints()</code></td>
+                    <td>None</td>
+                    <td>Array - Available checkpoints</td>
+                    <td>Returns list of available checkpoints</td>
+                </tr>
+                <tr>
+                    <td><code>getLatestCheckpoint()</code></td>
+                    <td>None</td>
+                    <td>Object - Latest checkpoint data</td>
+                    <td>Returns the most recent checkpoint</td>
+                </tr>
+                <tr>
+                    <td><code>exportCheckpoint(checkpointId, outputPath)</code></td>
+                    <td><code>checkpointId</code>: String - Checkpoint to export<br><code>outputPath</code>: String - Export location</td>
+                    <td>Boolean - Success status</td>
+                    <td>Exports checkpoint to specified location</td>
+                </tr>
+                <tr>
+                    <td><code>importCheckpoint(inputPath)</code></td>
+                    <td><code>inputPath</code>: String - Path to checkpoint file</td>
+                    <td>String - Imported checkpoint ID</td>
+                    <td>Imports checkpoint from specified location</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> CheckpointManager = require('./lib/checkpoint-manager');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize checkpoint manager</span><br>
+                    <span style="color: var(--neon-blue);">const</span> checkpointManager = new CheckpointManager();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Create a checkpoint</span><br>
+                    <span style="color: var(--neon-blue);">const</span> checkpointId = checkpointManager.createCheckpoint('warning', 'Before implementing new feature');<br>
+                    <span style="color: var(--text-medium);">console.log(`Created checkpoint: ${checkpointId}`);</span><br>
+                    <br>
+                    <span style="color: var(--text-medium);">// List available checkpoints</span><br>
+                    <span style="color: var(--neon-blue);">const</span> checkpoints = checkpointManager.getCheckpoints();<br>
+                    <span style="color: var(--text-medium);">console.log(`Available checkpoints: ${checkpoints.length}`);</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Context Visualization Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">ContextVisualizer</h3>
+            <p><strong>Module</strong>: <code>token-tracker/context-manager-v2/bin/context-visualization.js</code></p>
+            <p><strong>Purpose</strong>: Generates text-based visualizations of context state</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>generateVisualization(state)</code></td>
+                    <td><code>state</code>: Object - Current context state</td>
+                    <td>String - Visualization of context</td>
+                    <td>Generates progress bar visualization</td>
+                </tr>
+                <tr>
+                    <td><code>generateDetailedVisualization(state)</code></td>
+                    <td><code>state</code>: Object - Current context state</td>
+                    <td>String - Detailed visualization</td>
+                    <td>Generates detailed context visualization</td>
+                </tr>
+                <tr>
+                    <td><code>generateThresholdIndicator(state)</code></td>
+                    <td><code>state</code>: Object - Current context state</td>
+                    <td>String - Threshold indicators</td>
+                    <td>Generates threshold indicator visualization</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> ContextVisualizer = require('./context-visualization');<br>
+                    <span style="color: var(--neon-blue);">const</span> TokenTracker = require('../lib/token-counter');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize token tracker and visualizer</span><br>
+                    <span style="color: var(--neon-blue);">const</span> tracker = new TokenTracker();<br>
+                    <span style="color: var(--neon-blue);">const</span> visualizer = new ContextVisualizer();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Update token count and visualize</span><br>
+                    <span style="color: var(--neon-blue);">const</span> state = tracker.updateTokenCount('ASSISTANT_MEDIUM');<br>
+                    <span style="color: var(--neon-blue);">const</span> visualization = visualizer.generateVisualization(state);<br>
+                    <span style="color: var(--text-medium);">console.log(visualization);</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Workspace Management API</h2>
+        
+        <p>The Workspace Management API provides tools for creating, organizing, and verifying agent workspaces.</p>
+        
+        <h3>Workspace Verifier Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">WorkspaceVerifier</h3>
+            <p><strong>Module</strong>: <code>tools/workspace/workspace-verifier.js</code></p>
+            <p><strong>Purpose</strong>: Verifies workspace structure and protocol file compliance</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>verifyWorkspace(workspacePath)</code></td>
+                    <td><code>workspacePath</code>: String - Path to workspace</td>
+                    <td>Object - Verification results</td>
+                    <td>Performs comprehensive workspace verification</td>
+                </tr>
+                <tr>
+                    <td><code>verifyProtocolFiles(workspacePath)</code></td>
+                    <td><code>workspacePath</code>: String - Path to workspace</td>
+                    <td>Object - Protocol file verification results</td>
+                    <td>Verifies protocol files existence and content</td>
+                </tr>
+                <tr>
+                    <td><code>verifyDirectoryStructure(workspacePath)</code></td>
+                    <td><code>workspacePath</code>: String - Path to workspace</td>
+                    <td>Object - Directory structure verification results</td>
+                    <td>Verifies required directories exist</td>
+                </tr>
+                <tr>
+                    <td><code>verifyNamingConventions(workspacePath)</code></td>
+                    <td><code>workspacePath</code>: String - Path to workspace</td>
+                    <td>Object - Naming convention verification results</td>
+                    <td>Verifies files follow naming conventions</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> WorkspaceVerifier = require('./tools/workspace/workspace-verifier');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize workspace verifier</span><br>
+                    <span style="color: var(--neon-blue);">const</span> verifier = new WorkspaceVerifier();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Verify workspace</span><br>
+                    <span style="color: var(--neon-blue);">const</span> results = verifier.verifyWorkspace('/path/to/workspace');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Check verification results</span><br>
+                    <span style="color: var(--neon-blue);">if</span> (results.compliant) {<br>
+                    <span style="color: var(--text-medium);">  console.log('Workspace is Framework 2.0 compliant');</span><br>
+                    <span style="color: var(--neon-blue);">} else {</span><br>
+                    <span style="color: var(--text-medium);">  console.log('Compliance issues found:', results.issues);</span><br>
+                    <span style="color: var(--neon-blue);">}</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Workspace Creator Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">WorkspaceCreator</h3>
+            <p><strong>Module</strong>: <code>tools/workspace/workspace-creator.js</code></p>
+            <p><strong>Purpose</strong>: Creates and initializes agent workspaces</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>createWorkspace(options)</code></td>
+                    <td><code>options</code>: Object - Workspace options</td>
+                    <td>Object - Creation results</td>
+                    <td>Creates a new agent workspace</td>
+                </tr>
+                <tr>
+                    <td><code>createProtocolFiles(workspacePath, agentRole)</code></td>
+                    <td><code>workspacePath</code>: String - Path to workspace<br><code>agentRole</code>: String - Agent role</td>
+                    <td>Object - Creation results</td>
+                    <td>Creates protocol files for the agent role</td>
+                </tr>
+                <tr>
+                    <td><code>createDirectoryStructure(workspacePath, agentRole)</code></td>
+                    <td><code>workspacePath</code>: String - Path to workspace<br><code>agentRole</code>: String - Agent role</td>
+                    <td>Object - Creation results</td>
+                    <td>Creates directory structure for the agent role</td>
+                </tr>
+                <tr>
+                    <td><code>installTools(workspacePath, agentRole)</code></td>
+                    <td><code>workspacePath</code>: String - Path to workspace<br><code>agentRole</code>: String - Agent role</td>
+                    <td>Object - Installation results</td>
+                    <td>Installs tools for the agent role</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> WorkspaceCreator = require('./tools/workspace/workspace-creator');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize workspace creator</span><br>
+                    <span style="color: var(--neon-blue);">const</span> creator = new WorkspaceCreator();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Create workspace options</span><br>
+                    <span style="color: var(--neon-blue);">const</span> options = {<br>
+                    <span style="color: var(--text-medium);">  workspacePath: '/path/to/new/workspace',</span><br>
+                    <span style="color: var(--text-medium);">  agentRole: 'HISTORIAN',</span><br>
+                    <span style="color: var(--text-medium);">  installTools: true,</span><br>
+                    <span style="color: var(--text-medium);">  createExamples: true</span><br>
+                    <span style="color: var(--neon-blue);">};</span><br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Create workspace</span><br>
+                    <span style="color: var(--neon-blue);">const</span> result = creator.createWorkspace(options);<br>
+                    <span style="color: var(--text-medium);">console.log(`Workspace created: ${result.success}`);</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Agent Collaboration API</h2>
+        
+        <p>The Agent Collaboration API provides tools for communication and coordination between specialized agents.</p>
+        
+        <h3>Agent Communication Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">AgentCommunicator</h3>
+            <p><strong>Module</strong>: <code>tools/collaboration/agent-communicator.js</code></p>
+            <p><strong>Purpose</strong>: Facilitates communication between agents through standardized interfaces</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>sendMessage(targetAgent, message)</code></td>
+                    <td><code>targetAgent</code>: String - Target agent<br><code>message</code>: Object - Message content</td>
+                    <td>Object - Delivery status</td>
+                    <td>Sends message to target agent</td>
+                </tr>
+                <tr>
+                    <td><code>receiveMessages()</code></td>
+                    <td>None</td>
+                    <td>Array - Received messages</td>
+                    <td>Retrieves messages sent to this agent</td>
+                </tr>
+                <tr>
+                    <td><code>broadcastMessage(message)</code></td>
+                    <td><code>message</code>: Object - Message content</td>
+                    <td>Object - Broadcast status</td>
+                    <td>Sends message to all agents</td>
+                </tr>
+                <tr>
+                    <td><code>shareFile(targetAgent, filePath)</code></td>
+                    <td><code>targetAgent</code>: String - Target agent<br><code>filePath</code>: String - File to share</td>
+                    <td>Object - Sharing status</td>
+                    <td>Shares file with target agent</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> AgentCommunicator = require('./tools/collaboration/agent-communicator');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize agent communicator</span><br>
+                    <span style="color: var(--neon-blue);">const</span> communicator = new AgentCommunicator('HISTORIAN');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Send message to APEX</span><br>
+                    <span style="color: var(--neon-blue);">const</span> message = {<br>
+                    <span style="color: var(--text-medium);">  type: 'documentation_update',</span><br>
+                    <span style="color: var(--text-medium);">  content: 'API documentation has been updated',</span><br>
+                    <span style="color: var(--text-medium);">  timestamp: new Date().toISOString()</span><br>
+                    <span style="color: var(--neon-blue);">};</span><br>
+                    <br>
+                    <span style="color: var(--neon-blue);">const</span> result = communicator.sendMessage('APEX', message);<br>
+                    <span style="color: var(--text-medium);">console.log(`Message sent: ${result.success}`);</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Synchronization Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">WorkspaceSynchronizer</h3>
+            <p><strong>Module</strong>: <code>tools/collaboration/workspace-synchronizer.js</code></p>
+            <p><strong>Purpose</strong>: Synchronizes information across agent workspaces</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>syncStatusFiles(workspaces)</code></td>
+                    <td><code>workspaces</code>: Array - Workspace paths</td>
+                    <td>Object - Synchronization results</td>
+                    <td>Synchronizes STATUS.md files across workspaces</td>
+                </tr>
+                <tr>
+                    <td><code>syncContextMetrics(workspaces)</code></td>
+                    <td><code>workspaces</code>: Array - Workspace paths</td>
+                    <td>Object - Synchronization results</td>
+                    <td>Synchronizes context metrics across workspaces</td>
+                </tr>
+                <tr>
+                    <td><code>syncCheckpoints(workspaces)</code></td>
+                    <td><code>workspaces</code>: Array - Workspace paths</td>
+                    <td>Object - Synchronization results</td>
+                    <td>Synchronizes checkpoint data across workspaces</td>
+                </tr>
+                <tr>
+                    <td><code>generateSyncReport()</code></td>
+                    <td>None</td>
+                    <td>Object - Synchronization report</td>
+                    <td>Generates report of synchronization status</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> WorkspaceSynchronizer = require('./tools/collaboration/workspace-synchronizer');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize workspace synchronizer</span><br>
+                    <span style="color: var(--neon-blue);">const</span> synchronizer = new WorkspaceSynchronizer();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Define workspace paths</span><br>
+                    <span style="color: var(--neon-blue);">const</span> workspaces = [<br>
+                    <span style="color: var(--text-medium);">  '/path/to/apex-workspace',</span><br>
+                    <span style="color: var(--text-medium);">  '/path/to/analyst-workspace',</span><br>
+                    <span style="color: var(--text-medium);">  '/path/to/historian-workspace'</span><br>
+                    <span style="color: var(--neon-blue);">];</span><br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Synchronize STATUS.md files</span><br>
+                    <span style="color: var(--neon-blue);">const</span> result = synchronizer.syncStatusFiles(workspaces);<br>
+                    <span style="color: var(--text-medium);">console.log(`Synchronized status files: ${result.success}`);</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Documentation API</h2>
+        
+        <p>The Documentation API provides tools for managing and synchronizing documentation across the system.</p>
+        
+        <h3>Documentation Manager Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">DocumentationManager</h3>
+            <p><strong>Module</strong>: <code>tools/documentation/documentation-manager.js</code></p>
+            <p><strong>Purpose</strong>: Manages documentation generation, validation, and synchronization</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>generateDocumentation(source, options)</code></td>
+                    <td><code>source</code>: String - Source code or directory<br><code>options</code>: Object - Generation options</td>
+                    <td>Object - Generated documentation</td>
+                    <td>Generates documentation from source</td>
+                </tr>
+                <tr>
+                    <td><code>validateDocumentation(docPath)</code></td>
+                    <td><code>docPath</code>: String - Path to documentation</td>
+                    <td>Object - Validation results</td>
+                    <td>Validates documentation against standards</td>
+                </tr>
+                <tr>
+                    <td><code>syncDocumentation(sourcePath, targetPath)</code></td>
+                    <td><code>sourcePath</code>: String - Source documentation<br><code>targetPath</code>: String - Target location</td>
+                    <td>Object - Synchronization results</td>
+                    <td>Synchronizes documentation between locations</td>
+                </tr>
+                <tr>
+                    <td><code>exportDocumentation(docPath, format, outputPath)</code></td>
+                    <td><code>docPath</code>: String - Documentation path<br><code>format</code>: String - Export format<br><code>outputPath</code>: String - Output location</td>
+                    <td>Object - Export results</td>
+                    <td>Exports documentation to specified format</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> DocumentationManager = require('./tools/documentation/documentation-manager');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize documentation manager</span><br>
+                    <span style="color: var(--neon-blue);">const</span> docManager = new DocumentationManager();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Generate API documentation</span><br>
+                    <span style="color: var(--neon-blue);">const</span> options = {<br>
+                    <span style="color: var(--text-medium);">  format: 'markdown',</span><br>
+                    <span style="color: var(--text-medium);">  includePrivate: false,</span><br>
+                    <span style="color: var(--text-medium);">  outputDir: './docs/api'</span><br>
+                    <span style="color: var(--neon-blue);">};</span><br>
+                    <br>
+                    <span style="color: var(--neon-blue);">const</span> result = docManager.generateDocumentation('./src', options);<br>
+                    <span style="color: var(--text-medium);">console.log(`Documentation generated: ${result.success}`);</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+        
+        <h3>AAR Manager Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">AARManager</h3>
+            <p><strong>Module</strong>: <code>tools/documentation/aar-manager.js</code></p>
+            <p><strong>Purpose</strong>: Manages After Action Review documents for knowledge preservation</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>createSessionAAR(description, content)</code></td>
+                    <td><code>description</code>: String - Session description<br><code>content</code>: String - AAR content</td>
+                    <td>Object - Creation results</td>
+                    <td>Creates a session AAR document</td>
+                </tr>
+                <tr>
+                    <td><code>createIncidentAAR(name, content)</code></td>
+                    <td><code>name</code>: String - Incident name<br><code>content</code>: String - AAR content</td>
+                    <td>Object - Creation results</td>
+                    <td>Creates an incident AAR document</td>
+                </tr>
+                <tr>
+                    <td><code>getRecentAARs(count)</code></td>
+                    <td><code>count</code>: Number - Number of AARs to retrieve</td>
+                    <td>Array - Recent AAR documents</td>
+                    <td>Retrieves recent AAR documents</td>
+                </tr>
+                <tr>
+                    <td><code>searchAARs(query)</code></td>
+                    <td><code>query</code>: String - Search query</td>
+                    <td>Array - Matching AAR documents</td>
+                    <td>Searches AAR documents for query</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> AARManager = require('./tools/documentation/aar-manager');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize AAR manager</span><br>
+                    <span style="color: var(--neon-blue);">const</span> aarManager = new AARManager();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Create session AAR</span><br>
+                    <span style="color: var(--neon-blue);">const</span> content = `
+                    <span style="color: var(--text-medium);"># Session AAR: API Implementation</span><br>
+                    <span style="color: var(--text-medium);">## What Worked</span><br>
+                    <span style="color: var(--text-medium);">- Modular API design</span><br>
+                    <span style="color: var(--text-medium);">- Consistent naming conventions</span><br>
+                    <span style="color: var(--text-medium);">## What Didn't Work</span><br>
+                    <span style="color: var(--text-medium);">- Initial error handling approach</span><br>
+                    <span style="color: var(--text-medium);">## Lessons Learned</span><br>
+                    <span style="color: var(--text-medium);">- Implement error handling from the start</span><br>
+                    <span style="color: var(--text-medium);">## Next Time</span><br>
+                    <span style="color: var(--text-medium);">- Create test cases before implementation</span>`;<br>
+                    <br>
+                    <span style="color: var(--neon-blue);">const</span> result = aarManager.createSessionAAR('api-implementation', content);<br>
+                    <span style="color: var(--text-medium);">console.log(`Session AAR created: ${result.success}`);</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Recovery API</h2>
+        
+        <p>The Recovery API provides tools for context recovery and operational continuity after context resets.</p>
+        
+        <h3>Auto-Compact Detector Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">AutoCompactDetector</h3>
+            <p><strong>Module</strong>: <code>token-tracker/context-manager-v2/bin/recovery/auto-compact-detector.js</code></p>
+            <p><strong>Purpose</strong>: Detects auto-compact events and prepares for recovery</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>checkForAutoCompact()</code></td>
+                    <td>None</td>
+                    <td>Object - Detection results</td>
+                    <td>Checks if auto-compact has occurred</td>
+                </tr>
+                <tr>
+                    <td><code>startMonitoring(options)</code></td>
+                    <td><code>options</code>: Object - Monitoring options</td>
+                    <td>Object - Monitoring status</td>
+                    <td>Starts continuous monitoring for auto-compact</td>
+                </tr>
+                <tr>
+                    <td><code>stopMonitoring()</code></td>
+                    <td>None</td>
+                    <td>Object - Stop status</td>
+                    <td>Stops continuous monitoring</td>
+                </tr>
+                <tr>
+                    <td><code>prepareRecovery()</code></td>
+                    <td>None</td>
+                    <td>Object - Preparation results</td>
+                    <td>Prepares system for recovery after auto-compact</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> AutoCompactDetector = require('./recovery/auto-compact-detector');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize auto-compact detector</span><br>
+                    <span style="color: var(--neon-blue);">const</span> detector = new AutoCompactDetector();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Check for auto-compact event</span><br>
+                    <span style="color: var(--neon-blue);">const</span> result = detector.checkForAutoCompact();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Handle detection result</span><br>
+                    <span style="color: var(--neon-blue);">if</span> (result.detected) {<br>
+                    <span style="color: var(--text-medium);">  console.log('Auto-compact detected!');</span><br>
+                    <span style="color: var(--text-medium);">  detector.prepareRecovery();</span><br>
+                    <span style="color: var(--neon-blue);">} else {</span><br>
+                    <span style="color: var(--text-medium);">  console.log('No auto-compact detected');</span><br>
+                    <span style="color: var(--neon-blue);">}</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Recovery Manager Module</h3>
+        
+        <div class="card">
+            <h3 class="card-title">RecoveryManager</h3>
+            <p><strong>Module</strong>: <code>token-tracker/context-manager-v2/bin/recovery/recovery-manager.js</code></p>
+            <p><strong>Purpose</strong>: Manages recovery procedures after context resets</p>
+            
+            <h4>Methods</h4>
+            
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>initiateRecovery()</code></td>
+                    <td>None</td>
+                    <td>Object - Recovery results</td>
+                    <td>Initiates recovery after context reset</td>
+                </tr>
+                <tr>
+                    <td><code>restoreFromCheckpoint(checkpointId)</code></td>
+                    <td><code>checkpointId</code>: String - Checkpoint to restore</td>
+                    <td>Object - Restoration results</td>
+                    <td>Restores system state from checkpoint</td>
+                </tr>
+                <tr>
+                    <td><code>updateProtocolFiles()</code></td>
+                    <td>None</td>
+                    <td>Object - Update results</td>
+                    <td>Updates protocol files with recovery information</td>
+                </tr>
+                <tr>
+                    <td><code>generateRecoveryReport()</code></td>
+                    <td>None</td>
+                    <td>Object - Recovery report</td>
+                    <td>Generates detailed recovery report</td>
+                </tr>
+            </table>
+            
+            <h4>Usage Example</h4>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">const</span> RecoveryManager = require('./recovery/recovery-manager');<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initialize recovery manager</span><br>
+                    <span style="color: var(--neon-blue);">const</span> recoveryManager = new RecoveryManager();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Initiate recovery process</span><br>
+                    <span style="color: var(--neon-blue);">const</span> result = recoveryManager.initiateRecovery();<br>
+                    <br>
+                    <span style="color: var(--text-medium);">// Check recovery status</span><br>
+                    <span style="color: var(--neon-blue);">if</span> (result.success) {<br>
+                    <span style="color: var(--text-medium);">  console.log(`Recovery successful, restored from ${result.checkpointId}`);</span><br>
+                    <span style="color: var(--neon-blue);">} else {</span><br>
+                    <span style="color: var(--text-medium);">  console.log('Recovery failed:', result.error);</span><br>
+                    <span style="color: var(--neon-blue);">}</span><br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Version Information</h2>
+        
+        <div class="card">
+            <h3 class="card-title">API Version History</h3>
+            <table>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Major Changes</th>
+                </tr>
+                <tr>
+                    <td>1.0.0</td>
+                    <td>June 13, 2025</td>
+                    <td>Initial release of Trinity Framework 2.0 Core API</td>
+                </tr>
+                <tr>
+                    <td>0.9.0</td>
+                    <td>May 30, 2025</td>
+                    <td>Release candidate with complete API surface</td>
+                </tr>
+                <tr>
+                    <td>0.8.0</td>
+                    <td>May 15, 2025</td>
+                    <td>Beta release with workspace management and context tracking</td>
+                </tr>
+                <tr>
+                    <td>0.7.0</td>
+                    <td>April 28, 2025</td>
+                    <td>Alpha release with initial context management API</td>
+                </tr>
+            </table>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

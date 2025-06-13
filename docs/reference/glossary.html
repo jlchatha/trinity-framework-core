@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js/animation.js"></script>
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Reference</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Glossary</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Glossary</h1>
+        
+        <p>This glossary provides definitions for terminology used throughout the Trinity Framework 2.0 Core documentation. Having a standardized vocabulary ensures clear communication across all components of the framework.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: Consistent terminology is essential for context resilience. Using standard terms reduces ambiguity and improves operational clarity across context resets.</p>
+        </div>
+
+        <h2>Framework Terminology</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title" id="framework2">Framework 2.0</h3>
+                <p>The second generation of the Trinity Framework, featuring standardized workspace organization, protocol-based recovery, and context management. Framework 2.0 introduces formal agent specialization and collaboration patterns.</p>
+                <p><strong>Related Terms</strong>: Trinity Framework, Protocol Files, Context Resilience</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title" id="context-resilience">Context Resilience</h3>
+                <p>The ability to maintain operational continuity across context resets. Achieved through standardized protocols, checkpointing, and knowledge preservation mechanisms that enable rapid recovery and continuation of work.</p>
+                <p><strong>Related Terms</strong>: Context Management, Checkpointing, Auto-Compact Recovery</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title" id="workspace-standardization">Workspace Standardization</h3>
+                <p>The practice of maintaining consistent directory structures, file naming conventions, and organizational patterns across all agent workspaces to ensure predictability and operational efficiency.</p>
+                <p><strong>Related Terms</strong>: Directory Structure, Protocol Files, Workspace Organization</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title" id="protocol-based-recovery">Protocol-Based Recovery</h3>
+                <p>A formalized approach to recovering operational awareness after context resets, using standardized procedures defined in protocol files to restore functionality efficiently.</p>
+                <p><strong>Related Terms</strong>: Auto-Compact Recovery, Checkpointing, Context Management</p>
+            </div>
+        </div>
+
+        <h2>Agent Roles</h2>
+        
+        <div class="role-card apex-card">
+            <div class="role-header">
+                <span class="role-icon">🔷</span>
+                <h3 class="role-name" id="apex">APEX</h3>
+            </div>
+            <p>The strategic coordination agent in the Trinity Model, responsible for high-level architecture, project direction, and system integration. APEX takes a "big picture" view, ensuring all components work together cohesively.</p>
+            <p><strong>Key Characteristics</strong>: Strategic thinking, architectural expertise, system-level vision</p>
+            <p><strong>Related Terms</strong>: Strategic Coordination, System Architecture, Trinity Model</p>
+        </div>
+        
+        <div class="role-card analyst-card">
+            <div class="role-header">
+                <span class="role-icon">🔶</span>
+                <h3 class="role-name" id="analyst">ANALYST</h3>
+            </div>
+            <p>The analytical implementation agent in the Trinity Model, responsible for detailed implementation, data analysis, and tactical execution. ANALYST translates APEX's strategic vision into concrete implementations.</p>
+            <p><strong>Key Characteristics</strong>: Technical expertise, analytical thinking, implementation focus</p>
+            <p><strong>Related Terms</strong>: Technical Implementation, Data Analysis, Code Optimization</p>
+        </div>
+        
+        <div class="role-card historian-card">
+            <div class="role-header">
+                <span class="role-icon">📘</span>
+                <h3 class="role-name" id="historian">HISTORIAN</h3>
+            </div>
+            <p>The documentation and knowledge preservation agent in the Trinity Model, responsible for maintaining comprehensive documentation, knowledge organization, and context continuity across the system.</p>
+            <p><strong>Key Characteristics</strong>: Documentation expertise, knowledge organization, communication clarity</p>
+            <p><strong>Related Terms</strong>: Documentation, Knowledge Preservation, AAR System</p>
+        </div>
+
+        <h2>Protocol Files</h2>
+        
+        <div class="card">
+            <h3 class="card-title" id="agent-md">AGENT.md</h3>
+            <p>The protocol file that defines an agent's identity, role, responsibilities, and recovery procedures. It serves as the primary reference point for an agent to understand its purpose and operational parameters.</p>
+            <p><strong>Key Sections</strong>: Identity & Mission, Core Principles, Auto-Compact Recovery Protocol, Key Paths and Locations</p>
+            <p><strong>Related Terms</strong>: Agent Identity, Recovery Protocol, Framework Guidelines</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="status-md">STATUS.md</h3>
+            <p>The protocol file that tracks current operational status, project progress, and priorities. It serves as a comprehensive status dashboard that is regularly updated to reflect the latest state of operations.</p>
+            <p><strong>Key Sections</strong>: Framework Status, Project Status, Next Priorities, Recent Accomplishments, Context Health</p>
+            <p><strong>Related Terms</strong>: Operational Status, Project Progress, Context Health</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="auto-compact-md">AUTO-COMPACT.md</h3>
+            <p>The protocol file dedicated to context management, containing information about current context utilization, checkpoint data, and recovery instructions. It plays a critical role in maintaining operational continuity across context resets.</p>
+            <p><strong>Key Sections</strong>: Context Management Metrics, Checkpoint Data, Checkpoint Restoration Instructions, Current Implementation Context</p>
+            <p><strong>Related Terms</strong>: Context Management, Checkpointing, Auto-Compact Recovery</p>
+        </div>
+
+        <h2>Context Management</h2>
+        
+        <div class="card">
+            <h3 class="card-title" id="context">Context</h3>
+            <p>The available memory or token capacity within a language model's operational window. Context represents the information an agent can hold at one time before requiring a reset (auto-compact).</p>
+            <p><strong>Related Terms</strong>: Token Utilization, Context Window, Context Reset</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="token">Token</h3>
+            <p>The basic unit of context utilization, representing a piece of text processed by the language model. Tokens are used to measure context consumption and estimate remaining capacity.</p>
+            <p><strong>Related Terms</strong>: Token Counting, Context Utilization, Token Estimation</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="checkpoint">Checkpoint</h3>
+            <p>A serialized snapshot of operational state created at specific thresholds or on demand. Checkpoints capture critical information that enables recovery after context resets.</p>
+            <p><strong>Key Types</strong>: NOTICE (65%), WARNING (75%), ALERT (85%), MANUAL</p>
+            <p><strong>Related Terms</strong>: Checkpoint Manager, State Serialization, Recovery</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="auto-compact">Auto-Compact</h3>
+            <p>The process of resetting a language model's context when it approaches capacity limits. Auto-compact clears the model's memory, necessitating recovery procedures to restore operational awareness.</p>
+            <p><strong>Related Terms</strong>: Context Reset, Auto-Compact Detection, Recovery Protocol</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="threshold">Threshold</h3>
+            <p>Predefined context utilization levels that trigger specific actions, such as notifications, warnings, checkpoint creation, and recovery preparation.</p>
+            <p><strong>Standard Thresholds</strong>:</p>
+            <ul>
+                <li><strong>NOTICE</strong>: 65% - Initial awareness of context growth</li>
+                <li><strong>WARNING</strong>: 75% - Create checkpoint and prepare for potential compact</li>
+                <li><strong>ALERT</strong>: 85% - Final checkpoint creation and imminent compact warning</li>
+            </ul>
+            <p><strong>Related Terms</strong>: Context Monitoring, Checkpoint Creation, Visualization</p>
+        </div>
+
+        <h2>Workspace Organization</h2>
+        
+        <div class="card">
+            <h3 class="card-title" id="directory-structure">Directory Structure</h3>
+            <p>The standardized organization of directories within an agent workspace, including required directories like tools/, AAR/, reports/, and checkpoints/, as well as role-specific directories.</p>
+            <p><strong>Related Terms</strong>: Workspace Standardization, Directory Organization, File Structure</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="aar">AAR (After Action Review)</h3>
+            <p>A structured documentation format for preserving knowledge across context boundaries. AARs capture session learnings, incident analyses, and procedural improvements for future reference.</p>
+            <p><strong>Types</strong>:</p>
+            <ul>
+                <li><strong>Session AAR</strong>: 20-50 line document covering one work session</li>
+                <li><strong>Incident AAR</strong>: 100+ line comprehensive analysis of significant incidents</li>
+            </ul>
+            <p><strong>Related Terms</strong>: Knowledge Preservation, Documentation, Session Review</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="tools">Tools</h3>
+            <p>Specialized utilities and scripts that support agent operations, organized in the tools/ directory. Tools include context management, workspace verification, documentation generation, and role-specific utilities.</p>
+            <p><strong>Key Categories</strong>: Context Management, Workspace Management, Documentation, Recovery</p>
+            <p><strong>Related Terms</strong>: Utilities, Scripts, Automation</p>
+        </div>
+
+        <h2>Project Management</h2>
+        
+        <div class="card">
+            <h3 class="card-title" id="unit">UNIT</h3>
+            <p>The smallest atomic operational cycle in the Trinity Framework's project management terminology, equivalent to a daily work cycle. A UNIT represents a single, cohesive work period.</p>
+            <p><strong>Related Terms</strong>: Operational Cycle, MILESTONE, Work Period</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="milestone">MILESTONE</h3>
+            <p>A collection of UNITs forming an achievement checkpoint, equivalent to a weekly work cycle. A MILESTONE represents a significant accomplishment within a project phase.</p>
+            <p><strong>Composition</strong>: 7 UNITs</p>
+            <p><strong>Related Terms</strong>: Achievement Checkpoint, UNIT, PHASE</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="iteration">ITERATION</h3>
+            <p>A process improvement cycle focusing on refinement and optimization, equivalent to a fortnightly work cycle. An ITERATION represents a complete cycle of implementation and improvement.</p>
+            <p><strong>Composition</strong>: 14 UNITs or 2 MILESTONEs</p>
+            <p><strong>Related Terms</strong>: Process Improvement, Refinement Cycle, MILESTONE</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="phase">PHASE</h3>
+            <p>A major project segment with a specific focus or objective, equivalent to a monthly work cycle. A PHASE represents a substantial component of a complete project.</p>
+            <p><strong>Composition</strong>: 4 MILESTONEs or 2 ITERATIONs or 28 UNITs</p>
+            <p><strong>Related Terms</strong>: Project Segment, MILESTONE, PROJECT</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="project">PROJECT</h3>
+            <p>A complete initiative with defined objectives, scope, and deliverables, equivalent to a quarterly work cycle. A PROJECT represents a full implementation of a feature, system, or capability.</p>
+            <p><strong>Composition</strong>: 3 PHASEs or 12 MILESTONEs or 84 UNITs</p>
+            <p><strong>Related Terms</strong>: Initiative, Complete Implementation, PHASE</p>
+        </div>
+
+        <h2>Technical Concepts</h2>
+        
+        <div class="card">
+            <h3 class="card-title" id="trinity-model">Trinity Model</h3>
+            <p>A three-agent collaborative model with specialized roles (APEX, ANALYST, HISTORIAN) working together as a cohesive system. The Trinity Model distributes cognitive workload across specialized agents while maintaining operational alignment.</p>
+            <p><strong>Related Terms</strong>: Multi-Agent Collaboration, Agent Specialization, Role Division</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="operation-type">Operation Type</h3>
+            <p>A categorization of actions based on their context consumption, used for token estimation and context tracking. Operation types include user messages, assistant responses, and tool operations of varying sizes.</p>
+            <p><strong>Examples</strong>: USER_MEDIUM, ASSISTANT_LARGE, TOOL_READ_SMALL</p>
+            <p><strong>Related Terms</strong>: Token Estimation, Context Tracking, Context Management</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="synchronization">Synchronization</h3>
+            <p>The process of aligning information across agent workspaces to ensure consistency and operational coordination. Synchronization includes status alignment, context metric sharing, and checkpoint coordination.</p>
+            <p><strong>Related Terms</strong>: Workspace Synchronizer, Status Alignment, Coordination</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="visualization">Visualization</h3>
+            <p>Text-based representation of context utilization and system state, providing clear feedback on current status and remaining capacity. Visualizations include progress bars, thresholds, and remaining operation estimates.</p>
+            <p><strong>Example</strong>: <code>[Context: 45% ▓▓▓▓▓▓▓▓▓░░░░░░░░░░░] Remaining: ~73 small operations</code></p>
+            <p><strong>Related Terms</strong>: Context Visualization, Progress Bar, Threshold Indicator</p>
+        </div>
+
+        <h2>Systems and Components</h2>
+        
+        <div class="card">
+            <h3 class="card-title" id="context-management-system">Context Management System</h3>
+            <p>A comprehensive system for tracking token usage, creating checkpoints, and managing context limitations. The Context Management System includes token tracking, checkpoint management, visualization, and recovery components.</p>
+            <p><strong>Key Components</strong>: TokenTracker, CheckpointManager, ContextVisualizer, RecoveryManager</p>
+            <p><strong>Related Terms</strong>: Token Tracking, Checkpointing, Context Visualization</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="token-tracker">Token Tracker</h3>
+            <p>A component of the Context Management System that estimates token usage for different operations and maintains a running count of context utilization. The Token Tracker provides information about current utilization and remaining capacity.</p>
+            <p><strong>Related Terms</strong>: Context Management, Token Counting, Operation Types</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="checkpoint-manager">Checkpoint Manager</h3>
+            <p>A component of the Context Management System that creates, stores, and restores checkpoints for context recovery. The Checkpoint Manager ensures that critical state information is preserved across context resets.</p>
+            <p><strong>Related Terms</strong>: Checkpointing, State Serialization, Recovery</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="auto-compact-detector">Auto-Compact Detector</h3>
+            <p>A component of the Context Management System that identifies when a context reset has occurred by monitoring context utilization patterns and timing. The Auto-Compact Detector triggers recovery procedures when a reset is detected.</p>
+            <p><strong>Detection Methods</strong>: Utilization Drop, Time Heuristics</p>
+            <p><strong>Related Terms</strong>: Context Reset, Recovery Trigger, Monitoring</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title" id="recovery-manager">Recovery Manager</h3>
+            <p>A component of the Context Management System that manages recovery procedures after context resets, including checkpoint restoration, protocol file updates, and operational continuity maintenance.</p>
+            <p><strong>Related Terms</strong>: Context Recovery, Checkpoint Restoration, Protocol Updates</p>
+        </div>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

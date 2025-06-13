@@ -6,6 +6,7 @@
     <title>Trinity Framework 2.0 Core Documentation</title>
     <link rel="stylesheet" href="css/shadowrun-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="js/animation.js"></script>
 </head>
 <body>
     <div class="framework-float-badge">Framework 2.0</div>
@@ -17,8 +18,8 @@
                 <span class="version-badge">v1.0.0</span>
             </div>
             <nav class="nav">
-                <a href="../" class="nav-link">Home</a>
-                <a href="#" class="nav-link">Documentation</a>
+                <a href="/" class="nav-link">Home</a>
+                <a href="#" class="nav-link active">Documentation</a>
                 <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
             </nav>
         </div>
@@ -51,6 +52,9 @@
                     <li class="sidebar-nav-item">
                         <a href="principles/operational-autonomy.html" class="sidebar-nav-link">Operational Autonomy</a>
                     </li>
+                    <li class="sidebar-nav-item">
+                        <a href="principles/multi-agent-collaboration.html" class="sidebar-nav-link">Multi-Agent Collaboration</a>
+                    </li>
                 </ul>
                 
                 <div class="sidebar-nav-section">Getting Started</div>
@@ -80,6 +84,12 @@
                     <li class="sidebar-nav-item">
                         <a href="reference/terminology-reference.html" class="sidebar-nav-link">Terminology Reference</a>
                     </li>
+                    <li class="sidebar-nav-item">
+                        <a href="reference/api-reference.html" class="sidebar-nav-link">API Reference</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="reference/glossary.html" class="sidebar-nav-link">Glossary</a>
+                    </li>
                 </ul>
                 
                 <div class="sidebar-nav-section">Guides</div>
@@ -92,6 +102,12 @@
                     </li>
                     <li class="sidebar-nav-item">
                         <a href="guides/context-management.html" class="sidebar-nav-link">Context Management</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="guides/workspace-organization.html" class="sidebar-nav-link">Workspace Organization</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="guides/token-tracking.html" class="sidebar-nav-link">Token Tracking</a>
                     </li>
                 </ul>
                 
@@ -111,14 +127,14 @@
                 <div class="sidebar-nav-section">Field Reports</div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-nav-item">
-                        <a href="beta-2-deployment.html" class="sidebar-nav-link">Beta 2 Deployment</a>
+                        <a href="field-reports/beta-2-deployment.html" class="sidebar-nav-link">Beta 2 Deployment</a>
                     </li>
                 </ul>
             </div>
             
             <main>
                 <div class="breadcrumbs">
-                    <a href="../" class="breadcrumb-link breadcrumb-item">Home</a>
+                    <a href="/" class="breadcrumb-link breadcrumb-item">Home</a>
                     <span class="breadcrumb-separator">/</span>
                     <span class="breadcrumb-current breadcrumb-item">Documentation</span>
                 </div>
@@ -258,8 +274,20 @@
                         <h3 class="card-title">Beta 2 Deployment</h3>
                         <p>How OVERSEER deployed Trinity Apex Beta 2 on AWS with minimal human intervention.</p>
                         <p><span class="tag tag-blue">DevOps</span> <span class="tag tag-blue">AWS</span> <span class="tag tag-blue">K3s</span></p>
-                        <a href="beta-2-deployment.html" class="button">Read Case Study</a>
+                        <a href="field-reports/beta-2-deployment.html" class="button">Read Case Study</a>
                     </div>
+                </div>
+                
+                <h2><i class="fas fa-history"></i> Recent Updates</h2>
+                
+                <div class="card">
+                    <h3 class="card-title">How we deployed Beta 2</h3>
+                    <blockquote>
+                        Let OVERSEER handle the infrastructure setup today. It submitted the AWS spot request, provisioned everything, and worked through the deployment. Only needed help once when it hit Oracle Linux kernel conflicts - I pointed out the error and it took it from there. Even handled the AWS CLI v2 JSON syntax issues and subnet CIDR constraints by itself.
+                    </blockquote>
+                    <p>What we got: t3a.medium spot instance in us-east-2 running Oracle Linux 9 with K3s v1.32.5+k3s1 on 100GB GP3. beta.trinityapex.io pointing to the instance (site coming soon).</p>
+                    <p>The numbers: 73% cost reduction for beta testing ($132 down to $34.95/month) while increasing capacity from 2 to 5 testers. Solid outcome for an AI doing DevOps.</p>
+                    <p><a href="field-reports/beta-2-deployment.html" class="button">Read Full Report</a></p>
                 </div>
             </main>
         </div>
@@ -272,48 +300,5 @@
             <div class="framework-badge">Framework 2.0 COMPLIANT</div>
         </div>
     </footer>
-    
-    <script>
-        // Simple animation for terminal text
-        document.addEventListener('DOMContentLoaded', function() {
-            const terminalLines = document.querySelectorAll('.terminal-content br');
-            
-            // Hide all lines initially except the first one
-            for (let i = 0; i < terminalLines.length; i++) {
-                const nextSibling = terminalLines[i].nextSibling;
-                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                    nextSibling.style.display = 'none';
-                }
-            }
-            
-            // Show lines one by one
-            let currentLine = 0;
-            function showNextLine() {
-                if (currentLine < terminalLines.length) {
-                    const nextSibling = terminalLines[currentLine].nextSibling;
-                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                        nextSibling.style.display = 'inline';
-                    }
-                    currentLine++;
-                    setTimeout(showNextLine, 500);
-                }
-            }
-            
-            setTimeout(showNextLine, 1000);
-        });
-        
-        // Simple search functionality (placeholder - would need backend for full implementation)
-        document.querySelector('.search-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const searchTerm = this.value.toLowerCase();
-                
-                // Alert for demonstration purposes
-                alert('Search functionality would search for: ' + searchTerm);
-                
-                // In a real implementation, this would filter results or redirect to search results page
-                e.preventDefault();
-            }
-        });
-    </script>
 </body>
 </html>

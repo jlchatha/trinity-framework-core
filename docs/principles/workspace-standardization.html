@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace Standardization - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../../" class="nav-link">Home</a>
+                <a href="../../docs/" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="./" class="breadcrumb-link breadcrumb-item">Principles</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Workspace Standardization</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>Workspace Standardization</h1>
+        
+        <p>Workspace standardization is the second core principle of Trinity Framework 2.0, ensuring consistent file structure patterns and organizational clarity across all agent workspaces. This standardization creates a predictable environment that supports context resilience and operational efficiency.</p>
+
+        <div class="note">
+            <p><strong>Note</strong>: Standardized workspaces are essential for operational continuity across context resets. When an agent knows exactly where to find critical information, recovery becomes significantly faster and more reliable.</p>
+        </div>
+
+        <h2>Core Components of Workspace Standardization</h2>
+        
+        <p>A standardized Trinity Framework workspace includes these essential components:</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-file-alt"></i> Protocol Files</h3>
+                <p>Core files that define agent identity, operational status, and context management.</p>
+                <ul>
+                    <li>AGENT.md: Identity and recovery procedures</li>
+                    <li>STATUS.md: Current operational status</li>
+                    <li>AUTO-COMPACT.md: Context management protocol</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-folder"></i> Directory Structure</h3>
+                <p>Standardized directories for organizing different types of content.</p>
+                <ul>
+                    <li>tools/: Utilities and scripts</li>
+                    <li>AAR/: After Action Review documents</li>
+                    <li>reports/: Analysis and status reports</li>
+                    <li>checkpoints/: Context checkpoints</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-sitemap"></i> Logical Organization</h3>
+                <p>Clear separation of concerns for efficient navigation and access.</p>
+                <ul>
+                    <li>Consistent naming conventions</li>
+                    <li>Predictable file locations</li>
+                    <li>Role-appropriate structure</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Standard Workspace Structure</h2>
+        
+        <p>A compliant Trinity Framework workspace follows this standardized structure:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">/path/to/agent/workspace/</span><br>
+                <span style="color: var(--text-medium);">├── AGENT.md                    # Agent identity and recovery protocol</span><br>
+                <span style="color: var(--text-medium);">├── STATUS.md                   # Current operational status</span><br>
+                <span style="color: var(--text-medium);">├── AUTO-COMPACT.md             # Context management protocol</span><br>
+                <span style="color: var(--text-medium);">├── tools/                      # Utilities and scripts</span><br>
+                <span style="color: var(--text-medium);">│   ├── setup/                  # Setup and configuration tools</span><br>
+                <span style="color: var(--text-medium);">│   ├── token-tracker/          # Context management tools</span><br>
+                <span style="color: var(--text-medium);">│   └── [role-specific]/        # Role-specific tools</span><br>
+                <span style="color: var(--text-medium);">├── AAR/                        # After Action Review documents</span><br>
+                <span style="color: var(--text-medium);">│   ├── sessions/               # Session-based knowledge preservation</span><br>
+                <span style="color: var(--text-medium);">│   └── incidents/              # Incident analysis and resolution</span><br>
+                <span style="color: var(--text-medium);">├── reports/                    # Analysis and status reports</span><br>
+                <span style="color: var(--text-medium);">├── checkpoints/                # Context checkpoints</span><br>
+                <span style="color: var(--text-medium);">└── [role-specific]/            # Role-specific directories</span><br>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        
+        <h3>Role-Specific Directory Variations</h3>
+        
+        <p>While maintaining the core structure, each agent role may include additional directories relevant to their specific responsibilities:</p>
+        
+        <table>
+            <tr>
+                <th>Agent Role</th>
+                <th>Additional Directories</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><strong>APEX</strong></td>
+                <td>architecture/, planning/, integration/</td>
+                <td>Strategic planning and architectural documentation</td>
+            </tr>
+            <tr>
+                <td><strong>ANALYST</strong></td>
+                <td>analysis/, data/, implementations/</td>
+                <td>Data analysis and implementation work</td>
+            </tr>
+            <tr>
+                <td><strong>HISTORIAN</strong></td>
+                <td>documentation/, templates/, archives/</td>
+                <td>Documentation management and knowledge preservation</td>
+            </tr>
+        </table>
+
+        <h2>Protocol Files: The Foundation of Standardization</h2>
+        
+        <p>Protocol files are the cornerstone of workspace standardization, providing consistent structure and content across all agent workspaces:</p>
+        
+        <h3>AGENT.md</h3>
+        
+        <ul>
+            <li><strong>Purpose</strong>: Defines agent identity, role, and recovery procedures</li>
+            <li><strong>Standard Sections</strong>:
+                <ul>
+                    <li>Identity & Mission: Who the agent is and its primary mission</li>
+                    <li>Core Principles: Fundamental operational principles</li>
+                    <li>Auto-Compact Recovery Protocol: Steps for recovery after context reset</li>
+                    <li>Tools and Resources: Available tools and their purposes</li>
+                    <li>Key Paths and Locations: Important file system locations</li>
+                </ul>
+            </li>
+            <li><strong>Location</strong>: Root directory of the workspace</li>
+        </ul>
+        
+        <h3>STATUS.md</h3>
+        
+        <ul>
+            <li><strong>Purpose</strong>: Tracks current operational status and priorities</li>
+            <li><strong>Standard Sections</strong>:
+                <ul>
+                    <li>Framework Status: Current framework implementation status</li>
+                    <li>Project Status: Status of current projects</li>
+                    <li>Next Priorities: Upcoming tasks in priority order</li>
+                    <li>Recent Accomplishments: Recently completed tasks</li>
+                    <li>Context Health: Current context utilization metrics</li>
+                </ul>
+            </li>
+            <li><strong>Location</strong>: Root directory of the workspace</li>
+        </ul>
+        
+        <h3>AUTO-COMPACT.md</h3>
+        
+        <ul>
+            <li><strong>Purpose</strong>: Manages context limitations and recovery</li>
+            <li><strong>Standard Sections</strong>:
+                <ul>
+                    <li>Context Management Metrics: Current context utilization</li>
+                    <li>Checkpoint Data: Serialized checkpoint information</li>
+                    <li>Checkpoint Restoration Instructions: Recovery steps</li>
+                    <li>Current Implementation Context: Summary of current state</li>
+                    <li>Post-Compact Recovery Plan: Specific recovery steps</li>
+                </ul>
+            </li>
+            <li><strong>Location</strong>: Root directory of the workspace</li>
+        </ul>
+        
+        <p>For detailed information on protocol files, see the <a href="../reference/protocol-files.html">Protocol Files Reference</a>.</p>
+
+        <h2>Directory Structure and Organization</h2>
+        
+        <h3>tools/ Directory</h3>
+        
+        <p>The tools/ directory contains utilities and scripts organized by purpose:</p>
+        
+        <ul>
+            <li><strong>setup/</strong>: Workspace setup and configuration tools</li>
+            <li><strong>token-tracker/</strong>: Context management and tracking tools</li>
+            <li><strong>sync/</strong>: Synchronization and consistency tools</li>
+            <li><strong>recovery/</strong>: Context recovery and checkpoint tools</li>
+            <li><strong>[role-specific]/</strong>: Tools specific to each agent role</li>
+        </ul>
+        
+        <h3>AAR/ Directory</h3>
+        
+        <p>The AAR/ directory preserves knowledge across context boundaries:</p>
+        
+        <ul>
+            <li><strong>sessions/</strong>: Session-based knowledge documentation
+                <ul>
+                    <li>Format: YYYY-MM-DD-description.md</li>
+                    <li>Example: 2025-06-13-documentation-update.md</li>
+                </ul>
+            </li>
+            <li><strong>incidents/</strong>: Incident analysis and resolution
+                <ul>
+                    <li>Format: DESCRIPTIVE-NAME-RCA.md (Root Cause Analysis)</li>
+                    <li>Example: GITHUB-PAGES-SYNC-FAILURE-RCA.md</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>reports/ Directory</h3>
+        
+        <p>The reports/ directory contains analysis and status reports:</p>
+        
+        <ul>
+            <li><strong>sync-report-*.md</strong>: Documentation synchronization reports</li>
+            <li><strong>context-report-*.md</strong>: Context utilization reports</li>
+            <li><strong>status-report-*.md</strong>: Periodic status reports</li>
+            <li><strong>analysis-report-*.md</strong>: In-depth analysis reports</li>
+        </ul>
+        
+        <h3>checkpoints/ Directory</h3>
+        
+        <p>The checkpoints/ directory stores context checkpoints:</p>
+        
+        <ul>
+            <li><strong>ckpt_notice_*</strong>: Checkpoints at NOTICE threshold (65%)</li>
+            <li><strong>ckpt_warning_*</strong>: Checkpoints at WARNING threshold (75%)</li>
+            <li><strong>ckpt_alert_*</strong>: Checkpoints at ALERT threshold (85%)</li>
+            <li><strong>ckpt_manual_*</strong>: Manually created checkpoints</li>
+        </ul>
+
+        <h2>Naming Conventions</h2>
+        
+        <p>Consistent naming conventions are essential for workspace standardization:</p>
+        
+        <table>
+            <tr>
+                <th>Item Type</th>
+                <th>Naming Convention</th>
+                <th>Examples</th>
+            </tr>
+            <tr>
+                <td>Protocol Files</td>
+                <td>UPPERCASE.md</td>
+                <td>AGENT.md, STATUS.md, AUTO-COMPACT.md</td>
+            </tr>
+            <tr>
+                <td>Directories</td>
+                <td>lowercase/</td>
+                <td>tools/, reports/, AAR/</td>
+            </tr>
+            <tr>
+                <td>Tool Scripts</td>
+                <td>hyphenated-names.sh or .js</td>
+                <td>context-check.sh, generate-report.js</td>
+            </tr>
+            <tr>
+                <td>Session AARs</td>
+                <td>YYYY-MM-DD-description.md</td>
+                <td>2025-06-13-documentation-update.md</td>
+            </tr>
+            <tr>
+                <td>Incident AARs</td>
+                <td>UPPERCASE-INCIDENT-RCA.md</td>
+                <td>API-DOCUMENTATION-FAILURE-RCA.md</td>
+            </tr>
+        </table>
+
+        <h2>Implementation Benefits</h2>
+        
+        <p>Workspace standardization provides numerous benefits:</p>
+        
+        <ul>
+            <li><strong>Improved Recovery</strong>: Faster, more reliable context reset recovery</li>
+            <li><strong>Reduced Cognitive Load</strong>: Predictable file locations reduce mental effort</li>
+            <li><strong>Enhanced Collaboration</strong>: Consistent structure across agent workspaces</li>
+            <li><strong>Operational Clarity</strong>: Clear organization of different content types</li>
+            <li><strong>Streamlined Automation</strong>: Standardized paths enable automated tools</li>
+        </ul>
+        
+        <div class="warning">
+            <p><strong>Important</strong>: Deviating from standardized structure significantly reduces context resilience. Always maintain strict adherence to workspace standardization principles.</p>
+        </div>
+
+        <h2>Verification and Compliance</h2>
+        
+        <p>Verify workspace standardization compliance using the provided tools:</p>
+        
+        <div class="terminal">
+            <div class="terminal-content">
+                <span style="color: var(--neon-blue);">$</span> ./tools/verify-workspace.sh<br>
+                <span style="color: var(--text-medium);">Verifying workspace structure...</span><br>
+                <span style="color: var(--text-medium);">✓ Protocol files: 3/3 present</span><br>
+                <span style="color: var(--text-medium);">✓ Directory structure: 5/5 required directories present</span><br>
+                <span style="color: var(--text-medium);">✓ Naming conventions: All files comply with standards</span><br>
+                <span style="color: var(--text-medium);">✓ Protocol file content: All required sections present</span><br>
+                <span style="color: var(--neon-green);">✓ Workspace standardization: COMPLIANT</span><br>
+            </div>
+        </div>
+        
+        <p>For more information on workspace verification, see the <a href="../getting-started/verification-checklist.html">Verification Checklist</a>.</p>
+
+        <h2>Best Practices</h2>
+        
+        <ul>
+            <li><strong>Maintain Protocol Files</strong>: Keep protocol files updated and in the workspace root</li>
+            <li><strong>Follow Naming Conventions</strong>: Use consistent naming patterns for all files</li>
+            <li><strong>Preserve Directory Structure</strong>: Maintain standard directories and organization</li>
+            <li><strong>Regular Verification</strong>: Periodically verify workspace compliance</li>
+            <li><strong>Role Appropriateness</strong>: Adapt role-specific directories to your agent's needs</li>
+        </ul>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for terminal text
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-content br');
+            
+            // Hide all lines initially except the first one
+            for (let i = 0; i < terminalLines.length; i++) {
+                const nextSibling = terminalLines[i].nextSibling;
+                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                    nextSibling.style.display = 'none';
+                }
+            }
+            
+            // Show lines one by one
+            let currentLine = 0;
+            function showNextLine() {
+                if (currentLine < terminalLines.length) {
+                    const nextSibling = terminalLines[currentLine].nextSibling;
+                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                        nextSibling.style.display = 'inline';
+                    }
+                    currentLine++;
+                    setTimeout(showNextLine, 500);
+                }
+            }
+            
+            setTimeout(showNextLine, 1000);
+        });
+    </script>
+</body>
+</html>
