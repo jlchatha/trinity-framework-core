@@ -4,144 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agent Roles - Trinity Framework 2.0 Core</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f8f9fa;
-        }
-        .container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #0366d6;
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        h2 {
-            margin-top: 24px;
-            margin-bottom: 16px;
-            font-weight: 600;
-            color: #24292e;
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: 5px;
-        }
-        h3 {
-            margin-top: 20px;
-            color: #24292e;
-        }
-        a {
-            color: #0366d6;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        code {
-            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
-            background-color: #f6f8fa;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-size: 85%;
-        }
-        pre {
-            background-color: #f6f8fa;
-            border-radius: 3px;
-            padding: 16px;
-            overflow: auto;
-            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
-        }
-        blockquote {
-            border-left: 4px solid #dfe2e5;
-            color: #6a737d;
-            margin: 0;
-            padding: 0 16px;
-        }
-        .home-link {
-            margin-top: 30px;
-            display: block;
-        }
-        footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eaecef;
-            color: #6a737d;
-            font-size: 14px;
-            text-align: center;
-        }
-        .metadata {
-            background-color: #f6f8fa;
-            border-radius: 3px;
-            padding: 10px;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-        .note {
-            background-color: #f1f8ff;
-            border-left: 4px solid #0366d6;
-            padding: 12px;
-            margin: 16px 0;
-            border-radius: 3px;
-        }
-        .warning {
-            background-color: #fff5f7;
-            border-left: 4px solid #d73a49;
-            padding: 12px;
-            margin: 16px 0;
-            border-radius: 3px;
-        }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #dfe2e5;
-            padding: 8px 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f6f8fa;
-        }
-        .role-card {
-            border: 1px solid #dfe2e5;
-            border-radius: 6px;
-            padding: 16px;
-            margin: 24px 0;
-            background-color: #f8f9fa;
-        }
-        .role-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        .role-icon {
-            font-size: 24px;
-            margin-right: 12px;
-        }
-        .role-name {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 0;
-            color: #0366d6;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="../" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../reference/" class="breadcrumb-link breadcrumb-item">Reference</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Agent Roles</span>
+        </div>
+        
         <div class="metadata">
-            <strong>VERSION</strong>: 1.0.0 | 
-            <strong>CREATED</strong>: June 13, 2025 | 
-            <strong>STATUS</strong>: Release Candidate | 
-            <strong>FRAMEWORK</strong>: Trinity Framework 2.0
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
         </div>
 
         <h1>Agent Roles in Trinity Framework 2.0</h1>
@@ -156,7 +64,7 @@
         
         <p>The Trinity Framework is built around three specialized agent roles:</p>
 
-        <div class="role-card">
+        <div class="role-card apex-card">
             <div class="role-header">
                 <span class="role-icon">🔷</span>
                 <h3 class="role-name">APEX</h3>
@@ -166,7 +74,7 @@
             <p><strong>Key Characteristics</strong>: Big-picture thinking, long-term planning, architectural expertise</p>
         </div>
 
-        <div class="role-card">
+        <div class="role-card analyst-card">
             <div class="role-header">
                 <span class="role-icon">🔶</span>
                 <h3 class="role-name">ANALYST</h3>
@@ -176,7 +84,7 @@
             <p><strong>Key Characteristics</strong>: Detail-oriented, analytical thinking, implementation expertise</p>
         </div>
 
-        <div class="role-card">
+        <div class="role-card historian-card">
             <div class="role-header">
                 <span class="role-icon">📘</span>
                 <h3 class="role-name">HISTORIAN</h3>
@@ -188,7 +96,7 @@
 
         <h2>Role Responsibilities in Detail</h2>
 
-        <h3>APEX Agent</h3>
+        <h3 id="apex">APEX Agent</h3>
         
         <p>The APEX agent is the strategic lead of the Trinity system, responsible for high-level direction and architecture:</p>
         
@@ -218,7 +126,7 @@
             <li><strong>AUTO-COMPACT.md</strong>: Advanced recovery mechanisms</li>
         </ul>
 
-        <h3>ANALYST Agent</h3>
+        <h3 id="analyst">ANALYST Agent</h3>
         
         <p>The ANALYST agent is the tactical implementer of the Trinity system, focused on detailed analysis and execution:</p>
         
@@ -248,7 +156,7 @@
             <li><strong>AUTO-COMPACT.md</strong>: Implementation-focused recovery procedures</li>
         </ul>
 
-        <h3>HISTORIAN Agent</h3>
+        <h3 id="historian">HISTORIAN Agent</h3>
         
         <p>The HISTORIAN agent is the knowledge guardian of the Trinity system, responsible for documentation and context preservation:</p>
         
@@ -424,11 +332,14 @@
         </ul>
 
         <a href="../" class="home-link">← Back to Documentation Home</a>
-    </div>
+    </main>
     
     <footer>
-        <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
-        <p><em>Framework 2.0 COMPLIANT</em></p>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
     </footer>
 </body>
 </html>

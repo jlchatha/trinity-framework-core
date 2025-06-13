@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta 2 Deployment Experience - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="./" class="nav-link">Home</a>
+                <a href="./" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="./" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current breadcrumb-item">Beta 2 Deployment Experience</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">June 13, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Field Report</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <h1>How We Deployed Beta 2</h1>
+        
+        <div class="card">
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--neon-blue);">[OVERSEER@trinity-apex]$</span> <span class="glow-text">Initiating Beta 2 Deployment...</span><br>
+                    <span style="color: var(--neon-blue);">[OVERSEER@trinity-apex]$</span> aws ec2 request-spot-instances --instance-type t3a.medium<br>
+                    <span style="color: var(--neon-green);">✓</span> Spot instance request submitted successfully<br>
+                    <span style="color: var(--neon-blue);">[OVERSEER@trinity-apex]$</span> aws ec2 describe-instances --filters "Name=instance-type,Values=t3a.medium"<br>
+                    <span style="color: var(--neon-green);">✓</span> Instance provisioned in us-east-2<br>
+                    <span style="color: var(--neon-blue);">[OVERSEER@trinity-apex]$</span> ssh ec2-user@instance-ip "curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.32.5+k3s1 sh -"<br>
+                    <span style="color: var(--neon-green);">✓</span> K3s v1.32.5+k3s1 installed successfully<br>
+                    <span style="color: var(--neon-red);">✗</span> Oracle Linux kernel conflict detected<br>
+                    <span style="color: var(--neon-blue);">[HUMAN@trinity-apex]$</span> Point out error in kernel module compatibility<br>
+                    <span style="color: var(--neon-blue);">[OVERSEER@trinity-apex]$</span> sudo modprobe br_netfilter<br>
+                    <span style="color: var(--neon-blue);">[OVERSEER@trinity-apex]$</span> sudo modprobe overlay<br>
+                    <span style="color: var(--neon-green);">✓</span> Kernel modules loaded, resuming installation<br>
+                    <span style="color: var(--neon-blue);">[OVERSEER@trinity-apex]$</span> aws route53 change-resource-record-sets --hosted-zone-id ZONE_ID --change-batch file://dns-changes.json<br>
+                    <span style="color: var(--neon-green);">✓</span> DNS record beta.trinityapex.io created successfully<br>
+                    <span style="color: var(--neon-green);">▶</span> <span class="glow-text">Deployment complete</span> - Instance running Oracle Linux 9 with K3s on 100GB GP3 storage<br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <blockquote>
+            Let OVERSEER handle the infrastructure setup today. It submitted the AWS spot request, provisioned everything, and worked through the deployment. Only needed help once when it hit Oracle Linux kernel conflicts - I pointed out the error and it took it from there. Even handled the AWS CLI v2 JSON syntax issues and subnet CIDR constraints by itself.
+        </blockquote>
+
+        <h2>What We Accomplished</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-server"></i> Infrastructure</h3>
+                <ul>
+                    <li>t3a.medium spot instance in us-east-2</li>
+                    <li>Running Oracle Linux 9</li>
+                    <li>K3s v1.32.5+k3s1</li>
+                    <li>100GB GP3 storage</li>
+                    <li>beta.trinityapex.io domain configured</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-dollar-sign"></i> Cost Optimization</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 73%;"></div>
+                </div>
+                <p>73% cost reduction for beta testing:</p>
+                <ul>
+                    <li>Previous cost: $132/month</li>
+                    <li>New cost: $34.95/month</li>
+                    <li>Capacity increased from 2 to 5 testers</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Technical Details</h2>
+        
+        <table>
+            <tr>
+                <th>Component</th>
+                <th>Specification</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Instance Type</td>
+                <td>t3a.medium (2 vCPU, 4GB RAM)</td>
+                <td><span style="color: var(--neon-green);">Active</span></td>
+            </tr>
+            <tr>
+                <td>Operating System</td>
+                <td>Oracle Linux 9</td>
+                <td><span style="color: var(--neon-green);">Configured</span></td>
+            </tr>
+            <tr>
+                <td>Kubernetes</td>
+                <td>K3s v1.32.5+k3s1</td>
+                <td><span style="color: var(--neon-green);">Deployed</span></td>
+            </tr>
+            <tr>
+                <td>Storage</td>
+                <td>100GB GP3 (3000 IOPS)</td>
+                <td><span style="color: var(--neon-green);">Attached</span></td>
+            </tr>
+            <tr>
+                <td>Domain</td>
+                <td>beta.trinityapex.io</td>
+                <td><span style="color: var(--neon-green);">Propagated</span></td>
+            </tr>
+            <tr>
+                <td>Application</td>
+                <td>Trinity APEX Beta</td>
+                <td><span style="color: var(--text-dim);">Pending</span></td>
+            </tr>
+        </table>
+
+        <h2>AI Agent Performance</h2>
+        
+        <p>This deployment represents a significant milestone in AI agent capabilities. OVERSEER successfully:</p>
+        
+        <ul>
+            <li>Handled complex AWS spot instance provisioning</li>
+            <li>Managed Oracle Linux kernel module configurations</li>
+            <li>Adapted to AWS CLI v2 JSON syntax requirements</li>
+            <li>Calculated subnet CIDR constraints independently</li>
+            <li>Recovered from kernel module conflicts with minimal human intervention</li>
+            <li>Set up complete Kubernetes infrastructure</li>
+            <li>Configured DNS for the beta environment</li>
+        </ul>
+        
+        <div class="note">
+            <p>The entire deployment process was captured on video and will be shared as a demonstration of AI agent capabilities in real-world DevOps scenarios.</p>
+        </div>
+
+        <h2>Next Steps for OVERSEER</h2>
+        
+        <ol>
+            <li>Deploy APEX containers to the Kubernetes cluster</li>
+            <li>Set up Prometheus monitoring for the environment</li>
+            <li>Implement security hardening measures</li>
+            <li>Coordinate with HISTORIAN on beta tester feedback forms</li>
+            <li>Configure automated backup and recovery systems</li>
+        </ol>
+        
+        <div class="warning">
+            <h3>Important Security Note</h3>
+            <p>This beta environment is isolated from production systems and contains no sensitive data. It uses dedicated security groups and network access control lists to enforce strict access controls.</p>
+        </div>
+
+        <h2>Conclusion</h2>
+        
+        <p>The Beta 2 deployment represents a solid outcome for an AI doing DevOps work. The significant cost reduction while increasing capacity demonstrates the value of AI-assisted infrastructure management.</p>
+        
+        <blockquote>
+            "Solid outcome for an AI doing DevOps."
+        </blockquote>
+        
+        <p>The deployment process showcases how AI agents can adapt to unexpected challenges and work through complex technical issues with minimal human intervention.</p>
+
+        <a href="./" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for terminal text
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-content br');
+            
+            // Hide all lines initially except the first one
+            for (let i = 0; i < terminalLines.length; i++) {
+                const nextSibling = terminalLines[i].nextSibling;
+                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                    nextSibling.style.display = 'none';
+                }
+            }
+            
+            // Show lines one by one
+            let currentLine = 0;
+            function showNextLine() {
+                if (currentLine < terminalLines.length) {
+                    const nextSibling = terminalLines[currentLine].nextSibling;
+                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                        nextSibling.style.display = 'inline';
+                    }
+                    currentLine++;
+                    setTimeout(showNextLine, 500);
+                }
+            }
+            
+            setTimeout(showNextLine, 1000);
+        });
+    </script>
+</body>
+</html>
