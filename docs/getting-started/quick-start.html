@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start Guide - Trinity Framework 2.0 Core</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0366d6;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h2 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            color: #24292e;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 5px;
+        }
+        h3 {
+            margin-top: 20px;
+            color: #24292e;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        code {
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            background-color: #f6f8fa;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 85%;
+        }
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            padding: 16px;
+            overflow: auto;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+        }
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0;
+            padding: 0 16px;
+        }
+        .home-link {
+            margin-top: 30px;
+            display: block;
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaecef;
+            color: #6a737d;
+            font-size: 14px;
+            text-align: center;
+        }
+        .metadata {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .note {
+            background-color: #f1f8ff;
+            border-left: 4px solid #0366d6;
+            padding: 12px;
+            margin: 16px 0;
+            border-radius: 3px;
+        }
+        .warning {
+            background-color: #fff5f7;
+            border-left: 4px solid #d73a49;
+            padding: 12px;
+            margin: 16px 0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="metadata">
+            <strong>VERSION</strong>: 1.0.0 | 
+            <strong>CREATED</strong>: June 13, 2025 | 
+            <strong>STATUS</strong>: Release Candidate | 
+            <strong>FRAMEWORK</strong>: Trinity Framework 2.0
+        </div>
+
+        <h1>Quick Start Guide</h1>
+        
+        <p>This guide will help you get started with Trinity Framework 2.0 Core quickly, setting up the basic components and creating agent workspaces.</p>
+
+        <h2>Prerequisites</h2>
+        
+        <ul>
+            <li>Linux or macOS operating system</li>
+            <li>Git installed</li>
+            <li>Node.js environment</li>
+            <li>Claude API access or Claude Pro subscription</li>
+            <li>Bash shell</li>
+        </ul>
+        
+        <div class="note">
+            <p><strong>Note</strong>: Trinity Framework 2.0 Core is not currently supported on Windows due to Claude Code limitations. It may work in WSL, but this is not officially supported.</p>
+        </div>
+
+        <h2>Step 1: Clone the Repository</h2>
+        
+        <p>First, clone the Trinity Framework 2.0 Core repository:</p>
+        
+        <pre><code>git clone https://github.com/jlchatha/trinity-framework-core.git
+cd trinity-framework-core</code></pre>
+
+        <h2>Step 2: Choose Your Setup Approach</h2>
+        
+        <p>The framework provides several setup options:</p>
+        
+        <h3>Option A: Create All Agent Workspaces (Recommended)</h3>
+        
+        <p>This will create workspaces for all three agent types:</p>
+        
+        <pre><code># Make scripts executable
+chmod +x tools/setup/*.sh
+
+# Create all agent workspaces in parent directory
+./tools/setup/create-workspaces.sh $(dirname $(pwd))</code></pre>
+        
+        <h3>Option B: Create a Specific Agent Workspace</h3>
+        
+        <p>If you only need one agent type:</p>
+        
+        <pre><code># For APEX agent
+./tools/setup/setup-apex.sh $(dirname $(pwd))/trinity-apex-workspace
+
+# For ANALYST agent
+./tools/setup/setup-analyst.sh $(dirname $(pwd))/trinity-analyst-workspace
+
+# For HISTORIAN agent
+./tools/setup/setup-historian.sh $(dirname $(pwd))/trinity-historian-workspace</code></pre>
+        
+        <h3>Option C: Custom Location</h3>
+        
+        <p>If you want to specify a different location:</p>
+        
+        <pre><code># Create all agent workspaces in a specific location
+./tools/setup/create-workspaces.sh ~/trinity-workspaces</code></pre>
+
+        <h2>Step 3: Verify Installation</h2>
+        
+        <p>After creating the workspaces, verify that everything is set up correctly:</p>
+        
+        <pre><code># Verify APEX workspace
+./tools/setup/verify-installation.sh $(dirname $(pwd))/trinity-apex-workspace
+
+# Verify ANALYST workspace
+./tools/setup/verify-installation.sh $(dirname $(pwd))/trinity-analyst-workspace
+
+# Verify HISTORIAN workspace
+./tools/setup/verify-installation.sh $(dirname $(pwd))/trinity-historian-workspace</code></pre>
+        
+        <div class="note">
+            <p>The verification script checks for required protocol files, directory structure, and basic functionality.</p>
+        </div>
+
+        <h2>Step 4: Set Up Claude API Environment (Required)</h2>
+        
+        <p>Trinity Framework 2.0 Core requires Claude AI models. Set up your environment variable:</p>
+        
+        <pre><code># Set your Claude API key
+export CLAUDE_API_KEY=your_api_key_here</code></pre>
+        
+        <p>For persistent access, add this to your shell profile:</p>
+        
+        <pre><code># Add to your ~/.bashrc or ~/.zshrc
+echo 'export CLAUDE_API_KEY=your_api_key_here' >> ~/.bashrc
+source ~/.bashrc</code></pre>
+
+        <h2>Step 5: Explore Your Workspace</h2>
+        
+        <p>Navigate to your new agent workspace and explore the structure:</p>
+        
+        <pre><code># Example for APEX agent
+cd $(dirname $(pwd))/trinity-apex-workspace
+ls -la</code></pre>
+        
+        <p>You should see the core protocol files in the workspace root:</p>
+        
+        <ul>
+            <li><strong>AGENT.md</strong>: Agent identity and role definition</li>
+            <li><strong>STATUS.md</strong>: Current operational status</li>
+            <li><strong>AUTO-COMPACT.md</strong>: Context management protocol</li>
+        </ul>
+
+        <h2>Step 6: Optional Context Management Setup</h2>
+        
+        <p>If you want to use the optional context management system:</p>
+        
+        <pre><code># Install dependencies
+cd tools/token-tracker/context-manager-v2/bin/setup
+./install-dependencies.sh</code></pre>
+        
+        <div class="note">
+            <p>Context management helps track token usage and handle context limitations when working with Claude AI models.</p>
+        </div>
+
+        <h2>Troubleshooting</h2>
+        
+        <div class="warning">
+            <h3>Common Issues</h3>
+            <ul>
+                <li><strong>Permission Denied</strong>: Make sure scripts are executable with <code>chmod +x</code></li>
+                <li><strong>Missing Dependencies</strong>: Ensure Node.js is installed</li>
+                <li><strong>API Key Issues</strong>: Verify your Claude API key is correctly set</li>
+            </ul>
+        </div>
+        
+        <h2>Next Steps</h2>
+        
+        <p>Now that you have set up your Trinity Framework 2.0 Core workspaces, you can:</p>
+        
+        <ul>
+            <li>Read the <a href="../reference/agent-roles.html">Agent Roles documentation</a> to understand each agent's responsibilities</li>
+            <li>Learn about <a href="../principles/context-resilience.html">Context Resilience</a> principles</li>
+            <li>Explore the <a href="../guides/aar-system.html">AAR System</a> for knowledge preservation</li>
+            <li>Set up <a href="../guides/context-management.html">Context Management</a> for token tracking</li>
+        </ul>
+
+        <a href="../" class="home-link">← Back to Documentation Home</a>
+    </div>
+    
+    <footer>
+        <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+        <p><em>Framework 2.0 COMPLIANT</em></p>
+    </footer>
+</body>
+</html>

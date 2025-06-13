@@ -4,110 +4,296 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trinity Framework 2.0 Core Documentation</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #0366d6;
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: 10px;
-        }
-        h2 {
-            margin-top: 24px;
-            margin-bottom: 16px;
-            font-weight: 600;
-            color: #24292e;
-        }
-        a {
-            color: #0366d6;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .category {
-            background-color: #f6f8fa;
-            border-radius: 3px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .home-link {
-            margin-top: 30px;
-            display: block;
-        }
-        footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eaecef;
-            color: #6a737d;
-            font-size: 14px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Trinity Framework 2.0 Core Documentation</h1>
-    
-    <p>Welcome to the documentation for Trinity Framework 2.0 Core, a standardized framework for building context-resilient agent systems.</p>
-    
-    <div class="category">
-        <h2>Principles</h2>
-        <ul>
-            <li><a href="principles/context-resilience.html">Context Resilience</a></li>
-            <li><a href="principles/workspace-standardization.html">Workspace Standardization</a></li>
-            <li><a href="principles/protocol-recovery.html">Protocol-Based Recovery</a></li>
-            <li><a href="principles/systematic-documentation.html">Systematic Documentation</a></li>
-            <li><a href="principles/operational-autonomy.html">Operational Autonomy</a></li>
-        </ul>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search documentation...">
+        </div>
+        
+        <div class="docs-container">
+            <div class="sidebar">
+                <h3 class="sidebar-title">Documentation</h3>
+                
+                <div class="sidebar-nav-section">Principles</div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="principles/context-resilience.html" class="sidebar-nav-link">Context Resilience</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="principles/workspace-standardization.html" class="sidebar-nav-link">Workspace Standardization</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="principles/protocol-recovery.html" class="sidebar-nav-link">Protocol-Based Recovery</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="principles/systematic-documentation.html" class="sidebar-nav-link">Systematic Documentation</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="principles/operational-autonomy.html" class="sidebar-nav-link">Operational Autonomy</a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-nav-section">Getting Started</div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="getting-started/quick-start.html" class="sidebar-nav-link">Quick Start Guide</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="getting-started/framework-setup.html" class="sidebar-nav-link">Framework Setup</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="getting-started/agent-setup-guide.html" class="sidebar-nav-link">Agent Setup Guide</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="getting-started/verification-checklist.html" class="sidebar-nav-link">Verification Checklist</a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-nav-section">Reference</div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="reference/protocol-files.html" class="sidebar-nav-link">Protocol Files Reference</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="reference/agent-roles.html" class="sidebar-nav-link">Agent Roles</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="reference/terminology-reference.html" class="sidebar-nav-link">Terminology Reference</a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-nav-section">Guides</div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="guides/aar-system.html" class="sidebar-nav-link">AAR System</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="guides/auto-compact-recovery.html" class="sidebar-nav-link">Auto-Compact Recovery</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="guides/context-management.html" class="sidebar-nav-link">Context Management</a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-nav-section">Advanced Topics</div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="advanced/context-management.html" class="sidebar-nav-link">Advanced Context Management</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="advanced/agent-collaboration.html" class="sidebar-nav-link">Agent Collaboration</a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="advanced/interactive-token-tracking.html" class="sidebar-nav-link">Interactive Token Tracking</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <main>
+                <div class="breadcrumbs">
+                    <a href="../" class="breadcrumb-link breadcrumb-item">Home</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current breadcrumb-item">Documentation</span>
+                </div>
+                
+                <h1>Trinity Framework 2.0 Core Documentation</h1>
+                
+                <p class="glow-text"><strong>VERSION</strong>: 1.0.0 | <strong>STATUS</strong>: Release Candidate | <strong>FRAMEWORK</strong>: Trinity Framework 2.0</p>
+                
+                <p>Welcome to the documentation for Trinity Framework 2.0 Core, a standardized framework for building context-resilient agent systems. This documentation provides comprehensive information about the framework's principles, components, and implementation guidelines.</p>
+                
+                <div class="note">
+                    <p><strong>Note:</strong> Trinity Framework 2.0 Core requires Claude AI models. You'll need a Claude Pro subscription or Claude API access to use this framework effectively.</p>
+                </div>
+                
+                <h2><i class="fas fa-book"></i> Documentation Sections</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 class="card-title">Principles</h3>
+                        <p>The core concepts and design philosophy behind Trinity Framework 2.0.</p>
+                        <p><span class="tag tag-blue">Context Resilience</span> <span class="tag tag-blue">Workspace Standardization</span> <span class="tag tag-blue">Protocol Recovery</span></p>
+                        <a href="principles/context-resilience.html" class="button">Explore Principles</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Getting Started</h3>
+                        <p>Setup guides and quick start information for implementing the framework.</p>
+                        <p><span class="tag tag-green">Quick Start</span> <span class="tag tag-green">Setup</span> <span class="tag tag-green">Verification</span></p>
+                        <a href="getting-started/quick-start.html" class="button">Get Started</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Reference</h3>
+                        <p>Comprehensive reference documentation for framework components.</p>
+                        <p><span class="tag tag-purple">Protocol Files</span> <span class="tag tag-purple">Agent Roles</span> <span class="tag tag-purple">Terminology</span></p>
+                        <a href="reference/protocol-files.html" class="button">View Reference</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Guides</h3>
+                        <p>Instructional guides for implementing specific framework features.</p>
+                        <p><span class="tag tag-blue">AAR System</span> <span class="tag tag-blue">Recovery</span> <span class="tag tag-blue">Context Management</span></p>
+                        <a href="guides/aar-system.html" class="button">Read Guides</a>
+                    </div>
+                </div>
+                
+                <h2><i class="fas fa-users"></i> Agent Roles</h2>
+                
+                <p>Trinity Framework 2.0 defines three specialized agent roles that work together to form a complete operational system:</p>
+                
+                <div class="role-card apex-card">
+                    <div class="role-header">
+                        <span class="role-icon">🔷</span>
+                        <h3 class="role-name">APEX</h3>
+                    </div>
+                    <p><strong>Primary Focus</strong>: Strategic direction, architecture, and system-level decisions</p>
+                    <p><strong>Key Characteristics</strong>: Big-picture thinking, long-term planning, architectural expertise</p>
+                    <a href="reference/agent-roles.html#apex" class="button">Learn About APEX</a>
+                </div>
+                
+                <div class="role-card analyst-card">
+                    <div class="role-header">
+                        <span class="role-icon">🔶</span>
+                        <h3 class="role-name">ANALYST</h3>
+                    </div>
+                    <p><strong>Primary Focus</strong>: Data processing, analysis, and tactical execution</p>
+                    <p><strong>Key Characteristics</strong>: Detail-oriented, analytical thinking, implementation expertise</p>
+                    <a href="reference/agent-roles.html#analyst" class="button">Learn About ANALYST</a>
+                </div>
+                
+                <div class="role-card historian-card">
+                    <div class="role-header">
+                        <span class="role-icon">📘</span>
+                        <h3 class="role-name">HISTORIAN</h3>
+                    </div>
+                    <p><strong>Primary Focus</strong>: Documentation, knowledge preservation, and context continuity</p>
+                    <p><strong>Key Characteristics</strong>: Organization, communication clarity, documentation expertise</p>
+                    <a href="reference/agent-roles.html#historian" class="button">Learn About HISTORIAN</a>
+                </div>
+                
+                <h2><i class="fas fa-rocket"></i> Quick Start</h2>
+                
+                <p>Get started with Trinity Framework 2.0 Core quickly with our easy setup process:</p>
+                
+                <div class="terminal">
+                    <div class="terminal-content">
+                        <span style="color: var(--neon-blue);">$</span> git clone https://github.com/jlchatha/trinity-framework-core.git<br>
+                        <span style="color: var(--neon-blue);">$</span> cd trinity-framework-core<br>
+                        <span style="color: var(--neon-blue);">$</span> chmod +x tools/setup/*.sh<br>
+                        <span style="color: var(--neon-blue);">$</span> ./tools/setup/create-workspaces.sh $(dirname $(pwd))<br>
+                        <span style="color: var(--neon-green);">✓</span> Workspaces created successfully!<br>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+                
+                <p>See the <a href="getting-started/quick-start.html">Quick Start Guide</a> for more detailed instructions.</p>
+                
+                <h2><i class="fas fa-sitemap"></i> Protocol Files</h2>
+                
+                <p>Three essential protocol files form the foundation of every agent workspace:</p>
+                
+                <table>
+                    <tr>
+                        <th>Protocol File</th>
+                        <th>Purpose</th>
+                        <th>Key Components</th>
+                    </tr>
+                    <tr>
+                        <td><strong>AGENT.md</strong></td>
+                        <td>Agent identity and role definition</td>
+                        <td>Role definition, recovery protocol, workflow patterns</td>
+                    </tr>
+                    <tr>
+                        <td><strong>STATUS.md</strong></td>
+                        <td>Current operational status</td>
+                        <td>Project status, priorities, recent activity, context health</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AUTO-COMPACT.md</strong></td>
+                        <td>Context management protocol</td>
+                        <td>Context metrics, recovery instructions, checkpoint data</td>
+                    </tr>
+                </table>
+                
+                <p>See the <a href="reference/protocol-files.html">Protocol Files Reference</a> for detailed information.</p>
+                
+                <div class="warning">
+                    <p><strong>Important:</strong> Protocol files are required for framework compliance. All three files must be present and properly maintained in each agent workspace.</p>
+                </div>
+            </main>
+        </div>
     </div>
-    
-    <div class="category">
-        <h2>Getting Started</h2>
-        <ul>
-            <li><a href="getting-started/quick-start.html">Quick Start Guide</a></li>
-            <li><a href="getting-started/framework-setup.html">Framework Setup</a></li>
-            <li><a href="getting-started/agent-setup-guide.html">Agent Setup Guide</a></li>
-            <li><a href="getting-started/verification-checklist.html">Verification Checklist</a></li>
-        </ul>
-    </div>
-    
-    <div class="category">
-        <h2>Reference</h2>
-        <ul>
-            <li><a href="reference/protocol-files.html">Protocol Files Reference</a></li>
-            <li><a href="reference/agent-roles.html">Agent Roles</a></li>
-            <li><a href="reference/terminology-reference.html">Terminology Reference</a></li>
-        </ul>
-    </div>
-    
-    <div class="category">
-        <h2>Guides</h2>
-        <ul>
-            <li><a href="guides/aar-system.html">AAR System</a></li>
-            <li><a href="guides/auto-compact-recovery.html">Auto-Compact Recovery</a></li>
-            <li><a href="guides/context-management.html">Context Management</a></li>
-        </ul>
-    </div>
-    
-    <div class="category">
-        <h2>Advanced Topics</h2>
-        <ul>
-            <li><a href="advanced/context-management.html">Advanced Context Management</a></li>
-            <li><a href="advanced/agent-collaboration.html">Agent Collaboration</a></li>
-            <li><a href="advanced/interactive-token-tracking.html">Interactive Token Tracking</a></li>
-        </ul>
-    </div>
-    
-    <a href="../" class="home-link">← Back to Home</a>
     
     <footer>
-        <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
-        <p><em>Framework 2.0 COMPLIANT</em></p>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
     </footer>
+    
+    <script>
+        // Simple animation for terminal text
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-content br');
+            
+            // Hide all lines initially except the first one
+            for (let i = 0; i < terminalLines.length; i++) {
+                const nextSibling = terminalLines[i].nextSibling;
+                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                    nextSibling.style.display = 'none';
+                }
+            }
+            
+            // Show lines one by one
+            let currentLine = 0;
+            function showNextLine() {
+                if (currentLine < terminalLines.length) {
+                    const nextSibling = terminalLines[currentLine].nextSibling;
+                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                        nextSibling.style.display = 'inline';
+                    }
+                    currentLine++;
+                    setTimeout(showNextLine, 500);
+                }
+            }
+            
+            setTimeout(showNextLine, 1000);
+        });
+        
+        // Simple search functionality (placeholder - would need backend for full implementation)
+        document.querySelector('.search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.toLowerCase();
+                
+                // Alert for demonstration purposes
+                alert('Search functionality would search for: ' + searchTerm);
+                
+                // In a real implementation, this would filter results or redirect to search results page
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>
