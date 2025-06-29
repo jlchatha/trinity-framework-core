@@ -1,9 +1,9 @@
 # Trinity Apex Website - Pending Tasks
 
-**Last Updated**: June 28, 2025  
+**Last Updated**: June 28, 2025 (Photo added!)  
 **Priority**: HIGH - Weekend Launch  
 
-## 🚨 Critical Tasks Before Launch
+## 🚨 Critical Task Before Launch (Just 1 Left!)
 
 ### 1. Formspree Contact Form Activation
 **Status**: Configuration ready, needs form ID  
@@ -20,11 +20,7 @@
 **Current State**: Shows fallback message directing to contact@trinityapex.com  
 **Files to Update**: `_includes/contact.html` line 14  
 
-### 2. Justin's LinkedIn Photo
-**Status**: Placeholder ready, needs manual download  
-**Location**: Save as `trinity-apex-website/images/justin-chatham.jpg`  
-**Source**: https://media.licdn.com/dms/image/v2/C5603AQGM3S7h4TOvUQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1643652890843?e=1756339200&v=beta&t=KNh8_fVcDP6RxCbwzwfD7jidbTWBeeUlVLSDS3V14oo  
-**Current State**: Shows "JC" initials as fallback  
+  
 
 ## ✅ Completed Tasks
 - [x] OVERSEER k3s video integration
@@ -33,6 +29,7 @@
 - [x] Legal links in footer
 - [x] Contact form Formspree preparation
 - [x] Founder page photo placeholder
+- [x] **Justin's LinkedIn photo added** (June 28)
 - [x] Content templates created
 - [x] Launch checklist created
 
