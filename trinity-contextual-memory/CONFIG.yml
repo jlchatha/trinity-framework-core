@@ -1,0 +1,269 @@
+# Trinity Contextual Memory Configuration
+# Version: 1.0
+# Purpose: Agent-agnostic configuration for contextual memory system
+
+# System Settings
+system:
+  version: "1.0"
+  framework: "Trinity Framework 2.0"
+  query_engine: "ansible"
+  storage_format: "markdown"
+  
+# Agent Configuration
+agent:
+  name: "{{ agent_name | default('unknown') }}"
+  domain: "{{ agent_domain | default('general') }}"
+  workspace: "{{ agent_workspace | default('.') }}"
+  
+# Directory Structure
+directories:
+  entries: "entries"
+  ansible: "ansible"
+  templates: "templates"
+  pending: "entries/pending"
+  
+# Streams
+streams:
+  - technical
+  - strategic
+  - operational
+  - cultural
+
+# Quality Standards
+quality:
+  evidence_required: true
+  minimum_artifacts: 1
+  minimum_relationships: 3
+  query_accuracy_target: 95
+  
+# Extraction Settings
+extraction:
+  source_directories:
+    - "AAR/sessions"
+    - "AAR/incidents"
+    - "."
+  file_patterns:
+    - "*.md"
+    - "README*"
+    - "CHANGELOG*"
+    - "STATUS.md"
+  exclude_patterns:
+    - "node_modules"
+    - ".git"
+    - "dist"
+    - "build"
+    
+# Query Configuration
+query:
+  default_limit: 5
+  scoring_algorithm: "keyword_with_question_bonus"
+  question_bonus_multiplier: 10
+  minimum_score: 1
+  
+# Context Entry Template
+template:
+  header: |
+    ## {{ title }}
+    
+    **Q: "{{ question }}"**
+    
+    **A:** {{ answer }}
+    
+    **Evidence:**
+    {{ evidence }}
+    
+    **{{ agent_name }}-Specific Insight:** {{ insight }}
+    
+    **Source:** {{ source }}
+    **Date Discovered:** {{ date }}
+    **Context:** {{ context }}
+    
+    **Related Context:**
+    {{ relationships }}
+    
+    ---
+
+# Agent Domain Configurations
+agent_domains:
+  analyst:
+    profile: "Technical Domain Expert"
+    focus_areas:
+      - "Technical architecture decisions"
+      - "Code quality patterns"
+      - "Performance optimization choices"
+      - "Testing strategy decisions"
+      - "Development workflow evolution"
+    keywords:
+      - "architecture"
+      - "performance" 
+      - "testing"
+      - "refactor"
+      - "optimize"
+      - "implement"
+      - "python"
+      - "javascript"
+      - "typescript"
+    file_patterns:
+      - "*.py"
+      - "*.js"
+      - "*.ts"
+      - "*.tsx"
+      - "*.json"
+    deployment_scope: "private"
+  
+  ira:
+    profile: "Infrastructure & Security Expert"
+    focus_areas:
+      - "Infrastructure resilience choices"
+      - "Security hardening decisions"
+      - "Deployment strategy evolution"
+      - "Cost optimization patterns"
+      - "Monitoring and alerting design"
+    keywords:
+      - "infrastructure"
+      - "deploy"
+      - "security"
+      - "monitoring"
+      - "kubernetes"
+      - "docker"
+      - "terraform"
+      - "ansible"
+    file_patterns:
+      - "*.yml"
+      - "*.yaml"
+      - "*.tf"
+      - "docker*"
+      - "*.sh"
+    deployment_scope: "private"
+  
+  apex:
+    profile: "Beta Coordination & Framework Education Expert"
+    focus_areas:
+      - "Beta coordination and onboarding decisions"
+      - "Framework education and demonstration strategies"
+      - "Workspace and tool guidance patterns"
+      - "Public-facing collaboration approaches"
+      - "User experience optimization choices"
+    keywords:
+      - "beta"
+      - "onboarding"
+      - "education"
+      - "demonstration"
+      - "workspace"
+      - "guidance"
+      - "coordination"
+      - "user"
+      - "experience"
+    file_patterns:
+      - "*.md"
+      - "*beta*"
+      - "*onboarding*"
+      - "*guide*"
+      - "*demo*"
+    deployment_scope: "both"
+    public_role: "APEX - Framework Education & Beta Coordination"
+    private_role: "APEX - Internal Beta Management & User Onboarding"
+  
+  overseer:
+    profile: "Private Framework Coordination Expert"
+    focus_areas:
+      - "Coordination pattern decisions"
+      - "Workflow orchestration choices"
+      - "Resource allocation strategies"
+      - "Cross-agent collaboration patterns"
+      - "Priority management evolution"
+    keywords:
+      - "workflow"
+      - "orchestration"
+      - "coordination"
+      - "priority"
+      - "resource"
+      - "management"
+      - "allocation"
+      - "collaboration"
+    file_patterns:
+      - "*.md"
+      - "*workflow*"
+      - "*process*"
+      - "*plan*"
+    deployment_scope: "private_only"
+    note: "OVERSEER exists only in private framework - never in public/beta"
+  
+  historian:
+    focus_areas:
+      - "Documentation architecture decisions"
+      - "Knowledge preservation systems"
+      - "Recovery protocols"
+      - "Workflow documentation"
+      - "Public documentation standards"
+    keywords:
+      - "documentation"
+      - "recovery"
+      - "workflow"
+      - "markdown"
+      - "git"
+      - "knowledge"
+      - "preserve"
+    file_patterns:
+      - "*.md"
+      - "README*"
+      - "*doc*"
+      - "*guide*"
+
+# Success Metrics
+metrics:
+  phase_1_targets:
+    decisions_identified: 15
+    evidence_quality: "concrete_artifacts"
+    domain_coverage: 3  # categories
+  
+  phase_2_targets:
+    contexts_created: 15
+    relationship_mappings: 20
+    evidence_validation: "100%"
+  
+  phase_3_targets:
+    query_accuracy: 95  # percentage
+    domain_authority: true
+    principle_extraction: 5
+  
+  final_targets:
+    total_contexts: 20
+    cross_references: 30
+    domain_expertise: "demonstrable"
+
+# Validation Rules
+validation:
+  required_fields:
+    - "question"
+    - "answer"
+    - "evidence"
+    - "source"
+    - "date"
+  
+  evidence_types:
+    - "git_commit"
+    - "file_artifact"
+    - "aar_session"
+    - "measurable_outcome"
+  
+  relationship_types:
+    - "influences"
+    - "enables"
+    - "connects_to"
+    - "contradicts"
+    - "reinforces"
+
+# Installation Settings
+installation:
+  backup_existing: true
+  preserve_agent_content: true
+  create_templates: true
+  test_system: true
+  
+# Maintenance
+maintenance:
+  index_auto_update: true
+  relationship_validation: true
+  quality_monitoring: true
+  periodic_cleanup: false

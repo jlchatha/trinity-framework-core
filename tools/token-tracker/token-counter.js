@@ -8,6 +8,13 @@
  * Framework: Trinity Framework 2.0
  */
 
+// Apply memory leak fix for Claude Code AbortSignal listeners
+const events = require('events');
+events.EventEmitter.defaultMaxListeners = 50;
+if (events.EventTarget) {
+  events.EventTarget.defaultMaxListeners = 50;
+}
+
 /**
  * TokenCounter class for tracking context utilization
  */

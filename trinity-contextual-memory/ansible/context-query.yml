@@ -1,0 +1,89 @@
+---
+- name: Query Trinity Contextual Memory
+  hosts: localhost
+  vars:
+    memory_base: "{{ playbook_dir | dirname }}"
+    query: "{{ question | default('Why did we choose Protocol Files?') }}"
+    
+  tasks:
+    # 1. Search for relevant entries
+    - name: Search context entries for keywords
+      shell: |
+        # Extract keywords from question (4+ letters)
+        keywords=$(echo "{{ query }}" | tr ' ' '\n' | grep -E "^[A-Za-z]{4,}" | tr '\n' '|' | sed 's/|$//')
+        
+        # Search all entries
+        if [ -n "$keywords" ]; then
+          grep -r -l -i -E "$keywords" {{ memory_base }}/entries/ 2>/dev/null || true
+        fi
+      register: matching_files
+      
+    # 2. Score relevance
+    - name: Score entry relevance
+      shell: |
+        # Extract the question from the entry
+        entry_question=$(grep '^\*\*Q:' "{{ item }}" | head -1 | sed 's/\*\*Q: "//' | sed 's/"$//' | tr '[:upper:]' '[:lower:]')
+        
+        # Count keyword matches
+        keywords=$(echo "{{ query }}" | tr ' ' '\n' | grep -E '^[A-Za-z]{4,}')
+        score=0
+        
+        # Score based on content matches
+        for word in $keywords; do
+          count=$(grep -i -c "$word" "{{ item }}" || true)
+          score=$((score + count))
+        done
+        
+        # Bonus points if keywords appear in the entry question
+        for word in $keywords; do
+          if echo "$entry_question" | grep -i -q "$word"; then
+            score=$((score + 10))
+          fi
+        done
+        
+        echo "{{ item }}:$score"
+      loop: "{{ matching_files.stdout_lines }}"
+      when: 
+        - matching_files.stdout_lines is defined
+        - matching_files.stdout_lines | length > 0
+      register: scored_entries
+      
+    # 3. Get best match
+    - name: Create temp file with scores
+      copy:
+        content: |
+          {% for result in scored_entries.results %}
+          {{ result.stdout }}
+          {% endfor %}
+        dest: "/tmp/context_scores.txt"
+      when: scored_entries is defined
+      
+    - name: Extract best matching entry
+      shell: |
+        # Sort by score and get top entry
+        if [ -f "/tmp/context_scores.txt" ]; then
+          best=$(sort -t: -k2 -nr /tmp/context_scores.txt | head -1 | cut -d: -f1)
+          
+          if [ -n "$best" ] && [ -f "$best" ]; then
+            cat "$best"
+            rm -f /tmp/context_scores.txt
+          else
+            echo "No context found for: {{ query }}"
+          fi
+        else
+          echo "No context found for: {{ query }}"
+        fi
+      register: answer
+      when: scored_entries is defined
+      
+    # 4. Display answer
+    - name: Display answer
+      debug:
+        msg: |
+          ========================================
+          Question: {{ query }}
+          ========================================
+          
+          {{ answer.stdout | default('No matching context found.') }}
+          
+          ========================================

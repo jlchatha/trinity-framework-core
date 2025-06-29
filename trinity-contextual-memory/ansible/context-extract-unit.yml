@@ -1,0 +1,129 @@
+---
+- name: Unit Context Extraction Operations
+  hosts: localhost
+  vars:
+    memory_base: "{{ playbook_dir | dirname }}"
+    trinity_workspaces:
+      - "{{ lookup('env', 'HOME') }}/git/trinity-framework"
+      - "{{ lookup('env', 'HOME') }}/git/trinity-overseer-workspace"
+      - "{{ lookup('env', 'HOME') }}/git/trinity-mvp-improvement"
+      - "{{ lookup('env', 'HOME') }}/git/trinity-historian-workspace"
+    
+  tasks:
+    # 1. Ensure pending directory exists
+    - name: Create pending entries directory
+      file:
+        path: "{{ memory_base }}/entries/pending"
+        state: directory
+        
+    # 2. Scan for new decisions and learnings
+    - name: Find recent AAR sessions
+      find:
+        paths: "{{ item }}/AAR/sessions"
+        patterns: "*.md"
+        age: "-1d"
+      loop: "{{ trinity_workspaces }}"
+      register: recent_aars
+      ignore_errors: yes
+      
+    # 3. Extract decisions from AARs
+    - name: Extract decisions from AARs
+      shell: |
+        if [ -f "{{ item.path }}" ]; then
+          grep -h -A 2 -E "(Decision:|Learned:|Discovered:|Realized:|Key Insight:)" "{{ item.path }}" | 
+          grep -v "^--$" |
+          sed -n '/Decision:\|Learned:\|Discovered:\|Realized:\|Key Insight:/{n;p;}' |
+          sed 's/^- //' |
+          head -5
+        fi
+      loop: "{{ recent_aars.results | map(attribute='files', default=[]) | flatten }}"
+      when: 
+        - item.path is defined
+        - item.path != ""
+      register: decisions
+      
+    # 4. Scan for why questions in STATUS.md files
+    - name: Check for unanswered why questions
+      shell: |
+        if [ -f "{{ item }}/STATUS.md" ]; then
+          grep -i "Why" "{{ item }}/STATUS.md" 2>/dev/null | head -5 || true
+        fi
+      loop: "{{ trinity_workspaces }}"
+      register: why_questions
+      ignore_errors: yes
+      
+    # 5. Create context entries for significant findings
+    - name: Create pending entries from decisions
+      copy:
+        dest: "{{ memory_base }}/entries/pending/{{ ansible_date_time.epoch }}-decision-{{ idx }}.md"
+        content: |
+          ## [PENDING: Context from AAR]
+          
+          **Q: "[TODO: Frame as a why question]"**
+          
+          **A:** {{ item }}
+          
+          **Evidence:**
+          - [TODO: Add supporting evidence]
+          - [TODO: Add date/metrics]
+          
+          **Key Insight:** [TODO: Extract key learning]
+          
+          **Source:** AAR Session
+          **Status:** PENDING REVIEW
+          
+          ---
+      loop: "{{ decisions.results | selectattr('stdout_lines', 'defined') | map(attribute='stdout_lines') | flatten | select | list }}"
+      loop_control:
+        index_var: idx
+      when: 
+        - item | length > 10
+        - "'TODO' not in item"
+        - "'[' not in item"
+      
+    # 6. Create entries for unanswered why questions  
+    - name: Create pending entries from why questions
+      copy:
+        dest: "{{ memory_base }}/entries/pending/{{ ansible_date_time.epoch }}-question-{{ idx }}.md"
+        content: |
+          ## [PENDING: Unanswered Question]
+          
+          **Q: "{{ item }}"**
+          
+          **A:** [TODO: Research and answer this question]
+          
+          **Evidence:**
+          - [TODO: Add supporting evidence]
+          
+          **Key Insight:** [TODO: Extract key learning]
+          
+          **Source:** STATUS.md
+          **Status:** NEEDS ANSWER
+          
+          ---
+      loop: "{{ why_questions.results | selectattr('stdout_lines', 'defined') | map(attribute='stdout_lines') | flatten | select | list }}"
+      loop_control:
+        index_var: idx
+      when: 
+        - item | length > 10
+        - "'Why' in item"
+      
+    # 7. Update the INDEX with all entries
+    - name: Regenerate INDEX.md with all entries
+      script: regenerate-index.sh {{ memory_base }}
+      register: index_update
+      
+    # 8. Report summary
+    - name: Count entries
+      shell: |
+        echo "=== Context Memory Extraction Summary ==="
+        echo "Total entries: $(find {{ memory_base }}/entries -name "*.md" -not -path "*/pending/*" | wc -l)"
+        echo "Pending entries: $(find {{ memory_base }}/entries/pending -name "*.md" 2>/dev/null | wc -l)"
+        echo "Recent AARs scanned: {{ recent_aars.results | map(attribute='files', default=[]) | flatten | length }}"
+        echo "New decisions found: {{ decisions.results | selectattr('stdout_lines', 'defined') | map(attribute='stdout_lines') | flatten | select | list | length }}"
+        echo "Unanswered why questions: {{ why_questions.results | selectattr('stdout_lines', 'defined') | map(attribute='stdout_lines') | flatten | select | list | length }}"
+      register: summary
+      
+    - name: Display summary
+      debug:
+        msg: "{{ summary.stdout_lines }}"
