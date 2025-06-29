@@ -136,19 +136,25 @@
 
 ## Next Priorities
 
-1. **Agent Contextual Memory Deployment**
+1. **Trinity Apex Website Launch Support** (ACTIVE - Weekend Launch)
+   - ⚠️ **Formspree Setup**: Need form ID for contact form (5 min task)
+   - ⚠️ **Founder Photo**: Manual download required for LinkedIn image
+   - Monitor launch and address any issues
+   - See: `/home/alreadyinuse/git/trinity-historian-workspace/TRINITY-APEX-PENDING-TASKS.md`
+
+2. **Agent Contextual Memory Deployment**
    - Support ANALYST's Trinity Contextual Memory installation and domain extraction
    - Coordinate IRA's infrastructure domain contextual memory implementation
    - Facilitate APEX's beta coordination domain expertise development
    - Maintain system quality standards across agent implementations
 
-2. **Documentation Search Implementation**
+3. **Documentation Search Implementation**
    - Create functional search for HTML documentation
    - Implement search results page with filtering
    - Add keyword highlighting in search results
    - Add search analytics for improving documentation
 
-3. **User Experience Improvements**
+4. **User Experience Improvements**
    - Add dark/light mode toggle
    - Implement print-friendly styles
    - Add copy-to-clipboard buttons for code blocks
