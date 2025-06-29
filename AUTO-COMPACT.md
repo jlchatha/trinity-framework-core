@@ -132,14 +132,16 @@ The Context Management System monitors and manages Claude Code's context utiliza
    - Creates symbolic links for easy access
 
 ### Post-Compact Recovery Plan
-1. Support Trinity Apex website content filling for weekend launch
-2. Integrate LinkedIn photo and OVERSEER k3s video
-3. Monitor live site performance and user engagement
-4. Support agent contextual memory deployments (OVERSEER, IRA, APEX)
-5. Implement documentation search functionality for Trinity Framework Core
-6. Create blog/resources section for Trinity Apex
-7. Add real testimonials and metrics as they become available
-8. Maintain quality standards across all properties
+1. Research and implement alternative video hosting for Firefox compatibility
+   - YouTube unlisted embed option
+   - Vimeo professional hosting
+   - WebM format conversion
+2. Monitor Trinity Apex website post-launch performance
+3. Support agent contextual memory deployments (ANALYST, IRA, APEX)
+4. Implement documentation search functionality for Trinity Framework Core
+5. Create blog/resources section for Trinity Apex
+6. Add real testimonials and metrics as they become available
+7. Prepare monthly Trinity ecosystem documentation health report
 
 ### Completed Extraction Areas (100% Coverage)
 - ✅ Script implementation details (memory-leak-fix.js workaround)
