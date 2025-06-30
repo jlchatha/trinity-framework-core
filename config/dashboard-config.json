@@ -1,0 +1,77 @@
+{
+    "widgets": [
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "AWS/CloudFront", "BytesDownloaded", { "stat": "Sum", "period": 300 } ],
+                    [ ".", "Requests", { "stat": "Sum", "period": 300 } ]
+                ],
+                "period": 300,
+                "stat": "Average",
+                "region": "us-east-1",
+                "title": "CloudFront Traffic",
+                "annotations": {
+                    "horizontal": [
+                        {
+                            "label": "Budget Limit (~552GB)",
+                            "value": 552000000000
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 0,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "AWS/S3", "BucketSizeBytes", "BucketName", "trinity-apex-videos", "StorageType", "StandardStorage", { "period": 86400 } ]
+                ],
+                "period": 86400,
+                "stat": "Average",
+                "region": "us-east-1",
+                "title": "S3 Storage Size"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 6,
+            "width": 24,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "AWS/CloudFront", "BytesDownloaded", { "stat": "Sum", "period": 3600 } ]
+                ],
+                "period": 3600,
+                "stat": "Sum",
+                "region": "us-east-1",
+                "title": "Hourly Data Transfer",
+                "yAxis": {
+                    "left": {
+                        "label": "Bytes",
+                        "showUnits": true
+                    }
+                }
+            }
+        },
+        {
+            "type": "text",
+            "x": 0,
+            "y": 12,
+            "width": 24,
+            "height": 3,
+            "properties": {
+                "markdown": "# Trinity Apex Video Hosting Dashboard\n\n**Budget Protection Active**\n- Monthly Limit: $50\n- Safe Views: ~12,000 (46MB video)\n- Auto-disable at 100% budget\n\n**CloudFront Distribution**: PENDING\n\n**Cost Calculation**: Data Transfer × $0.085/GB"
+            }
+        }
+    ]
+}

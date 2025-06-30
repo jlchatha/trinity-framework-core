@@ -1,0 +1,21 @@
+{
+    "Rules": [
+        {
+            "ID": "TransitionOldVideos",
+            "Status": "Enabled",
+            "Filter": {
+                "Prefix": ""
+            },
+            "Transitions": [
+                {
+                    "Days": 30,
+                    "StorageClass": "STANDARD_IA"
+                },
+                {
+                    "Days": 90,
+                    "StorageClass": "GLACIER_IR"
+                }
+            ]
+        }
+    ]
+}

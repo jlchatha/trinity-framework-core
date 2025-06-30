@@ -1,0 +1,1 @@
+arn:aws:sns:us-east-1:644177601378:Trinity-Apex-Video-Budget-Alerts

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firefox Video Test - Trinity Apex</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .video-container { max-width: 800px; margin: 20px 0; }
+        video { width: 100%; height: auto; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>Firefox Video Compatibility Test</h1>
+    <p>Testing Trinity Apex AWS CloudFront video hosting in Firefox...</p>
+    
+    <div class="video-container">
+        <h3>AWS CloudFront Video (Primary)</h3>
+        <video id="cloudfront-video" controls preload="metadata">
+            <source src="https://d29tpqz2wgn380.cloudfront.net/OVERSEER_k3s.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="cloudfront-status" class="status">Loading...</div>
+    </div>
+    
+    <div class="video-container">
+        <h3>GitHub Raw Video (Fallback)</h3>
+        <video id="github-video" controls preload="metadata">
+            <source src="https://github.com/jlchatha/trinity-apex-website/raw/main/video/OVERSEER_k3s.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="github-status" class="status">Loading...</div>
+    </div>
+
+    <script>
+        function testVideo(videoId, statusId, description) {
+            const video = document.getElementById(videoId);
+            const status = document.getElementById(statusId);
+            
+            video.addEventListener('loadedmetadata', function() {
+                status.className = 'status success';
+                status.innerHTML = `✅ ${description}: Working! Duration: ${Math.round(video.duration)}s`;
+            });
+            
+            video.addEventListener('error', function() {
+                status.className = 'status error';
+                status.innerHTML = `❌ ${description}: Error - ${video.error ? video.error.message : 'Unknown error'}`;
+            });
+            
+            // Timeout test
+            setTimeout(function() {
+                if (video.readyState === 0) {
+                    status.className = 'status error';
+                    status.innerHTML = `❌ ${description}: Timeout - Failed to load`;
+                }
+            }, 10000);
+        }
+        
+        // Test both videos
+        testVideo('cloudfront-video', 'cloudfront-status', 'AWS CloudFront');
+        testVideo('github-video', 'github-status', 'GitHub Raw');
+        
+        // Browser info
+        document.addEventListener('DOMContentLoaded', function() {
+            const browserInfo = document.createElement('div');
+            browserInfo.innerHTML = `
+                <h3>Browser Information:</h3>
+                <p><strong>User Agent:</strong> ${navigator.userAgent}</p>
+                <p><strong>Platform:</strong> ${navigator.platform}</p>
+                <p><strong>Video Support:</strong> ${document.createElement('video').canPlayType('video/mp4') ? 'MP4 Supported' : 'MP4 Not Supported'}</p>
+            `;
+            document.body.appendChild(browserInfo);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+[
+    {
+        "Notification": {
+            "NotificationType": "ACTUAL",
+            "ComparisonOperator": "GREATER_THAN",
+            "Threshold": 80.0,
+            "ThresholdType": "PERCENTAGE"
+        },
+        "Subscribers": [
+            {
+                "SubscriptionType": "EMAIL",
+                "Address": "admin@trinityapex.ai"
+            }
+        ]
+    },
+    {
+        "Notification": {
+            "NotificationType": "ACTUAL",
+            "ComparisonOperator": "GREATER_THAN",
+            "Threshold": 90.0,
+            "ThresholdType": "PERCENTAGE"
+        },
+        "Subscribers": [
+            {
+                "SubscriptionType": "EMAIL",
+                "Address": "admin@trinityapex.ai"
+            }
+        ]
+    },
+    {
+        "Notification": {
+            "NotificationType": "ACTUAL",
+            "ComparisonOperator": "GREATER_THAN",
+            "Threshold": 100.0,
+            "ThresholdType": "PERCENTAGE"
+        },
+        "Subscribers": [
+            {
+                "SubscriptionType": "EMAIL",
+                "Address": "admin@trinityapex.ai"
+            }
+        ]
+    }
+]

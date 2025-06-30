@@ -1,0 +1,48 @@
+[
+    {
+        "Notification": {
+            "NotificationType": "ACTUAL",
+            "ComparisonOperator": "GREATER_THAN",
+            "Threshold": 80.0,
+            "ThresholdType": "PERCENTAGE"
+        },
+        "Subscribers": [
+            {
+                "SubscriptionType": "SNS",
+                "Address": "arn:aws:sns:us-east-1:644177601378:Trinity-Apex-Video-Budget-Alerts"
+            },
+            {
+                "SubscriptionType": "EMAIL",
+                "Address": "admin@trinityapex.ai"
+            }
+        ]
+    },
+    {
+        "Notification": {
+            "NotificationType": "ACTUAL",
+            "ComparisonOperator": "GREATER_THAN",
+            "Threshold": 90.0,
+            "ThresholdType": "PERCENTAGE"
+        },
+        "Subscribers": [
+            {
+                "SubscriptionType": "SNS",
+                "Address": "arn:aws:sns:us-east-1:644177601378:Trinity-Apex-Video-Budget-Alerts"
+            }
+        ]
+    },
+    {
+        "Notification": {
+            "NotificationType": "ACTUAL",
+            "ComparisonOperator": "GREATER_THAN",
+            "Threshold": 100.0,
+            "ThresholdType": "PERCENTAGE"
+        },
+        "Subscribers": [
+            {
+                "SubscriptionType": "SNS",
+                "Address": "arn:aws:sns:us-east-1:644177601378:Trinity-Apex-Video-Budget-Alerts"
+            }
+        ]
+    }
+]

@@ -1,0 +1,25 @@
+{
+    "BudgetName": "Trinity-Apex-Video-Hosting",
+    "BudgetLimit": {
+        "Amount": "50.0",
+        "Unit": "USD"
+    },
+    "TimeUnit": "MONTHLY",
+    "BudgetType": "COST",
+    "CostFilters": {
+        "Service": ["Amazon CloudFront", "Amazon Simple Storage Service"]
+    },
+    "CostTypes": {
+        "IncludeTax": true,
+        "IncludeSubscription": false,
+        "UseBlended": false,
+        "IncludeRefund": false,
+        "IncludeCredit": false,
+        "IncludeUpfront": false,
+        "IncludeRecurring": true,
+        "IncludeOtherSubscription": false,
+        "IncludeSupport": false,
+        "IncludeDiscount": false,
+        "UseAmortized": false
+    }
+}

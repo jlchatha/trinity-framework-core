@@ -1,0 +1,42 @@
+{
+    "CallerReference": "trinity-apex-video-1751195880",
+    "Comment": "Trinity Apex video hosting with budget protection",
+    "DefaultRootObject": "",
+    "Origins": {
+        "Quantity": 1,
+        "Items": [
+            {
+                "Id": "S3-trinity-apex-videos",
+                "DomainName": "trinity-apex-videos.s3.us-east-1.amazonaws.com",
+                "S3OriginConfig": {
+                    "OriginAccessIdentity": ""
+                },
+                "OriginAccessControlId": "E1YUTE331W0T06"
+            }
+        ]
+    },
+    "DefaultCacheBehavior": {
+        "TargetOriginId": "S3-trinity-apex-videos",
+        "ViewerProtocolPolicy": "redirect-to-https",
+        "AllowedMethods": {
+            "Quantity": 2,
+            "Items": ["GET", "HEAD"],
+            "CachedMethods": {
+                "Quantity": 2,
+                "Items": ["GET", "HEAD"]
+            }
+        },
+        "Compress": true,
+        "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+        "ResponseHeadersPolicyId": "5cc3b908-e619-4b99-88e5-2cf7f45965bd"
+    },
+    "Enabled": true,
+    "PriceClass": "PriceClass_100",
+    "ViewerCertificate": {
+        "CloudFrontDefaultCertificate": true
+    },
+    "CustomErrorResponses": {
+        "Quantity": 0,
+        "Items": []
+    }
+}

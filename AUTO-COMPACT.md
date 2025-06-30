@@ -132,16 +132,23 @@ The Context Management System monitors and manages Claude Code's context utiliza
    - Creates symbolic links for easy access
 
 ### Post-Compact Recovery Plan
-1. Research and implement alternative video hosting for Firefox compatibility
-   - YouTube unlisted embed option
-   - Vimeo professional hosting
-   - WebM format conversion
-2. Monitor Trinity Apex website post-launch performance
-3. Support agent contextual memory deployments (ANALYST, IRA, APEX)
-4. Implement documentation search functionality for Trinity Framework Core
-5. Create blog/resources section for Trinity Apex
-6. Add real testimonials and metrics as they become available
-7. Prepare monthly Trinity ecosystem documentation health report
+1. **PRIORITY: Fix Firefox video playback issue**
+   - MIME error resurfaces when play button clicked
+   - Solutions: WebM conversion (recommended) or YouTube embed
+   - AWS CloudFront infrastructure ready but Firefox needs different format
+2. Complete manual AWS budget setup ($50/month limit)
+3. Monitor Trinity Apex website post-launch performance
+4. Support agent contextual memory deployments (ANALYST, IRA, APEX)
+5. Implement documentation search functionality for Trinity Framework Core
+6. Create blog/resources section for Trinity Apex
+7. Add real testimonials and metrics as they become available
+
+### Current Video Hosting Status
+- ✅ AWS CloudFront deployed: d29tpqz2wgn380.cloudfront.net
+- ✅ Budget protection active (Lambda auto-shutoff)
+- ✅ Monitoring dashboard: Trinity-Apex-Video-Hosting
+- ⚠️ Firefox issue: Codec specification helped but MIME error returns on play
+- 📧 Alerts to: apex@trinity-apex.com
 
 ### Completed Extraction Areas (100% Coverage)
 - ✅ Script implementation details (memory-leak-fix.js workaround)

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firefox Debug - Video Compatibility</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { border: 1px solid #ccc; margin: 20px 0; padding: 20px; }
+        video { width: 100%; max-width: 600px; }
+        .log { background: #f5f5f5; padding: 10px; margin: 10px 0; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>Firefox Video Debug Test</h1>
+    
+    <div class="test-section">
+        <h3>Test 1: Direct CloudFront URL</h3>
+        <video id="test1" controls preload="metadata" width="600">
+            <source src="https://d29tpqz2wgn380.cloudfront.net/OVERSEER_k3s.mp4" type="video/mp4">
+        </video>
+        <div id="log1" class="log">Initializing...</div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test 2: With Codecs Specification</h3>
+        <video id="test2" controls preload="metadata" width="600">
+            <source src="https://d29tpqz2wgn380.cloudfront.net/OVERSEER_k3s.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+        </video>
+        <div id="log2" class="log">Initializing...</div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test 3: GitHub Fallback</h3>
+        <video id="test3" controls preload="metadata" width="600">
+            <source src="https://github.com/jlchatha/trinity-apex-website/raw/main/video/OVERSEER_k3s.mp4" type="video/mp4">
+        </video>
+        <div id="log3" class="log">Initializing...</div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Browser Support Info</h3>
+        <div id="support-info" class="log"></div>
+    </div>
+
+    <script>
+        function setupVideoTest(videoId, logId) {
+            const video = document.getElementById(videoId);
+            const log = document.getElementById(logId);
+            
+            function addLog(message) {
+                log.innerHTML += new Date().toLocaleTimeString() + ': ' + message + '<br>';
+            }
+            
+            video.addEventListener('loadstart', () => addLog('Started loading'));
+            video.addEventListener('loadedmetadata', () => addLog('✅ Metadata loaded - Duration: ' + Math.round(video.duration) + 's'));
+            video.addEventListener('loadeddata', () => addLog('✅ Data loaded'));
+            video.addEventListener('canplay', () => addLog('✅ Can start playing'));
+            video.addEventListener('canplaythrough', () => addLog('✅ Can play through'));
+            
+            video.addEventListener('error', function(e) {
+                addLog('❌ Error occurred');
+                if (video.error) {
+                    addLog('Error code: ' + video.error.code);
+                    addLog('Error message: ' + video.error.message);
+                    
+                    const errorMessages = {
+                        1: 'MEDIA_ERR_ABORTED - playback aborted',
+                        2: 'MEDIA_ERR_NETWORK - network error',
+                        3: 'MEDIA_ERR_DECODE - decoding error',
+                        4: 'MEDIA_ERR_SRC_NOT_SUPPORTED - format not supported'
+                    };
+                    
+                    addLog('Error details: ' + (errorMessages[video.error.code] || 'Unknown error'));
+                }
+            });
+            
+            video.addEventListener('stalled', () => addLog('⚠️ Playback stalled'));
+            video.addEventListener('waiting', () => addLog('⚠️ Waiting for data'));
+            
+            // Force load
+            video.load();
+        }
+        
+        // Setup all tests
+        setupVideoTest('test1', 'log1');
+        setupVideoTest('test2', 'log2');
+        setupVideoTest('test3', 'log3');
+        
+        // Browser support info
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.createElement('video');
+            const supportInfo = document.getElementById('support-info');
+            
+            supportInfo.innerHTML = `
+                <strong>Browser Info:</strong><br>
+                User Agent: ${navigator.userAgent}<br>
+                Platform: ${navigator.platform}<br><br>
+                <strong>Video Support:</strong><br>
+                MP4: ${video.canPlayType('video/mp4')}<br>
+                MP4 with codecs: ${video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')}<br>
+                WebM: ${video.canPlayType('video/webm')}<br>
+                OGG: ${video.canPlayType('video/ogg')}<br><br>
+                <strong>Media Source Extensions:</strong> ${window.MediaSource ? 'Supported' : 'Not supported'}<br>
+                <strong>Encrypted Media Extensions:</strong> ${window.navigator.requestMediaKeySystemAccess ? 'Supported' : 'Not supported'}
+            `;
+        });
+    </script>
+</body>
+</html>
