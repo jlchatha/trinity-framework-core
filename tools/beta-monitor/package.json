@@ -1,0 +1,16 @@
+{
+  "name": "trinity-beta-monitor",
+  "version": "1.0.0",
+  "description": "Monitor Trinity Gateway beta applications from Gmail",
+  "main": "monitor-beta-applications.js",
+  "scripts": {
+    "monitor": "node monitor-beta-applications.js",
+    "watch": "node monitor-beta-applications.js --watch"
+  },
+  "dependencies": {
+    "googleapis": "^118.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

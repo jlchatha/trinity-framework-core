@@ -1,0 +1,12 @@
+# Authentication files - NEVER COMMIT
+credentials.json
+token.json
+
+# State files
+monitor-state.json
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
