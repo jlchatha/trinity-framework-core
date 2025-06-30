@@ -174,14 +174,26 @@
 
 None currently identified
 
-### AWS CloudFront Video Hosting Deployment (June 29, 2025)
+### Trinity Gateway Beta Launch Preparation (June 30, 2025)
+- ✅ Complete website redesign for beta launch
+- ✅ New hero: "Create Like a Pro. Code Optional."
+- ✅ Beta page created with pricing ($15 BYOC, $20 We-Manage)
+- ✅ Claude Code transparency added to FAQ and beta page
+- ✅ Removed all ROI guarantee language
+- ✅ Discord integration: https://discord.gg/dBUA5NZa
+- ✅ Fixed all formatting issues (pain cards, buttons, values)
+- ✅ Removed placeholder testimonials
+- 🚀 Ready for tomorrow night's launch
+
+### AWS CloudFront Video Hosting (June 29-30, 2025)
 - ✅ Complete AWS infrastructure deployed with budget protection
 - ✅ CloudFront CDN: d29tpqz2wgn380.cloudfront.net
 - ✅ Lambda auto-shutoff at $50/month budget limit
 - ✅ CloudWatch monitoring dashboard active
 - ✅ Email alerts configured for apex@trinity-apex.com
-- ⚠️ Firefox issue: MIME error resurfaces when play button clicked
-- 📋 Firefox solution needed post-compact: WebM conversion or YouTube embed
+- ✅ Firefox issue RESOLVED with WebM conversion
+- ✅ WebM video uploaded (2MB vs 22MB MP4)
+- ✅ All browsers now play video correctly
 
 ## Context Health
 - **Current Utilization**: 46% (POST-COMPACT RECOVERY)
