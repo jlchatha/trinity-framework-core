@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trinity-pedia - AI Development Guide</title>
+    <link rel="stylesheet" href="assets/css/trinity-pedia.css">
+</head>
+<body>
+    <div class="trinity-pedia" id="trinityPedia">
+        <!-- Title Bar -->
+        <div class="title-bar" id="titleBar">
+            <h3>
+                <span class="icon">📚</span>
+                <span class="title-text">Trinity-pedia</span>
+            </h3>
+            <div class="window-controls">
+                <button class="control-btn" id="searchBtn" title="Search (Ctrl+K)">🔍</button>
+                <button class="control-btn" id="pinBtn" title="Pin Window">📌</button>
+                <button class="control-btn" id="closeBtn" title="Close (Esc)">✕</button>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="nav-buttons">
+                <button class="nav-btn" id="homeBtn" title="Home (Alt+H)">🏠</button>
+                <button class="nav-btn" id="backBtn" title="Back (Alt+←)" disabled>←</button>
+                <button class="nav-btn" id="forwardBtn" title="Forward (Alt+→)" disabled>→</button>
+                <button class="nav-btn" id="bookmarkBtn" title="Bookmark (Ctrl+D)">⭐</button>
+            </div>
+            <div class="breadcrumb" id="breadcrumb">
+                <a href="#" data-page="home">Home</a>
+            </div>
+            <div class="nav-tools">
+                <button class="nav-btn" id="fontSizeBtn" title="Font Size">Aa</button>
+                <button class="nav-btn" id="themeBtn" title="Toggle Theme">🌓</button>
+            </div>
+        </div>
+
+        <!-- Search Overlay -->
+        <div class="search-overlay" id="searchOverlay" style="display: none;">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search Trinity-pedia... (fuzzy matching enabled)">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content" id="content">
+            <!-- Dynamic content loaded here -->
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span class="status-item" id="statusText">Ready</span>
+            <span class="status-item" id="pageInfo">Home</span>
+            <span class="status-item" id="readTime">~1 min read</span>
+        </div>
+
+        <!-- Resize Handle -->
+        <div class="resize-handle" id="resizeHandle"></div>
+    </div>
+
+    <!-- Quick Access Menu -->
+    <div class="quick-menu" id="quickMenu" style="display: none;">
+        <div class="quick-menu-item" data-action="recent">📖 Recent Topics</div>
+        <div class="quick-menu-item" data-action="bookmarks">⭐ Bookmarks</div>
+        <div class="quick-menu-item" data-action="random">🎲 Random Topic</div>
+        <div class="quick-menu-separator"></div>
+        <div class="quick-menu-item" data-action="shortcuts">⌨️ Keyboard Shortcuts</div>
+        <div class="quick-menu-item" data-action="about">ℹ️ About Trinity-pedia</div>
+    </div>
+
+    <!-- Content Database -->
+    <script src="assets/js/content-db.js"></script>
+    <!-- Navigation System -->
+    <script src="assets/js/navigation.js"></script>
+    <!-- Search System -->
+    <script src="assets/js/search.js"></script>
+    <!-- Main Application -->
+    <script src="assets/js/trinity-pedia.js"></script>
+</body>
+</html>

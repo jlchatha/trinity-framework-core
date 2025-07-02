@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trinity-pedia - Interactive Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1f2e;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(8, 145, 178, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(8, 145, 178, 0.05) 0%, transparent 50%);
+        }
+
+        /* Floating window container */
+        .trinity-pedia {
+            width: 700px;
+            height: 600px;
+            background: rgba(3, 7, 18, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(8, 145, 178, 0.3);
+            border-radius: 12px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 80px rgba(8, 145, 178, 0.1),
+                inset 0 0 120px rgba(8, 145, 178, 0.03);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Title bar */
+        .title-bar {
+            background: rgba(8, 145, 178, 0.1);
+            border-bottom: 1px solid rgba(8, 145, 178, 0.2);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: move;
+        }
+
+        .title-bar h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0891b2;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .window-controls button {
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .window-controls button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+        }
+
+        /* Navigation bar */
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(8, 145, 178, 0.1);
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 4px;
+        }
+
+        .nav-button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            cursor: pointer;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: rgba(8, 145, 178, 0.1);
+            color: #0891b2;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .breadcrumb {
+            flex: 1;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .breadcrumb a {
+            color: #0891b2;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content area */
+        .content {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: rgba(8, 145, 178, 0.3);
+            border-radius: 4px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: rgba(8, 145, 178, 0.5);
+        }
+
+        /* Page sections */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .hero-title {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0891b2, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: #94a3b8;
+        }
+
+        /* Topic grid */
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .topic-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(8, 145, 178, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(8, 145, 178, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .topic-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 4px;
+        }
+
+        .topic-description {
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* Article page styles */
+        .article-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(8, 145, 178, 0.1);
+        }
+
+        .article-icon {
+            font-size: 48px;
+        }
+
+        .article-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #e2e8f0;
+        }
+
+        .article-content {
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .article-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0891b2;
+            margin: 24px 0 12px;
+        }
+
+        .article-content p {
+            margin-bottom: 16px;
+        }
+
+        .article-content ul {
+            margin: 0 0 16px 24px;
+        }
+
+        .article-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Inline links */
+        .link {
+            color: #0891b2;
+            text-decoration: none;
+            cursor: pointer;
+            border-bottom: 1px dotted #0891b2;
+        }
+
+        .link:hover {
+            color: #06b6d4;
+            border-bottom-style: solid;
+        }
+
+        /* Related topics */
+        .related-topics {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(8, 145, 178, 0.1);
+        }
+
+        .related-topics h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .related-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(8, 145, 178, 0.1);
+            border-radius: 6px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .related-card:hover {
+            background: rgba(8, 145, 178, 0.1);
+            border-color: rgba(8, 145, 178, 0.3);
+        }
+
+        .related-card .icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .related-card .title {
+            font-size: 12px;
+            color: #e2e8f0;
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(8, 145, 178, 0.2);
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: #06b6d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="trinity-pedia" id="trinityPedia">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <h3>
+                <span>📚</span>
+                Trinity-pedia
+            </h3>
+            <div class="window-controls">
+                <button title="Search">🔍</button>
+                <button title="Pin Window">📌</button>
+                <button title="Close" onclick="this.closest('.trinity-pedia').style.display='none'">✕</button>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="nav-buttons">
+                <button class="nav-button" title="Home" onclick="navigateTo('home')">🏠</button>
+                <button class="nav-button" id="backBtn" title="Back" onclick="goBack()" disabled>←</button>
+                <button class="nav-button" id="forwardBtn" title="Forward" onclick="goForward()" disabled>→</button>
+            </div>
+            <div class="breadcrumb" id="breadcrumb">
+                <a href="#" onclick="navigateTo('home')">Home</a>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                <div class="hero-section">
+                    <h1 class="hero-title">🤖 Claude Code + APEX + You = BOOM! 🚀</h1>
+                    <p class="hero-subtitle">Welcome to the future of AI-powered development</p>
+                </div>
+                
+                <div class="topic-grid">
+                    <div class="topic-card" onclick="navigateTo('trinity-system')">
+                        <span class="topic-icon">🤖</span>
+                        <h3 class="topic-title">The Trinity System</h3>
+                        <p class="topic-description">Learn how AI agents collaborate with humans to amplify development</p>
+                    </div>
+                    
+                    <div class="topic-card" onclick="navigateTo('tools')">
+                        <span class="topic-icon">🛠️</span>
+                        <h3 class="topic-title">Tools & Features</h3>
+                        <p class="topic-description">Master the Trinity Gateway interface and integrated development tools</p>
+                    </div>
+                    
+                    <div class="topic-card" onclick="navigateTo('workflows')">
+                        <span class="topic-icon">⚡</span>
+                        <h3 class="topic-title">Workflows</h3>
+                        <p class="topic-description">Discover efficient patterns for AI-assisted development</p>
+                    </div>
+                    
+                    <div class="topic-card" onclick="navigateTo('concepts')">
+                        <span class="topic-icon">🏗️</span>
+                        <h3 class="topic-title">Trinity Concepts</h3>
+                        <p class="topic-description">Understand the philosophy and architecture behind Trinity</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trinity System Page -->
+            <div id="trinity-system" class="page">
+                <div class="article-header">
+                    <span class="article-icon">🤖</span>
+                    <h1 class="article-title">The Trinity Development System</h1>
+                </div>
+                
+                <div class="article-content">
+                    <p>The Trinity Development System represents a revolutionary approach to software development, combining the power of AI with human creativity and framework coordination.</p>
+                    
+                    <h3>The Three Pillars</h3>
+                    <ul>
+                        <li><strong>Claude Code</strong> - Advanced AI that understands natural language and generates high-quality code</li>
+                        <li><strong>APEX</strong> - The <span class="link" onclick="navigateTo('apex-agent')">Trinity Framework coordinator</span> that orchestrates workflows</li>
+                        <li><strong>You</strong> - The human developer who provides vision, creativity, and strategic direction</li>
+                    </ul>
+                    
+                    <h3>How It Works</h3>
+                    <p>When you work with Trinity, you're not just using a tool - you're collaborating with AI partners. You describe what you want to build in natural language, and the system translates that into working code.</p>
+                    
+                    <div class="code-block">
+                        <code>// Example: Natural language to code
+You: "Create a React component for user authentication"
+Claude Code: *generates complete authentication component with best practices*
+APEX: *coordinates file creation and project structure*</code>
+                    </div>
+                    
+                    <p>The magic happens when all three work together. You provide the creative vision, <span class="link" onclick="navigateTo('claude-code')">Claude Code</span> handles the implementation details, and APEX ensures everything integrates smoothly with your project.</p>
+                    
+                    <h3>Benefits of Trinity Development</h3>
+                    <ul>
+                        <li>10x faster development cycles</li>
+                        <li>Built-in best practices and security</li>
+                        <li>Continuous learning and improvement</li>
+                        <li>No more boilerplate code</li>
+                        <li>Focus on solving problems, not syntax</li>
+                    </ul>
+                </div>
+                
+                <div class="related-topics">
+                    <h4>Related Topics</h4>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="navigateTo('claude-code')">
+                            <div class="icon">🧠</div>
+                            <div class="title">Claude Code</div>
+                        </div>
+                        <div class="related-card" onclick="navigateTo('apex-agent')">
+                            <div class="icon">🎯</div>
+                            <div class="title">APEX Agent</div>
+                        </div>
+                        <div class="related-card" onclick="navigateTo('workflows')">
+                            <div class="icon">⚡</div>
+                            <div class="title">Workflows</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools Page -->
+            <div id="tools" class="page">
+                <div class="article-header">
+                    <span class="article-icon">🛠️</span>
+                    <h1 class="article-title">Tools & Features</h1>
+                </div>
+                
+                <div class="article-content">
+                    <p>Trinity Gateway provides a complete development environment accessible through your web browser, with all the tools you need for professional software development.</p>
+                    
+                    <h3>Integrated Terminal</h3>
+                    <p>The heart of Trinity Gateway is the integrated terminal where <span class="link" onclick="navigateTo('claude-code')">Claude Code</span> runs. It's not just a command line - it's your AI-powered development companion.</p>
+                    
+                    <h3>File Manager</h3>
+                    <p>A visual file manager lets you organize your projects, upload resources, and download your work. Features include:</p>
+                    <ul>
+                        <li>Drag-and-drop file upload</li>
+                        <li>Quick preview of code files</li>
+                        <li>Integrated with <span class="link" onclick="navigateTo('guacamole')">Guacamole</span> for seamless transfers</li>
+                        <li>Project templates and scaffolding</li>
+                    </ul>
+                    
+                    <h3>Available Development Tools</h3>
+                    <ul>
+                        <li><strong>Languages</strong>: Python, JavaScript/Node.js, Go, Rust, and more</li>
+                        <li><strong>Frameworks</strong>: React, Vue, Django, Express, FastAPI</li>
+                        <li><strong>Databases</strong>: PostgreSQL, MySQL, MongoDB, Redis</li>
+                        <li><strong>DevOps</strong>: Docker, Kubernetes, Git, CI/CD tools</li>
+                    </ul>
+                </div>
+                
+                <div class="related-topics">
+                    <h4>Related Topics</h4>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="navigateTo('terminal')">
+                            <div class="icon">💻</div>
+                            <div class="title">Terminal Guide</div>
+                        </div>
+                        <div class="related-card" onclick="navigateTo('file-manager')">
+                            <div class="icon">📁</div>
+                            <div class="title">File Manager</div>
+                        </div>
+                        <div class="related-card" onclick="navigateTo('shortcuts')">
+                            <div class="icon">⌨️</div>
+                            <div class="title">Shortcuts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more pages as needed -->
+        </div>
+    </div>
+
+    <script>
+        // Navigation history
+        let history = ['home'];
+        let historyIndex = 0;
+
+        // Page navigation
+        function navigateTo(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show requested page
+            const page = document.getElementById(pageId);
+            if (page) {
+                page.classList.add('active');
+                
+                // Update history
+                if (historyIndex < history.length - 1) {
+                    history = history.slice(0, historyIndex + 1);
+                }
+                history.push(pageId);
+                historyIndex = history.length - 1;
+                
+                // Update navigation buttons
+                updateNavButtons();
+                
+                // Update breadcrumb
+                updateBreadcrumb(pageId);
+                
+                // Scroll to top
+                document.querySelector('.content').scrollTop = 0;
+            }
+        }
+
+        function goBack() {
+            if (historyIndex > 0) {
+                historyIndex--;
+                const pageId = history[historyIndex];
+                showPage(pageId);
+            }
+        }
+
+        function goForward() {
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                const pageId = history[historyIndex];
+                showPage(pageId);
+            }
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            const page = document.getElementById(pageId);
+            if (page) {
+                page.classList.add('active');
+                updateNavButtons();
+                updateBreadcrumb(pageId);
+            }
+        }
+
+        function updateNavButtons() {
+            document.getElementById('backBtn').disabled = historyIndex <= 0;
+            document.getElementById('forwardBtn').disabled = historyIndex >= history.length - 1;
+        }
+
+        function updateBreadcrumb(pageId) {
+            const breadcrumb = document.getElementById('breadcrumb');
+            const pageTitles = {
+                'home': 'Home',
+                'trinity-system': 'The Trinity System',
+                'tools': 'Tools & Features',
+                'workflows': 'Workflows',
+                'concepts': 'Trinity Concepts',
+                'claude-code': 'Claude Code',
+                'apex-agent': 'APEX Agent'
+            };
+            
+            if (pageId === 'home') {
+                breadcrumb.innerHTML = '<a href="#" onclick="navigateTo(\'home\')">Home</a>';
+            } else {
+                breadcrumb.innerHTML = `<a href="#" onclick="navigateTo('home')">Home</a> / ${pageTitles[pageId] || pageId}`;
+            }
+        }
+
+        // Make window draggable
+        const trinityPedia = document.getElementById('trinityPedia');
+        const titleBar = trinityPedia.querySelector('.title-bar');
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        titleBar.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', dragEnd);
+
+        function dragStart(e) {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+
+            if (e.target === titleBar || e.target.parentElement === titleBar) {
+                isDragging = true;
+            }
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                trinityPedia.style.transform = `translate(${currentX}px, ${currentY}px)`;
+            }
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+        }
+    </script>
+</body>
+</html>
