@@ -56,3 +56,16 @@ Thumbs.db
 # Keep example files
 !example.*
 !*.example.*
+
+# Local protection scripts (DO NOT COMMIT)
+safe-push.sh
+setup-push-protection.sh
+PUSH-CHECKLIST.md
+security-scan.sh
+hooks/pre-push
+.git/public-repo-reminder.sh
+
+# Security audit files
+*-security-audit/
+*-security-report.md
+*-SECURITY-*.md
