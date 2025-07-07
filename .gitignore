@@ -63,9 +63,23 @@ setup-push-protection.sh
 PUSH-CHECKLIST.md
 security-scan.sh
 hooks/pre-push
+hooks/pre-push-ai-enhanced
 .git/public-repo-reminder.sh
+.git-ai-safety
+AI-AGENT-INSTRUCTIONS.md
 
 # Security audit files
 *-security-audit/
 *-security-report.md
 *-SECURITY-*.md
+INCIDENT-*.md
+RESTORATION-*.md
+*-REMEDIATION-*.md
+GITHUB-SUPPORT-*.md
+verify-cleanup.sh
+
+# Protection and safety files
+*-PROTECTION-*.md
+*-SAFETY-*.md
+safe-*.sh
+protection-*.sh
