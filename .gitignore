@@ -1,3 +1,58 @@
+# Dependencies
 node_modules/
 *.log
+
+# Environment and credentials
+.env
+.env.*
+credentials.json
+token.json
+*.pem
+*.key
+*.secret
+
+# AWS
+.aws/
+aws-exports.js
+aws-config.json
+
+# Configuration files that might contain secrets
+config/*.json
+config/*.yaml
+config/*.yml
+!config/example.*
+
+# Infrastructure
+terraform.tfvars
+*.tfstate
+*.tfstate.*
+
+# Internal directories
+internal/
+private/
+**/internal/
+**/private/
+
+# Monitoring and logs
+logs/
+*.log
+monitoring/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Keep example files
+!example.*
+!*.example.*
