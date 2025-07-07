@@ -54,3 +54,45 @@ If you're extending the framework:
 4. **Code Review**: Have security-focused code reviews for all extensions.
 
 Thank you for helping keep Trinity Framework 2.0 Core and its community safe!
+
+## Security Best Practices for Contributors
+
+### 🚫 Never Commit
+
+- AWS access keys or secret keys
+- API keys of any kind (Stripe, OAuth, etc.)
+- Passwords or tokens
+- Private SSH keys
+- Database connection strings
+- Environment files (.env)
+- Configuration files with real values
+- Internal operational files (AGENT.md, STATUS.md)
+
+### ✅ Always Use
+
+- Environment variables for sensitive configuration
+- Example files with placeholder values
+- The pre-commit hook to catch accidental commits
+- Code reviews before merging
+
+### Installing Security Hooks
+
+```bash
+# Install the pre-commit hook
+cp hooks/pre-commit .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
+### If You Accidentally Commit Credentials
+
+1. **DO NOT** push to GitHub
+2. Remove the commit: `git reset --hard HEAD~1`
+3. If already pushed:
+   - Rotate the exposed credentials immediately
+   - Make the repository private temporarily
+   - Contact the maintainers
+   - The repository history may need to be cleaned
+
+## Remember
+
+This is a public repository. Everything you commit will be visible to the world. When in doubt, leave it out!

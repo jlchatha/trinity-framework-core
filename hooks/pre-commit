@@ -1,0 +1,50 @@
+#!/bin/bash
+# Trinity Framework Core - Pre-commit Security Hook
+# Install by copying to .git/hooks/pre-commit and making executable
+
+echo "🔒 Running security checks..."
+
+# Check for common credential patterns
+if git diff --cached | grep -E -i "(aws_access_key|aws_secret|api_key|apikey|password|passwd|pwd|secret|token|stripe|oauth)" ; then
+    echo "❌ ERROR: Possible credential detected in commit"
+    echo "Please remove sensitive data before committing"
+    echo "If this is a false positive, you can bypass with: git commit --no-verify"
+    exit 1
+fi
+
+# Check for AWS account IDs (12-digit numbers)
+if git diff --cached | grep -E "[0-9]{12}" ; then
+    echo "⚠️  WARNING: Possible AWS account ID detected"
+    echo "Please verify this is intended to be public"
+    read -p "Continue with commit? (y/n): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
+fi
+
+# Check for private keys
+if git diff --cached | grep -E "BEGIN (RSA |DSA |EC |OPENSSH )?PRIVATE KEY" ; then
+    echo "❌ ERROR: Private key detected in commit"
+    echo "Never commit private keys to the repository"
+    exit 1
+fi
+
+# Check for specific file patterns
+for file in $(git diff --cached --name-only); do
+    case "$file" in
+        *.env|credentials.json|token.json|*.pem|*.key)
+            echo "❌ ERROR: Sensitive file type detected: $file"
+            echo "These files should not be committed"
+            exit 1
+            ;;
+        */internal/*|*/private/*)
+            echo "❌ ERROR: Internal/private directory file detected: $file"
+            echo "These directories should not be in public repository"
+            exit 1
+            ;;
+    esac
+done
+
+echo "✅ Security checks passed"
+exit 0
