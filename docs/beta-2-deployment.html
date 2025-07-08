@@ -161,8 +161,23 @@
             <li>Configured DNS for the beta environment</li>
         </ul>
         
+        <h2><i class="fas fa-film"></i> Deployment Recording</h2>
+        
+        <p>The entire deployment process was captured on video, demonstrating OVERSEER's capabilities in real-world DevOps scenarios:</p>
+        
+        <div class="video-container">
+            <video controls preload="metadata">
+                <!-- Multiple sources for Firefox compatibility -->
+                <source src="video/OVERSEER_k3s.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2">
+                <source src="video/OVERSEER_k3s.mp4" type="video/mp4">
+                Your browser does not support the video tag. You can <a href="video/OVERSEER_k3s.mp4">download the video</a> instead.
+            </video>
+        </div>
+        
+        <p class="video-caption">OVERSEER deploying K3s on Oracle Linux 9 with minimal human intervention</p>
+        
         <div class="note">
-            <p>The entire deployment process was captured on video and will be shared as a demonstration of AI agent capabilities in real-world DevOps scenarios.</p>
+            <p>This video shows OVERSEER updating an A record in DNS and installing K3s on the AWS instance, demonstrating the agent's ability to handle infrastructure provisioning tasks autonomously.</p>
         </div>
 
         <h2>Next Steps for OVERSEER</h2>
@@ -177,7 +192,7 @@
         
         <div class="warning">
             <h3>Important Security Note</h3>
-            <p>This beta environment is isolated from production systems and contains no sensitive data. It uses dedicated security groups and network access control lists to enforce strict access controls.</p>
+            <p>This beta environment is isolated from production systems and contains no sensitive data. It uses dedicated security groups and network access control lists to enforce strict access controls. The deployment video has been redacted to remove sensitive information such as user paths, Hosted Zone IDs, and other security-relevant identifiers.</p>
         </div>
 
         <h2>Conclusion</h2>

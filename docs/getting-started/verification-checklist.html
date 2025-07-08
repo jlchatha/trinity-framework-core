@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trinity Framework 2.0 Core - Verification Checklist - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="/trinity-framework-core/" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/trinity-framework-core/" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a><span class="breadcrumb-separator">/</span><a href="./" class="breadcrumb-link breadcrumb-item">Getting Started</a><span class="breadcrumb-separator">/</span><span class="breadcrumb-current breadcrumb-item">Verification Checklist</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">July 7, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <p>---|---------|----------|
+| <code>AGENT.md</code> | Agent identity and role | ❏ |
+| <code>AUTO-COMPACT.md</code> | Context management and recovery | ❏ |
+| <code>STATUS.md</code> | Current operational status | ❏ |
+| <code>README.md</code> | Workspace documentation | ❏ |</p>
+
+<h3>Directory Structure</h3>
+
+<p><table>
+<tr><th>Directory</th><th>Purpose</th><th>Present?</th></tr>
+<tr><td><code>/AAR/sessions/</code></td><td>Session AAR documents</td><td>❏</td></tr>
+<tr><td><code>/AAR/incidents/</code></td><td>Incident AAR documents</td><td>❏</td></tr>
+<tr><td><code>/projects/</code></td><td>Active project files</td><td>❏</td></tr>
+<tr><td><code>/reports/</code></td><td>Generated reports</td><td>❏</td></tr>
+<tr><td><code>/tools/</code></td><td>Utility scripts and tools</td><td>❏</td></tr>
+<tr><td><code>/archives/</code></td><td>Archived materials</td><td>❏</td></tr>
+</table></p>
+
+<h3>Optional Context Management Files</h3>
+
+<p><table>
+<tr><th>File/Directory</th><th>Purpose</th><th>Present?</th></tr>
+<tr><td><code>/tools/token-tracker/</code></td><td>Token tracking base directory</td><td>❏</td></tr>
+<tr><td><code>/tools/token-tracker/context-manager/bin/</code></td><td>Script execution directory</td><td>❏</td></tr>
+<tr><td><code>/tools/token-tracker/context-manager/state/</code></td><td>State tracking directory</td><td>❏</td></tr>
+<tr><td><code>/tools/token-tracker/context-manager/checkpoints/</code></td><td>Checkpoint storage directory</td><td>❏</td></tr>
+<tr><td><code>/tools/token-tracker/context-manager/bin/run-context-check.sh</code></td><td>Context check script</td><td>❏</td></tr>
+</table></p>
+
+<h2>Protocol File Content Verification</h2>
+
+<h3>AGENT.md Requirements</h3>
+
+<p><table>
+<tr><th>Element</th><th>Description</th><th>Present?</th></tr>
+<tr><td>Agent Identity</td><td>Clear agent identity statement</td><td>❏</td></tr>
+<tr><td>Role Definition</td><td>Specific role responsibilities</td><td>❏</td></tr>
+<tr><td>Recovery Protocol</td><td>Steps for context reset recovery</td><td>❏</td></tr>
+<tr><td>Recovery Performance</td><td>Expected recovery time metrics</td><td>❏</td></tr>
+<tr><td>Operational Guidelines</td><td>Decision framework and tools</td><td>❏</td></tr>
+<tr><td>Context Tracking (Optional)</td><td>Context tracking protocol section</td><td>❏</td></tr>
+<tr><td>Framework 2.0 Marker</td><td>"Framework 2.0 COMPLIANT" tag</td><td>❏</td></tr>
+</table></p>
+
+<h3>STATUS.md Requirements</h3>
+
+<p><table>
+<tr><th>Element</th><th>Description</th><th>Present?</th></tr>
+<tr><td>Status Header</td><td>Agent name and date</td><td>❏</td></tr>
+<tr><td>System Health</td><td>Overall operational status</td><td>❏</td></tr>
+<tr><td>Current Activities</td><td>Active tasks and projects</td><td>❏</td></tr>
+<tr><td>Critical Issues</td><td>List of any critical issues</td><td>❏</td></tr>
+<tr><td>Next Priorities</td><td>Ordered priority list</td><td>❏</td></tr>
+<tr><td>Context Health (Optional)</td><td>Context utilization metrics</td><td>❏</td></tr>
+<tr><td>Framework 2.0 Marker</td><td>"Framework 2.0 COMPLIANT" tag</td><td>❏</td></tr>
+</table></p>
+
+<h3>AUTO-COMPACT.md Requirements</h3>
+
+<p><table>
+<tr><th>Element</th><th>Description</th><th>Present?</th></tr>
+<tr><td>Context Management</td><td>Context tracking section</td><td>❏</td></tr>
+<tr><td>Context Metrics</td><td>Current utilization metrics</td><td>❏</td></tr>
+<tr><td>Checkpoint Information</td><td>Available checkpoint details</td><td>❏</td></tr>
+<tr><td>Restoration Instructions</td><td>Post-reset recovery steps</td><td>❏</td></tr>
+<tr><td>Implementation Context</td><td>Current system status</td><td>❏</td></tr>
+<tr><td>Framework 2.0 Marker</td><td>"Framework 2.0 COMPLIANT" tag</td><td>❏</td></tr>
+</table></p>
+
+<h2>Functional Verification</h2>
+
+<h3>Basic Operation</h3>
+
+<p><table>
+<tr><th>Test</th><th>Description</th><th>Passed?</th></tr>
+<tr><td>Directory Navigation</td><td>Navigate to all required directories</td><td>❏</td></tr>
+<tr><td>File Readability</td><td>All protocol files are readable</td><td>❏</td></tr>
+<tr><td>File Permissions</td><td>All scripts are executable</td><td>❏</td></tr>
+<tr><td>Root File Count</td><td>Root directory has ≤10 files</td><td>❏</td></tr>
+</table></p>
+
+<h3>Optional Context Tracking (if implemented)</h3>
+
+<p><table>
+<tr><th>Test</th><th>Description</th><th>Passed?</th></tr>
+<tr><td>Script Execution</td><td><code>run-context-check.sh</code> executes successfully</td><td>❏</td></tr>
+<tr><td>Context Visualization</td><td>Context meter displays properly</td><td>❏</td></tr>
+<tr><td>Status Update</td><td>STATUS.md updates with context info</td><td>❏</td></tr>
+<tr><td>AUTO-COMPACT Update</td><td>AUTO-COMPACT.md updates with metrics</td><td>❏</td></tr>
+</table></p>
+
+<h2>Agent-Specific Verification</h2>
+
+<h3>APEX Agent</h3>
+
+<p><table>
+<tr><th>Element</th><th>Description</th><th>Present?</th></tr>
+<tr><td>User Interface</td><td>User interaction guidelines</td><td>❏</td></tr>
+<tr><td>Task Management</td><td>Task handling procedures</td><td>❏</td></tr>
+<tr><td>Status Reporting</td><td>Status reporting mechanisms</td><td>❏</td></tr>
+<tr><td>System Coordination</td><td>Agent coordination protocols</td><td>❏</td></tr>
+</table></p>
+
+<h3>ANALYST Agent</h3>
+
+<p><table>
+<tr><th>Element</th><th>Description</th><th>Present?</th></tr>
+<tr><td>Implementation Focus</td><td>Implementation guidelines</td><td>❏</td></tr>
+<tr><td>Code Analysis</td><td>Analysis procedures and tools</td><td>❏</td></tr>
+<tr><td>Quality Standards</td><td>Code quality requirements</td><td>❏</td></tr>
+<tr><td>Testing Protocols</td><td>Test implementation procedures</td><td>❏</td></tr>
+</table></p>
+
+<h3>HISTORIAN Agent</h3>
+
+<p><table>
+<tr><th>Element</th><th>Description</th><th>Present?</th></tr>
+<tr><td>Documentation Standards</td><td>Documentation guidelines</td><td>❏</td></tr>
+<tr><td>Knowledge Management</td><td>Information organization</td><td>❏</td></tr>
+<tr><td>Archival Procedures</td><td>Archiving processes</td><td>❏</td></tr>
+<tr><td>Protocol Compliance</td><td>Compliance monitoring</td><td>❏</td></tr>
+</table></p>
+
+<h2>Compliance Verification</h2>
+
+<h3>Framework 2.0 Compliance</h3>
+
+<p><table>
+<tr><th>Requirement</th><th>Description</th><th>Compliant?</th></tr>
+<tr><td>Protocol Files</td><td>All required protocol files present</td><td>❏</td></tr>
+<tr><td>Directory Structure</td><td>Standard directory structure implemented</td><td>❏</td></tr>
+<tr><td>Agent Identity</td><td>Clear agent identity in AGENT.md</td><td>❏</td></tr>
+<tr><td>Recovery Protocol</td><td>Functional recovery procedures</td><td>❏</td></tr>
+<tr><td>Context Resilience</td><td>Context reset resilience mechanisms</td><td>❏</td></tr>
+<tr><td>Documentation System</td><td>Proper AAR system implementation</td><td>❏</td></tr>
+<tr><td>Root File Limit</td><td>≤10 files in root directory</td><td>❏</td></tr>
+</table></p>
+
+<h3>Claude API Verification</h3>
+
+<p><table>
+<tr><th>Requirement</th><th>Description</th><th>Compliant?</th></tr>
+<tr><td>Claude API Access</td><td>CLAUDE_API_KEY environment variable set</td><td>❏</td></tr>
+<tr><td>Claude Model</td><td>Using Claude 3 Sonnet or newer</td><td>❏</td></tr>
+<tr><td>Context Window</td><td>Model supports 180K+ token context</td><td>❏</td></tr>
+<tr><td>API Response</td><td>Test API call returns valid response</td><td>❏</td></tr>
+</table></p>
+
+<p>To verify Claude API access:
+<div class="terminal"><div class="terminal-content">&lt;h1&gt;Check if environment variable is set&lt;/h1&gt;
+if [ -z "${CLAUDE_API_KEY}" ]; then
+  echo "ERROR: CLAUDE_API_KEY not set"
+else
+  echo "Claude API key detected"
+  # Basic API verification could be added here
+fi<span class="cursor"></span></div></div>
+
+<h2>AAR System Verification</h2>
+
+<p><table>
+<tr><th>Element</th><th>Description</th><th>Present?</th></tr>
+<tr><td>Session Directory</td><td><code>/AAR/sessions/</code> directory exists</td><td>❏</td></tr>
+<tr><td>Incident Directory</td><td><code>/AAR/incidents/</code> directory exists</td><td>❏</td></tr>
+<tr><td>Initial Session</td><td>Initial workspace setup AAR created</td><td>❏</td></tr>
+<tr><td>AAR Format</td><td>AAR follows standard format</td><td>❏</td></tr>
+</table></p>
+
+<h2>Troubleshooting Common Issues</h2>
+
+<h3>Protocol File Issues</h3>
+
+<ul>
+<ol>
+<li><strong>Problem</strong>: Missing sections in protocol files</li>
+<li><strong>Solution</strong>: Copy from templates in <code>/templates/protocol-files/</code></li>
+</ol>
+</ul>
+
+<h3>Directory Structure Issues</h3>
+
+<ul>
+<ol>
+<li><strong>Problem</strong>: Missing required directories</li>
+<li><strong>Solution</strong>: Create missing directories: <code>mkdir -p [missing-directory-path]</code></li>
+</ol>
+</ul>
+
+<h3>Permission Issues</h3>
+
+<ul>
+<ol>
+<li><strong>Problem</strong>: Scripts not executable</li>
+<li><strong>Solution</strong>: Run <code>chmod +x [script-path]</code></li>
+</ol>
+</ul>
+
+<h3>Context Tracking Issues</h3>
+
+<ul>
+<ol>
+<li><strong>Problem</strong>: Context tracking not functioning</li>
+<li><strong>Solution</strong>: Verify Node.js installation and create required directories</li>
+</ol>
+</ul>
+
+<h2>After Verification</h2>
+
+<p>Once your workspace passes all verification checks:</p>
+
+<ol>
+<li><strong>Document Completion</strong>: Create an AAR session documenting the verification</li>
+<li><strong>Update STATUS.md</strong>: Mark verification as complete</li>
+<li><strong>Begin Operations</strong>: Start using the workspace for its intended purpose</li>
+<li><strong>Regular Compliance Checks</strong>: Schedule periodic verification checks</li>
+</ol>
+
+<p>---</p>
+
+<p><em>Framework 2.0 COMPLIANT</em></p>
+
+        <a href="/trinity-framework-core/" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for terminal text
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-content br');
+            
+            // Hide all lines initially except the first one
+            for (let i = 0; i < terminalLines.length; i++) {
+                const nextSibling = terminalLines[i].nextSibling;
+                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                    nextSibling.style.display = 'none';
+                }
+            }
+            
+            // Show lines one by one
+            let currentLine = 0;
+            function showNextLine() {
+                if (currentLine < terminalLines.length) {
+                    const nextSibling = terminalLines[currentLine].nextSibling;
+                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                        nextSibling.style.display = 'inline';
+                    }
+                    currentLine++;
+                    setTimeout(showNextLine, 500);
+                }
+            }
+            
+            setTimeout(showNextLine, 1000);
+        });
+    </script>
+</body>
+</html>

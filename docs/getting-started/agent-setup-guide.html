@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trinity Framework 2.0 Core - Agent Setup Guide - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="/trinity-framework-core/" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/trinity-framework-core/" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a><span class="breadcrumb-separator">/</span><a href="./" class="breadcrumb-link breadcrumb-item">Getting Started</a><span class="breadcrumb-separator">/</span><span class="breadcrumb-current breadcrumb-item">Agent Setup Guide</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">July 7, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <p>----|-------------|----------------------|
+| APEX | User Interface | Primary user interaction, task coordination, status reporting |
+| ANALYST | System Improvement | Code analysis, feature implementation, bug fixing, optimization |
+| HISTORIAN | Documentation | Knowledge management, documentation maintenance, protocol compliance |</p>
+
+<h2>Common Setup Process</h2>
+
+<p>All agents share the same basic setup process using the provided scripts:</p>
+
+<div class="terminal"><div class="terminal-content">&lt;h1&gt;Navigate to the setup directory&lt;/h1&gt;
+cd trinity-framework-core/tools/setup</p>
+
+<p>&lt;h1&gt;Make scripts executable&lt;/h1&gt;
+chmod +x *.sh</p>
+
+<p>&lt;h1&gt;Create agent workspace&lt;/h1&gt;
+./setup-[agent-name].sh [workspace_path]<span class="cursor"></span></div></div>
+
+<p>Replace <code>[agent-name]</code> with <code>apex</code>, <code>analyst</code>, or <code>historian</code> and <code>[workspace_path]</code> with your desired workspace location.</p>
+
+<h2>APEX Agent Setup</h2>
+
+<p>The APEX agent serves as the primary interface between the human operator and the Trinity system.</p>
+
+<h3>1. Create APEX Workspace</h3>
+
+<div class="terminal"><div class="terminal-content">./setup-apex.sh ~/trinity/trinity-apex-workspace<span class="cursor"></span></div></div>
+
+<h3>2. Review and Customize AGENT.md</h3>
+
+<p>Open <code>~/trinity/trinity-apex-workspace/AGENT.md</code> in your editor and modify:</p>
+
+<ul>
+<ol>
+<li>The introduction section to reflect your specific system purpose</li>
+<li>Decision framework criteria based on your project needs</li>
+<li>Tools and script references to match your infrastructure</li>
+<li>Interaction protocols for your organization's requirements</li>
+</ol>
+</ul>
+
+<h3>3. Configure User Interface Settings</h3>
+
+<p>APEX agents require clear user interaction guidelines:</p>
+
+<ul>
+<ol>
+<li>Define acceptable input formats</li>
+<li>Set up response templates</li>
+<li>Configure communication protocols</li>
+<li>Establish escalation paths</li>
+</ol>
+</ul>
+
+<h3>4. Implement APEX-Specific Tools</h3>
+
+<p>Create APEX-specific tools in the <code>/tools</code> directory:</p>
+
+<div class="terminal"><div class="terminal-content">mkdir -p ~/trinity/trinity-apex-workspace/tools/user-interface
+mkdir -p ~/trinity/trinity-apex-workspace/tools/task-management
+mkdir -p ~/trinity/trinity-apex-workspace/tools/status-reporting<span class="cursor"></span></div></div>
+
+<h3>5. APEX Verification</h3>
+
+<p>Verify your APEX agent setup:</p>
+
+<div class="terminal"><div class="terminal-content">./verify-installation.sh ~/trinity/trinity-apex-workspace<span class="cursor"></span></div></div>
+
+<h2>ANALYST Agent Setup</h2>
+
+<p>The ANALYST agent focuses on system improvement, code analysis, and implementation tasks.</p>
+
+<h3>1. Create ANALYST Workspace</h3>
+
+<div class="terminal"><div class="terminal-content">./setup-analyst.sh ~/trinity/trinity-analyst-workspace<span class="cursor"></span></div></div>
+
+<h3>2. Review and Customize AGENT.md</h3>
+
+<p>Open <code>~/trinity/trinity-analyst-workspace/AGENT.md</code> in your editor and modify:</p>
+
+<ul>
+<ol>
+<li>Implementation focus areas</li>
+<li>Code analysis frameworks</li>
+<li>Quality metrics and standards</li>
+<li>Testing requirements</li>
+</ol>
+</ul>
+
+<h3>3. Configure Development Environment</h3>
+
+<p>ANALYST agents require development-specific configuration:</p>
+
+<ul>
+<ol>
+<li>Set up version control integration</li>
+<li>Configure build and test environments</li>
+<li>Define code review procedures</li>
+<li>Establish release workflows</li>
+</ol>
+</ul>
+
+<h3>4. Implement ANALYST-Specific Tools</h3>
+
+<p>Create ANALYST-specific tools in the <code>/tools</code> directory:</p>
+
+<div class="terminal"><div class="terminal-content">mkdir -p ~/trinity/trinity-analyst-workspace/tools/code-analysis
+mkdir -p ~/trinity/trinity-analyst-workspace/tools/testing
+mkdir -p ~/trinity/trinity-analyst-workspace/tools/implementation<span class="cursor"></span></div></div>
+
+<h3>5. ANALYST Verification</h3>
+
+<p>Verify your ANALYST agent setup:</p>
+
+<div class="terminal"><div class="terminal-content">./verify-installation.sh ~/trinity/trinity-analyst-workspace<span class="cursor"></span></div></div>
+
+<h2>HISTORIAN Agent Setup</h2>
+
+<p>The HISTORIAN agent manages documentation and knowledge preservation.</p>
+
+<h3>1. Create HISTORIAN Workspace</h3>
+
+<div class="terminal"><div class="terminal-content">./setup-historian.sh ~/trinity/trinity-historian-workspace<span class="cursor"></span></div></div>
+
+<h3>2. Review and Customize AGENT.md</h3>
+
+<p>Open <code>~/trinity/trinity-historian-workspace/AGENT.md</code> in your editor and modify:</p>
+
+<ul>
+<ol>
+<li>Documentation standards and formats</li>
+<li>Knowledge management protocols</li>
+<li>Archival procedures</li>
+<li>Protocol compliance monitoring</li>
+</ol>
+</ul>
+
+<h3>3. Configure Documentation Environment</h3>
+
+<p>HISTORIAN agents require documentation-specific configuration:</p>
+
+<ul>
+<ol>
+<li>Set up documentation generation tools</li>
+<li>Configure knowledge base integration</li>
+<li>Define archival workflows</li>
+<li>Establish documentation review processes</li>
+</ol>
+</ul>
+
+<h3>4. Implement HISTORIAN-Specific Tools</h3>
+
+<p>Create HISTORIAN-specific tools in the <code>/tools</code> directory:</p>
+
+<div class="terminal"><div class="terminal-content">mkdir -p ~/trinity/trinity-historian-workspace/tools/documentation
+mkdir -p ~/trinity/trinity-historian-workspace/tools/knowledge-base
+mkdir -p ~/trinity/trinity-historian-workspace/tools/protocol-compliance<span class="cursor"></span></div></div>
+
+<h3>5. HISTORIAN Verification</h3>
+
+<p>Verify your HISTORIAN agent setup:</p>
+
+<div class="terminal"><div class="terminal-content">./verify-installation.sh ~/trinity/trinity-historian-workspace<span class="cursor"></span></div></div>
+
+<h2>Optional: Context Management Integration</h2>
+
+<p>For each agent, you can implement the optional context management system:</p>
+
+<h3>1. Create Context Management Directories</h3>
+
+<div class="terminal"><div class="terminal-content">&lt;h1&gt;For each agent workspace (replace [agent-type] with apex, analyst, or historian)&lt;/h1&gt;
+cd ~/trinity/trinity-[agent-type]-workspace
+mkdir -p tools/token-tracker/context-manager/bin
+mkdir -p tools/token-tracker/context-manager/state
+mkdir -p tools/token-tracker/context-manager/checkpoints<span class="cursor"></span></div></div>
+
+<h3>2. Copy Context Management Tools</h3>
+
+<div class="terminal"><div class="terminal-content">&lt;h1&gt;Copy context management tools from framework repository&lt;/h1&gt;
+cp -r ~/trinity/trinity-framework-core/examples/context-tracking/* tools/token-tracker/
+chmod +x tools/token-tracker/context-manager/bin/*.sh<span class="cursor"></span></div></div>
+
+<h3>3. Update Protocol Files</h3>
+
+<p>Update the relevant sections in each protocol file to include context tracking:</p>
+
+<ul>
+<ol>
+<li>AGENT.md: Uncomment the context tracking protocol section</li>
+<li>AUTO-COMPACT.md: Update the context metrics section</li>
+<li>STATUS.md: Enable the context health section</li>
+</ol>
+</ul>
+
+<h2>Multi-Agent Integration</h2>
+
+<p>When running multiple agents as part of the same system:</p>
+
+<h3>1. Establish Communication Channels</h3>
+
+<p>Define how agents will communicate with each other:</p>
+
+<div class="terminal"><div class="terminal-content">&lt;h1&gt;Create shared communication directory&lt;/h1&gt;
+mkdir -p ~/trinity/shared
+chmod 777 ~/trinity/shared</p>
+
+<p>&lt;h1&gt;Create symbolic links in each workspace&lt;/h1&gt;
+ln -s ~/trinity/shared ~/trinity/trinity-apex-workspace/shared
+ln -s ~/trinity/shared ~/trinity/trinity-analyst-workspace/shared
+ln -s ~/trinity/shared ~/trinity/trinity-historian-workspace/shared<span class="cursor"></span></div></div>
+
+<h3>2. Configure Agent Awareness</h3>
+
+<p>Modify each agent's AGENT.md to include awareness of other agents:</p>
+
+<div class="terminal"><div class="terminal-content">&lt;h2&gt;Agent Ecosystem Awareness&lt;/h2&gt;</p>
+
+<p>You oversee the following agents:</p>
+
+<ol>
+<li>&lt;strong&gt;APEX&lt;/strong&gt; (<code>/path/to/trinity-apex-workspace/</code>)</li>
+</ol>
+   - User interface responsibilities
+   - Task management</p>
+
+<ol>
+<li>&lt;strong&gt;ANALYST&lt;/strong&gt; (<code>/path/to/trinity-analyst-workspace/</code>)</li>
+</ol>
+   - Implementation responsibilities
+   - System improvement</p>
+
+<ol>
+<li>&lt;strong&gt;HISTORIAN&lt;/strong&gt; (<code>/path/to/trinity-historian-workspace/</code>)</li>
+</ol>
+   - Documentation responsibilities
+   - Knowledge management<span class="cursor"></span></div></div>
+
+<h3>3. Define Interaction Protocols</h3>
+
+<p>Create an AGENT-INTERACTION.md file in each workspace that defines:</p>
+
+<ul>
+<ol>
+<li>Communication formats</li>
+<li>Responsibility boundaries</li>
+<li>Collaboration workflows</li>
+<li>Escalation procedures</li>
+</ol>
+</ul>
+
+<h2>Agent Customization Guidelines</h2>
+
+<p>When customizing agents for specific roles:</p>
+
+<ol>
+<li><strong>Maintain Framework Compliance</strong>: All changes must adhere to Framework 2.0 standards</li>
+<li><strong>Preserve Protocol Files</strong>: Keep the core protocol files intact and functional</li>
+<li><strong>Respect Directory Structure</strong>: Follow the standard workspace organization</li>
+<li><strong>Document Customizations</strong>: Create clear documentation for custom elements</li>
+<li><strong>Verify After Customizing</strong>: Run verification checks after customization</li>
+</ol>
+
+<h2>Best Practices</h2>
+
+<h3>Protocol File Customization</h3>
+
+<ul>
+<ol>
+<li>Keep the core recovery sections intact</li>
+<li>Only modify sections clearly marked for customization</li>
+<li>Document any customizations with comments</li>
+<li>Test recovery protocols after customization</li>
+</ol>
+</ul>
+
+<h3>Workspace Organization</h3>
+
+<ul>
+<ol>
+<li>Keep all protocol files in workspace root</li>
+<li>Limit root directory to 10 files maximum</li>
+<li>Organize project files in the <code>/projects</code> directory</li>
+<li>Keep documentation in the <code>/docs</code> or <code>/reports</code> directories</li>
+</ol>
+</ul>
+
+<h3>Context Management</h3>
+
+<ul>
+<ol>
+<li>Test context tracking before deploying to production</li>
+<li>Customize token estimates based on your actual usage</li>
+<li>Adjust thresholds if needed for your specific workflow</li>
+<li>Test recovery procedures regularly</li>
+</ol>
+</ul>
+
+<h2>Next Steps</h2>
+
+<p>After setting up your agent workspaces:</p>
+
+<ol>
+<li>Complete the <a href="./verification-checklist.md">Verification Checklist</a></li>
+<li>Explore the <a href="../guides/aar-system.md">AAR System</a> for documentation</li>
+<li>Review the <a href="../guides/context-management.md">Context Management</a> system if needed</li>
+<li>Learn about <a href="../guides/auto-compact-recovery.md">Auto-Compact Recovery</a></li>
+</ol>
+
+<p>---</p>
+
+<p><em>Framework 2.0 COMPLIANT</em></p>
+
+        <a href="/trinity-framework-core/" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for terminal text
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-content br');
+            
+            // Hide all lines initially except the first one
+            for (let i = 0; i < terminalLines.length; i++) {
+                const nextSibling = terminalLines[i].nextSibling;
+                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                    nextSibling.style.display = 'none';
+                }
+            }
+            
+            // Show lines one by one
+            let currentLine = 0;
+            function showNextLine() {
+                if (currentLine < terminalLines.length) {
+                    const nextSibling = terminalLines[currentLine].nextSibling;
+                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                        nextSibling.style.display = 'inline';
+                    }
+                    currentLine++;
+                    setTimeout(showNextLine, 500);
+                }
+            }
+            
+            setTimeout(showNextLine, 1000);
+        });
+    </script>
+</body>
+</html>

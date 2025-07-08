@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminology Reference - Trinity Framework 2.0 Core</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="/trinity-framework-core/" class="nav-link">Home</a>
+                <a href="../" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/trinity-framework-core/" class="breadcrumb-link breadcrumb-item">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a><span class="breadcrumb-separator">/</span><a href="./" class="breadcrumb-link breadcrumb-item">Reference</a><span class="breadcrumb-separator">/</span><span class="breadcrumb-current breadcrumb-item">Terminology Reference</span>
+        </div>
+        
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="metadata-label">VERSION:</span>
+                <span class="metadata-value">1.0.0</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">CREATED:</span>
+                <span class="metadata-value">July 7, 2025</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">STATUS:</span>
+                <span class="metadata-value">Release Candidate</span>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">FRAMEWORK:</span>
+                <span class="metadata-value">Trinity Framework 2.0</span>
+            </div>
+        </div>
+
+        <p>-----------|--------------|------------|------------------|
+| Daily | UNIT | Atomic operational cycle | 1 rotation |
+| Weekly | MILESTONE | Achievement checkpoint | 7 units |
+| Biweekly | ITERATION | Process improvement cycle | 14 units |
+| Monthly | PHASE | Major project segment | 4 milestones |
+| Quarterly | PROJECT | Complete initiative | 3 phases |</p>
+
+<h2>Core Framework Terminology</h2>
+
+<h3>Agent Types</h3>
+
+<ul>
+<ol>
+<li><strong>APEX</strong>: Strategic direction and architecture agent</li>
+<li><strong>ANALYST</strong>: Data analysis and optimization agent</li>
+<li><strong>HISTORIAN</strong>: Documentation and knowledge management agent</li>
+</ol>
+</ul>
+
+<h3>Protocol Files</h3>
+
+<ul>
+<ol>
+<li><strong>AGENT.md</strong>: Agent identity and role definition file</li>
+<li><strong>STATUS.md</strong>: Current operational status and priorities file</li>
+<li><strong>AUTO-COMPACT.md</strong>: Context management and recovery information file</li>
+</ol>
+</ul>
+
+<h3>System Components</h3>
+
+<ul>
+<ol>
+<li><strong>AAR System</strong>: After Action Review documentation system for learning and context preservation</li>
+<li><strong>Context Management System</strong>: Optional system for tracking and visualizing context utilization</li>
+<li><strong>Protocol-Based Recovery</strong>: Standardized recovery mechanism for context resets</li>
+<li><strong>Workspace Standardization</strong>: Consistent file structure and organization</li>
+</ol>
+</ul>
+
+<h2>Context Management Terminology</h2>
+
+<h3>Context States</h3>
+
+<ul>
+<ol>
+<li><strong>Utilization</strong>: Percentage of context window currently in use</li>
+<li><strong>Checkpoint</strong>: Serialized state snapshot for recovery</li>
+<li><strong>Threshold</strong>: Defined utilization level triggering actions</li>
+<li><strong>Auto-Compact</strong>: Context reset process to clear window</li>
+</ol>
+</ul>
+
+<h3>Threshold Levels</h3>
+
+<ul>
+<ol>
+<li><strong>Notice</strong> (65%): First level threshold creating checkpoint</li>
+<li><strong>Warning</strong> (75%): Second level threshold with caution notification</li>
+<li><strong>Alert</strong> (85%): Critical threshold offering auto-compact</li>
+</ol>
+</ul>
+
+<h3>Operation Types</h3>
+
+<p>#### User Messages
+<ul>
+<ol>
+<li><strong>USER_SMALL</strong>: Brief messages (~750 tokens)</li>
+<li><strong>USER_MEDIUM</strong>: Standard messages (~2200 tokens)</li>
+<li><strong>USER_LARGE</strong>: Detailed messages (~4400 tokens)</li>
+</ol>
+</ul>
+
+<p>#### Assistant Responses
+<ul>
+<ol>
+<li><strong>ASSISTANT_SMALL</strong>: Brief responses (~1500 tokens)</li>
+<li><strong>ASSISTANT_MEDIUM</strong>: Standard responses (~4400 tokens)</li>
+<li><strong>ASSISTANT_LARGE</strong>: Detailed responses (~10000 tokens)</li>
+</ol>
+</ul>
+
+<p>#### Tool Operations
+<ul>
+<ol>
+<li><strong>TOOL_READ_SMALL</strong>: Small file reads (~1500 tokens)</li>
+<li><strong>TOOL_READ_MEDIUM</strong>: Medium file reads (~4400 tokens)</li>
+<li><strong>TOOL_READ_LARGE</strong>: Large file reads (~7500 tokens)</li>
+<li><strong>TOOL_WRITE</strong>: File writing operations (~750 tokens)</li>
+<li><strong>TOOL_EDIT</strong>: File editing operations (~1500 tokens)</li>
+<li><strong>TOOL_TASK</strong>: Task tool executions (~6000 tokens)</li>
+</ol>
+</ul>
+
+<h2>Workspace Terminology</h2>
+
+<h3>Directory Structure</h3>
+
+<ul>
+<ol>
+<li><strong>/AAR/</strong>: After Action Review documentation</li>
+<li><strong>/projects/</strong>: Active project implementation files</li>
+<li><strong>/reports/</strong>: Generated reports and documentation</li>
+<li><strong>/archives/</strong>: Archived implementation artifacts</li>
+<li><strong>/tools/</strong>: Utility scripts and tools</li>
+<li><strong>/checkpoints/</strong>: Context recovery checkpoints</li>
+</ol>
+</ul>
+
+<h3>File Naming Conventions</h3>
+
+<ul>
+<ol>
+<li><strong>Protocol Files</strong>: UPPERCASE-WITH-HYPHENS.md</li>
+<li><strong>Session AARs</strong>: YYYY-MM-DD-description.md</li>
+<li><strong>Incident AARs</strong>: DESCRIPTIVE-NAME-RCA.md</li>
+<li><strong>Scripts</strong>: verb-noun.sh or verb-noun.js</li>
+</ol>
+</ul>
+
+<h2>Recovery Terminology</h2>
+
+<h3>Recovery States</h3>
+
+<ul>
+<ol>
+<li><strong>Recognition</strong>: Identification of context reset</li>
+<li><strong>Identity Restoration</strong>: Regaining agent identity</li>
+<li><strong>Context Loading</strong>: Retrieving implementation context</li>
+<li><strong>Work Resumption</strong>: Continuing operations with recovered context</li>
+</ol>
+</ul>
+
+<h3>Recovery Metrics</h3>
+
+<ul>
+<ol>
+<li><strong>Recovery Time</strong>: Exchanges needed for full operational awareness</li>
+<li><strong>Context Retention</strong>: Percentage of knowledge preserved across resets</li>
+<li><strong>Recovery Completeness</strong>: Degree of state restoration</li>
+</ol>
+</ul>
+
+<h2>Success Metrics Terminology</h2>
+
+<ul>
+<ol>
+<li><strong>Recovery Time</strong>: ≤1.0 exchanges to full operational awareness</li>
+<li><strong>Context Retention</strong>: ≥90% knowledge preservation across resets</li>
+<li><strong>Response Time</strong>: ≤500ms for standard operations</li>
+<li><strong>Task Completion</strong>: ≥95% successful completion rate</li>
+<li><strong>Protocol Compliance</strong>: 100% on critical requirements</li>
+</ol>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>This terminology reference provides a standardized vocabulary for working with Trinity Framework 2.0 Core. Consistent use of these terms ensures clear communication, effective documentation, and operational resilience across context limitations.</p>
+
+<p>---</p>
+
+<p><em>Framework 2.0 COMPLIANT</em></p>
+
+        <a href="/trinity-framework-core/" class="home-link">← Back to Documentation Home</a>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for terminal text
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-content br');
+            
+            // Hide all lines initially except the first one
+            for (let i = 0; i < terminalLines.length; i++) {
+                const nextSibling = terminalLines[i].nextSibling;
+                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                    nextSibling.style.display = 'none';
+                }
+            }
+            
+            // Show lines one by one
+            let currentLine = 0;
+            function showNextLine() {
+                if (currentLine < terminalLines.length) {
+                    const nextSibling = terminalLines[currentLine].nextSibling;
+                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+                        nextSibling.style.display = 'inline';
+                    }
+                    currentLine++;
+                    setTimeout(showNextLine, 500);
+                }
+            }
+            
+            setTimeout(showNextLine, 1000);
+        });
+    </script>
+</body>
+</html>
