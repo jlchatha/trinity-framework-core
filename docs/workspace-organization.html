@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace Organization - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#documentation" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="breadcrumbs">
+                <a href="index.html" class="breadcrumb-link breadcrumb-item">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="principles/index.html" class="breadcrumb-link breadcrumb-item">Principles</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current breadcrumb-item">Workspace Organization</span>
+            </div>
+            
+            <h1>Workspace Organization</h1>
+            
+            <div class="metadata">
+                <p><strong>VERSION</strong>: 1.0.0<br>
+                <strong>CREATED</strong>: June 12, 2025<br>
+                <strong>STATUS</strong>: Draft<br>
+                <strong>FRAMEWORK</strong>: Trinity Framework 2.0</p>
+            </div>
+            
+            <hr>
+            
+            <h2 id="introduction">Introduction</h2>
+            <p>Workspace organization is a foundational element of Trinity Framework 2.0 Core, providing consistent structure that enhances recovery capabilities and improves operational efficiency. This document outlines the standardized workspace structure, file naming conventions, and organizational best practices.</p>
+            
+            <h2 id="workspace-structure-principles">Workspace Structure Principles</h2>
+            <p>The Trinity Framework 2.0 Core workspace organization is built on these key principles:</p>
+            
+            <ol>
+                <li><strong>Predictable Locations</strong>: Critical files must be in consistent, known locations</li>
+                <li><strong>Recovery Prioritization</strong>: Most important recovery files at the root level</li>
+                <li><strong>Logical Grouping</strong>: Files organized by purpose and function</li>
+                <li><strong>Access Efficiency</strong>: Frequently accessed files in easily accessible locations</li>
+                <li><strong>Root Directory Constraint</strong>: Maximum 10 files in root directory</li>
+            </ol>
+            
+            <h2 id="standard-directory-structure">Standard Directory Structure</h2>
+            
+            <h3>Root Directory</h3>
+            <p>The root directory should contain only essential protocol files and high-level documentation:</p>
+            
+            <ul>
+                <li><strong>AGENT.md</strong>: Primary identity and role definition</li>
+                <li><strong>AUTO-COMPACT.md</strong>: Recovery information for context resets</li>
+                <li><strong>STATUS.md</strong>: Current operational status</li>
+                <li><strong>README.md</strong>: Workspace overview</li>
+                <li><strong>Other critical files</strong>: Limited to 10 total files maximum</li>
+            </ul>
+            
+            <h3>Required Directories</h3>
+            <p>The following directories must exist in every workspace:</p>
+            
+            <div class="card">
+                <h4>/AAR/ - After Action Review</h4>
+                <p><strong>Purpose</strong>: Store session and incident documentation for context retention and learning</p>
+                
+                <ul>
+                    <li><strong>/AAR/sessions/</strong>: Ongoing session documentation
+                        <ul>
+                            <li>File naming: <code>YYYY-MM-DD-description.md</code></li>
+                            <li>Content: Session summary, activities, insights, next actions</li>
+                            <li>Example: <code>2025-06-10-context-management-implementation.md</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>/AAR/incidents/</strong>: Major incident analysis
+                        <ul>
+                            <li>File naming: <code>YYYY-MM-DD-incident-name-RCA.md</code> (RCA = Root Cause Analysis)</li>
+                            <li>Content: Incident details, impact, root cause, resolution, prevention</li>
+                            <li>Example: <code>2025-06-05-protocol-file-corruption-RCA.md</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>/projects/ - Active Projects</h4>
+                <p><strong>Purpose</strong>: Store active implementation and development work</p>
+                
+                <ul>
+                    <li>Project-specific subdirectories
+                        <ul>
+                            <li>Directory naming: <code>project-name/</code></li>
+                            <li>Structure: Each project has its own internal structure</li>
+                            <li>Example: <code>context-management/</code>, <code>agent-identity-protocol/</code></li>
+                        </ul>
+                    </li>
+                    <li>Multiple active projects allowed
+                        <ul>
+                            <li>Each in its own subdirectory</li>
+                            <li>README.md in each project directory</li>
+                            <li>STATUS.md for project-specific status</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>/reports/ - Documentation and Reports</h4>
+                <p><strong>Purpose</strong>: Store finalized reports, guides, and documentation</p>
+                
+                <ul>
+                    <li>File naming: <code>topic-description.md</code></li>
+                    <li>Content: Comprehensive documentation, analysis results, implementation guides</li>
+                    <li>Example: <code>context-management-implementation-report.md</code></li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>/archives/ - Archived Projects</h4>
+                <p><strong>Purpose</strong>: Store completed projects and historical reference materials</p>
+                
+                <ul>
+                    <li>Directory naming: <code>archived-project-name/</code></li>
+                    <li>Content: Complete project artifacts, including documentation</li>
+                    <li>Example: <code>archives/phase1-implementation/</code></li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>/tools/ - Utility Scripts</h4>
+                <p><strong>Purpose</strong>: Store scripts and utilities for workspace management</p>
+                
+                <ul>
+                    <li>File naming: <code>descriptive-name.sh</code> or <code>descriptive-name.js</code></li>
+                    <li>Content: Utility scripts, tools, and helpers</li>
+                    <li>Example: <code>context-checker.sh</code>, <code>protocol-validator.js</code></li>
+                </ul>
+            </div>
+            
+            <h3>Optional Directories</h3>
+            <p>The following directories are optional but recommended:</p>
+            
+            <div class="card">
+                <h4>/templates/ - Reusable Templates</h4>
+                <p><strong>Purpose</strong>: Store template files for consistency</p>
+                
+                <ul>
+                    <li>Subdirectories by template type</li>
+                    <li>Example: <code>/templates/aar/</code>, <code>/templates/protocol-files/</code></li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>/docs/ - Public Documentation</h4>
+                <p><strong>Purpose</strong>: Store documentation intended for sharing</p>
+                
+                <ul>
+                    <li>Organized by topic</li>
+                    <li>Example: <code>/docs/getting-started/</code>, <code>/docs/reference/</code></li>
+                </ul>
+            </div>
+            
+            <h2 id="file-naming-conventions">File Naming Conventions</h2>
+            
+            <h3>Protocol Files</h3>
+            <ul>
+                <li>Must use ALL CAPS: <code>AGENT.md</code>, <code>AUTO-COMPACT.md</code>, <code>STATUS.md</code></li>
+                <li>Must be at root directory level</li>
+                <li>Must use .md extension for markdown formatting</li>
+            </ul>
+            
+            <h3>AAR Session Documents</h3>
+            <ul>
+                <li>Format: <code>YYYY-MM-DD-description.md</code></li>
+                <li>Use hyphens to separate date components and words</li>
+                <li>Use lowercase for description</li>
+                <li>Example: <code>2025-06-12-context-tracking-implementation.md</code></li>
+            </ul>
+            
+            <h3>Implementation Files</h3>
+            <ul>
+                <li>Format: <code>descriptive-name.extension</code></li>
+                <li>Use hyphens to separate words</li>
+                <li>Use lowercase for names</li>
+                <li>Include function in name</li>
+                <li>Example: <code>token-counter.js</code>, <code>checkpoint-manager.js</code></li>
+            </ul>
+            
+            <h3>Scripts</h3>
+            <ul>
+                <li>Format: <code>descriptive-action.sh</code></li>
+                <li>Use hyphens to separate words</li>
+                <li>Use lowercase for names</li>
+                <li>Make script purpose clear in name</li>
+                <li>Example: <code>check-protocol-files.sh</code>, <code>generate-report.sh</code></li>
+            </ul>
+            
+            <h2 id="root-directory-management">Root Directory Management</h2>
+            
+            <h3>10-File Limit</h3>
+            <p>The root directory should contain no more than 10 files to maintain clarity and focus on critical recovery files.</p>
+            
+            <div class="card">
+                <h4>Required Root Files</h4>
+                <ol>
+                    <li><strong>AGENT.md</strong>: Primary identity and role definition</li>
+                    <li><strong>AUTO-COMPACT.md</strong>: Recovery information for context resets</li>
+                    <li><strong>STATUS.md</strong>: Current operational status</li>
+                    <li><strong>README.md</strong>: Workspace overview and entry point</li>
+                </ol>
+            </div>
+            
+            <div class="card">
+                <h4>Optional Root Files</h4>
+                <ol start="5">
+                    <li><strong>LICENSE</strong>: Project license information</li>
+                    <li><strong>CHANGELOG.md</strong>: Version history and changes</li>
+                    <li><strong>CONTRIBUTING.md</strong>: Contribution guidelines</li>
+                    <li><strong>ROADMAP.md</strong>: Future development plans</li>
+                    <li><strong>CONFIG.md</strong>: Configuration reference</li>
+                    <li><strong>SECURITY.md</strong>: Security policies and procedures</li>
+                </ol>
+            </div>
+            
+            <h3>Excess File Management</h3>
+            <p>If more than 10 files would be needed in the root directory:</p>
+            
+            <ol>
+                <li>Create logical subdirectories</li>
+                <li>Move related files into appropriate subdirectories</li>
+                <li>Update references to moved files</li>
+                <li>Consider creating a root-level INDEX.md to catalog file locations</li>
+            </ol>
+            
+            <h2 id="file-structure-standards">File Structure Standards</h2>
+            
+            <h3>Markdown Formatting</h3>
+            <ul>
+                <li>Use H1 (<code>#</code>) for document title</li>
+                <li>Use H2 (<code>##</code>) for major sections</li>
+                <li>Use H3 (<code>###</code>) for subsections</li>
+                <li>Use lists for sequential items or options</li>
+                <li>Use code blocks for commands and code examples</li>
+                <li>Use tables for structured data</li>
+                <li>Use emphasis (<code>**bold**</code>, <code>*italic*</code>) for highlighting</li>
+            </ul>
+            
+            <h3>Document Headers</h3>
+            <p>All major documents should include a standardized header:</p>
+            
+            <pre><code class="language-markdown"># Document Title
+
+**VERSION**: X.Y.Z  
+**CREATED**: [Creation Date]  
+**UPDATED**: [Last Update Date]  
+**STATUS**: [Draft/Final]  
+**FRAMEWORK**: Trinity Framework 2.0  
+
+---
+
+[Document content starts here]</code></pre>
+            
+            <h3>Section Organization</h3>
+            <p>Organize sections in order of importance for recovery:</p>
+            
+            <ol>
+                <li>Critical information for recovery</li>
+                <li>Current state and status</li>
+                <li>Implementation details</li>
+                <li>Background information</li>
+                <li>Reference material</li>
+            </ol>
+            
+            <h2 id="best-practices">Best Practices</h2>
+            
+            <h3>Workspace Organization</h3>
+            
+            <div class="card">
+                <h4>1. Routine Cleanup</h4>
+                <ul>
+                    <li>Regularly archive completed projects</li>
+                    <li>Move implementation artifacts to appropriate directories</li>
+                    <li>Keep root directory clear of unnecessary files</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>2. README First Principle</h4>
+                <ul>
+                    <li>Include a README.md in every directory</li>
+                    <li>Describe directory purpose and contents</li>
+                    <li>List key files and their functions</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>3. Living Documentation</h4>
+                <ul>
+                    <li>Update documentation as part of implementation</li>
+                    <li>Document decisions and their rationale</li>
+                    <li>Create AAR session documents for significant work</li>
+                </ul>
+            </div>
+            
+            <h3>File Management</h3>
+            
+            <div class="card">
+                <h4>1. Progressive Detail</h4>
+                <ul>
+                    <li>Put most important information at the top</li>
+                    <li>Organize content from general to specific</li>
+                    <li>Use clear section headers for easy navigation</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>2. Self-Contained References</h4>
+                <ul>
+                    <li>Include enough context for standalone understanding</li>
+                    <li>Reference related documents explicitly</li>
+                    <li>Use absolute paths for file references</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>3. Maintenance Efficiency</h4>
+                <ul>
+                    <li>Group related files for easier updates</li>
+                    <li>Use templates for consistency</li>
+                    <li>Implement regular structure verification</li>
+                </ul>
+            </div>
+            
+            <h2 id="workspace-verification">Workspace Verification</h2>
+            <p>Regular verification of workspace structure ensures continued compliance with Framework 2.0 standards:</p>
+            
+            <pre><code class="language-bash"># Workspace structure verification command
+tf2-workspace-analyzer.sh [agent-id] [workspace-path]</code></pre>
+            
+            <p>This verification checks:</p>
+            <ul>
+                <li>Protocol files presence and formatting</li>
+                <li>Directory structure compliance</li>
+                <li>File naming convention adherence</li>
+                <li>Root directory file count</li>
+            </ul>
+            
+            <h2 id="conclusion">Conclusion</h2>
+            <p>Consistent workspace organization is essential for context resilience and operational efficiency. By following the standardized structure and conventions in this document, developers can create more maintainable, recoverable agent systems that operate effectively within the Trinity Framework 2.0 Core.</p>
+            
+            <hr>
+            
+            <p><em>Framework 2.0 COMPLIANT</em></p>
+            
+            <a href="principles/index.html" class="home-link">← Back to Principles</a>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

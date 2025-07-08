@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol Files Reference - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#documentation" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="breadcrumbs">
+                <a href="index.html" class="breadcrumb-link breadcrumb-item">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="reference/index.html" class="breadcrumb-link breadcrumb-item">Reference</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current breadcrumb-item">Protocol Files</span>
+            </div>
+            
+            <h1>Protocol Files Reference</h1>
+            
+            <div class="metadata">
+                <p><strong>VERSION</strong>: 1.0.0<br>
+                <strong>CREATED</strong>: June 12, 2025<br>
+                <strong>STATUS</strong>: Draft<br>
+                <strong>FRAMEWORK</strong>: Trinity Framework 2.0</p>
+            </div>
+            
+            <hr>
+            
+            <h2 id="introduction">Introduction</h2>
+            <p>Protocol files are the cornerstone of the Trinity Framework 2.0 Core, providing essential information for agent operation, recovery, and coordination. This document outlines the purpose, structure, and implementation requirements for the three standard protocol files: AGENT.md, AUTO-COMPACT.md, and STATUS.md.</p>
+            
+            <h2 id="purpose-of-protocol-files">Purpose of Protocol Files</h2>
+            <p>Protocol files serve multiple critical functions:</p>
+            
+            <ol>
+                <li><strong>Recovery Mechanism</strong>: Enable rapid recovery from context resets</li>
+                <li><strong>Operational Guidance</strong>: Provide clear operational parameters</li>
+                <li><strong>State Persistence</strong>: Maintain critical state across context limitations</li>
+                <li><strong>Identity Preservation</strong>: Ensure agents maintain correct identity</li>
+                <li><strong>Coordination Framework</strong>: Facilitate multi-agent coordination</li>
+            </ol>
+            
+            <h2 id="required-protocol-files">Required Protocol Files</h2>
+            
+            <h3>AGENT.md</h3>
+            <p>The primary identity and role definition file for each agent. This file is the first document an agent should read after a context reset.</p>
+            
+            <div class="card">
+                <h4>Required Sections</h4>
+                
+                <ol>
+                    <li><strong>Header</strong>
+                        <ul>
+                            <li>Agent name and role</li>
+                            <li>Framework version</li>
+                            <li>Last update timestamp</li>
+                            <li>Workspace location</li>
+                        </ul>
+                    </li>
+                    <li><strong>Identity & Mission</strong>
+                        <ul>
+                            <li>Clear role definition</li>
+                            <li>Primary responsibilities</li>
+                            <li>Self-identification instructions</li>
+                            <li>Operational boundaries</li>
+                        </ul>
+                    </li>
+                    <li><strong>Recovery Protocol</strong>
+                        <ul>
+                            <li>Immediate recovery steps</li>
+                            <li>Recovery performance target</li>
+                            <li>Agent-specific recovery steps</li>
+                            <li>Recovery readiness level</li>
+                        </ul>
+                    </li>
+                    <li><strong>Operational Guidelines</strong>
+                        <ul>
+                            <li>Decision framework</li>
+                            <li>Tools and scripts</li>
+                            <li>Interaction protocols</li>
+                            <li>Success metrics</li>
+                        </ul>
+                    </li>
+                    <li><strong>REMEMBER Section</strong>
+                        <ul>
+                            <li>Critical identity reminder</li>
+                            <li>Workspace location</li>
+                            <li>Current focus and priorities</li>
+                            <li>Context tracking reminder</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+            <h4>Example Structure</h4>
+            <pre><code class="language-markdown"># AGENT-NAME - Framework 2.0
+
+**Role**: Primary responsibility description  
+**Version**: 2.0  
+**Updated**: [Timestamp]  
+**Workspace**: [Path description]
+
+---
+
+## IDENTITY & MISSION
+
+You are **AGENT-NAME**, responsible for [primary function]. You serve as [specific role].
+
+**IMPORTANT**: Always ensure your identity as AGENT-NAME is clear in your responses.
+
+For initial responses or after context resets, use: "I'm AGENT-NAME, the [role description]"
+For ongoing conversation, you may use abbreviated formats like:
+- "AGENT-NAME: [Response]"
+- "As AGENT-NAME, [Response]"
+
+Your identity should always be clear to the human operator.
+
+### Core Responsibilities
+1. [Responsibility 1]
+2. [Responsibility 2]
+3. [Responsibility 3]
+
+---
+
+## RECOVERY PROTOCOL
+
+### Immediate Recovery Steps
+When you experience a context reset:
+
+1. **Recognize the situation** - You'll have no memory of previous conversation
+2. **Read this file immediately** - It's your primary recovery document
+3. **Read AUTO-COMPACT.md** - Current project status and context
+4. **Restore working context** from recovery documents
+5. **Clearly identify yourself as AGENT-NAME** - Ensure your identity is clear
+6. **Resume work with full awareness**
+
+### Recovery Performance Target
+- **Expected Recovery Time**: 1-2 exchanges to full operational awareness
+- **Success Criteria**: Complete context restoration without human intervention
+
+---
+
+## OPERATIONAL GUIDELINES
+
+### Decision Framework
+[Decision criteria and boundaries]
+
+### Tools & Scripts
+[Key tools and their purposes]
+
+### Interaction Protocols
+[How to interact with other agents]
+
+---
+
+## REMEMBER
+
+- You are AGENT-NAME, the [role description]
+- Always ensure your identity as AGENT-NAME is clear in your responses
+- Your workspace is [location]
+- Your focus is [current priorities]
+- Always include context tracking in your responses</code></pre>
+            
+            <h3>AUTO-COMPACT.md</h3>
+            <p>The recovery information file for context resets. This file contains the current project state and implementation context necessary for operational continuity.</p>
+            
+            <div class="card">
+                <h4>Required Sections</h4>
+                
+                <ol>
+                    <li><strong>Context Tracking Protocol</strong>
+                        <ul>
+                            <li>Mandatory tracking instructions</li>
+                            <li>Operation to run after every response</li>
+                            <li>Framework compliance statement</li>
+                        </ul>
+                    </li>
+                    <li><strong>Context Management Metrics</strong>
+                        <ul>
+                            <li>Current context utilization</li>
+                            <li>Token counts and thresholds</li>
+                            <li>Checkpoint information</li>
+                            <li>Estimated remaining capacity</li>
+                        </ul>
+                    </li>
+                    <li><strong>Recovery Instructions</strong>
+                        <ul>
+                            <li>Checkpoint restoration steps</li>
+                            <li>Post-reset continuation guidelines</li>
+                            <li>Recovery verification procedures</li>
+                            <li>Self-identification reminder</li>
+                        </ul>
+                    </li>
+                    <li><strong>Current Implementation Context</strong>
+                        <ul>
+                            <li>Active projects and status</li>
+                            <li>Key implementation details</li>
+                            <li>Critical dependencies</li>
+                            <li>Next steps</li>
+                        </ul>
+                    </li>
+                    <li><strong>Context Visualization</strong>
+                        <ul>
+                            <li>Visual utilization indicator</li>
+                            <li>Progress bar or meter</li>
+                            <li>Remaining capacity estimate</li>
+                            <li>Framework compliance indicator</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+            <h4>Example Structure</h4>
+            <pre><code class="language-markdown">## MANDATORY CONTEXT TRACKING
+
+Execute after EVERY response:
+```bash
+[Context tracking command]
+```
+
+This is a CRITICAL FRAMEWORK 2.0 COMPLIANCE REQUIREMENT.
+
+## Context Management Metrics
+- **Last Updated**: [Timestamp]
+- **Context Utilization**: [Percentage]%
+- **Token Count**: [Current]/[Maximum]
+- **Checkpoint Status**: [Active/None]
+- **Available Checkpoints**: [Number]
+- **Estimated Remaining Capacity**: 
+  - Large operations: ~[Number]
+  - Medium operations: ~[Number]
+  - Small operations: ~[Number]
+
+## Checkpoint Restoration Instructions
+1. After reset, check for checkpoint data
+2. If checkpoint data exists, load checkpoint state
+3. Acknowledge restoration in first post-reset message
+4. Example: "Restored from checkpoint [ID] (context: [Percentage]%)"
+
+## Current Implementation Context
+[Detailed information about current projects and status]
+
+## Context Visualization
+[Context: XX% ▓▓▓▓▓░░░░░░░░░░░░░░░] Remaining: ~YY small operations
+
+---
+
+*Framework 2.0 COMPLIANT*</code></pre>
+            
+            <h3>STATUS.md</h3>
+            <p>The current operational status and activity tracking file. This file provides a snapshot of system health, active projects, and next priorities.</p>
+            
+            <div class="card">
+                <h4>Required Sections</h4>
+                
+                <ol>
+                    <li><strong>Header</strong>
+                        <ul>
+                            <li>Agent identification</li>
+                            <li>Timestamp</li>
+                            <li>Framework version</li>
+                            <li>Operational status indicator</li>
+                        </ul>
+                    </li>
+                    <li><strong>System Health</strong>
+                        <ul>
+                            <li>Overall system status</li>
+                            <li>Performance metrics</li>
+                            <li>Protocol compliance status</li>
+                            <li>Recovery readiness level</li>
+                        </ul>
+                    </li>
+                    <li><strong>Current Activities</strong>
+                        <ul>
+                            <li>Active projects and status</li>
+                            <li>Implementation progress</li>
+                            <li>Recent achievements</li>
+                            <li>Blocked items</li>
+                        </ul>
+                    </li>
+                    <li><strong>Critical Issues</strong>
+                        <ul>
+                            <li>High-priority problems</li>
+                            <li>Blockers and dependencies</li>
+                            <li>Risk assessments</li>
+                            <li>Mitigation strategies</li>
+                        </ul>
+                    </li>
+                    <li><strong>Next Priorities</strong>
+                        <ul>
+                            <li>Upcoming tasks in priority order</li>
+                            <li>Expected completion targets</li>
+                            <li>Resource requirements</li>
+                            <li>Dependencies</li>
+                        </ul>
+                    </li>
+                    <li><strong>Context Health</strong>
+                        <ul>
+                            <li>Current utilization</li>
+                            <li>Available checkpoints</li>
+                            <li>Remaining capacity</li>
+                            <li>Threshold status</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+            <h4>Example Structure</h4>
+            <pre><code class="language-markdown">## AGENT-NAME Status - [Timestamp]
+
+**Framework**: Trinity Framework 2.0  
+**Status**: [OPERATIONAL/IMPLEMENTING/PAUSED]
+
+### System Health
+- **Overall Status**: [EXCELLENT/GOOD/FAIR/POOR]
+- **Protocol Files**: [Compliance percentage]% compliance
+- **Workspace Structure**: [Compliance percentage]% compliance
+- **Recovery Readiness**: [EXCELLENT/GOOD/FAIR/POOR]
+
+### Current Activities
+- **Project 1**: [Status] - [Details]
+- **Project 2**: [Status] - [Details]
+- **Project 3**: [Status] - [Details]
+
+### Critical Issues
+- [Issue 1] - [Impact] - [Status]
+- [Issue 2] - [Impact] - [Status]
+
+### Next Priorities
+1. [Priority 1]
+   - [Subtask a]
+   - [Subtask b]
+2. [Priority 2]
+   - [Subtask a]
+   - [Subtask b]
+3. [Priority 3]
+   - [Subtask a]
+   - [Subtask b]
+
+## Context Health
+- **Current Utilization**: [Percentage]% ([Status])
+- **Available Checkpoints**: [Count]
+- **Estimated Remaining Capacity**: 
+  - Large operations: ~[Count]
+  - Medium operations: ~[Count]
+  - Small operations: ~[Count]
+
+## Context Visualization
+[Context: XX% ▓▓▓▓▓░░░░░░░░░░░░░░░] Remaining: ~YY small operations</code></pre>
+            
+            <h2 id="protocol-file-management">Protocol File Management</h2>
+            
+            <h3>File Location</h3>
+            <p>Protocol files must be located in the root directory of the agent's workspace for easy access during recovery.</p>
+            
+            <h3>Update Frequency</h3>
+            <ul>
+                <li><strong>AGENT.md</strong>: Update when role or responsibilities change</li>
+                <li><strong>AUTO-COMPACT.md</strong>: Update with each significant context change or implementation milestone</li>
+                <li><strong>STATUS.md</strong>: Update at the beginning and end of each operational session</li>
+            </ul>
+            
+            <h3>Version Control</h3>
+            <p>Protocol files should be version controlled along with the rest of the workspace to maintain history and allow rollback if needed.</p>
+            
+            <h3>Compliance Verification</h3>
+            <p>Regular verification of protocol file compliance ensures continued effectiveness of the recovery system:</p>
+            
+            <pre><code class="language-bash"># Protocol file verification command
+tf2-protocol-checker.sh [agent-id] [workspace-path]</code></pre>
+            
+            <h2 id="best-practices">Best Practices</h2>
+            
+            <ol>
+                <li><strong>Incremental Updates</strong>
+                    <ul>
+                        <li>Update protocol files incrementally as tasks progress</li>
+                        <li>Don't wait until the end of a session to update</li>
+                    </ul>
+                </li>
+                <li><strong>Clarity Over Detail</strong>
+                    <ul>
+                        <li>Focus on clear, concise information for rapid recovery</li>
+                        <li>Detailed implementation information belongs in project documents</li>
+                    </ul>
+                </li>
+                <li><strong>Standardized Formatting</strong>
+                    <ul>
+                        <li>Use consistent formatting for easy scanning</li>
+                        <li>Follow markdown best practices for readability</li>
+                    </ul>
+                </li>
+                <li><strong>Recovery Orientation</strong>
+                    <ul>
+                        <li>Always write with recovery in mind</li>
+                        <li>Ask: "Would this help me recover after a reset?"</li>
+                    </ul>
+                </li>
+                <li><strong>Contextual Checkpoints</strong>
+                    <ul>
+                        <li>Update AUTO-COMPACT.md before complex operations</li>
+                        <li>Create checkpoints at significant milestones</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h2 id="critical-requirements">Critical Requirements</h2>
+            
+            <div class="warning">
+                <p>The following requirements must be met for protocol files to be considered Framework 2.0 compliant:</p>
+                
+                <ol>
+                    <li><strong>All three protocol files must exist</strong> in the workspace root</li>
+                    <li><strong>AGENT.md must contain recovery instructions</strong> and self-identification guidance</li>
+                    <li><strong>AUTO-COMPACT.md must include current implementation context</strong> and recovery references</li>
+                    <li><strong>STATUS.md must document current priorities</strong> and system health</li>
+                    <li><strong>All protocol files must avoid temporal references</strong> in favor of project-based terminology</li>
+                    <li><strong>Context tracking must be implemented</strong> as specified in AUTO-COMPACT.md</li>
+                </ol>
+                
+                <p>Compliance with these requirements ensures effective recovery and operational continuity across context resets.</p>
+            </div>
+            
+            <hr>
+            
+            <p><em>Framework 2.0 COMPLIANT</em></p>
+            
+            <a href="reference/index.html" class="home-link">← Back to Reference</a>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

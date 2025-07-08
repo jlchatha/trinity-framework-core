@@ -4,46 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AAR System - Trinity Framework Documentation</title>
-    <link rel="stylesheet" href="assets/css/shadowrun.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/prism.css">
+    <link rel="stylesheet" href="css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="shadowrun-theme">
-    <div class="grid-container">
-        <header>
-            <h1>Trinity Framework 2.0</h1>
-            <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="getting-started/quick-start.html">Quick Start</a>
-                <a href="principles/framework-core-principles.html">Principles</a>
-                <a href="guides/aar-system.html">Guides</a>
-                <a href="reference/protocol-files.html">Reference</a>
-            </nav>
-        </header>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
 
-        <aside class="sidebar">
-            <nav class="sidebar-nav">
-                <div class="sidebar-section">
-                    <h3>Documentation</h3>
-                    <ul>
-                        <li><a href="aar-system.html" class="active">AAR System</a></li>
-                        <li><a href="agent-identity-protocol.html">Agent Identity</a></li>
-                        <li><a href="context-management-system.html">Context Management</a></li>
-                        <li><a href="framework-core-principles.html">Core Principles</a></li>
-                        <li><a href="protocol-files-reference.html">Protocol Files</a></li>
-                        <li><a href="workspace-organization.html">Workspace Organization</a></li>
-                    </ul>
-                </div>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#documentation" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
             </nav>
-        </aside>
+        </div>
+    </header>
 
+    <div class="container">
         <main>
-            <nav class="breadcrumb">
-                <a href="index.html">Home</a> &gt;
-                <span>AAR System</span>
-            </nav>
-
-            <article>
+            <div class="breadcrumbs">
+                <a href="index.html" class="breadcrumb-link breadcrumb-item">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="guides/index.html" class="breadcrumb-link breadcrumb-item">Guides</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current breadcrumb-item">AAR System</span>
+            </div>
                 <h1>After Action Review (AAR) System</h1>
 
                 <div class="metadata">
@@ -321,14 +310,18 @@
                 <hr>
 
                 <p><em>Framework 2.0 COMPLIANT</em></p>
-            </article>
+                
+                <a href="guides/index.html" class="home-link">← Back to Guides</a>
+            
         </main>
-
-        <footer>
-            <p>&copy; 2025 Trinity Framework. All rights reserved.</p>
-        </footer>
     </div>
-    <script src="assets/js/prism.js"></script>
-    <script src="assets/js/script.js"></script>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
 </body>
 </html>

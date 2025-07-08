@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Compact Recovery - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#documentation" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="breadcrumbs">
+                <a href="../index.html" class="breadcrumb-link breadcrumb-item">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="index.html" class="breadcrumb-link breadcrumb-item">Guides</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current breadcrumb-item">Auto-Compact Recovery</span>
+            </div>
+            
+            <h1>Auto-Compact Recovery Guide</h1>
+            
+            <div class="metadata">
+                <p><strong>VERSION</strong>: 1.0.0<br>
+                <strong>CREATED</strong>: June 12, 2025<br>
+                <strong>STATUS</strong>: Draft<br>
+                <strong>FRAMEWORK</strong>: Trinity Framework 2.0 Core</p>
+            </div>
+            
+            <hr>
+            
+            <h2 id="introduction">Introduction</h2>
+            <p>Auto-compact recovery is a critical feature of the Trinity Framework 2.0 Core, enabling agents to maintain operational continuity when context limitations are reached. This guide explains how auto-compact events occur, how the recovery system functions, and best practices for implementing reliable recovery.</p>
+            
+            <h2 id="what-is-auto-compact">What is Auto-Compact?</h2>
+            <p>Auto-compact is a mechanism that occurs when an AI agent reaches the limits of its context window. During auto-compact:</p>
+            
+            <ol>
+                <li>The conversation history is compressed or cleared</li>
+                <li>The agent loses access to previous interactions</li>
+                <li>The agent must restore operational awareness quickly</li>
+                <li>Work must continue with minimal disruption</li>
+            </ol>
+            
+            <p>Trinity Framework 2.0 Core addresses this challenge through a standardized recovery protocol that enables agents to restore context after an auto-compact event.</p>
+            
+            <h2 id="the-recovery-protocol">The Recovery Protocol</h2>
+            
+            <h3>1. Preparation Phase</h3>
+            <p>Before auto-compact occurs, agents should:</p>
+            <ul>
+                <li>Create checkpoints at threshold crossings (65%, 75%, 85%)</li>
+                <li>Serialize essential state information</li>
+                <li>Update protocol files with current status</li>
+                <li>Create recovery messages for post-compact use</li>
+            </ul>
+            
+            <h3>2. Detection Phase</h3>
+            <p>After auto-compact occurs:</p>
+            <ul>
+                <li>Agent recognizes it has no conversation history</li>
+                <li>Agent identifies the auto-compact event</li>
+                <li>Agent locates recovery information in protocol files</li>
+                <li>Agent initiates recovery protocol</li>
+            </ul>
+            
+            <h3>3. Recovery Phase</h3>
+            <p>During recovery:</p>
+            <ul>
+                <li>Agent reads AGENT.md to understand its identity and role</li>
+                <li>Agent reads AUTO-COMPACT.md to find recovery instructions</li>
+                <li>Agent reads STATUS.md to understand current priorities</li>
+                <li>Agent restores state from checkpoints if available</li>
+                <li>Agent acknowledges recovery in its first response</li>
+            </ul>
+            
+            <h3>4. Resumption Phase</h3>
+            <p>After recovery:</p>
+            <ul>
+                <li>Agent continues work with restored context</li>
+                <li>Agent creates an AAR session document about the recovery</li>
+                <li>Agent updates protocol files with new context metrics</li>
+                <li>Agent monitors context utilization to prevent cascading compacts</li>
+            </ul>
+            
+            <h2 id="implementing-auto-compact-recovery">Implementing Auto-Compact Recovery</h2>
+            
+            <h3>Protocol File Implementation</h3>
+            <p>To implement auto-compact recovery, ensure your protocol files contain:</p>
+            
+            <div class="card">
+                <h4>AGENT.md</h4>
+                <pre><code class="language-markdown">## RECOVERY PROTOCOL
+
+### Immediate Recovery Steps
+When you experience a context reset:
+
+1. **Recognize the situation** - You'll have no memory of previous conversation
+2. **Read this file immediately** - It's your primary recovery document
+3. **Read AUTO-COMPACT.md** - Current project status and context
+4. **Restore working context** from recovery documents
+5. **Clearly identify yourself** - Ensure your identity is clear in your responses
+6. **Resume work with full awareness**
+
+### Recovery Performance Target
+- **Expected Recovery Time**: 1-2 exchanges to full operational awareness
+- **Success Criteria**: Complete context restoration without human intervention</code></pre>
+            </div>
+            
+            <div class="card">
+                <h4>AUTO-COMPACT.md</h4>
+                <pre><code class="language-markdown">## Context Management Metrics
+- **Last Updated**: [timestamp]
+- **Context Utilization**: [percentage]%
+- **Token Count**: [current]/[maximum]
+- **Checkpoint Status**: [status]
+- **Available Checkpoints**: [count]
+- **Estimated Remaining Capacity**: [estimates]
+
+## Checkpoint Restoration Instructions
+1. After reset, check for checkpoint data
+2. If checkpoint data exists, load checkpoint state
+3. Acknowledge restoration in first post-reset message
+4. Example: "Restored from checkpoint [checkpoint_id] (context: [percentage]%)"
+
+## Current Implementation Context
+[Current project status and context]
+
+## Post-Reset Continuation Instructions
+[Specific instructions for continuing work after reset]</code></pre>
+            </div>
+            
+            <div class="card">
+                <h4>STATUS.md</h4>
+                <pre><code class="language-markdown">## [Agent] Status - [Date]
+
+**Framework**: Trinity Framework 2.0  
+**Status**: [OPERATIONAL/IN RECOVERY]
+
+### System Health
+- **Overall Status**: [status]
+- **Protocol Files**: [compliance percentage]
+- **Workspace Structure**: [compliance percentage]
+- **Recovery Readiness**: [status]
+
+### Current Activities
+[List of current activities and status]
+
+### Critical Issues
+[List of any critical issues]
+
+### Next Priorities
+[Ordered list of priorities]</code></pre>
+            </div>
+            
+            <h3>Optional Context Management Implementation</h3>
+            <p>For enhanced recovery, implement the optional context management system:</p>
+            
+            <ol>
+                <li>Create the context management directories:
+                    <pre><code class="language-bash">mkdir -p tools/token-tracker/context-manager/bin
+mkdir -p tools/token-tracker/context-manager/state
+mkdir -p tools/token-tracker/context-manager/checkpoints</code></pre>
+                </li>
+                
+                <li>Implement the context tracking scripts:
+                    <pre><code class="language-bash">cp -r [framework-repo]/examples/context-tracking/* tools/token-tracker/
+chmod +x tools/token-tracker/context-manager/bin/*.sh</code></pre>
+                </li>
+                
+                <li>Run context tracking after responses:
+                    <pre><code class="language-bash">./tools/token-tracker/context-manager/bin/run-context-check.sh check ASSISTANT_MEDIUM</code></pre>
+                </li>
+                
+                <li>Check for recovery after auto-compact:
+                    <pre><code class="language-bash">./tools/token-tracker/context-manager/bin/run-context-check.sh recovery</code></pre>
+                </li>
+            </ol>
+            
+            <h2 id="recovery-flow-diagram">Recovery Flow Diagram</h2>
+            
+            <pre><code>┌─────────────────────┐
+│ Normal Operation    │
+│ Context Monitoring  │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│ Threshold Crossing  │
+│ Create Checkpoint   │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│ Auto-Compact Event  │
+│ Context Cleared     │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│ Detection Phase     │
+│ Identify Reset      │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│ Recovery Protocol   │
+│ Read Protocol Files │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│ Checkpoint Loading  │
+│ Restore State       │
+└────────┬────────────┘
+         │
+         ▼
+┌─────────────────────┐
+│ Operational Resume  │
+│ Continue Work       │
+└─────────────────────┘</code></pre>
+            
+            <h2 id="recovery-best-practices">Recovery Best Practices</h2>
+            
+            <h3>1. Protocol File Maintenance</h3>
+            <ul>
+                <li>Keep protocol files up-to-date at all times</li>
+                <li>Include specific continuation instructions</li>
+                <li>Document current project context</li>
+                <li>Maintain clear priorities and next steps</li>
+            </ul>
+            
+            <h3>2. Checkpoint Creation</h3>
+            <ul>
+                <li>Create checkpoints at multiple thresholds</li>
+                <li>Include sufficient state information</li>
+                <li>Use consistent checkpoint naming</li>
+                <li>Verify checkpoint restoration works</li>
+            </ul>
+            
+            <h3>3. Recovery Testing</h3>
+            <ul>
+                <li>Periodically simulate auto-compact events</li>
+                <li>Test recovery protocol functionality</li>
+                <li>Measure recovery time performance</li>
+                <li>Identify and address recovery gaps</li>
+            </ul>
+            
+            <h3>4. Recovery Acknowledgment</h3>
+            <p>Always acknowledge recovery in the first post-compact response:</p>
+            
+            <pre><code>I'm [AGENT], the Trinity [ROLE] Agent.
+
+I've detected a context reset and have restored from checkpoint [ID] (utilization: [X]%).
+
+I'm currently working on [current task] with [X] items remaining. The next step is [specific next step].</code></pre>
+            
+            <h2 id="troubleshooting-recovery-issues">Troubleshooting Recovery Issues</h2>
+            
+            <div class="card">
+                <h3>Incomplete Recovery</h3>
+                <p><strong>Symptoms</strong>:</p>
+                <ul>
+                    <li>Agent has partial awareness of previous context</li>
+                    <li>Some critical information missing after recovery</li>
+                    <li>Inconsistent understanding of current priorities</li>
+                </ul>
+                
+                <p><strong>Solutions</strong>:</p>
+                <ul>
+                    <li>Enhance checkpoint data to include more comprehensive state</li>
+                    <li>Update protocol files with more detailed project context</li>
+                    <li>Create more frequent checkpoints at lower thresholds</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>Failed Recovery</h3>
+                <p><strong>Symptoms</strong>:</p>
+                <ul>
+                    <li>Agent unable to identify recovery situation</li>
+                    <li>No acknowledgment of context reset</li>
+                    <li>Inability to restore previous context</li>
+                </ul>
+                
+                <p><strong>Solutions</strong>:</p>
+                <ul>
+                    <li>Verify protocol files contain proper recovery instructions</li>
+                    <li>Check checkpoint data format and accessibility</li>
+                    <li>Ensure proper implementation of recovery protocol in AGENT.md</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>Cascading Compacts</h3>
+                <p><strong>Symptoms</strong>:</p>
+                <ul>
+                    <li>Multiple auto-compact events in quick succession</li>
+                    <li>Progressive loss of context across resets</li>
+                    <li>Declining recovery performance</li>
+                </ul>
+                
+                <p><strong>Solutions</strong>:</p>
+                <ul>
+                    <li>Implement more aggressive context management</li>
+                    <li>Reduce token-heavy operations after recovery</li>
+                    <li>Create staged recovery with minimal initial state</li>
+                </ul>
+            </div>
+            
+            <h2 id="measuring-recovery-performance">Measuring Recovery Performance</h2>
+            <p>Track these metrics to evaluate recovery effectiveness:</p>
+            
+            <ol>
+                <li><strong>Recovery Time</strong>: Exchanges needed to reach full operational awareness</li>
+                <li><strong>Context Retention</strong>: Percentage of critical knowledge preserved</li>
+                <li><strong>Task Continuity</strong>: Ability to continue tasks without repetition</li>
+                <li><strong>Human Intervention</strong>: Frequency of human assistance during recovery</li>
+            </ol>
+            
+            <div class="note">
+                <p>Aim for:</p>
+                <ul>
+                    <li>Recovery Time: ≤1.0 exchanges</li>
+                    <li>Context Retention: ≥90%</li>
+                    <li>Task Continuity: ≥95%</li>
+                    <li>Human Intervention: 0%</li>
+                </ul>
+            </div>
+            
+            <h2 id="advanced-recovery-techniques">Advanced Recovery Techniques</h2>
+            
+            <h3>Tiered Recovery</h3>
+            <p>Implement tiered recovery for better performance:</p>
+            
+            <ol>
+                <li><strong>Tier 1 (Immediate)</strong>: Identity, role, and current task</li>
+                <li><strong>Tier 2 (Essential)</strong>: Project context and priorities</li>
+                <li><strong>Tier 3 (Complete)</strong>: Full operational context</li>
+            </ol>
+            
+            <h3>External State Storage</h3>
+            <p>For complex systems, consider external state storage:</p>
+            
+            <ol>
+                <li>Use filesystem state serialization</li>
+                <li>Implement checkpoint files with JSON structure</li>
+                <li>Create dedicated recovery directories</li>
+                <li>Use timestamped checkpoint naming</li>
+            </ol>
+            
+            <h3>Recovery Prioritization</h3>
+            <p>When complete recovery isn't possible, prioritize:</p>
+            
+            <ol>
+                <li>Agent identity and role</li>
+                <li>Current task and immediate next steps</li>
+                <li>Critical system status information</li>
+                <li>Ongoing project context</li>
+            </ol>
+            
+            <h2 id="example-recovery-scenario">Example Recovery Scenario</h2>
+            
+            <h3>Before Auto-Compact</h3>
+            <p>Agent is working on implementing a new feature with 75% context utilization:</p>
+            
+            <pre><code>Creating checkpoint at 75% utilization...
+Checkpoint created: ckpt_warning_20250612
+Updating AUTO-COMPACT.md with checkpoint information...</code></pre>
+            
+            <h3>Auto-Compact Event</h3>
+            <p>Context is cleared and agent has no memory of previous conversation.</p>
+            
+            <h3>Recovery Process</h3>
+            <ol>
+                <li>Agent reads AGENT.md to understand its identity</li>
+                <li>Agent reads AUTO-COMPACT.md to find checkpoint information</li>
+                <li>Agent reads STATUS.md to understand current priorities</li>
+                <li>Agent locates and loads checkpoint ckpt_warning_20250612</li>
+                <li>Agent acknowledges recovery in first response</li>
+            </ol>
+            
+            <h3>Post-Recovery Response</h3>
+            <pre><code>I'm ANALYST, the Trinity ANALYST Agent.
+
+I've restored from checkpoint ckpt_warning_20250612 (context: 75%).
+I was implementing the new authentication feature with 3 remaining tasks:
+1. Complete input validation
+2. Add unit tests
+3. Update documentation
+
+I'll continue with the input validation component.</code></pre>
+            
+            <h2 id="conclusion">Conclusion</h2>
+            <p>Auto-compact recovery is essential for maintaining operational continuity in agent systems. By implementing the Trinity Framework 2.0 Core recovery protocol, agents can smoothly transition through context resets with minimal disruption to their work.</p>
+            
+            <p>Remember that successful recovery depends on:</p>
+            <ul>
+                <li>Well-maintained protocol files</li>
+                <li>Reliable checkpoint creation</li>
+                <li>Clear recovery instructions</li>
+                <li>Proper acknowledgment of recovery</li>
+            </ul>
+            
+            <p>By following these guidelines, your agents will achieve high resilience to context limitations and maintain productive operation across auto-compact events.</p>
+            
+            <hr>
+            
+            <p><em>Framework 2.0 COMPLIANT</em></p>
+            
+            <a href="index.html" class="home-link">← Back to Guides</a>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

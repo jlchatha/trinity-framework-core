@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guides - Trinity Framework 2.0 Documentation</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#documentation" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="breadcrumbs">
+                <a href="../index.html" class="breadcrumb-link breadcrumb-item">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current breadcrumb-item">Guides</span>
+            </div>
+            
+            <h1>Implementation Guides</h1>
+            
+            <p class="glow-text"><strong>Detailed guides for implementing Trinity Framework 2.0 features</strong></p>
+            
+            <p>These guides provide step-by-step instructions for implementing specific features and capabilities of the Trinity Framework 2.0. Each guide focuses on a particular aspect of the framework with practical examples.</p>
+            
+            <h2><i class="fas fa-compass"></i> Available Guides</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-file-alt"></i> AAR System</h3>
+                    <p>Learn about the After Action Report (AAR) system for comprehensive project documentation. This systematic approach ensures knowledge preservation and operational continuity.</p>
+                    <p><span class="tag tag-blue">Documentation</span> <span class="tag tag-blue">Best Practice</span></p>
+                    <a href="aar-system.html" class="button">Explore AAR System</a>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-sync-alt"></i> Auto-Compact Recovery</h3>
+                    <p>Master the auto-compact recovery protocol for maintaining context resilience. This guide covers recovery procedures, context management, and checkpoint strategies.</p>
+                    <p><span class="tag tag-green">Recovery</span> <span class="tag tag-green">Core Feature</span></p>
+                    <a href="auto-compact-recovery.html" class="button">Learn Recovery</a>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-brain"></i> Context Management</h3>
+                    <p>Understand how to effectively manage agent context within the Trinity Framework. Covers context tracking, optimization, and recovery strategies.</p>
+                    <p><span class="tag tag-purple">Context</span> <span class="tag tag-purple">Advanced</span></p>
+                    <a href="context-management.html" class="button">Manage Context</a>
+                </div>
+            </div>
+            
+            <h2><i class="fas fa-lightbulb"></i> Guide Categories</h2>
+            
+            <div class="card">
+                <h3 class="card-title">Documentation & Reporting</h3>
+                <p>The <strong>AAR System</strong> guide covers comprehensive documentation practices that ensure project knowledge is preserved and easily accessible. This is essential for maintaining operational continuity across context resets.</p>
+                <ul>
+                    <li>Systematic documentation approach</li>
+                    <li>Knowledge preservation strategies</li>
+                    <li>Report generation and organization</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Recovery & Resilience</h3>
+                <p>The <strong>Auto-Compact Recovery</strong> guide details the framework's approach to maintaining operational continuity through context resets. This is a core feature that enables agents to recover gracefully from interruptions.</p>
+                <ul>
+                    <li>Recovery protocol implementation</li>
+                    <li>Checkpoint management</li>
+                    <li>Context restoration procedures</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Context Optimization</h3>
+                <p>The <strong>Context Management</strong> guide provides strategies for optimizing agent context usage, ensuring efficient operation within token limits while maintaining essential information.</p>
+                <ul>
+                    <li>Context tracking and monitoring</li>
+                    <li>Optimization techniques</li>
+                    <li>Priority-based information retention</li>
+                </ul>
+            </div>
+            
+            <h2><i class="fas fa-info-circle"></i> Using These Guides</h2>
+            
+            <div class="note">
+                <p>Each guide is designed to be self-contained but builds upon the core concepts established in the <a href="../principles/index.html">Principles</a> section. For best results, ensure you understand the fundamental concepts before implementing specific features.</p>
+            </div>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--text-dim);"># Recommended implementation order:</span><br>
+                    <span style="color: var(--neon-blue);">1.</span> Set up basic framework structure<br>
+                    <span style="color: var(--neon-blue);">2.</span> Implement Auto-Compact Recovery<br>
+                    <span style="color: var(--neon-blue);">3.</span> Configure Context Management<br>
+                    <span style="color: var(--neon-blue);">4.</span> Deploy AAR System<br>
+                    <span style="color: var(--neon-green);">✓</span> Full framework implementation complete!<br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="home-link">← Back to Home</a>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

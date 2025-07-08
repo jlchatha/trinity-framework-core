@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework Core Principles - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#documentation" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="breadcrumbs">
+                <a href="index.html" class="breadcrumb-link breadcrumb-item">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="principles/index.html" class="breadcrumb-link breadcrumb-item">Principles</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current breadcrumb-item">Core Principles</span>
+            </div>
+            
+            <h1>Trinity Framework 2.0 Core Principles</h1>
+            
+            <div class="metadata">
+                <p><strong>VERSION</strong>: 1.0.0<br>
+                <strong>CREATED</strong>: June 12, 2025<br>
+                <strong>STATUS</strong>: Draft<br>
+                <strong>FRAMEWORK</strong>: Trinity Framework 2.0</p>
+            </div>
+            
+            <hr>
+            
+            <h2 id="introduction">Introduction</h2>
+            <p>Trinity Framework 2.0 Core is the standardized operational framework designed to create context-resilient agent systems. This document outlines the core principles that form the foundation of the framework, providing developers with a clear understanding of the underlying philosophy and approach.</p>
+            
+            <h2 id="core-principles">Core Principles</h2>
+            
+            <h3>1. Context Resilience</h3>
+            <p>Context resilience is the ability of an agent system to maintain operational continuity across context resets or limitations.</p>
+            
+            <div class="card">
+                <h4>Key Components:</h4>
+                <ul>
+                    <li>Protocol-driven recovery</li>
+                    <li>External state persistence</li>
+                    <li>Standardized recovery procedures</li>
+                    <li>Checkpoint creation at threshold crossings</li>
+                    <li>Clear self-identification after recovery</li>
+                </ul>
+                
+                <h4>Implementation Requirements:</h4>
+                <ul>
+                    <li>Mandatory protocol files (AGENT.md, AUTO-COMPACT.md, STATUS.md)</li>
+                    <li>Systematic context tracking with visual indicators</li>
+                    <li>Checkpoint management at defined thresholds</li>
+                    <li>Recovery testing and validation</li>
+                </ul>
+            </div>
+            
+            <h3>2. Workspace Standardization</h3>
+            <p>Consistent workspace organization ensures predictable file locations and improves recovery capabilities.</p>
+            
+            <div class="card">
+                <h4>Key Components:</h4>
+                <ul>
+                    <li>Standardized directory structure</li>
+                    <li>Protocol files in workspace root</li>
+                    <li>Consistent file naming conventions</li>
+                    <li>Limited root directory files (maximum 10)</li>
+                </ul>
+                
+                <h4>Implementation Requirements:</h4>
+                <ul>
+                    <li>Required directories for specific content types</li>
+                    <li>File naming patterns based on content category</li>
+                    <li>Directory purpose documentation</li>
+                    <li>Regular workspace structure validation</li>
+                </ul>
+            </div>
+            
+            <h3>3. Protocol-Based Recovery</h3>
+            <p>Recovery from context limitations relies on well-defined protocols documented in standardized files.</p>
+            
+            <div class="card">
+                <h4>Key Components:</h4>
+                <ul>
+                    <li>Protocol files containing essential state</li>
+                    <li>Recovery sequence definition</li>
+                    <li>Self-identification procedures</li>
+                    <li>State restoration verification</li>
+                </ul>
+                
+                <h4>Implementation Requirements:</h4>
+                <ul>
+                    <li>Documented recovery steps in protocol files</li>
+                    <li>Checkpoint creation before context reset</li>
+                    <li>Recovery validation metrics</li>
+                    <li>Recovery rehearsal procedures</li>
+                </ul>
+            </div>
+            
+            <h3>4. Systematic Documentation</h3>
+            <p>Documentation follows standardized formats and locations to ensure information is accessible during recovery.</p>
+            
+            <div class="card">
+                <h4>Key Components:</h4>
+                <ul>
+                    <li>AAR (After Action Review) system</li>
+                    <li>Standardized documentation formats</li>
+                    <li>Implementation details in dedicated locations</li>
+                    <li>Recovery-oriented knowledge organization</li>
+                </ul>
+                
+                <h4>Implementation Requirements:</h4>
+                <ul>
+                    <li>AAR sessions for continuous learning</li>
+                    <li>Documentation templates for consistency</li>
+                    <li>Version control of critical documents</li>
+                    <li>Documentation health metrics</li>
+                </ul>
+            </div>
+            
+            <h3>5. Operational Autonomy</h3>
+            <p>Agents operate independently within their domain expertise while maintaining system coordination.</p>
+            
+            <div class="card">
+                <h4>Key Components:</h4>
+                <ul>
+                    <li>Clear role definitions</li>
+                    <li>Domain-specific expertise boundaries</li>
+                    <li>Decision frameworks</li>
+                    <li>Coordination protocols</li>
+                </ul>
+                
+                <h4>Implementation Requirements:</h4>
+                <ul>
+                    <li>Role documentation in AGENT.md</li>
+                    <li>Domain boundaries definition</li>
+                    <li>Decision criteria documentation</li>
+                    <li>Coordination pathways in STATUS.md</li>
+                </ul>
+            </div>
+            
+            <h2 id="system-architecture">System Architecture</h2>
+            
+            <h3>Protocol Files</h3>
+            
+            <div class="card">
+                <h4>AGENT.md: Primary identity and role definition</h4>
+                <ul>
+                    <li>Agent role and responsibilities</li>
+                    <li>Operational instructions</li>
+                    <li>Recovery procedures</li>
+                    <li>Decision-making framework</li>
+                    <li>Memory system organization</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>AUTO-COMPACT.md: Recovery information for context resets</h4>
+                <ul>
+                    <li>Current project state</li>
+                    <li>Implementation context</li>
+                    <li>Key resources</li>
+                    <li>Recovery references</li>
+                    <li>Next actions</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>STATUS.md: Current operational status</h4>
+                <ul>
+                    <li>System health indicators</li>
+                    <li>Activity summary</li>
+                    <li>Current implementation projects</li>
+                    <li>Critical issues</li>
+                    <li>Next priorities</li>
+                </ul>
+            </div>
+            
+            <h3>Workspace Structure</h3>
+            
+            <div class="terminal">
+                <div class="terminal-content">
+                    <span style="color: var(--text-dim);"># Required Directories:</span><br>
+                    <span style="color: var(--neon-blue);">/AAR/sessions/</span>: After Action Review session documents<br>
+                    <span style="color: var(--neon-blue);">/AAR/incidents/</span>: After Action Review incident analyses<br>
+                    <span style="color: var(--neon-blue);">/projects/</span>: Active project implementation files<br>
+                    <span style="color: var(--neon-blue);">/reports/</span>: Generated reports and documentation<br>
+                    <span style="color: var(--neon-blue);">/archives/</span>: Archived implementation artifacts<br>
+                    <span style="color: var(--neon-blue);">/tools/</span>: Utility scripts and tools<br>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+            
+            <h3>Recovery Process</h3>
+            
+            <ol>
+                <li><strong>Recognition</strong>: Identify context reset has occurred</li>
+                <li><strong>Reading</strong>: Read AGENT.md to restore agent identity</li>
+                <li><strong>Context Restoration</strong>: Read AUTO-COMPACT.md for current project context</li>
+                <li><strong>Verification</strong>: Check STATUS.md for recent activity</li>
+                <li><strong>Self-Identification</strong>: Explicitly identify as the agent</li>
+                <li><strong>Resumption</strong>: Resume operations with recovered context</li>
+            </ol>
+            
+            <h2 id="terminology-and-measurement">Terminology and Measurement</h2>
+            
+            <p>Trinity Framework 2.0 uses project-based terminology for all operational processes, replacing temporal references to ensure context resilience.</p>
+            
+            <h3>Terminology Mapping</h3>
+            
+            <table>
+                <tr>
+                    <th>Temporal Term</th>
+                    <th>Project Term</th>
+                    <th>Definition</th>
+                    <th>Typical Duration</th>
+                </tr>
+                <tr>
+                    <td>Daily</td>
+                    <td>UNIT</td>
+                    <td>Atomic operational cycle</td>
+                    <td>1 rotation</td>
+                </tr>
+                <tr>
+                    <td>Weekly</td>
+                    <td>MILESTONE</td>
+                    <td>Achievement checkpoint</td>
+                    <td>7 units</td>
+                </tr>
+                <tr>
+                    <td>Biweekly</td>
+                    <td>ITERATION</td>
+                    <td>Process improvement cycle</td>
+                    <td>14 units</td>
+                </tr>
+                <tr>
+                    <td>Monthly</td>
+                    <td>PHASE</td>
+                    <td>Major project segment</td>
+                    <td>4 milestones</td>
+                </tr>
+                <tr>
+                    <td>Quarterly</td>
+                    <td>PROJECT</td>
+                    <td>Complete initiative</td>
+                    <td>3 phases</td>
+                </tr>
+            </table>
+            
+            <h2 id="context-management-system">Context Management System</h2>
+            
+            <h3>Core Requirements</h3>
+            
+            <div class="card">
+                <h4>1. Token Tracking</h4>
+                <ul>
+                    <li>Monitor context utilization in real time</li>
+                    <li>Track operations by type and size</li>
+                    <li>Estimate remaining capacity</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>2. Threshold Management</h4>
+                <ul>
+                    <li>Notice threshold (65%): Create checkpoint</li>
+                    <li>Warning threshold (75%): Create checkpoint, suggest caution</li>
+                    <li>Alert threshold (85%): Create checkpoint, prompt for context reset</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>3. Visualization</h4>
+                <ul>
+                    <li>Visual progress indicator for context utilization</li>
+                    <li>Remaining capacity estimation</li>
+                    <li>Threshold notifications</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>4. Recovery Protocol</h4>
+                <ul>
+                    <li>Checkpoint creation at thresholds</li>
+                    <li>Context reset with user confirmation</li>
+                    <li>Post-reset restoration from checkpoint</li>
+                </ul>
+            </div>
+            
+            <h3>Implementation Requirements</h3>
+            <ul>
+                <li>Context tracking with every response</li>
+                <li>Standardized operation type definitions</li>
+                <li>Context visualization in standardized format</li>
+                <li>Recovery protocol documentation</li>
+            </ul>
+            
+            <h2 id="success-metrics">Success Metrics</h2>
+            
+            <p>A successful implementation of Trinity Framework 2.0 Core achieves:</p>
+            
+            <div class="note">
+                <ul>
+                    <li><strong>Recovery Time</strong>: ≤1.0 exchanges to full operational awareness</li>
+                    <li><strong>Context Retention</strong>: ≥90% knowledge preservation across resets</li>
+                    <li><strong>Response Time</strong>: ≤500ms for standard operations</li>
+                    <li><strong>Task Completion</strong>: ≥95% successful completion rate</li>
+                    <li><strong>Protocol Compliance</strong>: 100% on critical requirements</li>
+                </ul>
+            </div>
+            
+            <h2 id="conclusion">Conclusion</h2>
+            <p>Trinity Framework 2.0 Core provides a comprehensive approach to creating context-resilient agent systems. By implementing these principles, developers can build robust, recoverable systems that maintain operational continuity across context limitations.</p>
+            
+            <hr>
+            
+            <p><em>Framework 2.0 COMPLIANT</em></p>
+            
+            <a href="principles/index.html" class="home-link">← Back to Principles</a>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

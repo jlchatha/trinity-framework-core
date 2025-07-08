@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAR System - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="../css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#documentation" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="breadcrumbs">
+                <a href="../index.html" class="breadcrumb-link breadcrumb-item">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="index.html" class="breadcrumb-link breadcrumb-item">Guides</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current breadcrumb-item">AAR System</span>
+            </div>
+            
+            <h1>After Action Review (AAR) System</h1>
+            
+            <div class="metadata">
+                <p><strong>VERSION</strong>: 1.0.0<br>
+                <strong>CREATED</strong>: June 12, 2025<br>
+                <strong>STATUS</strong>: Draft<br>
+                <strong>FRAMEWORK</strong>: Trinity Framework 2.0</p>
+            </div>
+            
+            <hr>
+            
+            <h2 id="introduction">Introduction</h2>
+            <p>The After Action Review (AAR) System is a structured knowledge preservation mechanism within Trinity Framework 2.0 Core that enables continuous learning and context preservation. This document outlines the purpose, structure, and implementation of the AAR system.</p>
+            
+            <h2 id="purpose">Purpose</h2>
+            <p>The AAR System serves multiple critical functions:</p>
+            
+            <ol>
+                <li><strong>Context Preservation</strong>: Retains implementation knowledge across context resets</li>
+                <li><strong>Continuous Learning</strong>: Creates a framework for systematic improvement</li>
+                <li><strong>Recovery Enhancement</strong>: Provides detailed recovery resources</li>
+                <li><strong>Knowledge Transfer</strong>: Facilitates sharing insights between implementation sessions</li>
+                <li><strong>Progress Tracking</strong>: Documents advancement through implementation stages</li>
+            </ol>
+            
+            <h2 id="system-structure">System Structure</h2>
+            <p>The AAR System is organized into a two-tier structure:</p>
+            
+            <div class="card">
+                <h3>1. Session AARs</h3>
+                <p><strong>Purpose</strong>: Document regular work sessions and incremental progress<br>
+                <strong>Location</strong>: <code>/AAR/sessions/</code> directory<br>
+                <strong>Naming</strong>: <code>YYYY-MM-DD-description.md</code><br>
+                <strong>Size</strong>: 20-50 lines of content<br>
+                <strong>Creation Frequency</strong>: After completing tasks, resolving issues, or before context resets</p>
+            </div>
+            
+            <div class="card">
+                <h3>2. Incident AARs</h3>
+                <p><strong>Purpose</strong>: Document comprehensive analysis of significant issues<br>
+                <strong>Location</strong>: <code>/AAR/incidents/</code> directory<br>
+                <strong>Naming</strong>: <code>YYYY-MM-DD-incident-name-RCA.md</code> (RCA = Root Cause Analysis)<br>
+                <strong>Size</strong>: 100+ lines of detailed technical documentation<br>
+                <strong>Creation Frequency</strong>: After major system issues or implementation challenges</p>
+            </div>
+            
+            <h2 id="document-templates">Document Templates</h2>
+            
+            <h3>Session AAR Template</h3>
+            
+            <pre><code class="language-markdown"># AAR Session: [Brief Descriptive Title]
+
+**Date**: [YYYY-MM-DD]  
+**Session Type**: [Implementation/Testing/Documentation/Analysis/Recovery]  
+**Status**: [Complete/Partial/Ongoing]  
+**Agent**: [AGENT NAME]
+
+## Session Summary
+[1-2 sentence overview of what was accomplished]
+
+## Activities Completed
+1. **[Activity Category 1]**
+   - [Specific task completed]
+   - [Specific task completed]
+   - [Outcome or result]
+
+2. **[Activity Category 2]**
+   - [Specific task completed]
+   - [Specific task completed]
+   - [Outcome or result]
+
+## Key Insights
+1. [Important realization or finding]
+2. [Important realization or finding]
+3. [Important realization or finding]
+
+## Challenges Encountered
+1. **[Challenge 1]**: [Brief description]
+   - [How it was addressed]
+2. **[Challenge 2]**: [Brief description]
+   - [How it was addressed]
+
+## Next Actions
+1. [Specific next task]
+2. [Specific next task]
+3. [Specific next task]
+
+---
+*Framework 2.0 COMPLIANT*</code></pre>
+            
+            <h3>Incident AAR Template</h3>
+            
+            <pre><code class="language-markdown"># AAR Incident: [Incident Name] - Root Cause Analysis
+
+**Date**: [YYYY-MM-DD]  
+**Incident Type**: [System Issue/Implementation Challenge/Performance Problem/etc.]  
+**Severity**: [Critical/High/Medium/Low]  
+**Status**: [Resolved/Mitigated/Ongoing]  
+**Agent**: [AGENT NAME]
+
+## Incident Summary
+[Concise description of the incident, its impact, and resolution status]
+
+## Timeline
+- **[Timestamp]**: [Initial detection]
+- **[Timestamp]**: [Key event in incident progression]
+- **[Timestamp]**: [Resolution step]
+- **[Timestamp]**: [Verification]
+
+## Impact Assessment
+- **Functional Impact**: [Description of system functionality affected]
+- **Performance Impact**: [Description of performance degradation]
+- **Recovery Impact**: [Description of recovery capability affected]
+- **User Experience**: [Description of user-facing impacts]
+
+## Root Cause Analysis
+### Primary Cause
+[Detailed technical description of the root cause]
+
+### Contributing Factors
+1. **[Factor 1]**: [Description]
+2. **[Factor 2]**: [Description]
+3. **[Factor 3]**: [Description]
+
+### Trigger Event
+[What specifically triggered the incident]
+
+## Resolution
+### Immediate Action
+[Steps taken to immediately address the issue]
+
+### Short-term Fix
+[Temporary solution implemented]
+
+### Long-term Solution
+[Permanent fix or architectural changes]
+
+## Verification
+### Testing Performed
+- [Test 1 description and result]
+- [Test 2 description and result]
+- [Test 3 description and result]
+
+### Metrics
+- [Before/after metric 1]
+- [Before/after metric 2]
+
+## Lessons Learned
+1. **[Area 1]**: [Learning]
+2. **[Area 2]**: [Learning]
+3. **[Area 3]**: [Learning]
+
+## Prevention Measures
+1. **Process Changes**
+   - [Specific process change]
+   - [Specific process change]
+
+2. **Technical Improvements**
+   - [Specific technical improvement]
+   - [Specific technical improvement]
+
+3. **Monitoring Enhancements**
+   - [Specific monitoring enhancement]
+   - [Specific monitoring enhancement]
+
+## References
+- [Link to related documentation]
+- [Link to code changes]
+- [Link to related incidents]
+
+---
+*Framework 2.0 COMPLIANT*</code></pre>
+            
+            <h2 id="implementation-guidelines">Implementation Guidelines</h2>
+            
+            <h3>When to Create Session AARs</h3>
+            <p>Create Session AARs in any of these situations:</p>
+            <ul>
+                <li>After completing a significant implementation task</li>
+                <li>At the end of a productive work session</li>
+                <li>Before anticipated context resets</li>
+                <li>When discovering important insights</li>
+                <li>After resolving non-critical issues</li>
+                <li>When establishing a new approach or strategy</li>
+            </ul>
+            
+            <h3>When to Create Incident AARs</h3>
+            <p>Create Incident AARs in any of these situations:</p>
+            <ul>
+                <li>After resolving a critical system issue</li>
+                <li>When recovering from a significant failure</li>
+                <li>After identifying and fixing a complex bug</li>
+                <li>When resolving an architectural problem</li>
+                <li>After performance optimization breakthroughs</li>
+                <li>When addressing security vulnerabilities</li>
+                <li>After major implementation challenges</li>
+            </ul>
+            
+            <h3>Content Quality Guidelines</h3>
+            
+            <div class="card">
+                <h4>Effective AAR Content</h4>
+                <ol>
+                    <li><strong>Specificity</strong>: Include specific file paths, function names, and implementation details</li>
+                    <li><strong>Context</strong>: Provide enough information for someone without prior knowledge</li>
+                    <li><strong>Technical Depth</strong>: Include code examples, error messages, and technical specifics</li>
+                    <li><strong>Actionability</strong>: Focus on concrete actions and decisions</li>
+                    <li><strong>Reflection</strong>: Include insights and lessons learned</li>
+                    <li><strong>Forward-Looking</strong>: End with specific next steps</li>
+                </ol>
+            </div>
+            
+            <div class="warning">
+                <h4>Ineffective AAR Content (Avoid)</h4>
+                <ol>
+                    <li><strong>Vagueness</strong>: General statements without specifics</li>
+                    <li><strong>Assumption of Knowledge</strong>: References without explanation</li>
+                    <li><strong>Shallow Description</strong>: Surface-level summaries without detail</li>
+                    <li><strong>Process Focus</strong>: Emphasis on process over content</li>
+                    <li><strong>Missing Context</strong>: Details without explanation of importance</li>
+                    <li><strong>No Forward Path</strong>: Ending without clear next steps</li>
+                </ol>
+            </div>
+            
+            <h2 id="aar-recovery-protocol">AAR Recovery Protocol</h2>
+            <p>The AAR system plays a critical role in context recovery:</p>
+            
+            <h3>Initial Recovery</h3>
+            <ol>
+                <li>After context reset, read protocol files first (AGENT.md, AUTO-COMPACT.md, STATUS.md)</li>
+                <li>Check most recent AAR session document for immediate context</li>
+                <li>Read any incident AARs referenced in recent session documents</li>
+                <li>Build recovery context from AAR content</li>
+            </ol>
+            
+            <h3>Comprehensive Recovery</h3>
+            <p>For more detailed recovery after critical issues:</p>
+            <ol>
+                <li>Review protocol files for basic orientation</li>
+                <li>Read most recent 3-5 session AARs for recent activities</li>
+                <li>Check for incident AARs relating to current work</li>
+                <li>Read referenced implementation documents from recent AARs</li>
+                <li>Recreate context by synthesizing all sources</li>
+            </ol>
+            
+            <h2 id="aar-system-management">AAR System Management</h2>
+            
+            <h3>Organization</h3>
+            <ul>
+                <li>Maintain chronological order in AAR directories</li>
+                <li>Use clear, descriptive filenames</li>
+                <li>Reference related AARs in each document</li>
+                <li>Create an AAR index for navigating numerous documents</li>
+            </ul>
+            
+            <h3>Maintenance</h3>
+            <ul>
+                <li>Review AAR directories periodically</li>
+                <li>Archive older sessions that are no longer relevant</li>
+                <li>Maintain incident AARs for longer reference periods</li>
+                <li>Update references when files are moved or renamed</li>
+            </ul>
+            
+            <h3>Integration</h3>
+            <ul>
+                <li>Reference AAR documents in AUTO-COMPACT.md</li>
+                <li>Include links to relevant AARs in STATUS.md</li>
+                <li>Reference AARs in project documentation</li>
+                <li>Use AARs as source material for comprehensive reports</li>
+            </ul>
+            
+            <h2 id="benefits">Benefits</h2>
+            <p>Effective implementation of the AAR System provides:</p>
+            
+            <ol>
+                <li><strong>Resilient Memory</strong>: Critical knowledge preserved across context resets</li>
+                <li><strong>Efficient Recovery</strong>: Faster restoration of operational context</li>
+                <li><strong>Continuous Improvement</strong>: Systematic learning from experiences</li>
+                <li><strong>Knowledge Transfer</strong>: Effective sharing between implementation sessions</li>
+                <li><strong>Progress Transparency</strong>: Clear documentation of advancement</li>
+                <li><strong>Failure Prevention</strong>: Learning from past issues to prevent recurrence</li>
+            </ol>
+            
+            <h2 id="conclusion">Conclusion</h2>
+            <p>The AAR System is a foundational element of Trinity Framework 2.0 Core that enables context resilience and continuous improvement. By implementing this system according to the guidelines in this document, developers can create more robust agent applications that maintain effectiveness across context limitations.</p>
+            
+            <hr>
+            
+            <p><em>Framework 2.0 COMPLIANT</em></p>
+            
+            <a href="index.html" class="home-link">← Back to Guides</a>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>

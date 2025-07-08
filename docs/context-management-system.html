@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Management System - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="css/shadowrun-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="framework-float-badge">Framework 2.0</div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1 class="logo-text">Trinity Framework</h1>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#documentation" class="nav-link">Documentation</a>
+                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="breadcrumbs">
+                <a href="index.html" class="breadcrumb-link breadcrumb-item">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current breadcrumb-item">Context Management System</span>
+            </div>
+            
+            <h1>Context Management System</h1>
+            
+            <div class="metadata">
+                <p><strong>VERSION</strong>: 1.0.0<br>
+                <strong>CREATED</strong>: June 12, 2025<br>
+                <strong>STATUS</strong>: Draft - Optional Component<br>
+                <strong>FRAMEWORK</strong>: Trinity Framework 2.0</p>
+            </div>
+            
+            <hr>
+            
+            <h2 id="introduction">Introduction</h2>
+            <p>The Context Management System is an optional enhancement to Trinity Framework 2.0 Core that provides token tracking, visualization, and auto-compact management capabilities. This system helps improve operational continuity across context resets and provides standardized context monitoring for agents that choose to implement it.</p>
+            
+            <h2 id="installation">Installation</h2>
+            <p>For information on installing and enabling the optional Context Management System, see the README file in the tools/context-meter directory.</p>
+            
+            <h2 id="system-purpose">System Purpose</h2>
+            <p>The Context Management System addresses several fundamental challenges in large language model agent development:</p>
+            <ol>
+                <li><strong>Context Window Limitations</strong>: LLMs have finite context windows that can fill up during operation</li>
+                <li><strong>Unexpected Resets</strong>: Context resets can occur without warning, causing operational disruption</li>
+                <li><strong>Inconsistent Recovery</strong>: Without standardized recovery, agents recover inconsistently</li>
+                <li><strong>Context Blindness</strong>: Agents typically can't "see" their own context utilization</li>
+                <li><strong>Recovery Complexity</strong>: Manual recovery processes are error-prone and inconsistent</li>
+            </ol>
+            
+            <h2 id="core-components">Core Components</h2>
+            
+            <h3>1. Token Tracking</h3>
+            <p>The token tracking component monitors context utilization by estimating token usage for different operation types:</p>
+            
+            <h4>Operation Types</h4>
+            <p><strong>User Messages:</strong></p>
+            <ul>
+                <li>USER_SMALL: Brief messages (~750 tokens)</li>
+                <li>USER_MEDIUM: Standard messages (~2200 tokens)</li>
+                <li>USER_LARGE: Detailed messages (~4400 tokens)</li>
+            </ul>
+            
+            <p><strong>Assistant Responses:</strong></p>
+            <ul>
+                <li>ASSISTANT_SMALL: Brief responses (~1500 tokens)</li>
+                <li>ASSISTANT_MEDIUM: Standard responses (~4400 tokens)</li>
+                <li>ASSISTANT_LARGE: Detailed responses (~10000 tokens)</li>
+            </ul>
+            
+            <p><strong>Tool Operations:</strong></p>
+            <ul>
+                <li>TOOL_READ_SMALL: Small file reads (~1500 tokens)</li>
+                <li>TOOL_READ_MEDIUM: Medium file reads (~4400 tokens)</li>
+                <li>TOOL_READ_LARGE: Large file reads (~7500 tokens)</li>
+                <li>TOOL_WRITE: File writing operations (~750 tokens)</li>
+                <li>TOOL_EDIT: File editing operations (~1500 tokens)</li>
+                <li>TOOL_TASK: Task tool executions (~6000 tokens)</li>
+            </ul>
+            
+            <h4>Token Estimation</h4>
+            <p>Token estimation is based on standardized values for different operation types, with adjustments based on content length when available.</p>
+            
+            <pre><code class="language-javascript">// Example token estimation function
+function estimateTokens(operationType, content) {
+  // Get base token estimate from operation type
+  let tokens = TOKEN_ESTIMATES[operationType] || TOKEN_ESTIMATES.ASSISTANT_MEDIUM;
+  
+  // If content is provided, refine estimate based on content
+  if (content) {
+    // For text content, estimate based on character count
+    const charCount = content.length;
+    const wordCount = content.split(/\s+/).length;
+    
+    // Approximate token count (4 chars per token or 0.75 tokens per word)
+    const charBasedEstimate = Math.ceil(charCount / 4);
+    const wordBasedEstimate = Math.ceil(wordCount * 0.75);
+    
+    // Use the average of character and word based estimates
+    tokens = Math.ceil((charBasedEstimate + wordBasedEstimate) / 2);
+  }
+  
+  return tokens;
+}</code></pre>
+            
+            <h3>2. Checkpoint Management</h3>
+            <p>The checkpoint system creates serialized state snapshots at key thresholds:</p>
+            
+            <h4>Checkpoint Creation</h4>
+            <p>Checkpoints are automatically created:</p>
+            <ul>
+                <li>At the Notice threshold (65%)</li>
+                <li>At the Warning threshold (75%)</li>
+                <li>At the Alert threshold (85%)</li>
+                <li>When explicitly requested by the user or system</li>
+            </ul>
+            
+            <h4>Checkpoint Content</h4>
+            <p>Each checkpoint contains:</p>
+            <ul>
+                <li>Unique identifier</li>
+                <li>Timestamp</li>
+                <li>Utilization percentage</li>
+                <li>Threshold status</li>
+                <li>Recent operations list</li>
+            </ul>
+            
+            <h3>3. Context Visualization</h3>
+            <p>The visualization system provides a text-based representation of context utilization:</p>
+            
+            <pre><code>[Context: XX% ▓▓▓▓▓░░░░░░░░░░░░░░░] Remaining: ~YY small operations</code></pre>
+            
+            <p>This visualization shows:</p>
+            <ol>
+                <li>Current utilization percentage</li>
+                <li>Visual progress bar (20 segments)</li>
+                <li>Estimated remaining capacity in small operations</li>
+            </ol>
+            
+            <h4>Threshold Notifications</h4>
+            <p>The system implements three key thresholds with corresponding notifications:</p>
+            
+            <ol>
+                <li><strong>Notice (65%)</strong>:
+                    <ul>
+                        <li>Creates checkpoint automatically</li>
+                        <li>Displays: "NOTICE: Checkpoint created automatically"</li>
+                        <li>Normal operations continue</li>
+                    </ul>
+                </li>
+                <li><strong>Warning (75%)</strong>:
+                    <ul>
+                        <li>Creates checkpoint automatically</li>
+                        <li>Displays: "WARNING: High context utilization detected"</li>
+                        <li>Recommends completing current task before starting complex operations</li>
+                    </ul>
+                </li>
+                <li><strong>Alert (85%)</strong>:
+                    <ul>
+                        <li>Creates special compact checkpoint</li>
+                        <li>Displays: "ALERT: Critical context utilization reached"</li>
+                        <li>Prompts user for auto-compact decision</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h3>4. Recovery System</h3>
+            <p>The recovery system handles post-reset context restoration:</p>
+            
+            <h4>Auto-Compact Flow</h4>
+            <ol>
+                <li>System creates checkpoint at 85% threshold</li>
+                <li>User is prompted for auto-compact decision</li>
+                <li>If confirmed, system prepares for recovery</li>
+                <li>After reset, system detects reset state</li>
+                <li>System restores from last checkpoint</li>
+                <li>Context utilization resets to 25%</li>
+                <li>Recovery notification displays previous state</li>
+            </ol>
+            
+            <h4>Recovery Display</h4>
+            <pre><code>[RECOVERY COMPLETE]
+Restored from checkpoint: ckpt_warning_20250612234452287
+Previous context: 78% → Current context: 25%
+Implementation state: [Current implementation state]
+
+[Context: 25% ▓▓▓▓▓░░░░░░░░░░░░░░░] Remaining: ~150 small operations</code></pre>
+            
+            <h2 id="implementation-requirements">Implementation Requirements</h2>
+            
+            <h3>Command Line Interface</h3>
+            <p>The context management system should implement a standardized command-line interface:</p>
+            
+            <pre><code class="language-bash"># Check context status and update with operation type
+./run-context-check.sh check [type]
+
+# Check for recovery after auto-compact
+./run-context-check.sh recovery
+
+# Handle auto-compact response
+./run-context-check.sh compact [yes|no]
+
+# Generate context tracking report
+./run-context-check.sh report [format]
+
+# Reset tracking state
+./run-context-check.sh reset</code></pre>
+            
+            <h3>Directory Structure</h3>
+            <p>Standard implementation should follow this directory structure:</p>
+            
+            <pre><code>/tools/token-tracker/context-manager/
+├── bin/
+│   ├── run-context-check.sh
+│   ├── update-and-display.js
+│   ├── check-recovery.js
+│   ├── handle-auto-compact.js
+│   └── generate-report.js
+├── context-visualization.js
+├── state/
+│   └── context-state.json
+└── checkpoints/
+    └── ckpt_*.json</code></pre>
+            
+            <h3>Protocol File Integration</h3>
+            <p>If you implement the Context Management System, the following protocol file integrations are recommended:</p>
+            
+            <ol>
+                <li><strong>AGENT.md</strong>: Add an Optional Context Tracking Protocol section</li>
+                <li><strong>AUTO-COMPACT.md</strong>: Add a Context Management Metrics section</li>
+                <li><strong>STATUS.md</strong>: Add a Context Health section with visualization</li>
+            </ol>
+            
+            <h2 id="implementation-example">Implementation Example</h2>
+            
+            <h3>Basic Usage</h3>
+            <pre><code class="language-javascript">// Load the context tracking module
+const ContextTracker = require('./context-tracker');
+
+// Initialize the context tracker
+const tracker = new ContextTracker();
+
+// Update context with an operation
+tracker.updateContext('ASSISTANT_MEDIUM');
+
+// Get current context status
+const status = tracker.getStatus();
+console.log(`Context: ${status.utilizationPercentage}%`);
+console.log(`Tokens: ${status.tokens}/${status.maxTokens}`);
+console.log(`Threshold: ${status.thresholdStatus}`);
+
+// Display context visualization
+console.log(tracker.getVisualization());</code></pre>
+            
+            <h3>Checkpoint Creation</h3>
+            <pre><code class="language-javascript">// Create a checkpoint at current state
+const checkpoint = tracker.createCheckpoint('manual');
+console.log(`Created checkpoint: ${checkpoint.id}`);
+
+// List available checkpoints
+const checkpoints = tracker.getCheckpoints();
+checkpoints.forEach(cp => {
+  console.log(`${cp.id}: ${cp.utilizationPercentage}% (${cp.timestamp})`);
+});</code></pre>
+            
+            <h3>Recovery Process</h3>
+            <pre><code class="language-javascript">// Check for recovery after reset
+const recoveryResult = tracker.checkRecovery();
+
+if (recoveryResult.recovered) {
+  console.log(`Recovered from checkpoint: ${recoveryResult.checkpointId}`);
+  console.log(`Previous utilization: ${recoveryResult.previousUtilization}%`);
+  console.log(`Current utilization: ${recoveryResult.currentUtilization}%`);
+} else {
+  console.log('No recovery needed, continuing session.');
+}</code></pre>
+            
+            <h2 id="benefits">Benefits</h2>
+            <p>Implementing the Context Management System provides several key benefits:</p>
+            
+            <ol>
+                <li><strong>Enhanced Recovery</strong>: Automatic checkpoint creation and restoration</li>
+                <li><strong>Context Awareness</strong>: Real-time visibility of context utilization</li>
+                <li><strong>Standardized Monitoring</strong>: Consistent token tracking across all agents</li>
+                <li><strong>Self-Management</strong>: Proactive threshold notifications</li>
+                <li><strong>Performance Optimization</strong>: Calibrated token estimates for different operations</li>
+                <li><strong>Operational Continuity</strong>: Minimal disruption from context resets</li>
+            </ol>
+            
+            <h2 id="implementation-guidelines">Implementation Guidelines</h2>
+            <p>When implementing the Context Management System, follow these guidelines:</p>
+            
+            <ol>
+                <li><strong>Consistent Usage</strong>: Execute context tracking after every response</li>
+                <li><strong>Appropriate Types</strong>: Use the most accurate operation type for each action</li>
+                <li><strong>Regular Verification</strong>: Check context visualization for accuracy</li>
+                <li><strong>Threshold Awareness</strong>: Respond appropriately to threshold notifications</li>
+                <li><strong>Checkpoint Verification</strong>: Regularly verify checkpoint creation and restoration</li>
+                <li><strong>Customization Limits</strong>: Maintain core functionality when customizing</li>
+            </ol>
+            
+            <h2 id="conclusion">Conclusion</h2>
+            <p>The Context Management System is an optional enhancement to Trinity Framework 2.0 Core, providing valuable functionality for context resilience and operational continuity. By implementing this system according to the guidelines in this document, developers can create more robust agent applications that maintain effectiveness across context limitations. While not required, context tracking offers significant benefits for agents working in scenarios where context management is important.</p>
+            
+            <hr>
+            
+            <p><em>Framework 2.0 COMPLIANT</em></p>
+            
+            <a href="index.html" class="home-link">← Back to Documentation</a>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
+            <p>Created for building context-resilient agent systems</p>
+            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
+        </div>
+    </footer>
+</body>
+</html>
