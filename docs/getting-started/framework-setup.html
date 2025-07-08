@@ -3,94 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trinity Framework 2.0 Core - Setup Guide - Trinity Framework 2.0 Core</title>
-    <link rel="stylesheet" href="../css/shadowrun-theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Framework Setup - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="../assets/css/shadowrun.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
 </head>
-<body>
-    <div class="framework-float-badge">Framework 2.0</div>
-
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <h1 class="logo-text">Trinity Framework</h1>
-                <span class="version-badge">v1.0.0</span>
-            </div>
-            <nav class="nav">
-                <a href="/trinity-framework-core/" class="nav-link">Home</a>
-                <a href="../" class="nav-link">Documentation</a>
-                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+<body class="shadowrun-theme">
+    <div class="grid-container">
+        <header>
+            <h1>Trinity Framework 2.0</h1>
+            <nav class="main-nav">
+                <a href="../index.html">Home</a>
+                <a href="quick-start.html">Quick Start</a>
+                <a href="../principles/framework-core-principles.html">Principles</a>
+                <a href="../guides/aar-system.html">Guides</a>
+                <a href="../reference/protocol-files.html">Reference</a>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <main>
-        <div class="breadcrumbs">
-            <a href="/trinity-framework-core/" class="breadcrumb-link breadcrumb-item">Home</a>
-            <span class="breadcrumb-separator">/</span>
-            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a><span class="breadcrumb-separator">/</span><a href="./" class="breadcrumb-link breadcrumb-item">Getting Started</a><span class="breadcrumb-separator">/</span><span class="breadcrumb-current breadcrumb-item">Framework Setup</span>
-        </div>
-        
-        <div class="metadata">
-            <div class="metadata-item">
-                <span class="metadata-label">VERSION:</span>
-                <span class="metadata-value">1.0.0</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">CREATED:</span>
-                <span class="metadata-value">July 7, 2025</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">STATUS:</span>
-                <span class="metadata-value">Release Candidate</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">FRAMEWORK:</span>
-                <span class="metadata-value">Trinity Framework 2.0</span>
-            </div>
-        </div>
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-section">
+                    <h3>Getting Started</h3>
+                    <ul>
+                        <li><a href="quick-start.html">Quick Start</a></li>
+                        <li><a href="agent-setup-guide.html">Agent Setup</a></li>
+                        <li><a href="framework-setup.html" class="active">Framework Setup</a></li>
+                        <li><a href="verification-checklist.html">Verification Checklist</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
 
-        <p><em>Framework 2.0 COMPLIANT</em></p>
+        <main>
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="quick-start.html">Getting Started</a> &gt;
+                <span>Framework Setup</span>
+            </nav>
 
-        <a href="/trinity-framework-core/" class="home-link">← Back to Documentation Home</a>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
-            <p>Created for building context-resilient agent systems</p>
-            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
-        </div>
-    </footer>
+            <article>
+                <h1>Trinity Framework 2.0 Core - Setup Guide</h1>
 
-    <script>
-        // Simple animation for terminal text
-        document.addEventListener('DOMContentLoaded', function() {
-            const terminalLines = document.querySelectorAll('.terminal-content br');
-            
-            // Hide all lines initially except the first one
-            for (let i = 0; i < terminalLines.length; i++) {
-                const nextSibling = terminalLines[i].nextSibling;
-                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                    nextSibling.style.display = 'none';
-                }
-            }
-            
-            // Show lines one by one
-            let currentLine = 0;
-            function showNextLine() {
-                if (currentLine < terminalLines.length) {
-                    const nextSibling = terminalLines[currentLine].nextSibling;
-                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                        nextSibling.style.display = 'inline';
-                    }
-                    currentLine++;
-                    setTimeout(showNextLine, 500);
-                }
-            }
-            
-            setTimeout(showNextLine, 1000);
-        });
-    </script>
+                <div class="metadata">
+                    <p><strong>VERSION</strong>: 1.0.0<br>
+                    <strong>CREATED</strong>: June 12, 2025<br>
+                    <strong>STATUS</strong>: Draft<br>
+                    <strong>FRAMEWORK</strong>: Trinity Framework 2.0 Core</p>
+                </div>
+
+                <hr>
+
+                <h2 id="introduction">Introduction</h2>
+                <p>This guide provides detailed instructions for setting up the Trinity Framework 2.0 Core environment. It covers both the repository setup and the creation of agent workspaces. For a quicker overview, see the <a href="quick-start.html">Quick Start Guide</a>.</p>
+
+                <h2 id="system-requirements">System Requirements</h2>
+                <p>Trinity Framework 2.0 Core has minimal system requirements, making it accessible across various environments:</p>
+                <ul>
+                    <li><strong>Operating System</strong>: Linux and macOS only (Claude Code does not fully support Windows/WSL)</li>
+                    <li><strong>Shell</strong>: Bash or compatible shell</li>
+                    <li><strong>Required Tools</strong>:
+                        <ul>
+                            <li>Git (for repository management)</li>
+                            <li>Node.js (for optional context tracking utilities)</li>
+                            <li>Text editor (for editing protocol files)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Disk Space</strong>: 50MB for repository, ~10MB per agent workspace</li>
+                </ul>
+
+                <h2 id="installation-steps">Installation Steps</h2>
+
+                <h3>1. Clone the Repository</h3>
+                <p>First, clone the Trinity Framework 2.0 Core repository to your local system:</p>
+                <pre><code class="language-bash"># Create a directory for Trinity projects
+mkdir -p ~/trinity
+cd ~/trinity
+
+# Clone the repository
+git clone https://github.com/trinity-framework/trinity-framework-core.git
+cd trinity-framework-core</code></pre>
+
+                <h3>2. Directory Structure Planning</h3>
+                <p>Before setting up agent workspaces, plan your directory structure. We recommend placing agent workspaces at the same directory level as the cloned repository:</p>
+                <pre><code>/home/user/trinity/                # Base directory
+├── trinity-framework-core/        # Cloned framework repository
+├── trinity-apex-workspace/        # APEX agent workspace
+├── trinity-analyst-workspace/     # ANALYST agent workspace
+└── trinity-historian-workspace/   # HISTORIAN agent workspace</code></pre>
+                <p>This flat structure makes each component independently accessible and maintainable.</p>
+
+                <h3>3. Set Up Tools and Scripts</h3>
+                <p>Make the setup scripts executable:</p>
+                <pre><code class="language-bash"># Navigate to the setup directory
+cd tools/setup
+
+# Make all scripts executable
+chmod +x *.sh</code></pre>
+
+                <h3>4. Create Agent Workspaces</h3>
+                <p>You can create all three standard agent workspaces at once:</p>
+                <pre><code class="language-bash"># Create all workspaces in the parent directory
+./create-workspaces.sh ~/trinity</code></pre>
+
+                <p>Or create individual agent workspaces as needed:</p>
+                <pre><code class="language-bash"># Create only the APEX agent workspace
+./setup-apex.sh ~/trinity/trinity-apex-workspace
+
+# Create only the ANALYST agent workspace
+./setup-analyst.sh ~/trinity/trinity-analyst-workspace
+
+# Create only the HISTORIAN agent workspace
+./setup-historian.sh ~/trinity/trinity-historian-workspace</code></pre>
+
+                <h3>5. Optional: Install Context Management Components</h3>
+                <p>By default, the setup scripts create placeholder files for the optional context management system. To install the full functionality:</p>
+                <pre><code class="language-bash"># For APEX workspace (repeat for each workspace as needed)
+cd ~/trinity/trinity-apex-workspace
+
+# Create required directories
+mkdir -p tools/token-tracker/context-manager/bin
+mkdir -p tools/token-tracker/context-manager/state
+mkdir -p tools/token-tracker/context-manager/checkpoints
+
+# Copy context management files from framework repository
+cp -r ~/trinity/trinity-framework-core/examples/context-tracking/* tools/token-tracker/
+
+# Make scripts executable
+chmod +x tools/token-tracker/context-manager/bin/*.sh</code></pre>
+
+                <h3>6. Verify Installation</h3>
+                <p>Verify the installation with the verification script:</p>
+                <pre><code class="language-bash"># Navigate to setup directory
+cd ~/trinity/trinity-framework-core/tools/setup
+
+# Verify all agent workspaces
+./verify-installation.sh ~/trinity</code></pre>
+                <p>The script will check for required files, directories, and proper permissions, and report any issues.</p>
+
+                <h2 id="workspace-customization">Workspace Customization</h2>
+                <p>After setting up the basic workspace structure, customize each workspace for its specific agent role:</p>
+
+                <h3>APEX Agent Customization</h3>
+                <pre><code class="language-bash">cd ~/trinity/trinity-apex-workspace
+
+# Edit protocol files
+nano AGENT.md
+nano STATUS.md
+nano AUTO-COMPACT.md
+
+# Create agent-specific tools
+mkdir -p tools/apex-specific</code></pre>
+
+                <h3>ANALYST Agent Customization</h3>
+                <pre><code class="language-bash">cd ~/trinity/trinity-analyst-workspace
+
+# Edit protocol files
+nano AGENT.md
+nano STATUS.md
+nano AUTO-COMPACT.md
+
+# Create agent-specific tools
+mkdir -p tools/analyst-specific</code></pre>
+
+                <h3>HISTORIAN Agent Customization</h3>
+                <pre><code class="language-bash">cd ~/trinity/trinity-historian-workspace
+
+# Edit protocol files
+nano AGENT.md
+nano STATUS.md
+nano AUTO-COMPACT.md
+
+# Create agent-specific tools
+mkdir -p tools/historian-specific</code></pre>
+
+                <h2 id="bash-aliases-setup">Bash Aliases Setup</h2>
+                <p>For convenience, you can set up Bash aliases to quickly navigate to each workspace:</p>
+                <pre><code class="language-bash"># Add these to your ~/.bashrc or ~/.bash_profile
+echo '# Trinity Framework 2.0 Workspace Aliases' >> ~/.bashrc
+echo 'alias trinity-apex="cd ~/trinity/trinity-apex-workspace"' >> ~/.bashrc
+echo 'alias trinity-analyst="cd ~/trinity/trinity-analyst-workspace"' >> ~/.bashrc
+echo 'alias trinity-historian="cd ~/trinity/trinity-historian-workspace"' >> ~/.bashrc
+echo 'alias trinity-framework="cd ~/trinity/trinity-framework-core"' >> ~/.bashrc
+source ~/.bashrc</code></pre>
+
+                <h2 id="framework-updates">Framework Updates</h2>
+                <p>To update the Trinity Framework 2.0 Core repository:</p>
+                <pre><code class="language-bash">cd ~/trinity/trinity-framework-core
+git pull origin main</code></pre>
+                <p>Note that updates to the framework don't automatically update existing agent workspaces. You'll need to manually apply any changes to established workspaces.</p>
+
+                <h2 id="integration-with-existing-systems">Integration with Existing Systems</h2>
+                <p>When integrating Trinity Framework 2.0 Core with existing systems:</p>
+                <ol>
+                    <li>Keep the framework repository separate from application code</li>
+                    <li>Position agent workspaces at the same level as existing system directories</li>
+                    <li>Reference shared resources using absolute paths</li>
+                    <li>Use the verification script to ensure compliance after integration</li>
+                </ol>
+
+                <p>Example directory structure with an existing system:</p>
+                <pre><code>/home/user/projects/
+├── existing-system/              # Your existing system
+├── trinity-framework-core/       # Framework repository
+├── trinity-apex-workspace/       # APEX agent workspace
+├── trinity-analyst-workspace/    # ANALYST agent workspace
+└── trinity-historian-workspace/  # HISTORIAN agent workspace</code></pre>
+
+                <h2 id="troubleshooting">Troubleshooting</h2>
+
+                <h3>Common Issues</h3>
+                <ul>
+                    <li><strong>Permission Denied</strong>: Run <code>chmod +x tools/setup/*.sh</code> to make scripts executable</li>
+                    <li><strong>Missing Directories</strong>: Ensure parent directories exist before running setup scripts</li>
+                    <li><strong>Context Tracking Errors</strong>: Verify Node.js is installed for full context tracking functionality</li>
+                    <li><strong>Protocol File Errors</strong>: Check for syntax errors in customized protocol files</li>
+                </ul>
+
+                <h3>Getting Help</h3>
+                <p>If you encounter issues not addressed here:</p>
+                <ul>
+                    <li>Check the <a href="https://github.com/trinity-framework/trinity-framework-core/issues">GitHub repository</a> for known issues</li>
+                    <li>Review the <a href="../reference/compliance-checklist.html">Framework Compliance</a> document</li>
+                    <li>Consult the <a href="../troubleshooting.html">Troubleshooting Guide</a> for advanced solutions</li>
+                </ul>
+
+                <h2 id="next-steps">Next Steps</h2>
+                <p>After completing the setup:</p>
+                <ol>
+                    <li>Read the <a href="../principles/context-resilience.html">Framework Core Principles</a></li>
+                    <li>Explore the <a href="agent-setup-guide.html">Agent Setup Guide</a> for agent-specific information</li>
+                    <li>Review the <a href="../reference/protocol-files.html">Protocol Files Reference</a></li>
+                    <li>Try the <a href="../guides/context-management.html">Context Management System</a> if needed</li>
+                </ol>
+
+                <hr>
+
+                <p><em>Framework 2.0 COMPLIANT</em></p>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Trinity Framework. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="../assets/js/prism.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>

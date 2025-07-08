@@ -3,94 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workspace Standardization - Trinity Framework 2.0 Core</title>
-    <link rel="stylesheet" href="../css/shadowrun-theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Workspace Standardization - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="../assets/css/shadowrun.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
 </head>
-<body>
-    <div class="framework-float-badge">Framework 2.0</div>
-
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <h1 class="logo-text">Trinity Framework</h1>
-                <span class="version-badge">v1.0.0</span>
-            </div>
-            <nav class="nav">
-                <a href="/trinity-framework-core/" class="nav-link">Home</a>
-                <a href="../" class="nav-link">Documentation</a>
-                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+<body class="shadowrun-theme">
+    <div class="grid-container">
+        <header>
+            <h1>Trinity Framework 2.0</h1>
+            <nav class="main-nav">
+                <a href="../index.html">Home</a>
+                <a href="../getting-started/quick-start.html">Quick Start</a>
+                <a href="framework-core-principles.html">Principles</a>
+                <a href="../guides/aar-system.html">Guides</a>
+                <a href="../reference/protocol-files.html">Reference</a>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <main>
-        <div class="breadcrumbs">
-            <a href="/trinity-framework-core/" class="breadcrumb-link breadcrumb-item">Home</a>
-            <span class="breadcrumb-separator">/</span>
-            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a><span class="breadcrumb-separator">/</span><a href="./" class="breadcrumb-link breadcrumb-item">Principles</a><span class="breadcrumb-separator">/</span><span class="breadcrumb-current breadcrumb-item">Workspace Standardization</span>
-        </div>
-        
-        <div class="metadata">
-            <div class="metadata-item">
-                <span class="metadata-label">VERSION:</span>
-                <span class="metadata-value">1.0.0</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">CREATED:</span>
-                <span class="metadata-value">July 7, 2025</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">STATUS:</span>
-                <span class="metadata-value">Release Candidate</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">FRAMEWORK:</span>
-                <span class="metadata-value">Trinity Framework 2.0</span>
-            </div>
-        </div>
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-section">
+                    <h3>Core Principles</h3>
+                    <ul>
+                        <li><a href="agent-identity-protocol.html">Agent Identity</a></li>
+                        <li><a href="context-resilience.html">Context Resilience</a></li>
+                        <li><a href="operational-autonomy.html">Operational Autonomy</a></li>
+                        <li><a href="protocol-recovery.html">Protocol Recovery</a></li>
+                        <li><a href="systematic-documentation.html">Systematic Documentation</a></li>
+                        <li><a href="workspace-organization.html">Workspace Organization</a></li>
+                        <li><a href="workspace-standardization.html" class="active">Workspace Standardization</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
 
-        <p><em>Framework 2.0 COMPLIANT</em></p>
+        <main>
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="framework-core-principles.html">Principles</a> &gt;
+                <span>Workspace Standardization</span>
+            </nav>
 
-        <a href="/trinity-framework-core/" class="home-link">← Back to Documentation Home</a>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
-            <p>Created for building context-resilient agent systems</p>
-            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
-        </div>
-    </footer>
+            <article>
+                <h1>Workspace Standardization</h1>
 
-    <script>
-        // Simple animation for terminal text
-        document.addEventListener('DOMContentLoaded', function() {
-            const terminalLines = document.querySelectorAll('.terminal-content br');
-            
-            // Hide all lines initially except the first one
-            for (let i = 0; i < terminalLines.length; i++) {
-                const nextSibling = terminalLines[i].nextSibling;
-                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                    nextSibling.style.display = 'none';
-                }
-            }
-            
-            // Show lines one by one
-            let currentLine = 0;
-            function showNextLine() {
-                if (currentLine < terminalLines.length) {
-                    const nextSibling = terminalLines[currentLine].nextSibling;
-                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                        nextSibling.style.display = 'inline';
-                    }
-                    currentLine++;
-                    setTimeout(showNextLine, 500);
-                }
-            }
-            
-            setTimeout(showNextLine, 1000);
-        });
-    </script>
+                <div class="metadata">
+                    <p><strong>VERSION</strong>: 1.0.0<br>
+                    <strong>CREATED</strong>: June 12, 2025<br>
+                    <strong>STATUS</strong>: Draft<br>
+                    <strong>FRAMEWORK</strong>: Trinity Framework 2.0 Core</p>
+                </div>
+
+                <hr>
+
+                <h2 id="definition">Definition</h2>
+                <p>Workspace standardization is the practice of organizing agent workspaces according to consistent patterns and conventions. This standardization ensures that files can be predictably located, accessed, and managed regardless of the specific agent or implementation.</p>
+
+                <h2 id="core-components">Core Components</h2>
+
+                <h3>Root Directory Organization</h3>
+                <p>The workspace root directory contains essential protocol files and a limited number of other critical files:</p>
+                <pre><code>workspace/
+├── AGENT.md                 # Agent identity and role
+├── AUTO-COMPACT.md          # Context management and recovery
+├── STATUS.md                # Current operational status
+├── WORKSPACE-ORGANIZATION.md  # Directory structure documentation
+└── [Other essential files - maximum 10 total]</code></pre>
+
+                <h3>Required Directories</h3>
+                <p>Every standardized workspace includes these essential directories:</p>
+                <pre><code>workspace/
+├── AAR/                     # After Action Review system
+│   ├── incidents/           # Major incident analyses
+│   └── sessions/            # Daily session documentation
+├── projects/                # Active project implementation files
+├── reports/                 # Generated reports and analysis
+├── tools/                   # Utility scripts and resources
+├── checkpoints/             # Context recovery checkpoints
+└── archives/                # Completed or deprecated content</code></pre>
+
+                <h3>Standard Naming Conventions</h3>
+                <p>File and directory naming follows consistent patterns:</p>
+                <ol>
+                    <li><strong>Protocol Files</strong>: UPPERCASE-WITH-HYPHENS.md</li>
+                    <li><strong>AAR Session Files</strong>: YYYY-MM-DD-descriptive-name.md</li>
+                    <li><strong>AAR Incident Files</strong>: DESCRIPTIVE-NAME-RCA.md</li>
+                    <li><strong>Project Directories</strong>: lowercase-with-hyphens/</li>
+                    <li><strong>Tool Scripts</strong>: action-description.sh or action-description.js</li>
+                </ol>
+
+                <h2 id="implementation-principles">Implementation Principles</h2>
+
+                <h3>1. Consistent Structure Across Agents</h3>
+                <p>All agent workspaces follow the same basic structure, even when serving different roles:</p>
+                <ul>
+                    <li><strong>APEX</strong>: Same structure with implementation focus</li>
+                    <li><strong>ANALYST</strong>: Same structure with analysis focus</li>
+                    <li><strong>HISTORIAN</strong>: Same structure with documentation focus</li>
+                </ul>
+
+                <h3>2. Predictable File Locations</h3>
+                <p>Files are stored in predictable locations based on their purpose:</p>
+                <ul>
+                    <li><strong>Protocol Files</strong>: Always in root directory</li>
+                    <li><strong>Project Files</strong>: Always in /projects/[project-name]/</li>
+                    <li><strong>Documentation</strong>: Always in appropriate subdirectory</li>
+                    <li><strong>Tools</strong>: Always in /tools/[category]/</li>
+                </ul>
+
+                <h3>3. Purpose-Based Organization</h3>
+                <p>Files and directories are organized by their purpose, not by format or creation date:</p>
+                <ul>
+                    <li><strong>Implementation Files</strong>: /projects/[project-name]/</li>
+                    <li><strong>Documentation Files</strong>: /projects/[project-name]/docs/</li>
+                    <li><strong>Analysis Results</strong>: /reports/[analysis-name]/</li>
+                    <li><strong>Utilities</strong>: /tools/[category]/</li>
+                </ul>
+
+                <h3>4. Separation of Concerns</h3>
+                <p>Different types of content are kept separate:</p>
+                <ul>
+                    <li><strong>Active vs. Archived</strong>: Current projects vs. completed work</li>
+                    <li><strong>Implementation vs. Documentation</strong>: Code vs. explanatory content</li>
+                    <li><strong>Tools vs. Projects</strong>: Utilities vs. implementation artifacts</li>
+                </ul>
+
+                <h2 id="best-practices">Best Practices</h2>
+
+                <h3>Documentation</h3>
+                <ul>
+                    <li>Keep a WORKSPACE-ORGANIZATION.md file in the root directory</li>
+                    <li>Document the purpose of each directory</li>
+                    <li>Include examples of appropriate content for each location</li>
+                </ul>
+
+                <h3>Directory Limits</h3>
+                <ul>
+                    <li>Limit root directory to 10 files maximum</li>
+                    <li>Create subdirectories when a directory exceeds 20 files</li>
+                    <li>Use clear categorization for subdirectories</li>
+                </ul>
+
+                <h3>File Organization</h3>
+                <ul>
+                    <li>Group related files in descriptively named directories</li>
+                    <li>Use consistent naming patterns for similar file types</li>
+                    <li>Keep path lengths reasonable (under 120 characters)</li>
+                </ul>
+
+                <h2 id="practical-examples">Practical Examples</h2>
+
+                <h3>Project Organization Example</h3>
+                <pre><code>workspace/
+└── projects/
+    └── context-visualization/
+        ├── README.md
+        ├── implementation/
+        │   ├── context-meter.js
+        │   └── token-counter.js
+        ├── docs/
+        │   ├── architecture.md
+        │   └── usage-guide.md
+        └── tests/
+            └── context-meter.test.js</code></pre>
+
+                <h3>Tools Organization Example</h3>
+                <pre><code>workspace/
+└── tools/
+    ├── setup/
+    │   ├── create-workspace.sh
+    │   └── verify-installation.sh
+    ├── context-management/
+    │   ├── run-context-check.sh
+    │   └── generate-report.js
+    └── documentation/
+        ├── generate-docs.sh
+        └── verify-docs.sh</code></pre>
+
+                <h2 id="benefits-of-workspace-standardization">Benefits of Workspace Standardization</h2>
+                <ul>
+                    <li><strong>Improved Recovery</strong>: Faster context restoration after resets</li>
+                    <li><strong>Reduced Cognitive Load</strong>: Predictable locations reduce search time</li>
+                    <li><strong>Simplified Navigation</strong>: Consistent patterns across workspaces</li>
+                    <li><strong>Enhanced Collaboration</strong>: Standardization across agent roles</li>
+                    <li><strong>Automation Support</strong>: Predictable paths enable scripting</li>
+                </ul>
+
+                <h2 id="conclusion">Conclusion</h2>
+                <p>Workspace standardization is a foundational principle of Trinity Framework 2.0 Core. By implementing consistent organizational patterns across all agent workspaces, developers can create more maintainable, navigable, and resilient agent systems.</p>
+
+                <hr>
+
+                <p><em>Framework 2.0 COMPLIANT</em></p>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Trinity Framework. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="../assets/js/prism.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>

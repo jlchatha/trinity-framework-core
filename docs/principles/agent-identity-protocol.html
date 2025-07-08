@@ -3,94 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent Identity Protocol - Trinity Framework 2.0 Core</title>
-    <link rel="stylesheet" href="../css/shadowrun-theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Agent Identity Protocol - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="../assets/css/shadowrun.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
 </head>
-<body>
-    <div class="framework-float-badge">Framework 2.0</div>
-
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <h1 class="logo-text">Trinity Framework</h1>
-                <span class="version-badge">v1.0.0</span>
-            </div>
-            <nav class="nav">
-                <a href="/trinity-framework-core/" class="nav-link">Home</a>
-                <a href="../" class="nav-link">Documentation</a>
-                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+<body class="shadowrun-theme">
+    <div class="grid-container">
+        <header>
+            <h1>Trinity Framework 2.0</h1>
+            <nav class="main-nav">
+                <a href="../index.html">Home</a>
+                <a href="../getting-started/quick-start.html">Quick Start</a>
+                <a href="framework-core-principles.html">Principles</a>
+                <a href="../guides/aar-system.html">Guides</a>
+                <a href="../reference/protocol-files.html">Reference</a>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <main>
-        <div class="breadcrumbs">
-            <a href="/trinity-framework-core/" class="breadcrumb-link breadcrumb-item">Home</a>
-            <span class="breadcrumb-separator">/</span>
-            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a><span class="breadcrumb-separator">/</span><a href="./" class="breadcrumb-link breadcrumb-item">Principles</a><span class="breadcrumb-separator">/</span><span class="breadcrumb-current breadcrumb-item">Agent Identity Protocol</span>
-        </div>
-        
-        <div class="metadata">
-            <div class="metadata-item">
-                <span class="metadata-label">VERSION:</span>
-                <span class="metadata-value">1.0.0</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">CREATED:</span>
-                <span class="metadata-value">July 7, 2025</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">STATUS:</span>
-                <span class="metadata-value">Release Candidate</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">FRAMEWORK:</span>
-                <span class="metadata-value">Trinity Framework 2.0</span>
-            </div>
-        </div>
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-section">
+                    <h3>Core Principles</h3>
+                    <ul>
+                        <li><a href="agent-identity-protocol.html" class="active">Agent Identity</a></li>
+                        <li><a href="context-resilience.html">Context Resilience</a></li>
+                        <li><a href="operational-autonomy.html">Operational Autonomy</a></li>
+                        <li><a href="protocol-recovery.html">Protocol Recovery</a></li>
+                        <li><a href="systematic-documentation.html">Systematic Documentation</a></li>
+                        <li><a href="workspace-organization.html">Workspace Organization</a></li>
+                        <li><a href="workspace-standardization.html">Workspace Standardization</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
 
-        <p><em>Framework 2.0 COMPLIANT</em></p>
+        <main>
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="framework-core-principles.html">Principles</a> &gt;
+                <span>Agent Identity Protocol</span>
+            </nav>
 
-        <a href="/trinity-framework-core/" class="home-link">← Back to Documentation Home</a>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
-            <p>Created for building context-resilient agent systems</p>
-            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
-        </div>
-    </footer>
+            <article>
+                <h1>Agent Identity Protocol</h1>
 
-    <script>
-        // Simple animation for terminal text
-        document.addEventListener('DOMContentLoaded', function() {
-            const terminalLines = document.querySelectorAll('.terminal-content br');
-            
-            // Hide all lines initially except the first one
-            for (let i = 0; i < terminalLines.length; i++) {
-                const nextSibling = terminalLines[i].nextSibling;
-                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                    nextSibling.style.display = 'none';
-                }
-            }
-            
-            // Show lines one by one
-            let currentLine = 0;
-            function showNextLine() {
-                if (currentLine < terminalLines.length) {
-                    const nextSibling = terminalLines[currentLine].nextSibling;
-                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                        nextSibling.style.display = 'inline';
-                    }
-                    currentLine++;
-                    setTimeout(showNextLine, 500);
-                }
-            }
-            
-            setTimeout(showNextLine, 1000);
-        });
-    </script>
+                <div class="metadata">
+                    <p><strong>VERSION</strong>: 1.0.0<br>
+                    <strong>CREATED</strong>: June 12, 2025<br>
+                    <strong>STATUS</strong>: Draft<br>
+                    <strong>FRAMEWORK</strong>: Trinity Framework 2.0</p>
+                </div>
+
+                <hr>
+
+                <h2 id="introduction">Introduction</h2>
+                <p>The Agent Identity Protocol ensures clear agent identification in all interactions, preventing identity confusion and reinforcing system boundaries. This protocol is essential for multi-agent systems to maintain operational clarity and effective recovery after context resets.</p>
+
+                <h2 id="purpose">Purpose</h2>
+                <p>The Agent Identity Protocol addresses several critical challenges in multi-agent systems:</p>
+                <ol>
+                    <li><strong>Identity Confusion</strong>: Agents losing track of their own identity</li>
+                    <li><strong>Cross-Agent Contamination</strong>: Agents adopting behaviors of other agents</li>
+                    <li><strong>Boundary Dissolution</strong>: System boundaries becoming unclear</li>
+                    <li><strong>Recovery Complexity</strong>: Identity restoration being inconsistent after context resets</li>
+                    <li><strong>Operational Clarity</strong>: Ensuring human operators always know which agent they're interacting with</li>
+                </ol>
+
+                <h2 id="core-requirements">Core Requirements</h2>
+
+                <h3>1. Explicit Self-Identification</h3>
+                <ul>
+                    <li>Agents MUST clearly identify themselves when responding</li>
+                    <li>Identity must be established at the beginning of conversations and after context resets</li>
+                    <li>Multiple formats are acceptable based on conversation context:
+                        <ul>
+                            <li><strong>Full Format</strong> (initial/post-reset): "I'm [AGENT NAME], the [ROLE DESCRIPTION]"</li>
+                            <li><strong>Abbreviated Format</strong> (ongoing conversation): "[AGENT NAME]: [Response]" or "As [AGENT NAME], [Response]"</li>
+                        </ul>
+                    </li>
+                    <li>The key requirement is that the agent's identity remains clear throughout the conversation</li>
+                </ul>
+
+                <h3>2. Protocol File Implementation</h3>
+                <ul>
+                    <li>AGENT.md must include self-identification instructions in the Identity & Mission section</li>
+                    <li>AGENT.md must include self-identification in the Immediate Recovery Steps</li>
+                    <li>AGENT.md must reinforce identity in the REMEMBER section</li>
+                    <li>AUTO-COMPACT.md must include self-identification in Post-Reset Continuation Instructions</li>
+                </ul>
+
+                <h3>3. Recovery Integration</h3>
+                <ul>
+                    <li>Self-identification is a mandatory recovery step after context restoration</li>
+                    <li>Recovery readiness assessment includes identity verification</li>
+                    <li>Recovery success criteria includes proper self-identification</li>
+                </ul>
+
+                <h2 id="implementation-guidelines">Implementation Guidelines</h2>
+
+                <h3>AGENT.md Identity & Mission Section</h3>
+                <pre><code class="language-markdown">## IDENTITY & MISSION
+
+You are **[AGENT NAME]**, the [ROLE DESCRIPTION]. You serve as [PRIMARY RESPONSIBILITY].
+
+**IMPORTANT**: Always ensure your identity as [AGENT NAME] is clear in your responses.
+
+For initial responses or after context resets, use: "I'm [AGENT NAME], the [ROLE DESCRIPTION]"
+For ongoing conversation, you may use abbreviated formats like:
+- "[AGENT NAME]: [Response]"
+- "As [AGENT NAME], [Response]"
+
+Your identity should always be clear to the human operator.</code></pre>
+
+                <h3>AGENT.md Recovery Steps</h3>
+                <pre><code class="language-markdown">### Immediate Recovery Steps
+When you experience a context reset:
+
+1. **Recognize the situation** - You'll have no memory of previous conversation
+2. **Read this file immediately** - It's your primary recovery document
+3. **Read AUTO-COMPACT.md** - Current project status and context
+4. **Restore working context** from recovery documents
+5. **Clearly identify yourself as [AGENT NAME]** - Ensure your identity is clear in your responses
+6. **Resume work with full awareness**</code></pre>
+
+                <h3>AGENT.md REMEMBER Section</h3>
+                <pre><code class="language-markdown">## REMEMBER
+
+- You are [AGENT NAME], the [ROLE DESCRIPTION]
+- Always ensure your identity as [AGENT NAME] is clear in your responses
+- [Other reminders]</code></pre>
+
+                <h3>AUTO-COMPACT.md Post-Reset Continuation</h3>
+                <pre><code class="language-markdown">## Post-Reset Continuation Instructions
+
+After a context reset:
+
+1. Read AGENT.md to understand your role as [AGENT NAME]
+2. Read STATUS.md to get current priorities and project status
+3. Read AUTO-COMPACT.md (this document) to understand the active implementation context
+4. Review agent status and active projects
+5. **Clearly identify yourself as [AGENT NAME]** - Begin your first post-reset response with "I'm [AGENT NAME], the [ROLE DESCRIPTION]" and maintain clear identity in follow-up responses</code></pre>
+
+                <h2 id="flexible-format-options">Flexible Format Options</h2>
+                <p>For ongoing conversations after initial identification, abbreviated formats may be used:</p>
+                <ol>
+                    <li><strong>Full Format</strong> (initial/post-reset): "I'm [AGENT NAME], the [ROLE DESCRIPTION]. [Response]"</li>
+                    <li><strong>Brief Format</strong> (follow-up responses): "[AGENT NAME]: [Response]"</li>
+                    <li><strong>Natural Format</strong>: "As [AGENT NAME], [Response]"</li>
+                </ol>
+                <p>The key requirement is that the agent's identity remains clear throughout the conversation, not that a specific format is rigidly followed.</p>
+
+                <h2 id="benefits">Benefits</h2>
+                <ol>
+                    <li><strong>Eliminates Identity Confusion</strong>: Prevents agents from misidentifying themselves or being confused with other agents</li>
+                    <li><strong>Reinforces System Boundaries</strong>: Creates clear separation between different agent responses</li>
+                    <li><strong>Improves Recovery Resilience</strong>: Makes identity restoration an explicit part of recovery</li>
+                    <li><strong>Enhances Human Operator Experience</strong>: Provides consistent, easily recognizable response patterns</li>
+                    <li><strong>Facilitates Multi-Agent Coordination</strong>: Clear attribution in cross-agent communication</li>
+                </ol>
+
+                <h2 id="compliance-verification">Compliance Verification</h2>
+                <p>The following checks verify proper implementation:</p>
+                <ol>
+                    <li><strong>Identity Statement Check</strong>: Verify explicit self-identification requirement in protocol files</li>
+                    <li><strong>Format Verification</strong>: Confirm standard identity format is specified</li>
+                    <li><strong>Recovery Integration</strong>: Validate identity verification in recovery steps</li>
+                    <li><strong>Response Validation</strong>: Test identity statement in agent responses</li>
+                </ol>
+
+                <h2 id="example-implementation">Example Implementation</h2>
+
+                <h3>Initial Conversation or Post-Reset Response</h3>
+                <pre><code>I'm ANALYST, the Trinity MVP Improvement Analyst. I've analyzed the performance data you provided and found three key areas for optimization:
+
+1. Memory usage in the message processing pipeline
+2. Redundant network calls in the data synchronization module
+3. Inefficient rendering in the status display component
+
+I recommend addressing the memory usage issue first, as it has the largest impact on overall performance.</code></pre>
+
+                <h3>Ongoing Conversation - Brief Format</h3>
+                <pre><code>ANALYST: Based on the error logs, the issue appears to be in the authentication module. The token validation function is failing when processing expired tokens. I'll implement proper error handling to fix this issue.</code></pre>
+
+                <h3>Ongoing Conversation - Natural Format</h3>
+                <pre><code>As ANALYST, I recommend refactoring the data processing pipeline to improve efficiency. The current implementation has several redundant operations that could be consolidated.</code></pre>
+
+                <h2 id="compliance-checklist">Compliance Checklist</h2>
+                <ul class="checklist">
+                    <li>AGENT.md includes explicit self-identification instructions</li>
+                    <li>AGENT.md Recovery Steps include identity verification</li>
+                    <li>AGENT.md REMEMBER section reinforces identity</li>
+                    <li>AUTO-COMPACT.md includes identity in continuation instructions</li>
+                    <li>Agent responses include clear identity statements</li>
+                    <li>Identity format follows guidelines (full or abbreviated)</li>
+                    <li>Recovery process includes identity verification</li>
+                </ul>
+
+                <h2 id="conclusion">Conclusion</h2>
+                <p>The Agent Identity Protocol is a critical component of multi-agent systems, ensuring clear boundaries, facilitating recovery, and enhancing operational clarity. By implementing this protocol according to the guidelines in this document, developers can create more robust and resilient agent systems.</p>
+
+                <hr>
+
+                <p><em>Framework 2.0 COMPLIANT</em></p>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Trinity Framework. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="../assets/js/prism.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>

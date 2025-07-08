@@ -3,94 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Systematic Documentation - Trinity Framework 2.0 Core</title>
-    <link rel="stylesheet" href="../css/shadowrun-theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Systematic Documentation - Trinity Framework Documentation</title>
+    <link rel="stylesheet" href="../assets/css/shadowrun.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
 </head>
-<body>
-    <div class="framework-float-badge">Framework 2.0</div>
-
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <h1 class="logo-text">Trinity Framework</h1>
-                <span class="version-badge">v1.0.0</span>
-            </div>
-            <nav class="nav">
-                <a href="/trinity-framework-core/" class="nav-link">Home</a>
-                <a href="../" class="nav-link">Documentation</a>
-                <a href="https://github.com/jlchatha/trinity-framework-core" class="nav-link">GitHub</a>
+<body class="shadowrun-theme">
+    <div class="grid-container">
+        <header>
+            <h1>Trinity Framework 2.0</h1>
+            <nav class="main-nav">
+                <a href="../index.html">Home</a>
+                <a href="../getting-started/quick-start.html">Quick Start</a>
+                <a href="framework-core-principles.html">Principles</a>
+                <a href="../guides/aar-system.html">Guides</a>
+                <a href="../reference/protocol-files.html">Reference</a>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <main>
-        <div class="breadcrumbs">
-            <a href="/trinity-framework-core/" class="breadcrumb-link breadcrumb-item">Home</a>
-            <span class="breadcrumb-separator">/</span>
-            <a href="../" class="breadcrumb-link breadcrumb-item">Documentation</a><span class="breadcrumb-separator">/</span><a href="./" class="breadcrumb-link breadcrumb-item">Principles</a><span class="breadcrumb-separator">/</span><span class="breadcrumb-current breadcrumb-item">Systematic Documentation</span>
-        </div>
-        
-        <div class="metadata">
-            <div class="metadata-item">
-                <span class="metadata-label">VERSION:</span>
-                <span class="metadata-value">1.0.0</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">CREATED:</span>
-                <span class="metadata-value">July 7, 2025</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">STATUS:</span>
-                <span class="metadata-value">Release Candidate</span>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">FRAMEWORK:</span>
-                <span class="metadata-value">Trinity Framework 2.0</span>
-            </div>
-        </div>
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-section">
+                    <h3>Core Principles</h3>
+                    <ul>
+                        <li><a href="agent-identity-protocol.html">Agent Identity</a></li>
+                        <li><a href="context-resilience.html">Context Resilience</a></li>
+                        <li><a href="operational-autonomy.html">Operational Autonomy</a></li>
+                        <li><a href="protocol-recovery.html">Protocol Recovery</a></li>
+                        <li><a href="systematic-documentation.html" class="active">Systematic Documentation</a></li>
+                        <li><a href="workspace-organization.html">Workspace Organization</a></li>
+                        <li><a href="workspace-standardization.html">Workspace Standardization</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
 
-        <p><em>Framework 2.0 COMPLIANT</em></p>
+        <main>
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="framework-core-principles.html">Principles</a> &gt;
+                <span>Systematic Documentation</span>
+            </nav>
 
-        <a href="/trinity-framework-core/" class="home-link">← Back to Documentation Home</a>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <p>Trinity Framework 2.0 Core &copy; 2025 | Licensed under Apache 2.0</p>
-            <p>Created for building context-resilient agent systems</p>
-            <div class="framework-badge">Framework 2.0 COMPLIANT</div>
-        </div>
-    </footer>
+            <article>
+                <h1>Systematic Documentation</h1>
 
-    <script>
-        // Simple animation for terminal text
-        document.addEventListener('DOMContentLoaded', function() {
-            const terminalLines = document.querySelectorAll('.terminal-content br');
-            
-            // Hide all lines initially except the first one
-            for (let i = 0; i < terminalLines.length; i++) {
-                const nextSibling = terminalLines[i].nextSibling;
-                if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                    nextSibling.style.display = 'none';
-                }
-            }
-            
-            // Show lines one by one
-            let currentLine = 0;
-            function showNextLine() {
-                if (currentLine < terminalLines.length) {
-                    const nextSibling = terminalLines[currentLine].nextSibling;
-                    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-                        nextSibling.style.display = 'inline';
-                    }
-                    currentLine++;
-                    setTimeout(showNextLine, 500);
-                }
-            }
-            
-            setTimeout(showNextLine, 1000);
-        });
-    </script>
+                <div class="metadata">
+                    <p><strong>VERSION</strong>: 1.0.0<br>
+                    <strong>CREATED</strong>: June 12, 2025<br>
+                    <strong>STATUS</strong>: Draft<br>
+                    <strong>FRAMEWORK</strong>: Trinity Framework 2.0 Core</p>
+                </div>
+
+                <hr>
+
+                <h2 id="definition">Definition</h2>
+                <p>Systematic documentation is the practice of creating, organizing, and maintaining documentation in standardized formats and locations to ensure information accessibility across context resets. This principle is critical for context resilience and operational continuity in agent systems.</p>
+
+                <blockquote>
+                    <p><strong>Note</strong>: Additional details about this principle can be found in the comprehensive <a href="../FRAMEWORK-CORE-PRINCIPLES.md">Framework Core Principles</a> document.</p>
+                </blockquote>
+
+                <h2 id="key-components">Key Components</h2>
+
+                <h3>AAR (After Action Review) System</h3>
+                <p>A structured two-tier documentation system:</p>
+                <ul>
+                    <li><strong>Session AARs</strong>: Document regular work sessions (20-50 lines)</li>
+                    <li><strong>Incident AARs</strong>: Document major incidents in depth (100+ lines)</li>
+                    <li><strong>Location</strong>: <code>/AAR/sessions/</code> and <code>/AAR/incidents/</code> directories</li>
+                </ul>
+
+                <h3>Standardized Documentation Formats</h3>
+                <p>Consistent document structures across the framework:</p>
+                <ul>
+                    <li><strong>Protocol Files</strong>: Standard sections and content requirements</li>
+                    <li><strong>AAR Documents</strong>: Templated format with standard sections</li>
+                    <li><strong>Project Documentation</strong>: Consistent organization and headings</li>
+                    <li><strong>Status Reports</strong>: Standard metrics and reporting formats</li>
+                </ul>
+
+                <h3>Implementation Details in Dedicated Locations</h3>
+                <p>Clear separation of different documentation types:</p>
+                <ul>
+                    <li><strong>Protocol Files</strong>: Workspace root directory</li>
+                    <li><strong>Project Documentation</strong>: Within project directories</li>
+                    <li><strong>System Documentation</strong>: In appropriate categorized locations</li>
+                    <li><strong>Recovery Documentation</strong>: In protocol files and AAR documents</li>
+                </ul>
+
+                <h3>Recovery-Oriented Knowledge Organization</h3>
+                <p>Documentation organized to facilitate context recovery:</p>
+                <ul>
+                    <li><strong>Chronological Organization</strong>: Date-based session AARs</li>
+                    <li><strong>Topic-Based Organization</strong>: Categorized documentation</li>
+                    <li><strong>Priority-Based Organization</strong>: Critical information first</li>
+                    <li><strong>Cross-Referenced Organization</strong>: Linked documentation</li>
+                </ul>
+
+                <h2 id="implementation-requirements">Implementation Requirements</h2>
+
+                <h3>AAR Sessions for Continuous Learning</h3>
+                <p>Regular documentation of work sessions:</p>
+                <pre><code>/AAR/
+├── sessions/
+│   ├── YYYY-MM-DD-description.md
+│   └── ...
+└── incidents/
+    ├── DESCRIPTIVE-NAME-RCA.md
+    └── ...</code></pre>
+
+                <h3>Documentation Templates for Consistency</h3>
+                <p>Standardized templates for all documentation types:</p>
+                <ul>
+                    <li>Session AAR template with standard sections</li>
+                    <li>Incident AAR template with detailed analysis format</li>
+                    <li>Project documentation templates</li>
+                    <li>Status report templates</li>
+                </ul>
+
+                <h3>Version Control of Critical Documents</h3>
+                <p>Tracking changes to important documentation:</p>
+                <ul>
+                    <li>Dated protocol file updates</li>
+                    <li>Change logs for critical documentation</li>
+                    <li>Versioning of templates</li>
+                    <li>Historical records of significant changes</li>
+                </ul>
+
+                <h3>Documentation Health Metrics</h3>
+                <p>Measuring documentation quality and coverage:</p>
+                <ul>
+                    <li><strong>Completeness</strong>: Percentage of required documentation</li>
+                    <li><strong>Currency</strong>: Time since last update</li>
+                    <li><strong>Clarity</strong>: Readability and accessibility</li>
+                    <li><strong>Recovery Value</strong>: Effectiveness during context reset</li>
+                </ul>
+
+                <h2 id="documentation-workflow">Documentation Workflow</h2>
+
+                <h3>Session Documentation</h3>
+                <ol>
+                    <li><strong>Create</strong>: After each significant work session</li>
+                    <li><strong>Format</strong>: Using the session AAR template</li>
+                    <li><strong>Store</strong>: In <code>/AAR/sessions/</code> with date-based filename</li>
+                    <li><strong>Reference</strong>: During context recovery and planning</li>
+                </ol>
+
+                <h3>Incident Documentation</h3>
+                <ol>
+                    <li><strong>Create</strong>: After major incidents or challenges</li>
+                    <li><strong>Format</strong>: Using the incident AAR template</li>
+                    <li><strong>Store</strong>: In <code>/AAR/incidents/</code> with descriptive filename</li>
+                    <li><strong>Reference</strong>: When facing similar challenges</li>
+                </ol>
+
+                <h3>Protocol File Updates</h3>
+                <ol>
+                    <li><strong>Review</strong>: After completing major tasks</li>
+                    <li><strong>Update</strong>: Reflect current status and priorities</li>
+                    <li><strong>Verify</strong>: Ensure recovery instructions are current</li>
+                    <li><strong>Document</strong>: Note the update in STATUS.md</li>
+                </ol>
+
+                <h2 id="example-implementation">Example Implementation</h2>
+
+                <h3>Session AAR Template</h3>
+                <pre><code class="language-markdown"># Session: YYYY-MM-DD Description
+
+## Activities Completed
+- [List of completed activities]
+
+## Challenges Encountered
+- [List of challenges and how they were addressed]
+
+## Key Insights
+- [Important insights gained during the session]
+
+## Lessons Learned
+- [What worked well and what didn't]
+
+## Next Actions
+- [Actions to take in the next session]</code></pre>
+
+                <h3>Incident AAR Template</h3>
+                <pre><code class="language-markdown"># Incident: Descriptive Name
+
+## Overview
+Brief description of the incident
+
+## Timeline
+- **YYYY-MM-DD HH:MM**: Initial detection
+- **YYYY-MM-DD HH:MM**: Key event 1
+- **YYYY-MM-DD HH:MM**: Key event 2
+- **YYYY-MM-DD HH:MM**: Resolution
+
+## Root Cause Analysis
+Detailed analysis of what caused the incident
+
+## Resolution
+How the incident was resolved
+
+## Impact
+What systems or operations were affected
+
+## Prevention
+Measures to prevent similar incidents
+
+## Technical Details
+Detailed technical information, code, logs, etc.</code></pre>
+
+                <h2 id="best-practices">Best Practices</h2>
+
+                <h3>Consistency</h3>
+                <ul>
+                    <li>Use standardized templates for all documentation</li>
+                    <li>Follow naming conventions consistently</li>
+                    <li>Maintain standard sections and formats</li>
+                    <li>Use consistent terminology</li>
+                </ul>
+
+                <h3>Accessibility</h3>
+                <ul>
+                    <li>Store documentation in predictable locations</li>
+                    <li>Organize documentation for easy retrieval</li>
+                    <li>Use clear, concise language</li>
+                    <li>Structure content for quick understanding</li>
+                </ul>
+
+                <h3>Completeness</h3>
+                <ul>
+                    <li>Document all significant work sessions</li>
+                    <li>Analyze and document all major incidents</li>
+                    <li>Include both successes and challenges</li>
+                    <li>Capture lessons learned and next steps</li>
+                </ul>
+
+                <h3>Recovery Focus</h3>
+                <ul>
+                    <li>Prioritize information needed during recovery</li>
+                    <li>Include context restoration instructions</li>
+                    <li>Document current state and priorities</li>
+                    <li>Reference related documentation</li>
+                </ul>
+
+                <h2 id="conclusion">Conclusion</h2>
+                <p>Systematic documentation is a foundational principle of Trinity Framework 2.0 Core that enables context resilience and continuous improvement. By implementing standardized documentation formats, locations, and practices, agent systems can maintain operational continuity across context limitations and learn effectively from past experiences.</p>
+
+                <hr>
+
+                <p><em>Framework 2.0 COMPLIANT</em></p>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Trinity Framework. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="../assets/js/prism.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
