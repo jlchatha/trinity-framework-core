@@ -1,3 +1,7 @@
+> [!WARNING]
+> **DEPRECATED:** This repository has been superseded by [trinity-core](https://github.com/jlchatha/trinity-core) (v3.0).
+> It remains here for historical provenance but will receive no further updates.
+
 # Trinity Framework 2.0 Core
 
 **VERSION**: 1.0.0  
